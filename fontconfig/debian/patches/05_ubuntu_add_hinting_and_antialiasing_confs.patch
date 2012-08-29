@@ -1,0 +1,55 @@
+--- /dev/null
++++ b/conf.d/10-antialias.conf
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!--  Use the Antialiasing --> 
++  <match target="font">
++    <edit name="antialias" mode="assign"><bool>true</bool></edit>
++  </match>
++</fontconfig>
+--- /dev/null
++++ b/conf.d/10-hinting.conf
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!--  Use Hinting --> 
++  <match target="font">
++    <edit name="hinting" mode="assign"><bool>true</bool></edit>
++  </match>
++</fontconfig>
+--- /dev/null
++++ b/conf.d/10-hinting-full.conf
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!--  Use Full Hinting --> 
++  <match target="font">
++    <edit name="hintstyle" mode="assign"><const>hintfull</const></edit>
++  </match>
++</fontconfig>
+--- /dev/null
++++ b/conf.d/10-hinting-medium.conf
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!--  Use Medium Hinting --> 
++  <match target="font">
++    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
++  </match>
++</fontconfig>
+--- /dev/null
++++ b/conf.d/10-hinting-slight.conf
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
++<fontconfig>
++<!--  Use Slight Hinting --> 
++  <match target="font">
++    <edit name="hintstyle" mode="assign"><const>hintslight</const></edit>
++  </match>
++</fontconfig>

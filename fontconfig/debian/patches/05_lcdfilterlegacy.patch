@@ -1,0 +1,10 @@
+--- a/src/fcname.c
++++ b/src/fcname.c
+@@ -452,6 +452,7 @@
+     { (FcChar8 *) "lcddefault",	    "lcdfilter",    FC_LCD_DEFAULT },
+     { (FcChar8 *) "lcdlight",	    "lcdfilter",    FC_LCD_LIGHT },
+     { (FcChar8 *) "lcdlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
++    { (FcChar8 *) "lcdfilterlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
+ };
+ 
+ #define NUM_FC_CONSTANTS   (sizeof _FcBaseConstants/sizeof _FcBaseConstants[0])

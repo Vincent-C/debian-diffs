@@ -1,0 +1,124 @@
+.TH firefox 1 "November 4, 2004" firefox "Linux User's Manual"
+.SH NAME
+firefox - a Web browser for X11 derived from the Mozilla browser
+
+.SH SYNOPSIS
+.B firefox
+[\fIOPTIONS\fR] [\fIURL\fR]
+
+.B /usr/lib/firefox/firefox\-bin
+[\fIOPTIONS\fR] [\fIURL\fR]
+
+.SH DESCRIPTION
+\fBfirefox\fR is an open-source web browser, designed for
+standards compliance, performance and portability.
+
+.SH USAGE
+\fBfirefox\fR is a simple shell script that will set up the
+environment for the actual executable, \fBfirefox\-bin\fR.
+If there is an firefox browser already running, \fBfirefox\fR will
+arrange for it to create a new browser window; otherwise it will start
+the firefox application.
+
+.SH OPTIONS
+A summary of the options supported by \fBfirefox\fR is included below.
+
+.SS "X11 options"
+.TP
+.BI \-\-display= DISPLAY
+X display to use
+.TP
+.B \-\-sync
+Make X calls synchronous
+.TP
+.B \-\-no\-xshm
+Don't use X shared memory extension
+.TP
+.BI \-\-xim\-preedit= STYLE
+.TP
+.BI \-\-xim\-status= STYLE
+.TP
+.B \-\-g\-fatal\-warnings
+Make all warnings fatal
+
+.SS "Mozilla options"
+.TP
+.B \-h, \-help
+Show summary of options.
+.TP
+.B \-v, \-version
+Print firefox version.
+.TP
+\fB\-P\fR [\fIprofile\fR]
+Start with \fIprofile\fR. When no profile is given, displays the Profile Manager. May require \fB\-no\-remote\fR, see below.
+.TP
+.B \-migration
+Start with migration wizard. May require \fB\-no\-remote\fR, see below.
+.TP
+.B \-ProfileManager
+Start with profile manager. May require \fB\-no\-remote\fR, see below.
+.TP
+.B \-no\-remote
+Don't connect to a running firefox instance. This option can be necessary
+in conjunction to several of the options above, that won't have any effect
+when an firefox instance is running unless \fB\-no\-remote\fR is used at
+the same time.
+.TP
+\fB\-UILocale\fR \fIlocale\fR
+Start with \fIlocale\fR resources as User Interface locale. By default, it is
+guessed from environment and available locales for firefox.
+.TP
+.B \-safe\-mode
+Starts firefox in safe mode, i.e. disabling all extensions and
+showing a bit more debugging messages.
+.TP
+.B \-jsconsole
+Start with Javascript Console
+.TP
+\fB\-new-window\fR \fIURL\fR
+Open \fIURL\fR in a new window in an already running firefox process.
+.TP
+\fB\-new-tab\fR \fIURL\fR
+Open \fIURL\fR in a new tab in an already running firefox process.
+.TP
+\fB\-chrome\fR \fIurl\fR
+Load the specified chrome.
+.SS "Debugger options"
+.TP
+.B \-g, \-debug
+Starts firefox through a debugger (gdb by default).
+.TP
+\fB\-\-debugger\fR \fIprogram\fR
+Use \fIprogram\fR as a debugger for firefox. Implies \fB\-debug\fR.
+
+.SH ENVIRONMENT
+\fIfirefox_DSP\fR - configures the /dev/dsp wrapper to use. Accepted values
+are "auto", "artsdsp", "esddsp", "aoss" or "none" (default).
+
+\fIMOZILLA_DISABLE_PLUGINS\fR - when set, totally disables loading browser plugins
+(the ones that appear at the about:plugins url)
+
+.SH FILES
+\fI/usr/bin/firefox\fR - shell script wrapping
+\fBfirefox\-bin\fR
+.br
+
+\fI/usr/lib/firefox/firefox\-bin\fR - \fBfirefox\fR
+executable
+.br
+
+\fI/etc/firefox/firefoxrc\fR - file containing environment
+variables to be passed to firefox.
+.br
+
+\fI${HOME}/.mozilla/firefox/rc\fR - file containing environment variables to
+be passed to firefox. Overrides \fI/etc/firefox/firefoxrc\fR
+
+.SH BUGS
+To report a bug, please visit \fIhttp://bugzilla.mozilla.org/\fR and/or report bugs
+to the Debian Bug Tracking System, as usual.
+
+.SH AUTHORS
+.TP
+.B The Mozilla Organization
+.I http://www.mozilla.org/about.html

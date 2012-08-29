@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with javahelper
+
+override_dh_clean:
+	ant all-clean
+	dh_clean
+
+get-orig-source:
+	git clone git://nevernote.git.sourceforge.net/gitroot/nevernote/nevernote
+	# copy pre-built binaries of QtJambi into lib/
+	rm -rf .git/ .gitignore
+	tar -czf nixnote_$(VERSION).orig.tar.gz nevernote/

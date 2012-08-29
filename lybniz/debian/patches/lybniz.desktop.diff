@@ -1,0 +1,13 @@
+Index: lybniz-1.3.1/lybniz.desktop
+===================================================================
+--- lybniz-1.3.1.orig/lybniz.desktop	2007-12-01 14:48:58.000000000 +0530
++++ lybniz-1.3.1/lybniz.desktop	2007-12-01 14:49:01.000000000 +0530
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Lybniz Graph Plotter
+ Comment=Plot graphs and functions
+-Exec=lybniz.py
++Exec=lybniz
+ Terminal=false
+ StartupNotify=true
+ Type=Application

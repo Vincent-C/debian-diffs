@@ -1,0 +1,97 @@
+#!/usr/bin/make -f
+
+DEB_HOST_MULTIARCH = $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export ORIGLIBDIRS := /lib:/lib/$(DEB_HOST_MULTIARCH)
+
+export DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+DEB_UPSTREAM_VERSION=$(shell dpkg-parsechangelog | \
+		       sed -rne 's,^Version: ([^+]+).*,\1,p')
+HG_SNAPSHOT_REV=3144
+
+# We include all the documentation except:
+# util (which is for building the docs from the source)
+# fullinstall.txt (which is installation instructions)
+# LGPL (which is in /usr/share/common-licenses/LGPL-2.1 under Debian)
+doclist = $(filter-out docs/util docs/fullinstall.txt docs/LGPL,$(wildcard docs/*))
+
+%:
+	dh $@ --with python2
+
+override_dh_clean:
+	rm -f *.pyc Setup test/*.pyc test/test_utils/*.pyc
+	rm -rf build __pycache__ test/__pycache__ test/test_utils/__pycache__
+
+	dh_clean
+
+override_dh_auto_install:
+	for pyvers in $(shell pyversions -vr); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/python-pygame; \
+	done
+	for pyvers in $(shell py3versions -sv); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/python3-pygame; \
+	done
+
+override_dh_python2:
+	dh_python2 -ppython-pygame
+	dh_python3 -ppython3-pygame
+
+override_dh_installdocs:
+	dh_installdocs -a $(doclist)
+
+override_dh_installchangelogs:
+	dh_installchangelogs -a WHATSNEW
+
+override_dh_link:
+	# Replace embedded font with system copy
+	ln -sf /usr/share/fonts/truetype/freefont/FreeSansBold.ttf \
+	$(CURDIR)/debian/python-pygame/usr/share/pyshared/pygame/freesansbold.ttf
+	for pyvers in $(shell pyversions -vr); do \
+		ln -sf /usr/share/fonts/truetype/freefont/FreeSansBold.ttf \
+		$(CURDIR)/debian/python-pygame/usr/lib/python$$pyvers/dist-packages/pygame/freesansbold.ttf; \
+	done
+	ln -sf /usr/share/fonts/truetype/freefont/FreeSansBold.ttf \
+	$(CURDIR)/debian/python3-pygame/usr/lib/python3/dist-packages/pygame/freesansbold.ttf
+
+	# Replace embedded javascript libraries with system copies
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/jquery.js \
+	$(CURDIR)/debian/python-pygame/usr/share/pyshared/pygame/docs/_static/jquery.js
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/jquery.js \
+	$(CURDIR)/debian/python-pygame/usr/share/doc/python-pygame/_static/jquery.js
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/jquery.js \
+	$(CURDIR)/debian/python3-pygame/usr/lib/python3/dist-packages/pygame/docs/_static/jquery.js
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/underscore.js \
+	$(CURDIR)/debian/python-pygame/usr/share/pyshared/pygame/docs/_static/underscore.js
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/underscore.js \
+	$(CURDIR)/debian/python-pygame/usr/share/doc/python-pygame/_static/underscore.js
+	ln -sf /usr/share/javascript/sphinxdoc/1.0/underscore.js \
+        $(CURDIR)/debian/python3-pygame/usr/lib/python3/dist-packages/pygame/docs/_static/underscore.js
+	
+	dh_link -a
+
+get-orig-source:
+	# Remove existing pygame directory and tarball, if existing
+	rm -rf pygame-$(DEB_UPSTREAM_VERSION)
+	rm -f pygame_$(DEB_UPSTREAM_VERSION)+dfsg.orig.tar.gz
+	# Fetch latest upstream tarball
+	uscan --noconf --force-download --download-current-version \
+	--destdir=.
+	# Unpack and remove tarball
+	tar -xzf pygame-$(DEB_UPSTREAM_VERSION).tar.gz
+	rm -f pygame-$(DEB_UPSTREAM_VERSION).tar.gz
+	# Remove embedded freesansbold.ttf copy; it comes without the FontForge
+	# source file (.sfd), so it's technically a GPL violation
+	rm -f pygame-$(DEB_UPSTREAM_VERSION)/lib/freesansbold.ttf
+	# Repack tarball
+	tar -czf pygame_$(DEB_UPSTREAM_VERSION)+dfsg.orig.tar.gz pygame-\
+	$(DEB_UPSTREAM_VERSION)/
+
+get-orig-source-hg:
+	# Requires mercurial
+	hg clone -r$(HG_SNAPSHOT_REV) https://bitbucket.org/pygame/pygame
+	# Remove unwanted cruft
+	rm -rf pygame/.hg pygame/.hgtags pygame/.hgignore pygame/obj
+	# Repack tarball
+	tar -czf pygame_1.9.2~pre~r$(HG_SNAPSHOT_REV).orig.tar.gz pygame

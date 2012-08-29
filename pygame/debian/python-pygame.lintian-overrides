@@ -1,0 +1,2 @@
+# False positive; package is built with -D_FORTIFY_SOURCE=2
+python-pygame: hardening-no-fortify-functions usr/lib/*/dist-packages/pygame/*.so

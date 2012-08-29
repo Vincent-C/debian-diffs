@@ -1,0 +1,30 @@
+nixnote (1.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 31 Jan 2012 16:54:47 -0800
+
+nixnote (1.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 10 Oct 2011 14:18:50 -0700
+
+nixnote (1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Transition to Nixnote, and make Nevernote a dummy package
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 27 Jul 2011 11:06:09 -0700
+
+nevernote (0.99-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 30 Apr 2011 17:46:44 -0700
+
+nevernote (0.97-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 26 Feb 2011 17:19:52 -0800

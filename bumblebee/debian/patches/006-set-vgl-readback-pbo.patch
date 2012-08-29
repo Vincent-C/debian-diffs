@@ -1,0 +1,16 @@
+To improve performance for some machines by twice, set VGL_READBACK=pbo by
+default as was done in Bumblebee 2.4
+diff --git a/src/optirun.c b/src/optirun.c
+index a3c3719..dfddc31 100644
+--- a/src/optirun.c
++++ b/src/optirun.c
+@@ -173,6 +173,9 @@ static int run_app(int argc, char *argv[]) {
+             vglrun_args[r + optno] = argv[optind + r];
+           }
+           vglrun_args[optno+=r] = 0;
++          /* set envvar for better performance on some systems, but allow the
++           * user for manually override */
++          setenv("VGL_READBACK", "pbo", 0);
+           exitcode = bb_run_fork(vglrun_args, 0);
+           free(vglrun_args);
+           socketClose(&bb_status.bb_socket);

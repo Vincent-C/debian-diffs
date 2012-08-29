@@ -1,0 +1,8 @@
+thunderbird for Debian
+----------------------
+
+This is the latest 64-bit release for Thunderbird, built by Mozilla.
+
+$ wget http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/latest/linux-x86_64/en-US/thunderbird-${VERSION}.tar.bz2
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 15 Mar 2011 22:21:59 -0700

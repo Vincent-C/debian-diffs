@@ -1,0 +1,22 @@
+Help build.xml locate the qtjambi libs in the source tarball.
+--- a/build.xml
++++ b/build.xml
+@@ -63,14 +63,14 @@
+ 
+   <!-- flexible looking for qtjambi library path -->
+   <target name="set-jambi-path32" depends="set-jambi-path" unless="qtlib.dir">
+-      <available file="../qtjambi-linux32-lgpl-${qtjambi.ver}"
+-                 property="qtlib.dir" value="../qtjambi-linux32-lgpl-${qtjambi.ver}"/>
++      <available file="./lib/qtjambi-linux32-lgpl-${qtjambi.ver}"
++                 property="qtlib.dir" value="./lib/qtjambi-linux32-lgpl-${qtjambi.ver}"/>
+       <available file="../qtjambi-linux32-community-${qtjambi.ver}"
+                  property="qtlib.dir" value="../qtjambi-linux32-community-${qtjambi.ver}"/>
+   </target>
+   <target name="set-jambi-path64" depends="set-jambi-path" unless="qtlib.dir">
+-      <available file="../qtjambi-linux64-lgpl-${qtjambi.ver}"
+-                 property="qtlib.dir" value="../qtjambi-linux64-lgpl-${qtjambi.ver}"/>
++      <available file="./lib/qtjambi-linux64-lgpl-${qtjambi.ver}"
++                 property="qtlib.dir" value="./lib/qtjambi-linux64-lgpl-${qtjambi.ver}"/>
+       <available file="../qtjambi-linux64-community-${qtjambi.ver}"
+                  property="qtlib.dir" value="../qtjambi-linux64-community-${qtjambi.ver}"/>
+   </target>

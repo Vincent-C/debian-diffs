@@ -1,0 +1,21 @@
+Source: eclipse
+Section: devel
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: http://www.eclipse.org/
+
+Package: eclipse
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Eclipse IDE for Java Developers
+ The Eclipse Platform is an open and extensible platform for anything and yet
+ nothing in particular. It provides a foundation for constructing and running
+ integrated software development tools. The Eclipse Platform allows tool
+ builders to independently develop tools that integrate with other people's
+ tools so seamlessly you can't tell where one tool ends and another starts.
+ .
+ This package is a binary re-packaging of Eclipse IDE for Java Developers 
+ (Linux 64-bit).
+

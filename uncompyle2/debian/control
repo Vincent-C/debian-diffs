@@ -1,0 +1,26 @@
+Source: uncompyle2
+Section: python
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 9), python (>= 2.7)
+X-Python-Version: >= 2.7
+Standards-Version: 3.9.3
+Homepage: https://github.com/wibiti/uncompyle2
+
+Package: uncompyle2
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: python byte-code to source-code converter
+ 'uncompyle2' converts Python byte-code back into equivalent Python
+ source. It accepts byte-code from Python version 2.7 only. Additionally,
+ it will only run on Python 2.7.
+ .
+ The generated source is very readable: docstrings, lists, tuples and
+ hashes get pretty-printed.
+ .
+ 'uncompyle2' may also verify the equivalence of the generated source by
+ by compiling it and comparing both byte-codes.
+ .
+ 'uncompyle2' is based on John Aycock's generic small languages compiler
+ 'spark' (http://www.csr.uvic.ca/~aycock/python/) and his prior work on
+ 'uncompyle'.

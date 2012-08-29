@@ -1,0 +1,31 @@
+Index: handbrake-0.9.7/gtk/configure.ac
+===================================================================
+--- handbrake-0.9.7.orig/gtk/configure.ac	2012-06-08 23:45:19.000000000 +0200
++++ handbrake-0.9.7/gtk/configure.ac	2012-07-16 09:16:25.398833796 +0200
+@@ -93,6 +93,9 @@
+ 	fi
+ 	mingw_flag=yes
+     ;;
++    *kfreebsd*)
++    	GHB_PACKAGES="gtk+-2.0 >= 2.10 gthread-2.0 gstreamer-0.10 gstreamer-interfaces-0.10 gstreamer-video-0.10 gstreamer-pbutils-0.10 gio-2.0 libnotify dbus-glib-1 webkit-1.0"
++    ;;
+   *)
+     case "$host_os" in
+ 	linux*)
+Index: handbrake-0.9.7/contrib/ffmpeg/A09-kfreebsd.patch
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ handbrake-0.9.7/contrib/ffmpeg/A09-kfreebsd.patch	2012-07-16 09:16:25.402833940 +0200
+@@ -0,0 +1,12 @@
++--- a/libavdevice/v4l2.c      2011-11-03 12:29:48.000000000 +0100
+++++ b/libavdevice/v4l2.c   2012-02-29 11:21:14.000000000 +0100
++@@ -38,7 +38,9 @@
++ #if HAVE_SYS_VIDEOIO_H
++ #include <sys/videoio.h>
++ #else
+++#if HAVE_ASM_TYPES_H
++ #include <asm/types.h>
+++#endif
++ #include <linux/videodev2.h>
++ #endif
++ #include <time.h>

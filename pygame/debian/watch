@@ -1,0 +1,3 @@
+version=3
+opts=dversionmangle=s/\+dfsg// \
+http://www.pygame.org/ftp/pygame-(\d.*)\.tar\.gz

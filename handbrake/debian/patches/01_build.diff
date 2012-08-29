@@ -1,0 +1,131 @@
+Index: handbrake-0.9.8/make/include/main.defs
+===================================================================
+--- handbrake-0.9.8.orig/make/include/main.defs	2012-07-18 16:42:10.879549803 +0200
++++ handbrake-0.9.8/make/include/main.defs	2012-07-18 16:42:57.441318304 +0200
+@@ -21,22 +21,11 @@
+ endif
+ 
+ 
+-MODULES += contrib/faac
+ MODULES += contrib/ffmpeg
+-MODULES += contrib/fontconfig
+-MODULES += contrib/freetype
+-MODULES += contrib/lame
+-MODULES += contrib/libass
+ MODULES += contrib/libdca
+ MODULES += contrib/libdvdread
+ MODULES += contrib/libdvdnav
+ MODULES += contrib/libbluray
+-MODULES += contrib/libmkv
+-MODULES += contrib/libogg
+-MODULES += contrib/libsamplerate
+-MODULES += contrib/libtheora
+-MODULES += contrib/libvorbis
+-MODULES += contrib/libxml2
+ MODULES += contrib/mp4v2
+ MODULES += contrib/mpeg2dec
+ 
+@@ -46,8 +35,6 @@
+ endif
+ endif
+ 
+-MODULES += contrib/x264
+-
+ ifneq (,$(filter $(BUILD.system),cygwin mingw))
+ ifneq ($(HAS.iconv),1)
+     MODULES += contrib/libiconv
+@@ -88,8 +75,9 @@
+     MODULES += gtk
+ endif
+ 
+-ifeq (1,$(FEATURE.local_yasm))
+-    MODULES += contrib/yasm
++ifeq (1-kfreebsd,$(FEATURE.gtk)-$(BUILD.system))
++    ## build gtk when gtk+linux
++    MODULES += gtk
+ endif
+ 
+ ###############################################################################
+Index: handbrake-0.9.8/contrib/ffmpeg/module.defs
+===================================================================
+--- handbrake-0.9.8.orig/contrib/ffmpeg/module.defs	2012-07-18 16:42:10.879549803 +0200
++++ handbrake-0.9.8/contrib/ffmpeg/module.defs	2012-07-18 16:42:14.059670599 +0200
+@@ -29,7 +29,7 @@
+     --enable-encoder=snow \
+     --enable-gpl \
+     --enable-zlib \
+-    --cc="$(FFMPEG.GCC.gcc)" \
++    --cc="ccache gcc" \
+     --extra-cflags="$(call fn.ARGS,FFMPEG.GCC,*archs *sysroot *minver ?extra) -I$(call fn.ABSOLUTE,$(CONTRIB.build/)include)" \
+     --extra-ldflags="$(call fn.ARGS,FFMPEG.GCC,*archs *sysroot *minver ?extra) -L$(call fn.ABSOLUTE,$(CONTRIB.build/)lib)"
+ 
+Index: handbrake-0.9.8/test/module.defs
+===================================================================
+--- handbrake-0.9.8.orig/test/module.defs	2012-07-18 16:42:10.879549803 +0200
++++ handbrake-0.9.8/test/module.defs	2012-07-18 16:43:24.326339321 +0200
+@@ -10,10 +10,11 @@
+ TEST.exe = $(BUILD/)$(call TARGET.exe,$(HB.name)CLI)
+ 
+ TEST.libs = $(LIBHB.a) $(foreach n, \
+-        a52 ass avcodec avformat avutil dca dvdnav dvdread faac fontconfig freetype mkv mpeg2 mp3lame mp4v2 \
+-        ogg samplerate swscale theora vorbis vorbisenc x264 xml2 bluray, \
++        a52 avcodec avformat avutil dca dvdnav dvdread mpeg2 swscale bluray mp4v2, \
+         $(CONTRIB.build/)lib/lib$(n).a )
+ 
++TEST.libs += -lass -lfaac -lmp3lame -lsamplerate -lvorbisenc -ltheoraenc -ltheoradec -lvorbis -lx264 -lmkv -lz -lbz2 -lpthread -ldl -lxml2
++
+ TEST.install.exe = $(DESTDIR)$(PREFIX/)bin/$(notdir $(TEST.exe))
+ 
+ ifeq (1,$(PTHREADW32.enabled))
+@@ -32,11 +33,11 @@
+ else
+ 	TEST.GCC.l += z
+ endif
+-ifeq (1,$(FRIBIDI.enabled))
+-    TEST.libs += $(CONTRIB.build/)lib/libfribidi.a
+-else
+-	TEST.GCC.l += fribidi
+-endif
++#ifeq (1,$(FRIBIDI.enabled))
++#    TEST.libs += $(CONTRIB.build/)lib/libfribidi.a
++#else
++#	TEST.GCC.l += fribidi
++#endif
+ 
+ ###############################################################################
+ 
+Index: handbrake-0.9.8/gtk/src/Makefile.am
+===================================================================
+--- handbrake-0.9.8.orig/gtk/src/Makefile.am	2012-07-18 16:42:10.879549803 +0200
++++ handbrake-0.9.8/gtk/src/Makefile.am	2012-07-18 16:42:14.059670599 +0200
+@@ -10,7 +10,7 @@
+ HB_LIBS= \
+ 	-lhb -la52 -lmkv -lavformat -lavcodec -lavutil -ldca -ldvdnav -ldvdread \
+ 	-lfaac -lmp3lame -lmpeg2 -lvorbis -lvorbisenc -logg -lsamplerate \
+-	-lx264 -lmp4v2 -lswscale -ltheora -lz \
++	-lx264 -lmp4v2 -lswscale -ltheoraenc -ltheoradec -lz -lxml2 \
+ 	-lbz2 -lpthread -lbluray -lass -lfontconfig -lfreetype
+ endif
+ 
+@@ -108,7 +108,7 @@
+ 	-mwindows -Wl,--export-dynamic -Wl,--exclude-libs,ALL
+ else
+ ghb_LDFLAGS = \
+-	-Wl,--export-dynamic -Wl,--exclude-libs,ALL
++	-Wl,--export-dynamic -Wl,--exclude-libs,ALL -Wl,-z,defs -Wl,--as-needed
+ endif
+ 
+ ghb_LDADD = $(HB_LIBS) $(GHB_LIBS)
+Index: handbrake-0.9.8/make/configure.py
+===================================================================
+--- handbrake-0.9.8.orig/make/configure.py	2012-07-18 16:42:10.879549803 +0200
++++ handbrake-0.9.8/make/configure.py	2012-07-18 16:42:14.059670599 +0200
+@@ -700,7 +700,7 @@
+         self.rev       = 4860
+         self.date      = '0000-00-00 00:00:00 -0000'
+         self.official  = 0
+-        self.type      = 'unofficial'
++        self.type      = 'release'
+ 
+     def _parseSession( self ):
+         for line in self.session:

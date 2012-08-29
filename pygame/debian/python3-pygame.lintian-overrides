@@ -1,0 +1,4 @@
+# False positive; package is built with -D_FORTIFY_SOURCE=2
+python3-pygame: hardening-no-fortify-functions usr/lib/python3/dist-packages/pygame/*.so
+# This is where distutils installs everything...
+python3-pygame: image-file-in-usr-lib

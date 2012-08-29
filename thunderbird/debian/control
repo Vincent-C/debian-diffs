@@ -1,0 +1,20 @@
+Source: thunderbird-stable
+Section: mail
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: http://www.mozillamessaging.com/en-US/thunderbird/
+
+Package: thunderbird-stable
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: mail-reader, icedove
+Description: mail/news client with RSS and integrated spam filter support
+ Thunderbird is a free e-mail client. It supports different mail accounts
+ (POP, IMAP, Gmail), has an integrated learning Spam filter, and offers easy
+ organization of mails with tagging and virtual folders. Also, more features
+ can be added by installing extensions.
+ .
+ The goal of Thunderbird is to produce a cross platform standalone mail
+ application using the XUL user interface language.

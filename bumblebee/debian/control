@@ -1,0 +1,41 @@
+Source: bumblebee
+Section: misc
+Priority: optional
+Maintainer: Peter Lekensteyn <lekensteyn@gmail.com>
+Build-Depends: debhelper (>= 9.0.0~), libbsd-dev (>= 0.2.0), pkg-config,
+ libx11-dev, libglib2.0-dev, help2man
+Standards-Version: 3.9.3
+Homepage: https://launchpad.net/~bumblebee
+Vcs-Git: git://github.com/Bumblebee-Project/Bumblebee.git
+Vcs-Browser: https://github.com/Bumblebee-Project/Bumblebee
+
+Package: bumblebee
+Architecture: i386 amd64
+Pre-Depends: dpkg (>= 1.15.7.2~)
+Depends: ${shlibs:Depends}, ${misc:Depends}, virtualgl, bbswitch-dkms
+Conflicts: ironhide
+Replaces: ironhide
+Recommends: bumblebee-nvidia (= ${binary:Version}), virtualgl-libs-ia32 [amd64]
+Description: nVidia Optimus support
+ Bumblebee aims to provide support for nVidia Optimus laptops. These laptops
+ are built in such a way that the nVidia graphics card can usually not be used.
+ With Bumblebee, a X server for the nVidia card is started and frames are
+ transferred to the Intel GPU using VirtualGL. Power saving is accomplished with
+ the bbswitch kernel module. Supported drivers are nvidia and nouveau.
+
+Package: bumblebee-nvidia
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, nvidia-glx (>= 260.19.12~),
+ bumblebee (= ${binary:Version})
+Description: nVidia Optimus support using the proprietary NVIDIA driver
+ This package ensures that the proprietary NVIDIA driver is installed in a way
+ such that 3D acceleration does not break. It does so by configuring the OpenGL
+ library path to use the Mesa graphics library.
+
+Package: bumblebee-dbg
+Priority: extra
+Architecture: i386 amd64
+Section: debug
+Depends: ${misc:Depends}, bumblebee (= ${binary:Version})
+Description: nVidia Optimus support - debugging symbols
+ This package contains the debugging symbols for bumblebee.

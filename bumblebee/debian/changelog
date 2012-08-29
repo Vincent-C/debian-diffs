@@ -1,0 +1,13 @@
+bumblebee (3.0.1-1~vc1) unstable; urgency=low
+
+  * Local package.
+  * New upstream release.
+  * Replace depends on nvidia-current with nvidia-glx.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 13 Aug 2012 11:35:00 -0700
+
+bumblebee (3.0.1-1~quantalppa1) quantal; urgency=low
+
+  * Initial release for Quantal
+
+ -- Bruno Pagani <bruno.n.pagani@gmail.com>  Wed, 1 Aug 2012 18:48:18 +0200

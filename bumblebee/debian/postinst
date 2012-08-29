@@ -1,0 +1,50 @@
+#!/bin/sh
+# postinst script for bumblebee
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# group that allows users to use Bumblebee
+BB_GROUP=bumblebee
+
+# add members of these groups automatically to group "bumblebee" for new
+# installations
+USE_GROUPS='adm sudo admin'
+
+case "$1" in
+  configure)
+    for file in bumblebee.conf xorg.conf.nvidia xorg.conf.nouveau; do
+        if [ ! -f /etc/bumblebee/$file ]; then
+            cp -p /usr/share/bumblebee/default-conf/$file /etc/bumblebee/
+        fi
+    done
+
+    # only add a group and members if the configured group does match the
+    # default group and if the group is missing
+    if grep -qx ServerGroup=$BB_GROUP /etc/bumblebee/bumblebee.conf &&
+        ! getent group $BB_GROUP > /dev/null; then
+        groupadd $BB_GROUP
+        users=$(getent group $USE_GROUPS | cut -d: -f4 | tr , '\n' | sort -u)
+        echo "Adding members from group(s) '$USE_GROUPS' to '$BB_GROUP':"
+        echo $users
+        for user in $users; do
+            gpasswd -a $user $BB_GROUP
+        done
+    fi
+    # rebuild initial ramdisk to include blacklist
+    update-initramfs -u
+    ;;
+
+  abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

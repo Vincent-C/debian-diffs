@@ -1,0 +1,15 @@
+Index: freetype-2.4.8/src/truetype/ttdriver.c
+===================================================================
+--- freetype-2.4.8.orig/src/truetype/ttdriver.c	2011-07-14 09:03:20.000000000 +0200
++++ freetype-2.4.8/src/truetype/ttdriver.c	2012-03-17 21:13:08.297142205 +0100
+@@ -246,10 +246,7 @@
+     FT_Request_Metrics( size->face, req );
+ 
+     if ( FT_IS_SCALABLE( size->face ) )
+-    {
+       error = tt_size_reset( ttsize );
+-      ttsize->root.metrics = ttsize->metrics;
+-    }
+ 
+     return error;
+   }

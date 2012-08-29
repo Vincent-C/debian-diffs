@@ -1,0 +1,3 @@
+version=3
+
+http://handbrake.fr/downloads.php rotation.php\?file=HandBrake-(.*)\.tar\.bz2

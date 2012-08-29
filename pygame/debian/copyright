@@ -1,0 +1,100 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: pygame
+Source: http://www.pygame.org/ftp/
+
+Files: *
+Copyright: 2000-2001 Pete Shinners <pete@shinners.org>
+           2002 Bob Pendleton
+           2006 Rene Dudfield
+           2007-2008 Marcus von Appen
+License: LGPL-2.1+
+
+Files: examples/*
+Copyright: Public Domain
+License: public-domain
+
+Files: lib/freesansbold.ttf
+Copyright: 2002-2009 Free Software Foundation
+License: GPL-3.0+ with FreeFont exception
+
+Files: src/camera.doc
+Copyright: 2004 Takafumi Mizuno <taka-qce@ls-a.jp>
+License: BSD-2-clause
+
+Files: debian/*
+Copyright: 2001 Francis Irving <francis@flourish.org>
+           2001-2004 Ed Boraas <ed@debian.org>
+           2005-2006 Joe Wreschnig <piman@debian.org>
+           2008-2011 A Mennucc1 <mennucc1@debian.org>
+           2011 Vincent Cheng <Vincentc1208@gmail.com>
+License: LGPL-2.1+
+
+License: LGPL-2.1+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License can be found in "/usr/share/common-licenses/LGPL-2.1".
+
+License: GPL-3.0+ with FreeFont exception
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ As a special exception, if you create a document which uses this font, and
+ embed this font or unaltered portions of this font into the document, this
+ font does not by itself cause the resulting document to be covered by the GNU
+ General Public License. This exception does not however invalidate any other
+ reasons why the document might be covered by the GNU General Public License.
+ If you modify this font, you may extend this exception to your version of the
+ font, but you are not obligated to do so. If you do not wish to do so, delete
+ this exception statement from your version.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: public-domain
+ The source code for these examples is in the public domain. Feel free to
+ use for your own projects. (See examples/readme.txt)

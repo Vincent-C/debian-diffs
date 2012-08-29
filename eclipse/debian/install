@@ -1,0 +1,17 @@
+about_files/			    opt/eclipse/
+configuration/			    opt/eclipse/
+dropins/			        opt/eclipse/
+features/			        opt/eclipse/
+p2/				            opt/eclipse/
+plugins/			        opt/eclipse/
+readme/				        opt/eclipse/
+about.html			        opt/eclipse/
+artifacts.xml			    opt/eclipse/
+eclipse				        opt/eclipse/
+eclipse.ini			        opt/eclipse/
+epl-v10.html			    opt/eclipse/
+icon.xpm			        opt/eclipse/
+libcairo-swt.so			    opt/eclipse/
+notice.html			        opt/eclipse/
+debian/eclipse.desktop		usr/share/applications/
+debian/eclipse.sh		    opt/eclipse/

@@ -1,0 +1,6 @@
+usr/share/nixnote/nixnote_path.sh							usr/bin/nixnote
+usr/share/nixnote/nixnote.png							usr/share/pixmaps/nixnote.png
+usr/share/nixnote/lib/qtjambi-linux32-lgpl-4.5.2_01/qtjambi-4.5.2_01.jar		usr/share/nixnote/lib/qtjambi-linux32-4.5.2_01.jar
+usr/share/nixnote/lib/qtjambi-linux32-lgpl-4.5.2_01/qtjambi-linux32-gcc-4.5.2_01.jar	usr/share/nixnote/lib/qtjambi-linux32-gcc-4.5.2_01.jar
+usr/share/nixnote/lib/qtjambi-linux64-lgpl-4.5.2_01/qtjambi-4.5.2_01.jar		usr/share/nixnote/lib/qtjambi-linux64-4.5.2_01.jar
+usr/share/nixnote/lib/qtjambi-linux64-lgpl-4.5.2_01/qtjambi-linux64-gcc-4.5.2_01.jar	usr/share/nixnote/lib/qtjambi-linux64-gcc-4.5.2_01.jar

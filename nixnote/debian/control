@@ -1,0 +1,27 @@
+Source: nixnote
+Section: x11
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), javahelper (>= 0.25)
+Build-Depends-Indep: sun-java6-jdk | default-jdk, libtrove-java, ant,
+ libqt4-dev
+Standards-Version: 3.9.2
+Homepage: http://nevernote.sourceforge.net/
+
+Package: nixnote
+Architecture: all
+Depends: ${java:Depends}, ${misc:Depends}, sun-java6-jre | default-jre
+Recommends: ${java:Recommends}
+Description: open source clone designed to interact with Evernote
+ Nixnote is an open source clone of Evernote, written in Java and
+ designed to run on Linux. Evernote is a collection of software and
+ services that allows users to collect, sort, tag and annotate notes
+ and other miscellaneous information.
+
+Package: nevernote
+Architecture: all
+Priority: extra
+Depends: nixnote, ${misc:Depends}
+Description: transitional package for Nixnote
+ This is a dummy package to ease transition to Nixnote. It may be safely
+ removed after upgrade/installation.

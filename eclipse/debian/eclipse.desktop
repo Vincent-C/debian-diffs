@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Eclipse
+Comment=Eclipse IDE for Java Developers
+GenericName=Eclipse
+Exec=eclipse
+Icon=eclipse.xpm
+Terminal=false
+Type=Application
+Categories=Application;Development;

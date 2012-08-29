@@ -1,0 +1,3 @@
+usr/share/nixnote/nixnote.jar:
+ Class-Path: /usr/share/java/trove.jar
+ Main-class: com.nevernote

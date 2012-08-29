@@ -1,0 +1,16 @@
+Description: Turn on MMX instructions on amd64
+Forwarded: no
+Bug-Debian: http://bugs.debian.org/653215
+Last-Update: 2012-08-26
+
+--- a/Setup.in
++++ b/Setup.in
+@@ -68,7 +68,7 @@
+ draw src/draw.c $(SDL) $(DEBUG)
+ image src/image.c $(SDL) $(DEBUG)
+ overlay src/overlay.c $(SDL) $(DEBUG)
+-transform src/transform.c src/rotozoom.c src/scale2x.c src/scale_mmx.c $(SDL) $(DEBUG) -D_NO_MMX_FOR_X86_64
++transform src/transform.c src/rotozoom.c src/scale2x.c src/scale_mmx.c $(SDL) $(DEBUG)
+ mask src/mask.c src/bitmask.c $(SDL) $(DEBUG)
+ bufferproxy src/bufferproxy.c $(SDL) $(DEBUG)
+ pixelarray src/pixelarray.c $(SDL) $(DEBUG)
