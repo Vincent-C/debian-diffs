@@ -1,0 +1,4 @@
+Tarball: http://ftp.de.debian.org/debian/pool/main/l/lybniz/lybniz_1.3.2.orig.tar.gz
+
+This is actually a snapshot of upstream lybniz as of 2011-01-19.
+$ svn co https://lybniz2.svn.sourceforge.net/svnroot/lybniz2 lybniz2
