@@ -1,0 +1,7 @@
+Tarball: http://www.gtlib.gatech.edu/pub/mozilla.org/thunderbird/releases/latest/linux-x86_64/en-US/thunderbird-15.0.tar.bz2
+
+This package just installs the binary components of Mozilla Thunderbird
+(en-US), built and distributed by upstream.
+
+Renamed as thunderbird-stable instead of thunderbird to avoid conflicting with
+another package in Debian.
