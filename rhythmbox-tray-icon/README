@@ -1,0 +1,6 @@
+Tarball: https://github.com/palfrey/rhythmbox-tray-icon/tarball/master
+
+This tray icon lets you run Rhythmbox even when its window is closed, with
+gnome-shell (so you can "minimize" it to the notification tray, which was
+perfectly possible with earlier Rhythmbox releases, without the need of an
+additional addon).
