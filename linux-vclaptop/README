@@ -1,3 +1,5 @@
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.4.10.tar.bz2
+
 This is a custom Linux kernel that I've built for personal use on my laptop.
 In case you wish to use the same setup, here are some quick n' dirty
 instructions (target audience is someone who is already familiar with Debian
