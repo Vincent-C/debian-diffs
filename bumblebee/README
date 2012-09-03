@@ -1,0 +1,9 @@
+Tarball: https://launchpad.net/~bumblebee/+archive/stable/+files/bumblebee_3.0.1.orig.tar.gz
+
+Debian diff is based off of the work done by the Bumblebee Team in their PPA
+(https://launchpad.net/~bumblebee/+archive/stable). A few changes were made in
+order for the packages to be installable on Debian, e.g. changing the
+dependency on nvidia-current (Ubuntu) -> nvidia-glx (Debian).
+
+Post-installation instructions:
+# usermod -a -G bumblebee $USER
