@@ -1,0 +1,7 @@
+Tarball: http://www.deb-multimedia.org/pool/main/h/handbrake/handbrake_0.9.8.orig.tar.gz
+
+No-change re-build (using Debian diff from deb-multimedia.org) against system
+libraries (i.e. deb-multimedia uses ffmpeg, Debian uses libav). Debian also
+doesn't have the AAC+ encoding library (libaacplus2, libaacplus-dev) available,
+so that needs to be installed first via deb-multimedia in order to build
+handbrake.
