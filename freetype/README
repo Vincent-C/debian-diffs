@@ -1,0 +1,14 @@
+Tarball: http://ftp.de.debian.org/debian/pool/main/f/freetype/freetype_2.4.9.orig.tar.gz
+
+These patched freetype packages should be used in conjunction with the patched
+cairo and fontconfig packages in this repo to provide a more comfortable
+font rendering experience in Debian (at least, IMHO, fonts look better than
+with Debian's default cairo/freetype/fontconfig packages).
+
+Debian diff is based on the version in the main repository, with the following
+patches:
+- revert_Fix_metrics_on_size_request_for_scalable_fonts.patch
+  (see debian/patches/; closes #636776, #636844)
+
+
+
