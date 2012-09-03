@@ -1,0 +1,251 @@
+# Translation of linux-2.6 templates to german.
+# Copyright (C) 2010 Holger Wansing.
+# This file is distributed under the same license as the linux-2.6 package.
+# Holger Wansing <linux@wansing-online.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linux-2.6 2.6.32-11\n"
+"Report-Msgid-Bugs-To: linux-aptosid-2.6@packages.debian.org\n"
+"POT-Creation-Date: 2010-08-18 15:53+0200\n"
+"PO-Revision-Date: 2010-08-08 14:22+0200\n"
+"Last-Translator: Holger Wansing <linux@wansing-online.de>\n"
+"Language-Team: Debian German <debian-l10n-german@lists.debian.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:2001
+msgid "Abort installation after depmod error?"
+msgstr "Installation nach depmod-Fehler abbrechen?"
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:2001
+msgid ""
+"The 'depmod' command exited with the exit code ${exit_value} "
+"(${SIGNAL}${CORE})."
+msgstr ""
+"Der »depmod«-Befehl wurde beendet: Rückgabewert ${exit_value} "
+"(${SIGNAL}${CORE})."
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:2001
+msgid ""
+"Since this image uses initrd, the ${modules_base}/=V/modules.dep file will "
+"not be deleted, even though it may be invalid."
+msgstr ""
+"Da dieses Image eine initrd verwendet, wird die Datei ${modules_base}/=V/"
+"modules.dep nicht gelöscht, obwohl sie ungültig sein könnte."
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:2001
+msgid ""
+"You should abort the installation and fix the errors in depmod, or "
+"regenerate the initrd image with a known good modules.dep file. If you don't "
+"abort the installation, there is a danger that the system will fail to boot."
+msgstr ""
+"Sie sollten die Installation abbrechen und die Fehler bezüglich depmod "
+"beheben, oder erstellen Sie das initrd-Image neu mit einer bekanntermaßen "
+"korrekten modules.dep-Datei. Falls Sie die Installation nicht abbrechen, "
+"besteht die Gefahr, dass das System nicht mehr neu starten kann."
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:3001
+msgid "Abort kernel removal?"
+msgstr "Entfernen des Kernels abbrechen?"
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:3001
+msgid ""
+"You are running a kernel (version ${running}) and attempting to remove the "
+"same version."
+msgstr ""
+"Es läuft derzeit ein Kernel Version ${running} und Sie versuchen, die "
+"gleiche Version zu entfernen."
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:3001
+msgid ""
+"This can make the system unbootable as it will remove /boot/vmlinuz-"
+"${running} and all modules under the directory /lib/modules/${running}. This "
+"can only be fixed with a copy of the kernel image and the corresponding "
+"modules."
+msgstr ""
+"Das kann dazu führen, dass das System nicht mehr startfähig ist, da dadurch /"
+"boot/vmlinuz-${running} und alle Module unterhalb des Verzeichnisses /lib/"
+"modules/${running} entfernt werden. Dies kann nur mit einer Kopie des Kernel-"
+"Images und der dazugehörigen Module behoben werden."
+
+#. Type: boolean
+#. Description
+#: ../templates/temp.image.plain/templates:3001
+msgid ""
+"It is highly recommended to abort the kernel removal unless you are prepared "
+"to fix the system after removal."
+msgstr ""
+"Es wird dringend empfohlen, das Entfernen des Kernels abzubrechen, "
+"ausgenommen Sie sind darauf vorbereitet, das System nach der Entfernung "
+"wieder instandzusetzen."
+
+#. Type: note
+#. Description
+#: ../templates/temp.image.plain/templates:4001
+msgid "Required firmware files may be missing"
+msgstr "Benötigte Firmware-Dateien möglicherweise nicht vorhanden"
+
+#. Type: note
+#. Description
+#: ../templates/temp.image.plain/templates:4001
+msgid ""
+"This system is currently running Linux ${runningversion} and you are "
+"installing Linux ${version}.  In the new version some of the drivers used on "
+"this system may require additional firmware files:"
+msgstr ""
+"Auf diesem System läuft derzeit Linux ${runningversion} und Sie installieren "
+"gerade Linux ${version}. In der neuen Version könnten einige Treiber, die "
+"auf diesem System verwendet werden, zusätzliche Firmware-Dateien benötigen:"
+
+#. Type: note
+#. Description
+#: ../templates/temp.image.plain/templates:4001
+msgid ""
+"Most firmware files are not included in the system because they do not "
+"conform to the Debian Free Software Guidelines. You may need to reconfigure "
+"the package manager to include the contrib and non-free sections of the "
+"package archive before you can install these firmware files."
+msgstr ""
+"Die meisten Firmware-Dateien sind nicht im System enthalten, da sie nicht "
+"mit den Debian-Richtlinien für Freie Software (DFSG) konform sind. Sie "
+"müssen unter Umständen den Paketmanager neu konfigurieren, so dass die "
+"contrib- und non-free-Sektionen des Paketarchivs ebenfalls enthalten sind, "
+"bevor Sie diese Firmware-Dateien installieren können."
+
+#. Type: error
+#. Description
+#: ../templates/temp.image.plain/templates:5001
+msgid "Boot loader configuration must be updated"
+msgstr "Aktualisierung der Bootloader-Konfiguration erforderlich"
+
+#. Type: error
+#. Description
+#: ../templates/temp.image.plain/templates:5001
+msgid ""
+"Kernel packages no longer update a default boot loader.  You should remove "
+"'do_bootloader = yes' from /etc/kernel-img.conf."
+msgstr ""
+"Kernel-Pakete aktualisieren nicht mehr länger den Standard-Bootloader. Sie "
+"sollten den Eintrag »do_bootloader = yes« aus /etc/kernel-img.conf entfernen."
+
+#. Type: error
+#. Description
+#: ../templates/temp.image.plain/templates:5001
+msgid ""
+"If the boot loader needs to be updated whenever a new kernel is installed, "
+"the boot loader package should install a script in /etc/kernel/postinst.d.  "
+"Alternately, you can specify the command to update the boot loader by "
+"setting the 'postinst_hook' variable in /etc/kernel-img.conf."
+msgstr ""
+"Falls der Bootloader aktualisiert werden muss, wenn ein neuer Kernel "
+"installiert wird, sollte das Bootloader-Paket ein Skript in /etc/kernel/"
+"postinst.d installieren. Alternativ können Sie den Befehl für die "
+"Aktualisierung des Bootloaders über das Setzen der Variable »postinst_hook« "
+"in /etc/kernel-img.conf festlegen."
+
+#~ msgid "Update disk device IDs in system configuration?"
+#~ msgstr "Laufwerk-Geräte-IDs in der Systemkonfiguration aktualisieren?"
+
+#~ msgid ""
+#~ "The new Linux kernel version provides different drivers for some PATA "
+#~ "(IDE) controllers. The names of some hard disk, CD-ROM, and tape devices "
+#~ "may change."
+#~ msgstr ""
+#~ "Die neue Version des Linux-Kernels stellt andere Treiber für einige PATA-"
+#~ "(IDE-)Controller zur Verfügung. Die Namen einiger Festplatten-, CD-ROM- "
+#~ "und Bandspeichergeräte könnten sich ändern."
+
+#~ msgid ""
+#~ "It is now recommended to identify disk devices in configuration files by "
+#~ "label or UUID (unique identifier) rather than by device name, which will "
+#~ "work with both old and new kernel versions."
+#~ msgstr ""
+#~ "Es wird jetzt empfohlen, solche Geräte in Konfigurationsdateien über die "
+#~ "Kennung (Label) oder die UUID (Unique Identifier) zu identifizieren statt "
+#~ "über den Gerätenamen, was sowohl mit alten wie auch neuen Kernel-"
+#~ "Versionen funktionieren wird."
+
+#~ msgid ""
+#~ "If you choose to not update the system configuration automatically, you "
+#~ "must update device IDs yourself before the next system reboot or the "
+#~ "system may become unbootable."
+#~ msgstr ""
+#~ "Falls Sie sich entscheiden, die Systemkonfiguration nicht automatisch "
+#~ "aktualisieren zu lassen, müssen Sie die Geräte-IDs selbst aktualisieren, "
+#~ "bevor Sie das System das nächste Mal neu starten; andernfalls könnte es "
+#~ "sein, dass Ihr System nicht mehr startfähig ist."
+
+#~ msgid "Apply configuration changes to disk device IDs?"
+#~ msgstr "Konfigurationsänderungen für Laufwerk-Geräte-IDs anwenden?"
+
+#~ msgid "These devices will be assigned UUIDs or labels:"
+#~ msgstr "Diese Geräte werden über UUIDs oder Kennungen identifiziert:"
+
+#~ msgid "These configuration files will be updated:"
+#~ msgstr "Diese Konfigurationsdateien werden aktualisiert:"
+
+#~ msgid "The device IDs will be changed as follows:"
+#~ msgstr "Die Geräte-IDs werden wie folgt geändert:"
+
+#~ msgid "Configuration files still contain deprecated device names"
+#~ msgstr "Konfigurationsdateien enthalten noch veraltete Gerätenamen"
+
+#~ msgid ""
+#~ "The following configuration files still use some device names that may "
+#~ "change when using the new kernel:"
+#~ msgstr ""
+#~ "Die folgenden Konfigurationsdateien enthalten noch einige Gerätenamen, "
+#~ "die sich ändern könnten, wenn der neue Kernel verwendet wird:"
+
+#~ msgid "Boot loader configuration check needed"
+#~ msgstr "Überprüfung der Bootloader-Konfiguration erforderlich"
+
+#~ msgid ""
+#~ "The boot loader configuration for this system was not recognized. These "
+#~ "settings in the configuration may need to be updated:"
+#~ msgstr ""
+#~ "Die Bootloader-Konfiguration für dieses System konnte nicht erkannt "
+#~ "werden. Folgende Einstellungen in der Konfiguration müssen aktualisiert "
+#~ "werden:"
+
+#~ msgid ""
+#~ " * The root device ID passed as a kernel parameter;\n"
+#~ " * The boot device ID used to install and update the boot loader."
+#~ msgstr ""
+#~ " * Die Geräte-ID der Root-Partition, die als Kernel-Parameter angegeben\n"
+#~ "   wird;\n"
+#~ " * Die Geräte-ID der Boot-Partition, die für die Installation und\n"
+#~ "   Aktualisierung des Bootloaders verwendet wird."
+
+#~ msgid ""
+#~ "You should generally identify these devices by UUID or label. However, on "
+#~ "MIPS systems the root device must be identified by name."
+#~ msgstr ""
+#~ "Sie sollten diese Geräte grundsätzlich per UUID oder Kennung "
+#~ "identifizieren. Auf MIPS-Systemen muss das Root-Gerät jedoch über den "
+#~ "Namen identifiziert werden."
+
+#~ msgid "Boot loader may need to be upgraded"
+#~ msgstr "Bootloader muss unter Umständen aktualisiert werden"
+
+#~ msgid "Kernel packages no longer update a default boot loader."
+#~ msgstr ""
+#~ "Kernel-Pakete werden nicht mehr länger den Standard-Bootloader "
+#~ "aktualisieren."

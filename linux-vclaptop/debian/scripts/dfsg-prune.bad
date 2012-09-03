@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+
+#http_proxy=http://proxyserver.lan:3128
+#ftp_proxy=http://proxyserver.lan:3128
+#export http_proxy ftp_proxy
+
+VERSION_DEBIAN="${1}"
+VERSION="${2}"
+VERSION_DEBIAN_BINNMU="${3}"
+
+MAJOR_VER="${VERSION%\~*}"
+RC_VER="${VERSION#*\~}"
+[ "x${MAJOR_VER}" = "x${RC_VER}" ] && RC_VER=""
+
+TMP_DIR="$(mktemp -d -p /tmp linux-sidux-2.6.XXXXXX)"
+pushd "${TMP_DIR}"
+	if [ -z "$RC_VER" ]; then
+		# stable kernel
+		UP_TARBALL="linux-${MAJOR_VER}.tar.bz2"
+		ORIG_TARBALL="linux-sidux-2.6_${MAJOR_VER}.orig.tar.bz2"
+		wget -Nc "http://www.kernel.org/pub/linux/kernel/v2.6/${UP_TARBALL}"
+	else
+		# rc kernel
+		UP_TARBALL="linux-${MAJOR_VER}-${RC_VER}.tar.bz2"
+		ORIG_TARBALL="linux-sidux-2.6_${MAJOR_VER}~${RC_VER}.orig.tar.bz2"
+		wget -Nc "http://www.kernel.org/pub/linux/kernel/v2.6/testing/${UP_TARBALL}"
+	fi
+popd >/dev/null 2>&1
+
+echo "COMPLETED: ${TMP_DIR}/${ORIG_TARBALL}"

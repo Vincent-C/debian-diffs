@@ -1,0 +1,21 @@
+[abi]
+abiname: 10.vc.1
+
+[base]
+arches:
+ amd64
+compiler: gcc-4.7
+featuresets:
+ none
+
+[image]
+initramfs-generators: initramfs-tools initramfs-fallback
+type: plain
+
+[commands-image-initramfs-generators]
+initramfs-tools: update-initramfs
+
+[relations]
+gcc-4.7: gcc-4.7
+initramfs-fallback: linux-initramfs-tool
+initramfs-tools: initramfs-tools

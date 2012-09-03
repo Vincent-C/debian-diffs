@@ -1,0 +1,47 @@
+#!/usr/bin/ruby -w
+#
+# Scans underlying directory structure for files with names config.*
+# where .* is not .stub or .default, and extracts a common
+# set of config options from them. The resulting set of options is
+# written into the 'config' file. On the second pass each config.*
+# file is parsed to remove the common config options found in
+# config, with the results written to config.*.stub.
+#
+
+$common = []
+$conffiles = []
+
+def read_conf(fname)
+	File.open(fname).readlines.grep(/^#*\s*CONFIG_\w+[\s=]/)
+end
+
+
+$conffiles = Dir.glob('config.*').delete_if { |f|
+	f =~ /\.(default|stub)/
+}
+
+# First pass; get all config options
+$conffiles.each { |f|
+	$common.concat(read_conf(f))
+}
+$common.uniq!
+
+# Second pass; strip out options that are not in common to all
+$conffiles.each { |f|
+	$common &= read_conf(f)
+}
+
+# Third pass; write out config stubs
+$conffiles.each { |f|
+	puts "Writing the #{f}.stub output file ..."
+	File.open("#{f}.stub", 'w') { |fp|
+		fp << read_conf(f) - $common
+	}
+	puts "done."
+}
+
+# Finally, write out common config
+File.open('config', 'w') { |fp|
+	fp << $common
+}
+

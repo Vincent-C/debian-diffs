@@ -1,0 +1,7 @@
+# debian specific patches
+debian/version.patch
+debian/kernelvariables.patch
+debian/doc-build-parallel.patch
+
+# my own patches
+vclaptop/march-native.patch

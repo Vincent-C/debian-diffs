@@ -1,0 +1,36 @@
+.NOTPARALLEL:
+binary-arch: binary-arch_amd64
+binary-arch_amd64: binary-arch_amd64_none binary-arch_amd64_real
+binary-arch_amd64_none: binary-arch_amd64_none_real binary-arch_amd64_none_vclaptop-amd64
+binary-arch_amd64_none_real:
+binary-arch_amd64_none_vclaptop-amd64: binary-arch_amd64_none_vclaptop-amd64_real
+binary-arch_amd64_none_vclaptop-amd64_real::
+	$(MAKE) -f debian/rules.real binary-arch-flavour ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' ARCH='amd64' COMPILER='gcc-4.7' FEATURESET='none' FLAVOUR='vclaptop-amd64' KCONFIG='debian/config/config debian/config/kernelarch-x86/config-arch-64 debian/config/kernelarch-x86/config-arch-64' KERNEL_ARCH='x86' LOCALVERSION='-vclaptop-amd64' LOCALVERSION_HEADERS='' LOCALVERSION_IMAGE='-vclaptop-amd64' MODULES='True' SOURCEVERSION='3.4.0-1' TYPE='plain' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'
+binary-arch_amd64_real:
+binary-indep::
+	$(MAKE) -f debian/rules.real binary-indep ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' SOURCEVERSION='3.4.0-1' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'
+build: build_amd64
+build_amd64: build_amd64_none build_amd64_real
+build_amd64_none: build_amd64_none_real build_amd64_none_vclaptop-amd64
+build_amd64_none_real:
+build_amd64_none_vclaptop-amd64: build_amd64_none_vclaptop-amd64_real
+build_amd64_none_vclaptop-amd64_real::
+	$(MAKE) -f debian/rules.real build ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' ARCH='amd64' COMPILER='gcc-4.7' FEATURESET='none' FLAVOUR='vclaptop-amd64' KCONFIG='debian/config/config debian/config/kernelarch-x86/config-arch-64 debian/config/kernelarch-x86/config-arch-64' KERNEL_ARCH='x86' LOCALVERSION='-vclaptop-amd64' LOCALVERSION_HEADERS='' LOCALVERSION_IMAGE='-vclaptop-amd64' MODULES='True' SOURCEVERSION='3.4.0-1' TYPE='plain' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'
+build_amd64_real:
+setup: setup_amd64
+setup_amd64: setup_amd64_none setup_amd64_real
+setup_amd64_none: setup_amd64_none_real setup_amd64_none_vclaptop-amd64
+setup_amd64_none_real:
+setup_amd64_none_vclaptop-amd64: setup_amd64_none_vclaptop-amd64_real
+setup_amd64_none_vclaptop-amd64_real::
+	$(MAKE) -f debian/rules.real setup-flavour ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' ARCH='amd64' COMPILER='gcc-4.7' FEATURESET='none' FLAVOUR='vclaptop-amd64' KCONFIG='debian/config/config debian/config/kernelarch-x86/config-arch-64 debian/config/kernelarch-x86/config-arch-64' KERNEL_ARCH='x86' LOCALVERSION='-vclaptop-amd64' LOCALVERSION_HEADERS='' LOCALVERSION_IMAGE='-vclaptop-amd64' MODULES='True' SOURCEVERSION='3.4.0-1' TYPE='plain' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'
+setup_amd64_real:
+source: source_amd64
+source_amd64: source_amd64_none source_amd64_real
+source_amd64_none: source_amd64_none_real source_amd64_none_vclaptop-amd64
+source_amd64_none_real::
+	$(MAKE) -f debian/rules.real source-featureset ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' ARCH='amd64' FEATURESET='none' KERNEL_ARCH='x86' LOCALVERSION_HEADERS='' SOURCEVERSION='3.4.0-1' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'
+source_amd64_none_vclaptop-amd64: source_amd64_none_vclaptop-amd64_real
+source_amd64_none_vclaptop-amd64_real:
+source_amd64_real::
+	$(MAKE) -f debian/rules.real source-arch ABINAME='3.4.0-10.vc.1' ABINAME_PART='-10.vc.1' ARCH='amd64' KERNEL_ARCH='x86' SOURCEVERSION='3.4.0-1' UPSTREAMVERSION='3.4.0' VERSION='3.4.0'

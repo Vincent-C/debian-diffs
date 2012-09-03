@@ -1,0 +1,46 @@
+This is a custom Linux kernel that I've built for personal use on my laptop.
+In case you wish to use the same setup, here are some quick n' dirty
+instructions (target audience is someone who is already familiar with Debian
+packaging).
+
+1) Download source tarball from kernel.org.
+2) Download Liquorix debian diff (e.g. http://liquorix.net/debian/pool/main/
+   l/linux-liquorix/linux-liquorix_$(VERSION).debian.tar.bz2). I use a
+   3rd-party debian diff rather than the official debian diff in Debian's
+   repositories to minimize the number of Debian-specific patches applied, and
+   to not worry about all the other architectures supported by Debian (I only
+   need a kernel built on amd64).
+3) Use Debian kernel config as a base to work from (e.g. download
+   linux-image-$(VERSION)-amd64, extract /boot/config-$(VERSION) from .deb).
+4) Extract downloaded tarballs. Rename linux source tarball with source package
+   name and orig, move debian/ dir inside linux source dir.
+5) $ fakeroot debian/rules clean
+6) Add march-native.patch under debian/patches/; add patch to
+   debian/patch/series. This patch lets you choose to compile kernel with
+   -march=native CFLAG.
+7) Drop kernel config into debian/config/kernelarch-x86; rename as
+   "config-arch-64".
+8) Edit debian/config/amd64/defines: "liquorix" to whatever name you want, in
+   my case "vclaptop".
+9) Edit debian/config/defines: change abiname, remove i386 from list of archs,
+   change compiler version if wanted.
+10) Edit debian/templates/control.source.in: change maintainer name and email.
+11) $ dch -i (add changelog entry). I include the changes I've made to my
+    kernel in the changelog entry, which is currently as follows:
+
+  * Local package.
+  * Custom kernel build. Major changes:
+    - NOT optimized for size (CONFIG_CC_OPTIMIZE_FOR_SIZE=n)
+    - compiled with -march=native (corei7-avx) (CONFIG_X86_MARCH_NATIVE=y)
+    - full preemption (CONFIG_PREEMPT=y et al.)
+    - always enable transparent hugepage (CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y)
+    - enable MTRR sanitizer by default (CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT=1)
+    - kernel timer set to 1000 Hz (CONFIG_HZ=1000)
+  * Add debian/patches/vclaptop/march-native.patch to enable
+    CONFIG_X86_MARCH_NATIVE option.
+
+    Do not forget to change source package name and version if desired.
+
+12) $ fakeroot debian/rules debian/control-real
+13) $ debuild -jN    # where N = number of CPU cores
+14) # dpkg -i *.deb  # or upload to personal repo and apt-get install
