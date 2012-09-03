@@ -1,0 +1,14 @@
+Tarball: http://ftp.debian.org/debian/pool/main/c/cairo/cairo_1.12.2-2.debian.tar.gz
+
+These patched cairo packages should be used in conjunction with the patched
+freetype and fontconfig packages in this repo to provide a more comfortable
+font rendering experience in Debian (at least, IMHO, fonts look better than
+with Debian's default cairo/freetype/fontconfig packages).
+
+Debian diff is based on the version in the main repository, with the following
+patches:
+- server_side_gradients.patch     (Ubuntu [1])
+- cairo-respect-fontconfig.patch  (Arch Linux, AUR [2])
+
+[1] https://launchpad.net/ubuntu/+archive/primary/+files/cairo_1.12.2-1ubuntu1.debian.tar.gz
+[2] http://aur.archlinux.org/packages/cairo-ubuntu/cairo-ubuntu.tar.gz
