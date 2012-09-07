@@ -1,0 +1,14 @@
+Source: ponysay
+Section: games
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 9), texinfo, python3
+Standards-Version: 3.9.3
+Homepage: https://github.com/erkin/ponysay
+
+Package: ponysay
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3
+Description: pony re-implementation of cowsay
+ This package provides a My Little Pony: Friendship is Magic re-implementation
+ of cowsay, replacing the original cows with your favourite ponies.

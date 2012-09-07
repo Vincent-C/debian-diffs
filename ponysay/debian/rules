@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ 
+
+override_dh_auto_clean:
+	python3 ./setup.py clean
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+
+override_dh_auto_install:
+	# NOT distutils compliant! Also, requires Python >= 3.0
+	python3 ./setup.py --prefix=/usr --dest-dir=debian/ponysay install
+
+get-orig-source:
+	git clone git://github.com/erkin/ponysay.git
+	cd ponysay && rm -rf .git .gitignore
