@@ -1,0 +1,16 @@
+Tarball: http://xorg.freedesktop.org/releases/individual/driver/xf86-video-intel-2.20.6.tar.gz
+
+Aside from being rebuilt against the current Xorg version in Debian wheezy
+rather than experimental, SNA acceleration is compiled and enabled by default
+(./configure flags: --enable-sna --with-default-accel=sna). This renders
+xorg.conf unnecessary for usage of SNA acceleration.
+
+The acceleration method is still switchable at runtime with a xorg.conf
+snippet, if you wish to use the older UXA, e.g.:
+
+$ cat /etc/X11/xorg.conf
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option      "AccelMethod"  "uxa"
+EndSection
