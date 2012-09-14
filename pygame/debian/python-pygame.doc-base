@@ -1,9 +1,0 @@
-Document: python-pygame
-Title: Pygame Manual
-Author: Pete Shinners <pete@shinners.org>
-Abstract: This manual offers a tutorial and reference pages for Pygame.
-Section: Programming/Python
-
-Format: HTML
-Index: /usr/share/doc/python-pygame/index.html
-Files: /usr/share/doc/python-pygame/*/*.html

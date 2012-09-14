@@ -1,6 +1,0 @@
-Tarball: http://www.pygame.org/ftp/pygame-1.9.1release.tar.gz
-
-This package actually uses a pre-release snapshot of upstream's mercurial repo:
-$ hg clone -r3144 https://bitbucket.org/pygame/pygame
-
-This package also provides a pygame module built for Python 3.
