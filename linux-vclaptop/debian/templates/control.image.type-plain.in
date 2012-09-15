@@ -2,7 +2,6 @@ Package: linux-image-@abiname@@localversion@
 Provides: linux-image, linux-modules-@abiname@@localversion@
 Pre-Depends: debconf | debconf-2.0
 Depends: module-init-tools, ${shlibs:Depends}, ${misc:Depends}
-Recommends: firmware-linux-free (>= 3~)
 Suggests: linux-doc-@version@
 Description: Linux @upstreamversion@ for @class@
  The Linux kernel @upstreamversion@ and modules for use on @longclass@.
@@ -11,14 +10,14 @@ Package: linux-image@localversion@
 Priority: extra
 Depends: linux-image-@abiname@@localversion@ (= ${binary:Version}), ${misc:Depends}
 Recommends: linux-headers@localversion@ (= ${binary:Version})
-Description: Linux image for liquorix on @class@
+Description: Linux image for vclaptop on @class@
  This metapackage depends on the latest binary image for Linux kernel on
- @longclass@ machines for liquorix.
+ @longclass@ machines for vclaptop.
 
 Package: linux-headers@localversion@
 Priority: extra
 Depends: linux-headers-@abiname@@localversion@ (= ${binary:Version}), ${misc:Depends}
-Description: Linux headers for liquorix on @class@
+Description: Linux headers for vclaptop on @class@
  This metapackage depends on the latest binary image for Linux kernel on
- @longclass@ machines for liquorix.
+ @longclass@ machines for vclaptop.
 

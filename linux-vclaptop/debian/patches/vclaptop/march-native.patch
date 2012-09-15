@@ -1,44 +1,38 @@
-Enable kernel compilation with -march=native added to CFLAGS.
+Hack-ish patch that passes -march=native to gcc when CONFIG_MCORE2 is set
+or when CONFIG_CC_OPTIMIZE_FOR_SIZE is unset. Do not apply this patch if you
+intend on distributing this kernel/using it on other machines with different
+instruction sets.
 
---- a/arch/x86/Kconfig.cpu
-+++ b/arch/x86/Kconfig.cpu
-@@ -298,6 +298,17 @@
- 	  This is really intended for distributors who need more
- 	  generic optimizations.
- 
-+config X86_MARCH_NATIVE
-+	bool "Use -march=native cflag (EXPERIMENTAL)"
-+	depends on EXPERIMENTAL
-+	help
-+	  Setting Y here, will result in passing the -march=native and
-+	  -mtune=native cflags to GCC while compiling the kernel, which
-+	  makes GCC check the CPU capabilities and use the best cflags
-+	  for your computer.
-+
-+	  Set Y here only if you use >=gcc-4.2.0.
-+
- #
- # Define implied options from the CPU selection here
- config X86_INTERNODE_CACHE_SHIFT
-
---- a/arch/x86/Makefile_32.cpu
-+++ b/arch/x86/Makefile_32.cpu
-@@ -10,6 +10,9 @@
+--- a/Makefile
++++ b/Makefile
+@@ -556,7 +556,7 @@
+ ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+ KBUILD_CFLAGS	+= -Os
+ else
+-KBUILD_CFLAGS	+= -O2
++KBUILD_CFLAGS	+= -O2 -march=native
  endif
  
- align := $(cc-option-align)
-+ifeq ($(CONFIG_X86_MARCH_NATIVE),y)
-+cflags-y			+= -march=native
-+else
- cflags-$(CONFIG_M386)		+= -march=i386
- cflags-$(CONFIG_M486)		+= -march=i486
- cflags-$(CONFIG_M586)		+= -march=i586
-@@ -42,6 +45,8 @@
- # Geode GX1 support
- cflags-$(CONFIG_MGEODEGX1)	+= -march=pentium-mmx
- cflags-$(CONFIG_MGEODE_LX)	+= $(call cc-option,-march=geode,-march=pentium-mmx)
-+endif
-+
- # add at the end to overwrite eventual tuning options from earlier
- # cpu entries
- cflags-$(CONFIG_X86_GENERIC) 	+= $(call tune,generic,$(call tune,i686))
+ include $(srctree)/arch/$(SRCARCH)/Makefile
+--- a/arch/x86/Makefile
++++ b/arch/x86/Makefile
+@@ -54,7 +54,7 @@
+         cflags-$(CONFIG_MPSC) += $(call cc-option,-march=nocona)
+ 
+         cflags-$(CONFIG_MCORE2) += \
+-                $(call cc-option,-march=core2,$(call cc-option,-mtune=generic))
++                $(call cc-option,-march=native,$(call cc-option,-mtune=native))
+ 	cflags-$(CONFIG_MATOM) += $(call cc-option,-march=atom) \
+ 		$(call cc-option,-mtune=atom,$(call cc-option,-mtune=generic))
+         cflags-$(CONFIG_GENERIC_CPU) += $(call cc-option,-mtune=generic)
+--- a/arch/x86/Makefile_32.cpu
++++ b/arch/x86/Makefile_32.cpu
+@@ -32,7 +32,7 @@
+ cflags-$(CONFIG_MCYRIXIII)	+= $(call cc-option,-march=c3,-march=i486) $(align)-functions=0 $(align)-jumps=0 $(align)-loops=0
+ cflags-$(CONFIG_MVIAC3_2)	+= $(call cc-option,-march=c3-2,-march=i686)
+ cflags-$(CONFIG_MVIAC7)		+= -march=i686
+-cflags-$(CONFIG_MCORE2)		+= -march=i686 $(call tune,core2)
++cflags-$(CONFIG_MCORE2)		+= -march=native $(call tune,native)
+ cflags-$(CONFIG_MATOM)		+= $(call cc-option,-march=atom,$(call cc-option,-march=core2,-march=i686)) \
+ 	$(call cc-option,-mtune=atom,$(call cc-option,-mtune=generic))
+ 

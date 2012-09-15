@@ -1,6 +1,19 @@
+From: Bastian Blank <waldi@debian.org>
+Subject: kbuild: Make the toolchain variables easily overwritable
+Date: Sun, 22 Feb 2009 15:39:35 +0100
+
+Allow make variables to be overridden for each flavour by a file in
+the build tree, .kernelvariables.
+
+We currently use this for ARCH, KERNELRELEASE, CC, and in some cases
+also CROSS_COMPILE, CFLAGS_KERNEL and CFLAGS_MODULE.
+
+This file can only be read after we establish the build tree, and all
+use of $(ARCH) needs to be moved after this.
+
 --- a/Makefile
 +++ b/Makefile
-@@ -195,46 +195,6 @@ export KBUILD_BUILDHOST := $(SUBARCH)
+@@ -195,42 +195,6 @@ export KBUILD_BUILDHOST := $(SUBARCH)
  ARCH		?= $(SUBARCH)
  CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
  
@@ -40,14 +53,10 @@
 -# Where to locate arch specific headers
 -hdr-arch  := $(SRCARCH)
 -
--ifeq ($(ARCH),m68knommu)
--       hdr-arch  := m68k
--endif
--
  KCONFIG_CONFIG	?= .config
  export KCONFIG_CONFIG
  
-@@ -354,6 +314,44 @@ CFLAGS_KERNEL	=
+@@ -349,6 +313,40 @@ CFLAGS_KERNEL	=
  AFLAGS_KERNEL	=
  CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
  
@@ -85,10 +94,6 @@
 +
 +# Where to locate arch specific headers
 +hdr-arch  := $(SRCARCH)
-+
-+ifeq ($(ARCH),m68knommu)
-+       hdr-arch  := m68k
-+endif
  
  # Use LINUXINCLUDE when you must reference the include/ directory.
  # Needed to be compatible with the O= option

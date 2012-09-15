@@ -1,7 +1,8 @@
-# debian specific patches
+# Debian specific patches
 debian/version.patch
 debian/kernelvariables.patch
 debian/doc-build-parallel.patch
 
-# my own patches
+# My own (relatively small) patchset
 vclaptop/march-native.patch
+vclaptop/mfd-lpc_ich-Fix-a-3.5-kernel-regression-for-iTCO_wdt.patch
