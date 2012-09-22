@@ -1,3 +1,0 @@
-rm_conffile /etc/bumblebee/bumblebee.conf 2.4.2 bumblebee
-rm_conffile /etc/bumblebee/xorg.conf.nvidia 2.4.2 bumblebee
-rm_conffile /etc/bumblebee/xorg.conf.nouveau 2.4.2 bumblebee
