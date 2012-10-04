@@ -1,0 +1,17 @@
+This patch fixes the following lintian errors/warnings:
+E: ponysay: info-document-missing-dir-section usr/share/info/ponysay.info.gz
+E: ponysay: info-document-missing-dir-entry usr/share/info/ponysay.info.gz
+
+--- a/manuals/ponysay.texinfo
++++ b/manuals/ponysay.texinfo
+@@ -14,6 +14,10 @@
+ @synindex op vr
+ @synindex cp pg
+ 
++@dircategory Miscellaneous
++@direntry
++* ponysay: (ponysay).                Ponies for your terminal
++@end direntry
+ 
+ @copying
+ This manual is for ponysay

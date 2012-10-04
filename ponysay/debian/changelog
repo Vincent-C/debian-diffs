@@ -1,3 +1,16 @@
+ponysay (2.8~20121003-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 03 Oct 2012 20:01:37 -0700
+
+ponysay (2.6-1+vc1) unstable; urgency=low
+
+  * Local package.
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 18 Sep 2012 22:18:26 -0700
+
 ponysay (2.6~20120907-1+vc1) unstable; urgency=low
 
   * Local package.

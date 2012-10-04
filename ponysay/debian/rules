@@ -5,6 +5,7 @@
 
 override_dh_auto_clean:
 	python3 ./setup.py clean
+	rm -rf $(CURDIR)/debian/ponythink/
 
 override_dh_auto_configure:
 
@@ -13,6 +14,12 @@ override_dh_auto_build:
 override_dh_auto_install:
 	# NOT distutils compliant! Also, requires Python >= 3.0
 	python3 ./setup.py --prefix=/usr --dest-dir=debian/ponysay install
+
+override_dh_fixperms:
+	dh_fixperms
+	# Fix lintian error by removing auto-generated file late in build
+	# E: ponysay: package-contains-info-dir-file usr/share/info/dir.gz
+	rm -f $(CURDIR)/debian/ponysay/usr/share/info/dir.gz
 
 get-orig-source:
 	git clone git://github.com/erkin/ponysay.git
