@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.5.4.tar.bz2
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.6.tar.bz2
 
 This is a custom Linux kernel that I've built for personal use on my laptop.
 In case you wish to use the same setup, here are some quick n' dirty

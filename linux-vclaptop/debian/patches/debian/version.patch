@@ -22,7 +22,7 @@ the kernel version string.
 
 --- a/init/version.c
 +++ b/init/version.c
-@@ -37,12 +37,31 @@ struct uts_namespace init_uts_ns = {
+@@ -37,12 +37,31 @@
  };
  EXPORT_SYMBOL_GPL(init_uts_ns);
  
@@ -59,7 +59,7 @@ the kernel version string.
  	" (" LINUX_COMPILER ") %s\n";
 --- a/scripts/mkcompile_h
 +++ b/scripts/mkcompile_h
-@@ -73,8 +73,26 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
+@@ -73,8 +73,26 @@
  
    echo \#define UTS_VERSION \"`echo $UTS_VERSION | $UTS_TRUNCATE`\"
  

@@ -16,7 +16,7 @@ instruction sets.
  include $(srctree)/arch/$(SRCARCH)/Makefile
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
-@@ -54,7 +54,7 @@
+@@ -61,7 +61,7 @@
          cflags-$(CONFIG_MPSC) += $(call cc-option,-march=nocona)
  
          cflags-$(CONFIG_MCORE2) += \

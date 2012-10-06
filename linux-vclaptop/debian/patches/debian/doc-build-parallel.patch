@@ -11,7 +11,7 @@ to run gzip here at all.
 
 --- a/Documentation/DocBook/Makefile
 +++ b/Documentation/DocBook/Makefile
-@@ -159,7 +159,7 @@ quiet_cmd_db2html = HTML    $@
+@@ -159,7 +159,7 @@
              cp $(PNG-$(basename $(notdir $@))) $(patsubst %.html,%,$@); fi
  
  quiet_cmd_db2man = MAN     $@

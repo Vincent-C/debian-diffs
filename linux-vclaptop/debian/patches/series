@@ -5,4 +5,3 @@ debian/doc-build-parallel.patch
 
 # My own (relatively small) patchset
 vclaptop/march-native.patch
-vclaptop/mfd-lpc_ich-Fix-a-3.5-kernel-regression-for-iTCO_wdt.patch
