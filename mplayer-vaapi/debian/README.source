@@ -1,0 +1,21 @@
+
+The source tarball for daily snapshots is now downloaded from launchpad:
+https://launchpad.net/~motumedia/+archive/mplayer-daily/+packages
+
+The tarballs are generated from SVN via a cronjob, and contain a copy of
+Libav instead of FFmpeg. When updating to new upstream version, make
+sure that you rename the tarball to mach the debian versioning scheme.
+
+ -- Reinhard Tartler <siretart@tauware.de>, Thu, 12 Jan 2012 22:17:07 +0100
+
+The sources of this mplayer package have some parts removed!
+
+* In particular, the internal libdvdcss library was deleted, so the mplayer
+  package provided by Debian is unable to play encrypted DVDs. If you want to
+  play encrypted DVDs (i.e. almost all available Video-DVDs), please follow
+  the instructions in /usr/share/doc/libdvdread3/README.Debian on how to
+  obtain the necessary libdvdcss2 package.
+
+A. Mennucc with adaptions by Reinhard Tartler and Fabian Greffrath
+
+ -- Reinhard Tartler <siretart@tauware.de>, Sun, 13 Feb 2011 09:55:32 +0100

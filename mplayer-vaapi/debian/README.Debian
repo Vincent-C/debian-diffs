@@ -1,0 +1,41 @@
+MPlayer configuration
+=====================
+
+Some configuration options for the entire system will be set in the file
+/etc/mplayer/mplayer.conf which may be adapted later. Each user can also
+define private options in ~/.mplayer/config.
+
+
+Compliance with the GPLv2, sec 2.a
+==================================
+
+The MPlayer sources contain source code from other GPL libraries, such as
+libavcodec from the FFMpeg project, mp3lib, liba52 and others. Please see the
+file debian/copyright for detailed licensing information.
+
+During the discussions on debian-legal in 2002-03, it was pointed out
+that MPlayer may not be respecting the following section of the GPL v2:
+
+  2. You may modify your copy or copies of the Program or any portion of
+  it, thus forming a work based on the Program, and copy and distribute
+  such modifications or work under the terms of Section 1 above, provided
+  that you also meet all of these conditions:
+
+  a) You must cause the modified files to carry prominent notices stating
+  that you changed the files and the date of any change.
+
+This issue is pointed out in detail in the following thread:
+  http://lists.debian.org/debian-legal/2003/debian-legal-200301/msg00231.html
+
+Currently mplayer ships files such as
+  libfaad2/local_changes.diff
+  libmpeg2/libmpeg-0.4.0.diff
+  tremor/tremor.diff
+to comply with this request.
+
+Moreover all changes to the code are documented in the publicly accessible SVN
+repository of MPlayer.
+
+A. Mennucc with adaptions by Fabian Greffrath
+
+ -- Reinhard Tartler <siretart@tauware.de>, Tue,  9 Mar 2010 18:41:50 +0100

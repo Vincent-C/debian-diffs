@@ -1,0 +1,14 @@
+Tarball: https://gitorious.org/vaapi/mplayer/archive-tarball/master
+
+Non-official mplayer build with VA-API support.
+
+To run with VA-API output:
+
+$ mplayer -vo vaapi -va vaapi <URI>
+
+Or create a mplayer config file with the following contents:
+
+$ cat ~/.mplayer/config
+[default]
+vo=vaapi,
+va=vaapi,

@@ -1,0 +1,1458 @@
+mplayer-vaapi (2:1.1+svn35107-1+vc1) unstable; urgency=low
+
+  * Local package.
+  * New upstream git snapshot from mplayer vaapi gitorious tree, based off of
+    mplayer svn r35107 (post-release of version 1.1), with ffmpeg git.
+  * Enable VA-API support.
+    - Add libva-dev to build-depends; build with --enable-vaapi
+  * Disable runtime CPU detection; build binary optimized for this specific
+    machine (-march=corei7-avx).
+  * Build single binary with --disable-gui; drop mplayer-gui package.
+  * Rename source package as mplayer-vaapi.
+  * Drop all existing patches.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 07 Oct 2012 02:25:00 -0700
+
+mplayer (2:1.0~rc4.dfsg1+svn34540-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * upload to unstable
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 12 Jan 2012 22:23:28 +0100
+
+mplayer (2:1.0~rc4.dfsg1+svn34492-3) experimental; urgency=low
+
+  * Build against external libmpeg2
+  * drop 51_FTBFS_arm.patch again
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 09 Jan 2012 22:23:38 +0100
+
+mplayer (2:1.0~rc4.dfsg1+svn34492-2) experimental; urgency=low
+
+  * no longer build depend on libcdparanoia-dev on the Hurd
+  * Fix FTBFS on the hurd.
+    Thanks to Samuel Thibault <sthibault@debian.org> (Closes: #654974)
+  * Fix FTBFS on arm
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 08 Jan 2012 14:25:45 +0100
+
+mplayer (2:1.0~rc4.dfsg1+svn34492-1) experimental; urgency=low
+
+  [ Rico Tzschichholz ]
+  * New upstream snapshot, Closes: #650339, #643621, #481807
+  * Imported Upstream version 1.0~rc4+svn34492
+  * Bump standards version
+  * Bump dependency on libav >= 4:0.8~, Closes: #653887
+  * Fix build-indep
+
+  [ Reinhard Tartler ]
+  * Build mplayer-gui again, Closes: #568514
+  * Drop debian/all-lang-config-mak.sh, no longer needed
+  * include .dfsg1 in version number
+  * remove get-orig-source target
+  * no longer prune compiler flags from the environment
+  * No longer advertise nor build 3fdx, mga and dxr3 backends,
+    Closes: #496106, #442181, #533546
+  * beautify mplayer version identification string
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 06 Jan 2012 16:26:01 +0100
+
+mplayer (2:1.0~rc4.dfsg1+svn33713-5) unstable; urgency=low
+
+  * Brown paperbag upload.
+  * Next try to fix build failure on sparce after recent binutils change.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 29 Oct 2011 12:43:29 +0200
+
+mplayer (2:1.0~rc4.dfsg1+svn33713-4) unstable; urgency=low
+
+  * Brown paperbag upload.
+  * Really fix build failure on sparc after recent binutils change.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 29 Oct 2011 11:35:25 +0200
+
+mplayer (2:1.0~rc4.dfsg1+svn33713-3) unstable; urgency=high
+
+  [ Alessio Treglia ]
+  * Properly set Replaces/Conflicts on mplayer2{,-dbg} to avoid
+    file overwrite errors.
+  * Adjust versioning of mplayer listed in the mplayer-dbg's Depends field.
+
+  [ Reinhard Tartler ]
+  * Fix build failure on sparc after recent binutils change.
+  * Urgency medium bumped because of RC-level bugfix
+    and speeding up x264 transition.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 29 Oct 2011 10:29:57 +0200
+
+mplayer (2:1.0~rc4.dfsg1+svn33713-2) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * Update to my @debian.org email.
+
+  [ Reinhard Tartler ]
+  * Upload to unstable
+  * Enable joystick support on Linux only, Closes: #638408
+  * Rebuild fixes toolchain issue on arm, Closes: #637077
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 02 Sep 2011 09:22:11 +0200
+
+mplayer (2:1.0~rc4.dfsg1+svn33713-1) experimental; urgency=low
+
+  * New upstream snapshot
+    - update 23mplayer-debug-printf.patch
+    - fixes miscompilation with gcc 4.6, Closes: #623304
+    - improved internal mkv demuxer, Closes: #595452
+    - Fixed segfault due to missing sanitation on playlist files,
+      Closes: #591525
+    - Fixed byteorder on 16-bit displays, Closes: #594093
+    - tighten build depends on libav
+    - --enable-largefile switch has been dropped
+    - add build dependency on yasm
+  * Fix build dependency on libjpeg-dev, Closes: #634277
+  * rewrite debian/copyright in DEP5 format
+  * fix clean target
+  * don't remove snapshot_version file
+  * enable XVID, MP3 and X264 encoders
+  * simply architecture specific dependencies, Closes: #634773
+  * make buildlogs verbose
+  * unbreak building mplayer-doc package
+  * don't fail debian package build if not all shlibdeps information could be retrieved
+  * update configure flags for static libav* libraries
+  * fix spelling in mplayer-dbg description, Closes: #617826
+  * enable blueray support, Closes: #577761
+
+  [ Robert Millan ]
+  * Select oss as default audio output module on kFreeBSD, Closes: #598431
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 25 Jun 2011 09:05:54 +0200
+
+mplayer (2:1.0~rc4+svn33713-1) experimental; urgency=low
+
+  * New upstream snapshot
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 25 Jun 2011 09:05:54 +0200
+
+mplayer (2:1.0~rc4.dfsg1-2) unstable; urgency=low
+
+  [ Fabian Greffrath ]
+  * Update documentation with regard to our modifications to the upstream tarball.
+
+  [ Reinhard Tartler ]
+  * really no longer build mplayer-gui, Closes: #612473
+  * simplify/remove instruction to get upstream sources
+  * normalize debian/{control,copyright,mplayer.install} with wrap-and-sort
+  * bump standards version
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 03 Mar 2011 18:04:07 +0100
+
+mplayer (2:1.0~rc4.dfsg1-1) unstable; urgency=low
+
+  * upload to unstable
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 06 Feb 2011 17:06:33 +0100
+
+mplayer (2:1.0~rc4~try2.dfsg1-1) experimental; urgency=low
+
+  [ steph ]
+  * enable joystick at compilation but leave it disable in config
+    (Closes: #592082, LP: #617986)
+
+  [ Reinhard Tartler ]
+  * new upstream snapshot, remove patches that are applied upstream
+  * minor clarifications in debian/copyright
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 23 Jan 2011 21:59:46 +0100
+
+mplayer (2:1.0~rc4~try1.dsfg1-1) experimental; urgency=low
+
+  * enable the mencoder package
+  * sort build depends alphabetically
+  * enable dvdnav support, Closes: #582508, #488226, LP: #611749
+  * prepare new upload
+  * no longer build mplayer-gui, it doesn't build anymore with shared
+    swscale
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 02 Aug 2010 16:30:06 -0400
+
+mplayer (2:1.0~rc4~try1-1) experimental; urgency=low
+
+  * New Upstream Version, LP: #539315
+  * Build (against) again the System FFmpeg 
+  * tighten dependency on FFmpeg 0.6
+  * remove patches merged upstream
+  * remove 22disable-xscreensaver.patch
+  * refresh patches
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 28 Jul 2010 21:04:54 -0400
+
+mplayer (2:1.0~rc3++final.dfsg1-2) unstable; urgency=low
+
+  * prepare next upload
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 07 Aug 2010 10:20:58 -0400
+
+mplayer (2:1.0~rc3++final.dfsg1-1) unstable; urgency=low
+
+  * upload to unstable
+  * enable mencoder and mplayer-gui package
+  * build again against the system FFmpeg 0.5
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 31 Jul 2010 23:44:52 -0400
+
+mplayer (2:1.0~rc3++final-1~exp1) experimental; urgency=low
+
+  * build mplayer against internal ffmpeg to workaround interoperability
+    problems with FFmpeg 0.6
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 03 Jun 2010 18:25:34 +0200
+
+mplayer (2:1.0~rc3++final-0ubuntu2) maverick; urgency=low
+
+  * remove old parallel building mechanism, fixes FTBFS
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 03 Jun 2010 14:59:41 +0200
+
+mplayer (2:1.0~rc3++final-0ubuntu1) maverick; urgency=low
+
+  * New upstream version
+  * compile against internal ffmpeg for now, LP: #587203, #588097
+  * recompile for directfb transtion, LP: #587163
+  * remove patches that were merged upstream
+  * avoid removing DOCS/html directory. it is included in release
+    tarball
+  * convert to source Format: 3.0 (quilt)
+  * refreshed patches
+  * remove files that are included in upstream tarball
+  * rework debian/rules file
+    - support parallel building
+    - merge build rules for mplayer and mencoder package
+    - remove unreferenced COMMON_CONFIGURE_FLAGS macro
+    - rename DEB_BUILD_CONFIGURE -> CONFIGURE_FLAGS
+    - don't build documentation - release tarballs have them prebuilt
+    - build HTML documentation only if not already avaiable in the build
+      tree
+    - remove remaining references to debian/strip.sh from debian/rules
+  * remove copied vdpau headers
+
+ -- Reinhard Tartler <siretart@tauware.de>  Tue, 01 Jun 2010 22:59:06 +0200
+
+mplayer (2:1.0~rc3+svn20100502-4) unstable; urgency=low
+
+  * copy in mencoder.c from upstream
+  * enable mplayer-gui (Closes: #579925) and mencoder packages. 
+    (Closes: #396954, #400940, #580168)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 26 May 2010 08:57:28 +0200
+
+mplayer (2:1.0~rc3+svn20100502-3) medium; urgency=low
+
+  * Fix rtsp vulnerability. Patch applied by DSA. Closes: #581245
+  * Fix another integer overflow, Closes: #524805
+  * prepare new upload
+  * sync libao2/ao_pulse.c with svn r30062, Closes: #558196, #580113
+  * make configure use pkg-config for fribidi checks. Closes: #582784,
+    LP: #556200
+  * document 23mplayer-debug-printf.patch
+  * avoid mentioning of GTK frontend in mplayer description
+  * improve package descriptions of mplayer-doc and mplayer-dbg
+  * medium urgency because of fixed security issue
+  * fix SVN_VERION regex in debian rules to unbreak get-orig-source
+    target. Closes: #582369
+  * forcefully disable arts support. Closes: #581225
+
+ -- Reinhard Tartler <siretart@tauware.de>  Tue, 25 May 2010 20:18:08 +0200
+
+mplayer (2:1.0~rc3+svn20100502-2) unstable; urgency=low
+
+  * Remove mencoder from Depends in mplayer-dbg package.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Mon, 03 May 2010 20:19:41 -0400
+
+mplayer (2:1.0~rc3+svn20100502-1) unstable; urgency=low
+
+  * new upstream snapshot from rc3 branch.
+  * remove patches applied upstream:
+    
+    - 24_enable_fontconfig_by_default.diff
+    - 30_add_gmplayer_man_rules.diff
+    - 40_improve_desktop_file.patch
+    - 41_fix_forcedsubsonly.patch
+    - 50_fix_crashes_with_invalid_SDPs.patch
+    - 50_fix_initial_volume_setting_pulse_output.patch
+    - 61-malloc-bsd.patch
+    - 62-disable-vidix-on-kfreebsd-amd64.patch
+    - 63-sys-kd-include.patch
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 01 May 2010 21:31:58 +0200
+
+mplayer (2:1.0~rc3+svn20090426-2) unstable; urgency=low
+
+  * don't install apport hook
+  * gross hack to avoid building mplayer-nogui and mplayer-gui packages
+  * add md5sum to remove to avoid spurious conffile prompt, Closes: #568272
+  * Make mplayer build on kFreeBSD (backports from upstream), Closes: #578622
+    - Revert obscure hack that disables the malloc.h check on certain BSD
+      platforms. 
+    - disable vidix on kFreeBSD-amd64
+    - rename 'struct keypad' -> 'struct m_keypad' to avoid FTBFS on
+      kFreeBSD/amd64
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 24 Apr 2010 11:34:51 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu16) lucid; urgency=low
+
+  * move config file and apport hook 'mplayer-nogui'->'mplayer' 
+    LP: #540491, #549613
+  * improve mplayer version output
+  * no longer build depend on libfaac, see LP #374900 for details
+  * attach alsa_information in the apport hook
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 31 Mar 2010 19:54:53 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu15) lucid; urgency=low
+
+  * backport newer libx264 wrapper, LP: #539555
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 17 Mar 2010 13:39:44 +0100
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu14) lucid; urgency=low
+
+  * cleanup --configure flags
+  * drop VDPAU build hacks, Closes: #566868, LP: #530481, #532007
+  * enable musepack support
+  * enable libaa support, LP: #502767, #455535
+  * enable enca support, LP: #115519
+  * remove DEB_BUILD_CONFIGURE override hack
+  * fix weird permission bits for mplayer.desktop and mplayer.xpm
+  * reorganize binary packages to no longer install the gui version by
+    default
+  * refactor debian/rules to avoid sub makes
+  * add patch to allow compilation with newer x264
+  * use mp_msg instead of printf in debug help message
+  * bump standards version
+  * as no longer used, remove dependencies on debconf
+  * Fix possible crashes with invalid SDPs, LP: #519579
+  * add missing replaces
+  * install manpages in the 'mplayer' package. and only there
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 11 Mar 2010 12:45:55 +0100
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu13) lucid; urgency=low
+
+  * rebuild for ffmpeg versioned symbols
+
+ -- Reinhard Tartler <siretart@tauware.de>  Tue, 19 Jan 2010 21:31:51 +0100
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu12) lucid; urgency=low
+
+  * debian/patches/41_fix_forcedsubsonly.patch: fix the forcedsubsonly
+    option. This fixes a problem with ogmrip always encoding with
+    subtitles. (LP: #458129).
+  * debian/control: Change build-dep libxvidcore4-dev to libxvidcore-dev.
+    (LP: #486169)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 23 Nov 2009 20:11:33 -0500
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu11) lucid; urgency=low
+
+  * Add 50_fix_initial_volume_setting_pulse_output.patch to resolve the
+    stream volume being set to max upon each mplayer invocation
+    (LP: #482408)
+
+ -- Daniel T Chen <crimsun@ubuntu.com>  Wed, 18 Nov 2009 19:42:09 -0500
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu10) karmic; urgency=low
+
+  * make sure that patches are applied for non-i386 builds as well.
+    Fixes: LP: #390398, #448603, #448595, #441566, #440346
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 15 Oct 2009 17:55:21 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu9) karmic; urgency=low
+  
+  [ Julien Lavergne ]
+  * Renable xvid support by removing --disable-xvid in debian/rules.
+
+  [ Reinhard Tartler ]
+  * Also enable mp3lame support (at least for now) LP: #386449
+  * don't override the mplayer built-in defaults for the vo module LP: #446040
+  * verified that mennuc's screensaver patch is enabled and works in the default
+    configuration. LP: #439787
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 08 Oct 2009 09:23:29 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu8) karmic; urgency=low
+
+  * build depend on nvidia-185-libvdpau-dev only on i386 and amd64
+  * add ubuntu specific configuration file. LP: #276957, #440343
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 03 Oct 2009 10:45:23 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu7) karmic; urgency=low
+
+  * remove 41_use_fontconfig_by_default.patch, doesn't apply
+  * enable VDPAU on i386 and amd64 (LP: #437039)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 28 Sep 2009 19:32:29 +0000
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu6) karmic; urgency=low
+
+  [ Andres Mejia ]
+  * Enable VDPAU support by including vdpau headers in deb packaging.
+
+  [ Reinhard Tartler ]
+  * sort build dependencies alphabetically
+  * avoid using tabs - prefer space instead
+  * reenable 22disable-xscreensaver.patch. The patch does work, but you
+    need to have the mouse cursor INSIDE the window
+  * don't build-depend on libmad, the internal mp3lib library is superiour
+    for most cases these days, according to upstream. LP: #111025, #163382
+  * add clarifications to the libgsm license.
+  * install the TOOLS/midentify.sh script LP: #333828
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 24 Sep 2009 21:09:24 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu5) karmic; urgency=low
+
+  * No-change rebuild to pick up new ffmpeg shlibs file.
+
+ -- Stefan Potyra <sistpoty@ubuntu.com>  Fri, 28 Aug 2009 21:04:38 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu4) karmic; urgency=low
+
+  * remove 22disable-xscreensaver.patch. Patch is not working properly 
+    anyways and actually potentially dangerous because it is faking input
+    activity.
+  * enable fontconfig by default. (Closes: #573257)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 18 Jun 2009 16:09:33 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu3) karmic; urgency=low
+
+  [ Reinhard Tartler ]
+  * add additional build dependencies that are available in
+    ubuntu/multiverse LP: #386449
+  * prefer auto-detection and lavc variants of many codecs in debian/rules
+  * install .desktop and .xpm file in the mplayer package
+
+  [ Siegfried Gevatter ]
+  * improve desktop file to conform (more) to the freedesktop file
+    specification LP: #386505
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 15 Jun 2009 23:24:25 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu2) karmic; urgency=low
+
+  * Bump epoch in debian/control as well, so that the Replaces field has
+    any effect in ubuntu
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 08 Jun 2009 07:51:12 +0200
+
+mplayer (2:1.0~rc3+svn20090426-1ubuntu1) karmic; urgency=low
+
+  * Switch to debian packaging for the mplayer package
+  * New upstream release, LP: #336697, #260918, #246675, #243453, #74282
+  * Fixes security issues: CVE-2008-5616, LP: #308939
+  * many flv fixes LP: #73271, #347021
+  * Build and install mencoder
+  * Bump epoch
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 06 Jun 2009 23:01:52 +0200
+
+mplayer (1.0~rc3+svn20090426-1) unstable; urgency=low
+
+  [ fabrice ]
+  * Introduce the mplayer-nogui package, that does not depend on GTK+
+
+  [ Reinhard Tartler ]
+  * new upstream svn version based on the 1.0rc3 branch
+  * various cleanups and refactoring in debian/rules
+  * no longer remove mencoder.c: It does hardly contain any "dangerous"
+    or patented code. Instead:
+  * strip libavcodec similar to how its done in the ffmpeg package. This
+    brings the patent policy of the mplayer and ffmpeg package in debian
+    finally in sync. c.f. the comments and the "discussion" in #522373.
+  * install upstream's version of binary_codecs.sh
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 04 Jun 2009 10:35:52 +0200
+
+mplayer (1.0~rc3+svn20090405-1) unstable; urgency=low
+
+  * New upstream version. Track the 1.0rc3 release branch for now.
+  * remove 50_r28803_segfault_print_int.patch, merged upstream.
+  * no longer remove the TOOLS subdirectory from the upstream source.
+  * make get-orig-source rule actually work.
+  * disable musepack support. Closes: #476384
+  * completely delegate handling of /etc/mplayer/mplayer.conf to
+    dpkg. This change removes also all debconf templates and reduces
+    package complexity.
+  * move .gbp.conf to debian/gbp.conf
+  * cleanups in debian/rules: prefer external debhelper helper files
+  * enhance upstream Makefile to install gmplayer manpages
+     - implement as quilt patch, submitted upstream
+     - debian/rules: make use of the added rules
+  * use dh_prep instead of dh_clean -k
+  * bump Standards-Version to 3.8.1 
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 05 Apr 2009 11:37:37 +0200
+
+mplayer (1.0~rc2+svn20090303-7) unstable; urgency=low
+
+  * various cleanups in  debian/rules.
+  * as a side effect, DEB_BUILD_OPTIONS set to noopt no longer works. It
+    really needs to be implemented in ./configure instead of weird hackery
+    in debian/rules. patches welcome.
+  * run 'make distclean' only of config.mak exists.
+  * remove debian/control.mplayer* variants.
+  * don't --enable-debug on mipsen. This hopfully fixes the FTBFS on mipsen.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 02 Apr 2009 18:48:07 +0200
+
+mplayer (1.0~rc2+svn20090303-6) unstable; urgency=low
+
+  [ A Mennucc1 ]
+
+  * use ./configure flags to dynamically link FFmpeg,
+    delete patch  30link-system-ffmpeg.patch
+
+  [ Reinhard Tartler ]
+
+  * cleanup debian/rules: use --enable-debug on all architectures but mips.
+    in order to fix a FTBFS. This results in making the -dbg package on mips
+    useless. If you are interested in having a usable mplayer-dbg package on
+    mips, please try enabling that switch in debian/rules and send us your
+    buildlog!
+  * run 'make distclean' only of config.mak exists
+  * cleanup debian/rules: remove unnecessary clean statements
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 28 Mar 2009 07:24:07 +0100
+
+mplayer (1.0~rc2+svn20090303-5) unstable; urgency=low
+
+  * debian/control : move docbook-xml,docbook-xsl,xsltproc from 
+    Build-Depends-Indep to Build-Depends, since they are needed to run
+    configure
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 23 Mar 2009 10:05:45 +0100
+
+mplayer (1.0~rc2+svn20090303-4) unstable; urgency=low
+
+  * try another fix for bug 520113
+  * disable specific patch for powerpc, that was reducing optimization to -O
+    to avoid gcc bug 475153
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 22 Mar 2009 10:11:36 +0100
+
+mplayer (1.0~rc2+svn20090303-3) unstable; urgency=low
+
+  * try a fix for bug 520113
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 20 Mar 2009 18:23:35 +0100
+  
+mplayer (1.0~rc2+svn20090303-2) unstable; urgency=low
+
+  * always build documentation. Fixes FTBFS.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 13 Mar 2009 09:34:27 +0100
+
+mplayer (1.0~rc2+svn20090303-1) unstable; urgency=low
+
+  * new upstream snapshot (Closes: #517774)
+  * this version has dvdnav:// support (Closes: #430211)
+  * rebuild against new ffmpeg in unstable,
+    (Closes: #518670, #516933, #492229, #505048, #512892, #496709)
+  * converted package to use git Closes: #508483
+  * completly reworked the way the .orig.tar.gz is created, please see
+    debian/README.upstream-upgrade and debian/get-orig-source.sh for details
+  * large refactoring of debian/control and debian/rules
+  * dropped many unnecessary versioned build dependencies
+  * bumped debhelper compatibility level 4->7
+  * replace patch system from dpatch to quilt
+  * dropped the following patches, merged upstream:
+        - 10configure-alpha.dpatch
+        - 12configure-vidix-alpha.dpatch
+        - 24mplayer.desktop.dpatch
+        - 25kFreeBDS.dpatch
+        - 25mplayer-desktop.dpatch
+        - 30vorbis-block-alloc.dpatch
+        - 40rtsp_demux.dpatch
+        - 51xsai.dpatch
+        - CVE-2008-0073--rtsp_fix.diff
+        - CVE-2008-0629--stream_cddb.c.diff
+        - CVE-2008-0630.diff
+        - SA33136_demux_vqf.c.diff
+        - demux.patch
+        - demux_audio_fix_20080129.diff
+        - demux_mov_fix_20080129.diff
+        - oCERT-2008-013--realfix.diff
+        - theora_length_fix_svn27354.diff
+        - to-ffmpeg-free-0.svn20080206.diff
+  * reworked the way the control file for the mplayer-non-dfsg package is
+    handled: it now copied from debian/control.mplayer-non-dfsg. Add a
+    debian/control target in debian rules.
+  * do not run the actual rules of debian/rules in parallel, fixes FTBFS
+  * implement the debconf review by Josselin Mouette and Christian
+    Perrier. The last debconf question is mplayer/replace-existing-files
+    (which can be dropped after ucf is deployed in the package) and
+    mplayer/voutput, which needs more thought. (Closes: #445091)
+  * verified that http://oumph.free.fr/tmp/29761.h264 no longer crashes
+    mplayer (Closes: #497467)
+  * add japanese debconf translation, thanks to Hideki Yamane. 
+    (Closes: #512874)
+  * warn about libstdc++.so.5 when installing binary codecs in i386 as well
+    (Closes: #497787)
+  * add libpulse-dev to build dependencies to enable pulseaudio backend
+    (Closes: #468470)
+  * add libschroedinger-dev to build dependencies
+
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 11 Mar 2009 22:23:25 +0100
+
+mplayer (1.0~rc2-20) unstable; urgency=low
+
+  * use external libfaad : external libfaad is newer, and does not crash
+    on aac file in  http://bugs.debian.org/407010
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 18 Dec 2008 11:48:42 +0100
+
+mplayer (1.0~rc2-19) unstable; urgency=high
+
+  * SA33136: MPlayer TwinVQ Processing Buffer Overflow Vulnerability
+    Thanks to T. Klein, G. Iuculano, R. Döffinger  (Closes: #508803).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 15 Dec 2008 21:05:07 +0100
+
+mplayer (1.0~rc2-18) unstable; urgency=high
+
+  * fix oCERT-2008-013 Mplayer real demuxer heap.
+    Thanks to Felipe Andres Manzano, Andrea Barisani,
+     Steffen Joeris, Reimar Döffinger. (Closes: #500683).
+  * Clean lintian warnings:
+     build-depend on libgif-dev instead of libungif4-dev
+     build-depend on x11proto-core-dev instead of x-dev 
+     depends on  debconf | debconf-2.0
+  * Up standard to 3.8.0.0
+     support DEB_BUILD_OPTIONS="parallel=n"
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 22 Sep 2008 11:01:26 +0200
+
+mplayer (1.0~rc2-17) unstable; urgency=low
+
+  * fix bashism in binary_codecs.sh script,
+    thanks to Raphael Geissert (Closes: #489636).
+  * use proper name 'mplayer.xpm' for the icon,
+    thanks to Fernando Mitio Yamada (Closes: #483499).
+  * fix: show correct length of theora video (from svn27354),
+    thanks to Sam Morris and  Reimar Döffinger (Closes: #464207).
+  * [INTL:sv] Swedish strings for mplayer debconf, 
+    thanks to brother@bsnet.se (Closes: #491777).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 27 Jul 2008 09:26:24 +0200
+
+mplayer (1.0~rc2-16) unstable; urgency=high
+
+  * fix FTBFS, build-depends against libdvdread-dev,
+    thanks to Bastian Blank (Closes: #491366).
+  * update lists of binary codecs and mirrors
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 20 Jul 2008 12:05:47 +0200
+
+mplayer (1.0~rc2-15) unstable; urgency=low
+
+  * build-depend on  liblzo2-dev  
+  * Bug fix: "mplayer segfaults on opening any *.flv file", thanks A LOT to
+    Ondrej Certik (Closes: #489291).
+  * Bug fix: "mplayer: crashes on playing a standalone aac file", thanks
+    to Michal Suchanek (Closes: #489419).
+  * Bug fix: "mplayer: crashes with &quot;MPlayer interrupted by signal 11
+    in module: demux_open&quot; on FLV files", thanks to Paul Collins
+    (Closes: #487830).
+  * Bug fix: "mplayer: [INTL:it] debconf templates italian translation",
+    thanks to Alessandro Vietta (Closes: #481418).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 06 Jul 2008 17:57:29 +0200
+
+mplayer (1.0~rc2-14) unstable; urgency=low
+
+  * Links with ffmpeg-free provided libraries  (Closes: #395252).
+  * Uses libsvga1-dev  in Build-Depends instead of svgalibg1-dev,
+    thanks to Guillem Jover (Closes: #483460).
+  * Build-depend on vstream-client-dev,
+    thanks to Paul Hedderly (Closes: #487291).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 23 Jun 2008 13:20:34 +0200
+
+mplayer (1.0~rc2-12) unstable; urgency=low
+
+  * Conflicts on gcc-4.3 <= 4.3.0-3 to avoid bug 475153 .
+  * Sorry, 'DEB_BUILD_OPTIONS=noopt ./debian/rules  build-arch'
+    is again broken in i386 . It is simply too difficult to build
+    mplayer on i386 w/o optimizing it a bit. For details, see 
+    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=402950#44
+    and following.
+  * For this reason, and to help solving the strange bug 478731
+    I have decided to build mplayer with  'configure --enable-debug' and
+    to create a 'mplayer-dbg' package, to ship debugging symbols.
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 01 May 2008 20:40:42 +0200
+
+mplayer (1.0~rc2-11) unstable; urgency=low
+
+  * avoid FTBFS bug introduced by dpkg-buildpackage setting of "CFLAGS
+    & al" in environment,
+    thanks to Lucas Nussbaum (Closes: #475973).
+  * set 'autodetect' to 'xv,x11' to avoid problems with xvmc and/or gmplayer,
+    thanks to Walter B. Rasmann (Closes: #473686).
+    thanks to Sam Morris (Closes: #475934).
+    thanks to Victor Hahn (Closes: #458786).
+  * fix bashism in /bin/sh maintainer script,
+    thanks to Raphael Geissert (Closes: #472232).
+  * renamed mplayer.xpm to mplayer in desktop file,
+    thanks to giggz (Closes: #472833).
+  * added debian/README.source
+  * add libmpcdec to build-dependencies
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 01 May 2008 12:16:08 +0200
+
+mplayer (1.0~rc2-10) unstable; urgency=high
+
+  * fix: CVE-2008-0073 remote code execution via crafted rtsp stream,
+    thanks to Nico Golde and  Reimar Döffinger (Closes: #473056).
+  * use ALSA by default, thanks to Sam Morris (Closes: #470617).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat, 29 Mar 2008 09:40:09 +0100
+
+mplayer (1.0~rc2-9) unstable; urgency=low
+
+  * fix: gmplayer wrong driver setting "vo_driver= xmga", thanks to
+    Siegfrid Brandstätter (Closes: #449041).
+  * added dependency libaudio-dev, libfribidi-dev, libopenal-dev;
+    this should make mplayer compiling less dependent on build environment
+  * and moreover I think I enabled almost everything around, thanks to
+    Fabian Greffrath (Closes: #419790).
+  * add BiDi support, thanks to Khaled Hosny (Closes: #462611).
+  * removed 'uploaders: Dariush Pietrzak <eyck@kuszelas.com>'
+    thanks to Lucas Nussbaum (Closes: #460031).
+  * fix missing newline from message displayed by postinst script,
+    thanks to Serafeim Zanikolas (Closes: #468059).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 21 Mar 2008 16:14:55 +0100
+
+mplayer (1.0~rc2-8) unstable; urgency=low
+
+  * fix SVN25823 for
+    CVE-2008-0630, buffer overflow via crafted url ,
+    thanks Niko Golde (closes: #464532)
+  * fix SVN25824 for
+    CVE-2008-0629, buffer overflow via crafted cddb title
+    thanks Niko Golde (closes: #464533)
+  * fix for CVE-2008-0485 Array index error in libmpdemux/demux_mov.c
+    a.k.a.  CORE-2007-1218: MPlayer 1.0rc2 buffer overflow vulnerability
+    thanks Stefan Fritsch
+  * fix for CVE-2008-0486 Array index vulnerability in libmpdemux/demux_audio.c
+    a.k.a.  CORE-2008-0122: MPlayer arbitrary pointer dereference
+    thanks Stefan Fritsch (closes: #464060)
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Fri,  8 Feb 2008 20:42:41 +0100
+
+mplayer (1.0~rc2-7) unstable; urgency=low
+
+  * fix segfault on GNU/kFreeBSD, by moving a patch from
+    debian/patches/25kFreeBDS.dpatch directly to debian/rules itself,
+    thanks to Petr Salinger (Closes: #457312).
+  * really remove /etc/init.d/mplayer and /etc/rc... files (used <
+    1.0~rc2-1), thanks to Kumar Appaiah & piuparts (Closes: #454710).
+  * Avoid 'echo -e' bashism in postinst (now uses /bin/echo ),
+    thanks to Helmut Grohne (Closes: #451551).
+  * delete  config.h config.mak from diff.gz,
+    thanks to Fabian Greffrath (Closes: #451381).
+  * [INTL:sk] Slovak po-debconf translation,
+    thanks to helix84@centrum.sk (Closes: #440717).
+  * enable jack support, thanks to Free Ekanayaka (Closes: #440461).
+  * Document 22disable-xscreensaver.dpatch
+  * Bump standard to 3.7.3.0 :
+    - menu for "/usr/bin/gmplayer" goes in section="Applications/Video"
+    - added Homepage and Vcs fields
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat, 29 Dec 2007 13:08:22 +0000
+
+mplayer (1.0~rc2-6) unstable; urgency=low
+
+  * created debhelper debian/compat '5'
+  * corrected mplayer.menu to section="Applications/Viewers"
+  * fix: cant open a file with spaces in the name through nautilus,
+    thanks to giggz (Closes: #449298)
+  * fix: 2xsai filter generates side-by-side double-height images on amd64, 
+    thanks to Josh Triplett and  Reimar Döffinger (Closes: #450999)
+  * clean up of 10configure-alpha.dpatch and 12configure-vidix-alpha.dpatch
+  * Debconf templates and debian/control reviewed by the
+    debian-l10n-english team as part of the Smith review project.
+    Thanks to Christian Perrier. 
+    Closes: #447111, #448247, #412394, #414510, #448247
+  [Debconf translation updates]
+  * Belarusian. Thanks Andrei Darashenka. Closes: #447115, #447305
+  * Galician. Thanks Jacobo Tarrio. Closes: #447300
+  * French Thanks Yves Rütschlé. Closes: #448844
+  * Finnish. Thanks Esko Arajärvi. Closes: #447349
+  * Spanish; Castilian. Thanks Javier Fernández-Sanguino Peña. Closes: #447416
+  * Czech. Thanks Miroslav Kure. Closes: #447439
+  * Portuguese. Thanks "traduz" Carlos Lisboa. Closes: #447800
+  * Vietnamese. Thanks Clytie Siddall. Closes: #447873
+  * Romanian. Thanks Eddy Petrișor. Closes: #447922
+  * Dutch; Flemish. Thanks "cobaco". Closes: #448120
+  * Italian. Thanks Luca Monducci. Closes: #448237
+  * German. Thanks Helge Kreutzmann. Closes: #448246
+  * Malayalam. Thanks Santhosh Thottingal. Closes: #448468
+  * Russian. Thanks Sergey Alyoshin. Closes: #449000
+
+ -- A Mennucc1 <mennucc1@debian.org>  Wed, 14 Nov 2007 15:49:04 +0100
+
+mplayer (1.0~rc2-5) unstable; urgency=low
+
+  * patch to play rtsp stream (hack to skip short packets)
+    thanks to Stefan Strasser,  Reimar Döffinger  (Closes: #410424).
+  * the bug "mplayer segfaults on ogg video" was actually a libtheora bug,
+    fixed in 1.0~beta1-1 or above: added dependency.
+    Thanks to Pierre Habouzit,  Reimar Döffinger  (Closes: #408071).
+  * Fix FTBFS on GNU/kFreeBSD, thanks to Petr Salinger (Closes: #448791).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 04 Nov 2007 12:56:38 +0000
+
+mplayer (1.0~rc2-4) unstable; urgency=low
+
+  * fix: _vorbis_block_alloc() implicitly converted to pointer,
+    thanks to dann frazier (Closes: #447278).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 19 Oct 2007 21:01:17 +0200
+
+mplayer (1.0~rc2-3) unstable; urgency=low
+
+  * vidix drivers cyberblade sis unichrome fail on alpha, and are probably
+    useless but in x86_32 and x86_64 archs
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 19 Oct 2007 18:10:59 +0200
+
+mplayer (1.0~rc2-2) unstable; urgency=low
+
+  * Runtime CPU detection only works for x86, x86-64 and PPC
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 19 Oct 2007 09:43:08 +0200
+
+mplayer (1.0~rc2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Remove RTC debconf question and /etc/init.d/mplayer (Closes: #421363)
+  * Use dpatch.
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Wed, 18 Oct 2007 19:27:16 +0200
+
+mplayer (1.0~rc1-16.1) unstable; urgency=high
+
+  * Non-maintainer upload by testing security team.
+  * Check wLongsPerEntry in aviheader.c before using it to prevent
+    possible NULL pointer dereference (CVE-2007-4938) (Closes: #443478).
+
+ -- Nico Golde <nion@debian.org>  Tue, 25 Sep 2007 12:39:15 +0200
+
+mplayer (1.0~rc1-16) unstable; urgency=low
+
+  * compile for --mcpu=ev5 on alpha; fixes "Illegal instruction on EV56",
+    thanks to Tom Evans & Ivan Jager (Closes: #431139).
+  * removed debian/patches (Closes: #409352).
+  * correct mplayer.config to respect font default, thanks Simon Ruggier.
+  * linked with liblivemedia,    thanks to Hilmar Preusse (Closes: #440338).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat, 01 Sep 2007 12:27:16 +0000
+
+mplayer (1.0~rc1-15) unstable; urgency=low
+
+  * Bug fix: "Depends on libconfhelper-perl, but this package has been
+    removed", thanks to David (Closes: #434509).
+  * Bug fix: "correction for binary_codecs.sh", thanks to nutzteil@web.de
+    (Closes: #431537).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Wed,  1 Aug 2007 11:54:40 +0200
+
+mplayer (1.0~rc1-14) unstable; urgency=high
+
+  * fix for stack overflow in the code used to handle cddb queries,
+    CVE-2007-2948 and SAID 24302, thanks Stefan Cornelius of Secunia Research
+  * do not use libmad0, on request of upstream
+  * [INTL:ml] Malayalam debconf template translation
+    thanks to Santhosh Thottingal (Closes: #419527).
+  * [INTL:it] Italian debconf templates translation
+    thanks to Luca Monducci (Closes: #425259).
+  * [l10n:ro] Romanian debconf templates translation
+    thanks to Eddy Petrișor (Closes: #415368).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Wed,  6 Jun 2007 10:17:22 +0200
+
+mplayer (1.0~rc1-13) unstable; urgency=low
+  
+  * fix for CVE-2007-1246 and similar (Closes: #414075)
+    thanks Kees Cook & Moritz Jodeitand & R Togni
+    patches for files
+      loader/dmo/DMO_VideoDecoder.c from SVN 22204
+      loader/dshow/DS_VideoDecoder.c from SVN 22205
+  * [INTL] Japanese po-debconf templates translation,
+     thanks to Kobayashi Noritada (Closes: #413120).
+  * [INTL] Dutch po-debconf translation, thanks cobaco (Closes: #413880)
+  * [INTL] Russian po-debconf translation, thanks  Yuri Kozlov (Closes: #414251)
+  * patch for ia64 unaligned access crash,
+     thanks to Bryan Stillwell for debugging &  
+      Reimar Döffinger for the patch (Closes: #409431).
+  * mplayer-doc: add doc-base documentation indexes,
+     thanks to Martintxo (Closes: #405945).
+  * binary_codecs.sh: check MD5 on downloaded stuff (Closes: #405371).
+  * binary_codecs.sh: check if bzip2 is there, and bail out 
+      graciously otherwise; if untarring fails, allow for retry.
+    Fixes "binary_codecs.sh doesn't install already downloaded codecs",
+    thanks to Ingo Bressler for problem analysis (Closes: #413063).
+  * binary_codecs.sh: do not use fping (my code lost part of URLs) (closes: #399144)
+  * binary_codecs.sh: warn that essential-ppc codecs need libstdc++5, thanks to
+     Bin Zhang (Closes: #404473) for pointing out.
+  * enable smb:// (Closes: #412079).
+  * mplayer.postinst: when vo=x11 or vo=fbdev, zoom=1 is set as well,
+     thanks to Robert Millan (Closes: #412252).
+  *  -stop-xscreensaver option disables  gnome-screensaver as well
+     (but only if cursor is inside mplayer window) , thanks Adam Tlałka
+     and Reimar Döffinger (Closes: #404975).
+  * [INTL] fix small typo in English template, thanks cobaco  (closes: #414393)
+  * [INTL] devices.html -> video.html , thanks cobaco  (closes: #414392)
+  * [INTL] True Type -> TrueType , thanks cobaco  (closes: #414394)
+  * [INTL] ~/.mplayer/mplayer.conf -> ~/.mplayer/config , 
+     thanks Jacobo Tarrio (closes: #408055)
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat, 10 Mar 2007 12:57:16 +0100
+  
+mplayer (1.0~rc1-12) unstable; urgency=medium
+
+  * (possible) security fixes  backported from SVN
+     7585  7586  7591   for  libavcodec/h264.c
+     7640  7650         for  libavformat/asf.c
+     all thanks to Michael Niedermeyer
+  * Czech debconf translation;  thanks to Miroslav Kure (Closes: #408626).
+  * Portuguese debconf translation; thanks to Traduz! (Closes: #408449).
+  * Swedish debconf translation; thanks to Andreas Henriksson (Closes: #407864).
+  * binary_codecs.sh should specify umask;
+     thanks to Linas Žvirblis (Closes: #406346).
+  * clarify dependencies (do not pick up them randomly!),
+     thanks to EspeonEefi (Closes: #405170);
+     debian/rules: when configuring, disable also: arts , jack , aa , dv , smb 
+     debian/control: depend on: lzo, speex, dts, ladspa, gl (mesa)
+  * the above adds opengl video output (Closes: #400934).
+  * forked processes cannot use GTK gui; this fixes bug in caching streams
+     in gmplayer (Closes: #396962)
+     thanks to martin f krafft  and Reimar Döffinger for patch.
+  * added in debian/patches all patches that I applied or I am working on
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Wed, 31 Jan 2007 10:30:24 +0100
+
+mplayer (1.0~rc1-11) unstable; urgency=high
+
+  * fix for CVE-2006-6172
+  * fixed "typo in the README.Debian", thanks to Aurelien
+    Jacobs (Closes: #403893).
+  * another (last?) fix for  (Closes: #402950), thanks Sam Hocevar.
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 28 Dec 2006 23:03:42 +0100
+
+mplayer (1.0~rc1-10) unstable; urgency=high
+
+  * really apply patch for (Closes: #403379)
+  * many fixes to various codecs, to prevent crashes on 
+    randomly altered streams
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 18 Dec 2006 11:46:35 +0100
+
+mplayer (1.0~rc1-9) unstable; urgency=low
+
+  * fix another segfault on (broken) MPEGs without I frames (Closes: #403379).
+  * fix: binary_codecs.sh failed to install essential-ppc
+    codecs, thanks to Bin Zhang (Closes: #403442).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 17 Dec 2006 13:06:43 +0100
+
+mplayer (1.0~rc1-8) unstable; urgency=low
+
+  * fix segfault on (broken) MPEGs without I frames, (Closes: #402922).  
+  * README.Debian: document apt pinning and debian-multimedia
+  * can be compiled with --enable-debug (Closes: #402920).
+  * supports DEB_BUILD_OPTIONS=nostrip/noopt (Closes: #402950)
+    (see README.Debian, though, for gory details)
+  * Spanish po-debconf translation", thanks
+    to Javier Fernández-Sanguino Peña (Closes: #402205).
+  * patch to compile in GNU/kFreeBSD, thanks to Petr Salinger (Closes: #402872).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 15 Dec 2006 14:40:54 +0100
+
+mplayer (1.0~rc1-7) unstable; urgency=low
+
+  * Bug fix: "mplayer: FTBFS on AMD64", thanks to Emfox Zhou (Closes:
+    #401893).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu,  7 Dec 2006 14:26:10 +0100
+
+mplayer (1.0~rc1-6) unstable; urgency=low
+
+  * debian/control : update mantainer fields
+  * debian/scripts/binary_codecs.sh : 'wget -c -N' -> 'wget -N'
+  * update debian/prefs/codecs_list and mirrors    (closes: #399144)
+  * debian/rules : x86_64  -> amd64   (closes: #401697)
+  * applied patch (that should support codecs in amd64 )
+    http://people.freedesktop.org/~jinghua/real64/mplayer-amd64-real-codecs.diff
+  * update french translation (closes: #400106)
+  * update german translation (closes: #400296)
+  * (again!) set --with-codecsdir to avoid broken default; thanks to Emfox Zhou
+    (Closes: #396017).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Wed,  6 Dec 2006 10:56:02 +0100
+
+mplayer (1.0~rc1-5) unreleased; urgency=low
+
+  * this version was built with external ffmpeg 0.svn6767
+    it is in  http://tonelli.sns.it/pub/mplayer/experimental-shared
+
+ -- A Mennucc <debdev@tonelli.sns.it>  Mon, 27 Nov 2006 15:03:02 +0100
+
+mplayer (1.0~rc1-4) unstable; urgency=low
+
+  * Depends on mplayer-skin
+  * Use fontconfig in /etc/mplayer/mplayer.conf , so that 'Sans' is
+    always a fallback; this solves:
+    "OSD missing numbers/letters", thanks to Sam Morris (Closes: #396531).
+    if fc-list is available, let the user choose between a huge list as well
+  * Bug fix: "mplayer: depends exclusively on debconf (debconf-2.0 should
+    be an alternative)", thanks to Eddy Petrișor (Closes: #397891).
+  * Patches from Diego Biurrun  :
+    - README.jfdct.gz  is already copied inside
+        libavcodec/jfdctfst.c  libavcodec/jfdctint.c
+    - do not use external libdv (ffmpeg has internally a better one)
+    - rename win32codecs.sh to binary_codecs.sh,
+  * Bug fix: "mplayer: win32codecs.sh will not uninstall", thanks to Joey
+    Morris (Closes: #397867) and Diego for the patch.
+  * Applied some changes in debconf template, thanks to Helge
+    Kreutzmann (Closes: #397819).
+  * Supports caca (Closes: #397749).
+  * "Initial German debconf translation",
+     thanks to Helge Kreutzmann (Closes: #397822).
+  * "French program translation", thanks to Yves  Rutschle (Closes: #398515).
+  * Bug fix: "FTBFS: bashisms in build scripts", thanks to
+    Florent Bayle (Closes: #396450).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 19 Nov 2006 21:06:01 +0100
+
+mplayer (1.0~rc1-3) unstable; urgency=low
+
+  * Bug fix: "Outdated info in /usr/share/doc/mplayer/README.Debian",
+    thanks to Sam Morris (Closes: #396281).
+  * set --with-codecsdir to avoid broken default; thanks to Emfox Zhou
+    (Closes: #396017).
+
+ -- A Mennucc1 <mennucc1@debian.org>  Tue, 31 Oct 2006 09:13:32 +0100
+
+mplayer (1.0~rc1-2) unstable; urgency=low
+
+  * rewrote mplayer.{config,template,postinst} ; this also fixes
+    "mplayer: Strange contents of default config file", thanks to
+    Sam Morris (Closes: #395829).
+  * Reviewed description, thanks to Filipus Klutiero (Closes: #395540).
+  * Use po-debconf
+  [Diego suggested:]
+  * Don't install codecs.conf. If people fiddle w/ it, playback *will* break.
+  * --disable-bitmap-font, so no more 
+    "annoying message on 'ttf doesn't look like a bitmap '",
+    thanks to Michael Piefel (Closes: #395325) and Diego
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat, 28 Oct 2006 17:49:41 +0200
+
+mplayer (1.0~rc1-1) unstable; urgency=low
+
+  * New upstream release
+  * -nortc is now default since -rtc has disadvantages with recent kernels
+    ( so the  mplayer/rtc question is now low priority, defaults to false )
+  * do not pass --enable-directfb (it fails)
+  * reorganized debian/rules file (Closes: #395238,#395240,#395303).
+  * reformat of scripts/win32codecs.sh
+
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 26 Oct 2006 12:55:33 +0200
+
+mplayer (1.0~rc1~svn20199-1) unstable; urgency=low
+
+  * code pulled from SVN 
+    (and some dirs deleted : see 'debian/rules fix-orig-source')
+  * do not depend on xmms
+  * build libraries with -fPIC
+  * ship in examples dir: etc/menu.conf etc/input.conf etc/codecs.conf
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 13 Oct 2006 11:41:47 +0200
+
+mplayer (1.0~rc1~svn19921) unstable; urgency=low
+
+  * code pulled from SVN 
+    (and some dirs deleted : see 'debian/rules fix-orig-source')
+  * better debian/copyright file
+  * fixed some lintian issues
+  * new debian/rules targets that build a tar from SVN
+  * updated various README.Debian files (regarding all the
+    upstream code not shipped into Debian)
+  * 'debian/rules autocontrol' ( generates  control.in -> control )
+    also adds dependencies for creating docs (if it is needed)
+  * in debconf, question  on -vo is low priority, default is "autodetect"
+    (that is, no setting)
+  * mplayer init supports LSB
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 21 Sep 2006 10:08:27 +0200
+
+mplayer (1.0pre8-1) unstable; urgency=low
+
+  * New upstream release
+  * better debian/copyright file
+  * do not ship a skin
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 30 Jul 2006 12:25:14 +0200
+
+mplayer (1.0pre7try2-1) unstable; urgency=low
+
+  * New upstream release
+  * changed DEB_BUILD_OPTIONS to DEB_BUILD_CONFIGURE ,
+    DEB_BUILD_OPTIONS is used as in debian policy
+  * use gcc-3.4
+  * changed xlibs-dev to a long list of dependencies, for Debian/etch
+  * try to adhere to  http://www.mplayerhq.hu/DOCS/tech/binary-packaging.txt
+    (see README.Debian for details)
+  * removed dependency on xlibmesa-dev, disabled opengl
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 16 Jan 2006 11:47:33 +0100
+
+mplayer (1.0pre7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 24 Apr 2005 19:34:33 +0200
+
+mplayer (1.0pre6a-4) unstable; urgency=low
+
+  * Simon McVittie <hacks@pseudorandom.co.uk> wonderful work:
+  - Work around Debian bug #267442 (glibc's sys/uio.h and gcc's altivec.h have
+    conflicting uses for __vector) by re-ordering #includes
+  - Fix potential symlink attack in ./configure
+  - Disable support for binary codecs on platforms for which those codecs
+    aren't available; also disable the corresponding Debconf note when it's
+    inappropriate
+  - Changed Build-Depends: so it works in pbuilder
+  - Explicitly build-depend on libjpeg62-dev, libfontconfig1-dev,
+    libungif4-dev 
+  - Tweak debian/rules to avoid certain errors being ignored
+  - Use --language=all
+
+ -- A Mennucc1 <mennucc1@debian.org>  Sat,  5 Mar 2005 22:24:57 +0100
+
+mplayer (1.0pre6a-3) unstable; urgency=low
+
+  * provide a target  'debian/rules get-orig-source' 
+    that recreates the orig.tar.gz ; then use the above orig.tar.gz
+  * rewrote some parts of debian/rules
+  * don't clean and recompile docs if upstream ships them
+  * mplayer-doc was shipping too much stuff
+  * translated man pages where not installed properly
+  * compile with libdv4-dev
+  * correct README.Debian
+
+ -- A Mennucc1 <mennucc1@debian.org>  Tue, 20 Feb 2005 14:30:19 +0100
+
+mplayer (1.0pre6a-2) unstable; urgency=low
+
+  * Forgot build-dep on libtheora
+  * Must not depend on libxvidcore
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 14 Feb 2005 14:47:56 +0100
+
+mplayer (1.0pre6a-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 11 Feb 2005 19:33:42 +0100
+
+mplayer (1.0-cvs20030324-2) unstable; urgency=low
+
+  * some corrections, as suggested Diego Biurrun
+    - binary codecs should go into /usr/lib/codecs (upstream default)
+    - better template 'mplayer/install_codecs'
+    - an empty 'font=' in mplayer.conf breaks mplayer: postinst corrected
+  * correction in 'mplayer/cfgnote'
+  * better mplayer.postinst and mplayer.config
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Sun, 18 Apr 2004 17:25:37 +0200
+
+mplayer (1.0.cvs20030324-1) unstable; urgency=low
+
+  * following the discussion started by Diego Biurrun <diego@biurrun.de>
+    in debian-devel, I have prepared a new packaging of 'mplayer'
+    (with code that comes from CVS)
+  * the upstream tar.bz cannot be distributed by Debian, since it contains
+     CSS code; so I am repackaging it 
+  * I have tried my best to address all known issues:
+    - the package contains the detailed Copyright made by Diego Biurrun 
+    - the package does not contain CSS code, or  AFAIK other code on which 
+       there is active patent enforcement
+    - there is a script  debian/cvs-changelog.sh  that shows all changes
+       done to files included in this source.
+      This should comply with GPLv2 sec 2.a  (in spirit if not in letter)
+      For this reason, the source code contains CVS directories.
+  * needs   make (>= 3.80) for 'html-chunked-$(1)' in DOCS/xml/Makefile
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Wed, 30 Mar 2004 18:04:06 +0100
+
+mplayer (0.90-3) unstable; urgency=low
+
+  * changed description to stress that the .tar.gz in Debian is different from
+    the upstream (following suggested by Edward Block)
+  * --enable-fbdirect in configure
+  * uploaded to Debian
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri,  1 Aug 2003 16:21:50 +0200
+
+mplayer (0.90-2) unstable; urgency=low
+
+  * removed all CSS code. Now mplayer use lib dvdread 
+
+ -- A Mennucc1 <mennucc1@debian.org>  Fri, 25 Jul 2003 10:50:26 +0200
+
+mplayer (0.90-1) unstable; urgency=low
+
+  * uploaded to Debian. The source code was scrutinized for 
+  licenses and copyrights. Read copyright for a detailed discussion.
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Wed, 23 Jul 2003 09:45:41 +0200
+
+mplayer (0.90) unstable; urgency=low
+
+  * version bumped
+
+ -- Gabucino <gabucino@mplayerhq.hu>  Sun, 16 Feb 2003 11:02:51 +0100
+
+mplayer (0.90rc4-1) unstable; urgency=low
+ 
+  * new rc-release
+ 
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 24 Feb 2003 18:40:13 +0100
+ 
+mplayer (0.90rc3-2) unstable; urgency=low
+ 
+  * configure: --disable-dvdnav --enable-mpdvdkit --disable-aa --disable-ggi
+    on suggestions from author(s)
+ 
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 23 Jan 2003 14:12:50 +0100
+ 
+mplayer (0.90rc3-1) unstable; urgency=low
+ 
+  * show notes in config, not template
+  * default device in Debian is usually /dev/cdrom, not /dev/dvd
+
+ -- A Mennucc1 <mennucc1@debian.org>  Mon, 20 Jan 2003 15:54:57 +0100
+ 
+mplayer (0.90rc2-5) unstable; urgency=low
+ 
+  * ftp-installer: Please read README.Debian.2
+  * other adjustments to debian/*
+  * notes in the templates were not showing, due to a missing go();
+  
+ -- A Mennucc1 <mennucc1@debian.org>  Thu, 16 Jan 2003 10:02:43 +0100
+ 
+mplayer (0.90rc2-4) unstable; urgency=low
+ 
+  * #DEBHELPER# in postinst was not working OK (not passing arguments)
+  * template mplayer/install_codecs was not showing
+  
+ -- Andrea Mennucc <debdev@Tonelli.sns.it>  Tue, 14 Jan 2003 09:48:44 +0100
+
+mplayer (0.90rc2-3) unstable; urgency=low
+ 
+   * Thanks to Nagy for teaming up. His are mime and conffile and scripts.
+  
+ -- Andrea Mennucc <debdev@Tonelli.sns.it>  Mon, 13 Jan 2003 16:46:22 +0100
+ 
+mplayer (0.90rc2-2) unstable; urgency=low
+ 
+  * pass control to debconf scripts in postinst and postrm
+  * purge debconf database on purge.
+ 
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Sun, 12 Jan 2003 15:01:38 +0100
+  
+mplayer (0.90rc3-0) unstable; urgency=low
+
+  * new release.
+
+ -- Gabucino <gabucino@mplayerhq.hu>  Mon, 16 Dec 2002 22:03:55 +0100
+
+mplayer (0.90rc1-0) unstable; urgency=low
+
+  * new release.
+  * now compiled with --enable-runtime-cpudetection for safety reasons.
+    Disable it for slightly better performance, but the package will run only
+    on the CPU the build machine had.
+  * updated package description
+
+ -- Gabucino <gabucino@mplayerhq.hu>  Sun, 24 Nov 2002 17:01:12 +0100
+
+mplayer (0.90pre9-0) unstable; urgency=low
+
+  * new release.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Mon, 21 Oct 2002 22:30:06 +0200
+
+mplayer (0.90pre8-0) unstable; urgency=low
+
+  * new release, fix version, we are not at 0.90, we're still at preX
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Thu, 19 Sep 2002 09:50:43 +0200
+
+mplayer (0.90-4) unstable; urgency=low
+
+  * Fix package building by adding BINDIR.
+
+ -- Diego Biurrun <diego@biurrun.de>  Wed,  4 Sep 2002 00:49:03 +0200
+
+mplayer (0.90-3) unstable; urgency=low
+
+  * Remove configuration files on purge.
+
+ -- Diego Biurrun <diego@biurrun.de>  Sun,  1 Sep 2002 11:03:13 +0200
+
+mplayer (0.90-2) unstable; urgency=low
+
+  * Use the confdir we compile with in the helper scripts
+    (/etc/mplayer/mplayer.conf instead of /etc/mplayer).
+
+ -- Diego Biurrun <diego@biurrun.de>  Tue, 27 Aug 2002 11:18:50 +0200
+
+mplayer (0.90-1) unstable; urgency=low
+
+  * 0.90 release including latest alsa9 fixes
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Wed,  3 Jul 2002 23:32:49 +0200
+
+mplayer (0.90pre5-1) unstable; urgency=low
+
+  * rc1 to become 0.90
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Fri,  7 Jun 2002 15:31:20 +0200
+
+mplayer (0.90pre4-1) unstable; urgency=low
+
+  * new pre-release
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Mon, 13 May 2002 08:06:34 +0200
+
+mplayer (0.90pre3-1) unstable; urgency=low
+
+  * new pre-release
+  * gtk bug fixed.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Tue, 30 Apr 2002 11:32:43 +0200
+
+mplayer (0.90pre2-1) unstable; urgency=low
+
+  * new release.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Sun, 21 Apr 2002 12:49:35 +0200
+
+mplayer (0.60-3) unstable; urgency=low
+
+  * install xvidix correctly 
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Sun, 17 Mar 2002 16:38:54 +0100
+
+mplayer (0.60-2) unstable; urgency=low
+
+  * This is meaningless, just to mark that more then 2 months have passed
+    since last release and lots of thing in mplayer have changed. 
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Thu,  7 Mar 2002 00:34:20 +0100
+
+mplayer (0.60-1) unstable; urgency=low
+
+  * Post 0.60 release.
+  * Changed installation - make install now handles codecs.conf, manpages
+  *  and fontdir, so we now use make install for those.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Fri,  4 Jan 2002 11:28:54 +0100
+
+mplayer (0.60pre2-1) unstable; urgency=low
+
+  * 0.60 pre2 release
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Fri, 28 Dec 2001 22:12:54 +0100
+
+mplayer (0.60pre1-1) unstable; urgency=low
+
+  * 0.60 pre-release.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Tue, 25 Dec 2001 00:47:36 +0100
+
+mplayer (0.50-3) unstable; urgency=low
+
+  * debian/rules: improve install routine; will include mencore if it is
+    built
+  * debian/control: remove invalid source recommends
+  * debian/copyright: mention that binary distribution is not allowed
+  * debian/rules: install /usr/share/mplayer/codecs.conf; this should
+    probably be a config file
+  * turn on fbdev option
+
+ -- Adam Di Carlo <aph@debian.org>  Sat, 15 Dec 2001 03:33:44 -0500
+
+mplayer (0.50-2) unstable; urgency=low
+
+  * gui added to package/menu 
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Wed,  7 Nov 2001 11:31:46 +0100
+
+mplayer (0.50-1) unstable; urgency=low
+
+  * 0.50 released.
+
+ -- Dariush Pietrzak <eyck@ghost.anime.pl>  Fri, 12 Oct 2001 13:26:03 +0200
+
+mplayer (0.18-4) unstable; urgency=low
+
+  * Changes to debian packaging suggested Josip Rodin 
+
+ -- Dariush Pietrzak <eyck@ghost.forumakad.pl>  Wed, 22 Aug 2001 22:40:58 +0200
+
+mplayer (0.18-3) unstable; urgency=low
+
+  * fixed templates. 
+
+ -- Dariush Pietrzak <eyck@ghost.tinet.pl>  Sat, 28 Jul 2001 09:45:45 +0200
+
+mplayer (0.18-2) unstable; urgency=low
+
+  * modified debian scripts 
+
+ -- Dariush Pietrzak <eyck@ghost.tinet.pl>  Fri, 27 Jul 2001 09:25:52 +0200
+
+mplayer (0.18-1) unstable; urgency=low
+
+  * lots of changes in mplayer 
+
+ -- Dariush Pietrzak <eyck@incubus.ar.lublin.pl>  Mon, 25 Jun 2001 15:59:18 +0200
+
+mplayer (0.17a-2) unstable; urgency=low
+
+  * mplayer.conf file, automatic menu files update 
+
+ -- Dariush Pietrzak <eyck@incubus.ar.lublin.pl>  Sun, 20 May 2001 22:50:41 +0200
+
+mplayer (0.17a-1) unstable; urgency=low
+
+  * Version change, debian scripts update (rm), maintainer switch
+
+ -- Dariush Pietrzak <eyck@incubus.ar.lublin.pl>  Thu, 17 May 2001 13:25:12 +0200
+
+mplayer (0.11pre-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- * TeLeNiEkO * <telenieko@telenieko.com>  Mon, 26 Feb 2001 12:24:04 +0100
