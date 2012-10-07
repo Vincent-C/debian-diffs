@@ -4,9 +4,22 @@ Non-official mplayer build with VA-API support.
 
 To run with VA-API output:
 
-$ mplayer -vo vaapi -va vaapi <URI>
+Default renderer:
 
-Or create a mplayer config file with the following contents:
+mplayer -vo vaapi -va vaapi <URI>
+
+<URI> can be a pathname or an URL.
+
+For OpenGL rendering:
+
+mplayer -vo vaapi:gl -va vaapi <URI>
+
+For OpenGL rendering with reflection effect:
+
+mplayer -vo vaapi:gl:reflect -va vaapi <URI>
+
+Or create a mplayer config file with the following contents so you don't have
+to pass -vo/-va to mplayer every time you run it:
 
 $ cat ~/.mplayer/config
 [default]
