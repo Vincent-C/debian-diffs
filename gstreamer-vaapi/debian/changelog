@@ -1,0 +1,45 @@
+gstreamer-vaapi (0.4.0-1~vc1) unstable; urgency=low
+
+  * Local package.
+  * New upstream release.
+  * Add debian/watch file.
+  * Fix debian/rules override_dh_autoreconf target.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 07 Oct 2012 00:22:47 -0700
+
+gstreamer-vaapi (0.3.6-0ubuntu3) quantal; urgency=low
+
+  * No-change rebuild for new version of libgstreamer-plugins-bad0.10-0.
+
+ -- Ilya Barygin <randomaction@ubuntu.com>  Mon, 17 Sep 2012 22:11:58 +0400
+
+gstreamer-vaapi (0.3.6-0ubuntu2) precise; urgency=low
+
+  * Build-depend on libgl1-mesa-dev instead of mesa-common-dev in order
+    to build the GL backend.
+
+ -- Timo Aaltonen <tjaalton@ubuntu.com>  Fri, 13 Apr 2012 00:48:30 +0300
+
+gstreamer-vaapi (0.3.6-0ubuntu1) precise; urgency=low
+
+  * Merge from debian git.
+
+ -- Timo Aaltonen <tjaalton@ubuntu.com>  Thu, 12 Apr 2012 14:18:57 +0300
+
+gstreamer-vaapi (0.3.6-1) UNRELEASED; urgency=low
+
+  * Initial release (Closes: #nnnn)
+
+ -- Timo Aaltonen <tjaalton@ubuntu.com>  Wed, 04 Jan 2012 13:50:56 +0200
+
+gstreamer-vaapi (0.3.4-0ubuntu2) precise; urgency=low
+
+  * control, rules: Move gtk-doc-tools to build-depends (FTBFS).
+
+ -- Timo Aaltonen <tjaalton@ubuntu.com>  Thu, 23 Feb 2012 18:07:26 +0200
+
+gstreamer-vaapi (0.3.4-0ubuntu1) precise; urgency=low
+
+  * Pull from unreleased debian git.
+
+ -- Timo Aaltonen <tjaalton@ubuntu.com>  Fri, 10 Feb 2012 14:35:09 +0200

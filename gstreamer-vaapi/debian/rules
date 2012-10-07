@@ -1,0 +1,49 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+export DH_OPTIONS
+
+# debian package version
+version=$(shell dpkg-parsechangelog | grep ^Version: | cut -d ' ' -f 2)
+# upstream version
+gst_version=$(shell echo $(version) | cut -d '-' -f 1)
+gst_major=0
+gst_minor=10
+gst_abi=$(gst_major).$(gst_minor)
+
+override_dh_auto_clean:
+	rm -f docs/reference/libs/libs.types gtk-doc.make
+	rm -fr docs/reference/libs/tmpl/ docs/reference/plugins/tmpl/
+	dh_auto_clean
+
+override_dh_autoreconf:
+	mkdir -p m4
+	gtkdocize || exit $?
+	dh_autoreconf
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--with-html-dir=\$${prefix}/share/doc/$(gst_pkgname) \
+		--enable-gtk-doc \
+		--enable-vaapisink-glx
+
+override_dh_install:
+	# purge .la files
+	find $(CURDIR)/debian/tmp -name "*.la" -type f -exec rm -f "{}" \;
+	# purge static libs
+	find $(CURDIR)/debian/tmp -name "*.a" -type f -exec rm -f "{}" \;
+
+	dh_install --fail-missing
+
+override_dh_makeshlibs:
+	dh_makeshlibs -V "libgstreamer-vaapi$(gst_abi) (>= $(gst_version))" -- -plibgstreamer-vaapi$(gst_abi)
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=debian/libgstreamer-vaapi$(gst_abi)/usr/lib/$(DEB_HOST_MULTIARCH)/:/usr/lib/$(DEB_HOST_MULTIARCH)/:$(LD_LIBRARY_PATH) \
+		dh_shlibdeps
+
+%:
+	dh $@ --with autoreconf --builddirectory=build/

@@ -1,0 +1,3 @@
+usr/lib/*/libgstvaapi*.so
+usr/lib/*/pkgconfig/gstreamer-vaapi*.pc
+usr/include/gstreamer-0.10/gst/vaapi/*.h

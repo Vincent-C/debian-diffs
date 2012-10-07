@@ -1,0 +1,5 @@
+Tarball: https://gitorious.org/vaapi/gstreamer-vaapi/archive-tarball/0.4.0
+
+Based off of Ubuntu package, which can be found here: https://launchpad.net/ubuntu/+source/gstreamer-vaapi
+
+This provides VAAPI-enabled gstreamer plugins, useful if your hardware supports it (e.g. Intel HD Graphics series - install i965-va-driver and vainfo packages, and run 'vainfo' to test).
