@@ -1,0 +1,5 @@
+Source: http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=15&PFid=25&Level=4&Conn=3&DownTypeID=3&GetDown=false#2
+
+This is a dkms package that automatically builds the out-of-tree rts5229 kernel module, used by Realtek's RTS5529 PCI Express Card Reader [10ec:5229].
+
+Source and .deb package can be found in package/ subdir.

@@ -1,0 +1,12 @@
+# DKMS configuration for the rts5229 kernel module.
+
+# The version is replaced at build time by dh_dkms invoked in debian/rules.
+PACKAGE_NAME="rts5229"
+PACKAGE_VERSION="#MODULE_VERSION#"
+
+BUILT_MODULE_NAME[0]="$PACKAGE_NAME"
+DEST_MODULE_LOCATION[0]="/updates/dkms"
+AUTOINSTALL=yes
+
+MAKE[0]="make default"
+CLEAN="make clean"

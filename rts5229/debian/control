@@ -1,0 +1,15 @@
+Source: rts5229
+Section: kernel
+Priority: optional
+Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Build-Depends: debhelper (>= 9), bzip2, dkms
+Standards-Version: 3.9.3
+Homepage: http://www.realtek.com.tw/Downloads/
+
+Package: rts5229-dkms
+Architecture: all
+Depends: ${misc:Depends}, dkms
+Description: Realtek PCIE RTS5229 card reader driver for Linux
+ This package provides the source code for the rts5229 kernel module, used by
+ Realtek's RTS5229 PCI Express Card Reader, which will be automatically built
+ using DKMS.

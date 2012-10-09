@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+name = rts5229
+pkgname = $(name)-dkms
+
+# Parse the package version from the changelog, borrowed from bbswitch
+version := $(shell dpkg-parsechangelog | grep '^Version:' | cut -d' ' -f2 |\
+ rev | cut -d- -f2- | rev | cut -d':' -f2)
+
+%:
+	dh $@ --with dkms
+
+build:
+
+override_dh_auto_clean:
+
+override_dh_auto_build:
+
+override_dh_dkms:
+	dh_dkms -p$(pkgname) -V $(version)
+
+override_dh_auto_install:
+	dh_installdirs -p$(pkgname) usr/src/$(name)-$(version)
+	dh_install -p$(pkgname) Makefile usr/src/$(name)-$(version)
+	dh_install -p$(pkgname) define.* usr/src/$(name)-$(version)
+	dh_install -p$(pkgname) *.c usr/src/$(name)-$(version)
+	dh_install -p$(pkgname) *.h usr/src/$(name)-$(version)
