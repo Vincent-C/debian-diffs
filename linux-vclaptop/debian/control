@@ -6,20 +6,20 @@ Standards-Version: 3.9.3
 Build-Depends: debhelper, cpio, module-init-tools, python, dpkg-dev, gcc-4.7 [amd64]
 Homepage: http://kernel.org/
 
-Package: linux-image-3.6.0-1-vclaptop-amd64
+Package: linux-image-3.6.2-1-vclaptop-amd64
 Architecture: amd64
-Provides: linux-image, linux-modules-3.6.0-1-vclaptop-amd64
+Provides: linux-image, linux-modules-3.6.2-1-vclaptop-amd64
 Pre-Depends: debconf | debconf-2.0
 Depends: module-init-tools, ${shlibs:Depends}, ${misc:Depends}, initramfs-tools [amd64] | linux-initramfs-tool [amd64]
-Suggests: linux-doc-3.6.0, grub2 [amd64] | grub-gfxboot [amd64] | grub-legacy [amd64], crda [amd64]
-Description: Linux 3.6.0 for 64-bit PCs
- The Linux kernel 3.6.0 and modules for use on PCs with AMD64 or Intel 64
+Suggests: linux-doc-3.6.2, grub2 [amd64] | grub-gfxboot [amd64] | grub-legacy [amd64], crda [amd64]
+Description: Linux 3.6.2 for 64-bit PCs
+ The Linux kernel 3.6.2 and modules for use on PCs with AMD64 or Intel 64
  processors.
 
 Package: linux-image-vclaptop-amd64
 Architecture: amd64
 Priority: extra
-Depends: linux-image-3.6.0-1-vclaptop-amd64 (= ${binary:Version}), ${misc:Depends}
+Depends: linux-image-3.6.2-1-vclaptop-amd64 (= ${binary:Version}), ${misc:Depends}
 Recommends: linux-headers-vclaptop-amd64 (= ${binary:Version})
 Description: Linux image for vclaptop on 64-bit PCs
  This metapackage depends on the latest binary image for Linux kernel on
@@ -28,20 +28,20 @@ Description: Linux image for vclaptop on 64-bit PCs
 Package: linux-headers-vclaptop-amd64
 Architecture: amd64
 Priority: extra
-Depends: linux-headers-3.6.0-1-vclaptop-amd64 (= ${binary:Version}), ${misc:Depends}
+Depends: linux-headers-3.6.2-1-vclaptop-amd64 (= ${binary:Version}), ${misc:Depends}
 Description: Linux headers for vclaptop on 64-bit PCs
  This metapackage depends on the latest binary image for Linux kernel on
  PCs with AMD64 or Intel 64 processors machines for vclaptop.
 
-Package: linux-headers-3.6.0-1-vclaptop-amd64
+Package: linux-headers-3.6.2-1-vclaptop-amd64
 Architecture: amd64
 Provides: linux-headers
 Depends: ${shlibs:Depends}, ${misc:Depends}, gcc-4.7
-Description: Header files for Linux 3.6.0-1-vclaptop-amd64
+Description: Header files for Linux 3.6.2-1-vclaptop-amd64
  This package provides the architecture-specific kernel header files for
- Linux kernel 3.6.0-1-vclaptop-amd64, generally used for building
+ Linux kernel 3.6.2-1-vclaptop-amd64, generally used for building
  out-of-tree kernel modules.  These files are going to be installed into
- /usr/src/linux-headers-3.6.0-1-vclaptop-amd64, and can be used for
+ /usr/src/linux-headers-3.6.2-1-vclaptop-amd64, and can be used for
  building modules that load into the kernel provided by the
- linux-image-3.6.0-1-vclaptop-amd64 package.
+ linux-image-3.6.2-1-vclaptop-amd64 package.
 

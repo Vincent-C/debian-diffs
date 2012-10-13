@@ -1,7 +1,7 @@
 # Debian specific patches
-debian/version.patch
 debian/kernelvariables.patch
 debian/doc-build-parallel.patch
+debian/x86-memtest-WARN-if-bad-RAM-found.patch
 
 # My own (relatively small) patchset
 vclaptop/march-native.patch

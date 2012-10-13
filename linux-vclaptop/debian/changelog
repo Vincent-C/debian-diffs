@@ -1,3 +1,12 @@
+linux-vclaptop (3.6.2-1) unstable; urgency=low
+
+  * Local package (linux 3.6.2); custom kernel build.
+  * New upstream release.
+    - Includes "ALSA: hda - use LPIB for delay estimation"; this fixes audio
+      distortion encounted with certain Intel HDA hardware in kernel 3.6.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 12 Oct 2012 18:10:43 -0700
+
 linux-vclaptop (3.6.0-1) unstable; urgency=low
 
   * Local package (linux 3.6.0); custom kernel build.
@@ -15,3 +24,10 @@ linux-vclaptop (3.5.4-1) unstable; urgency=low
       to fix iTCO_wdt driver regression in linux 3.5.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 15 Sep 2012 02:29:43 -0700
+
+linux-vclaptop (3.4.10-1) unstable; urgency=low
+
+  * Local package (linux 3.4.10); custom kernel build.
+  * Initial release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 02 Sep 2012 23:26:43 -0700

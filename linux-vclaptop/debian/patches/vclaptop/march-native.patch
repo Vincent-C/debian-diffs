@@ -5,7 +5,7 @@ instruction sets.
 
 --- a/Makefile
 +++ b/Makefile
-@@ -556,7 +556,7 @@
+@@ -560,7 +560,7 @@
  ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
  KBUILD_CFLAGS	+= -Os
  else
