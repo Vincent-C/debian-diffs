@@ -18,3 +18,10 @@ Section "Device"
     Driver      "intel"
     Option      "AccelMethod"  "uxa"
 EndSection
+
+
+Changelog:
+2.20.9 -> 2.20.12:
+Fix for a regression introduced in 2.20.10, i.e. fix component-alpha rendering
+on IvyBridge, for example subpixel antialiased glyphs.
+(https://bugs.freedesktop.org/show_bug.cgi?id=56037)
