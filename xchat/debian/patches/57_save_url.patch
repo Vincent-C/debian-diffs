@@ -1,0 +1,138 @@
+Write to temporary file and then rename.
+Same approach like I did for bug 463072.
+Fixes loss of data when disk is full.
+
+diff -ruN -x '*.png' -x '*.jpg' -x '*.ogg' -x '*_image_archive' -x '*.swp' ../orig/xchat-2.8.8/src/common/tree.c ./src/common/tree.c
+--- ../orig/xchat-2.8.8/src/common/tree.c	2009-08-16 09:40:16.000000000 +0000
++++ ./src/common/tree.c	2012-09-30 12:27:09.000000000 +0000
+@@ -176,19 +176,27 @@
+ 	return 1;
+ }
+ 
+-void
+-tree_foreach (tree *t, tree_traverse_func *func, void *data)
++int
++tree_foreach_int (tree *t, tree_traverse_func *func, void *data)
+ {
+ 	int j;
+ 
+ 	if (!t || !t->array)
+-		return;
++		return 1;
+ 
+ 	for (j = 0; j < t->elements; j++)
+ 	{
+ 		if (!func (t->array[j], data))
+-			break;
++			return 0;
+ 	}
++
++	return 1;
++}
++
++void
++tree_foreach (tree *t, tree_traverse_func *func, void *data)
++{
++	tree_foreach_int( t, func, data );
+ }
+ 
+ int
+diff -ruN -x '*.png' -x '*.jpg' -x '*.ogg' -x '*_image_archive' -x '*.swp' ../orig/xchat-2.8.8/src/common/tree.h ./src/common/tree.h
+--- ../orig/xchat-2.8.8/src/common/tree.h	2009-08-16 09:40:16.000000000 +0000
++++ ./src/common/tree.h	2012-09-30 12:27:09.000000000 +0000
+@@ -11,6 +11,7 @@
+ void *tree_find (tree *t, void *key, tree_cmp_func *cmp, void *data, int *pos);
+ int tree_remove (tree *t, void *key, int *pos);
+ void tree_foreach (tree *t, tree_traverse_func *func, void *data);
++int tree_foreach_int (tree *t, tree_traverse_func *func, void *data);
+ int tree_insert (tree *t, void *key);
+ 
+ #endif
+diff -ruN -x '*.png' -x '*.jpg' -x '*.ogg' -x '*_image_archive' -x '*.swp' ../orig/xchat-2.8.8/src/common/url.c ./src/common/url.c
+--- ../orig/xchat-2.8.8/src/common/url.c	2009-08-16 09:40:16.000000000 +0000
++++ ./src/common/url.c	2012-09-30 12:27:09.000000000 +0000
+@@ -50,11 +50,12 @@
+ static int
+ url_save_cb (char *url, FILE *fd)
+ {
+-	fprintf (fd, "%s\n", url);
++	if( fprintf (fd, "%s\n", url) <= 0 )
++		return FALSE;
+ 	return TRUE;
+ }
+ 
+-void
++int
+ url_save (const char *fname, const char *mode, gboolean fullpath)
+ {
+ 	FILE *fd;
+@@ -64,10 +65,18 @@
+ 	else
+ 		fd = xchat_fopen_file (fname, mode, 0);
+ 	if (fd == NULL)
+-		return;
++		return FALSE;
++
++	if( tree_foreach_int (url_tree, (tree_traverse_func *)url_save_cb, fd) == 0 )
++	{
++		fclose (fd);
++		return FALSE;
++	}
+ 
+-	tree_foreach (url_tree, (tree_traverse_func *)url_save_cb, fd);
+-	fclose (fd);
++	if( fclose (fd) )
++		return FALSE;
++
++	return TRUE;
+ }
+ 
+ void
+diff -ruN -x '*.png' -x '*.jpg' -x '*.ogg' -x '*_image_archive' -x '*.swp' ../orig/xchat-2.8.8/src/common/url.h ./src/common/url.h
+--- ../orig/xchat-2.8.8/src/common/url.h	2009-08-16 09:40:16.000000000 +0000
++++ ./src/common/url.h	2012-09-30 12:27:09.000000000 +0000
+@@ -11,7 +11,7 @@
+ #define WORD_DIALOG  -1
+ 
+ void url_clear (void);
+-void url_save (const char *fname, const char *mode, gboolean fullpath);
++int url_save (const char *fname, const char *mode, gboolean fullpath);
+ void url_autosave (void);
+ int url_check_word (char *word, int len);
+ void url_check_line (char *buf, int len);
+--- ../orig/xchat-2.8.8/./src/fe-gtk/urlgrab.c	2010-05-16 03:16:37.000000000 +0000
++++ ./src/fe-gtk/urlgrab.c	2012-09-30 12:36:04.000000000 +0000
+@@ -136,8 +136,31 @@
+ static void
+ url_save_callback (void *arg1, char *file)
+ {
+-	if (file)
+-		url_save (file, "w", TRUE);
++	if( ! file )
++		return;
++
++	char *file_tmp = malloc( strlen( file ) + strlen( ".bug147832" ) + 1 );
++	if( ! file_tmp )
++		return;
++
++	strcpy( file_tmp, file );
++	strcat( file_tmp, ".bug147832" );
++
++	if( url_save( file_tmp, "w", TRUE ) != TRUE )
++	{
++		fprintf( stderr, "url_save_callback: url_save failed (%s)\n", file_tmp );
++		free( file_tmp );
++		return;
++	}
++
++	if( xchat_rename_file( file_tmp, file, XOF_FULLPATH ) != 0 )
++	{
++		perror( "url_save_callback: xchat_rename_file() failed" );
++		free( file_tmp );
++		return;
++	}
++
++	free( file_tmp );
+ }
+ 
+ static void

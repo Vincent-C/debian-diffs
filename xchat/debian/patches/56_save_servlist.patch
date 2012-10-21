@@ -1,0 +1,129 @@
+Write to temporary file and then rename.
+Same approach like I did for bug 463072.
+Fixes loss of data when disk is full.
+Closes: #147832.
+
+Index: xchat-2.8.8/src/common/servlist.c
+===================================================================
+--- xchat-2.8.8.orig/src/common/servlist.c	2012-09-30 12:23:53.000000000 +0000
++++ xchat-2.8.8/src/common/servlist.c	2012-09-30 12:23:55.000000000 +0000
+@@ -1072,6 +1072,7 @@
+ servlist_save (void)
+ {
+ 	FILE *fp;
++	int nb;
+ 	char buf[256];
+ 	ircnet *net;
+ 	ircserver *serv;
+@@ -1080,12 +1081,12 @@
+ #ifndef WIN32
+ 	int first = FALSE;
+ 
+-	snprintf (buf, sizeof (buf), "%s/servlist_.conf", get_xdir_fs ());
++	snprintf (buf, sizeof (buf), "%s/servlist_.conf.bug147832", get_xdir_fs ());
+ 	if (access (buf, F_OK) != 0)
+ 		first = TRUE;
+ #endif
+ 
+-	fp = xchat_fopen_file ("servlist_.conf", "w", 0);
++	fp = xchat_fopen_file ("servlist_.conf.bug147832", "w", 0);
+ 	if (!fp)
+ 		return FALSE;
+ 
+@@ -1093,32 +1094,32 @@
+ 	if (first)
+ 		chmod (buf, 0600);
+ #endif
+-	fprintf (fp, "v="PACKAGE_VERSION"\n\n");
++	nb = fprintf (fp, "v="PACKAGE_VERSION"\n\n");
+ 
+ 	list = network_list;
+ 	while (list)
+ 	{
+ 		net = list->data;
+ 
+-		fprintf (fp, "N=%s\n", net->name);
++		if( nb > 0 ) nb = fprintf (fp, "N=%s\n", net->name);
+ 		if (net->nick)
+-			fprintf (fp, "I=%s\n", net->nick);
++			if( nb > 0 ) nb = fprintf (fp, "I=%s\n", net->nick);
+ 		if (net->nick2)
+-			fprintf (fp, "i=%s\n", net->nick2);
++			if( nb > 0 ) nb = fprintf (fp, "i=%s\n", net->nick2);
+ 		if (net->user)
+-			fprintf (fp, "U=%s\n", net->user);
++			if( nb > 0 ) nb = fprintf (fp, "U=%s\n", net->user);
+ 		if (net->real)
+-			fprintf (fp, "R=%s\n", net->real);
++			if( nb > 0 ) nb = fprintf (fp, "R=%s\n", net->real);
+ 		if (net->pass)
+-			fprintf (fp, "P=%s\n", net->pass);
++			if( nb > 0 ) nb = fprintf (fp, "P=%s\n", net->pass);
+ 		if (net->autojoin)
+-			fprintf (fp, "J=%s\n", net->autojoin);
++			if( nb > 0 ) nb = fprintf (fp, "J=%s\n", net->autojoin);
+ 		if (net->nickserv)
+-			fprintf (fp, "B=%s\n", net->nickserv);
++			if( nb > 0 ) nb = fprintf (fp, "B=%s\n", net->nickserv);
+ 		if (net->encoding && strcasecmp (net->encoding, "System") &&
+ 			 strcasecmp (net->encoding, "System default"))
+ 		{
+-			fprintf (fp, "E=%s\n", net->encoding);
++			if( nb > 0 ) nb = fprintf (fp, "E=%s\n", net->encoding);
+ 			if (!servlist_check_encoding (net->encoding))
+ 			{
+ 				snprintf (buf, sizeof (buf), _("Warning: \"%s\" character set is unknown. No conversion will be applied for network %s."),
+@@ -1128,28 +1129,44 @@
+ 		}
+ 
+ 		if (net->command)
+-			token_foreach (net->command, '\n', servlist_write_ccmd, fp);
++			if( nb > 0 )
++				if( token_foreach (net->command, '\n', servlist_write_ccmd, fp) != TRUE )
++					nb = -1;
+ 
+-		fprintf (fp, "F=%d\nD=%d\n", net->flags, net->selected);
++		if( nb > 0 ) nb = fprintf (fp, "F=%d\nD=%d\n", net->flags, net->selected);
+ 
+ 		hlist = net->servlist;
+ 		while (hlist)
+ 		{
+ 			serv = hlist->data;
+-			fprintf (fp, "S=%s\n", serv->hostname);
++			if( nb > 0 ) nb = fprintf (fp, "S=%s\n", serv->hostname);
+ 			hlist = hlist->next;
+ 		}
+ 
+-		if (fprintf (fp, "\n") < 1)
+-		{
+-			fclose (fp);
+-			return FALSE;
+-		}
++		if( nb > 0 ) nb = fprintf (fp, "\n");
+ 
+ 		list = list->next;
+ 	}
+ 
+-	fclose (fp);
++	if( nb <= 0 )
++	{
++		fprintf( stderr, "servlist_save: fprintf() failed\n" );
++		fclose( fp );
++		return FALSE;
++	}
++
++	if( fclose (fp) != 0 )
++	{
++		perror( "servlist_save: fclose() failed" );
++		return FALSE;
++	}
++
++	if( xchat_rename_file( "servlist_.conf.bug147832", "servlist_.conf", 0 ) != 0 )
++	{
++		perror( "servlist_save: xchat_rename_file() failed" );
++		return FALSE;
++	}
++
+ 	return TRUE;
+ }
+ 

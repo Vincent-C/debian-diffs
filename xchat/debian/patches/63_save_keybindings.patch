@@ -1,0 +1,136 @@
+Write to temporary file and then rename.
+Same approach like I did for bug 463072.
+Fixes loss of data when disk is full.
+
+--- ../orig/xchat-2.8.8/./src/fe-gtk/fkeys.c	2009-08-16 09:40:18.000000000 +0000
++++ ./src/fe-gtk/fkeys.c	2012-09-30 14:09:09.000000000 +0000
+@@ -837,22 +837,35 @@
+ static void
+ key_save_kbs (char *fn)
+ {
+-	int fd, i;
++	int fd, i, rc;
++	ssize_t nb;
+ 	char buf[512];
++	char *file_tmp = NULL;
+ 	struct key_binding *kb;
+ 
+ 	if (!fn)
+-		fd = xchat_open_file ("keybindings.conf", O_CREAT | O_TRUNC | O_WRONLY,
++		fd = xchat_open_file ("keybindings.conf.bug147832", O_CREAT | O_TRUNC | O_WRONLY,
+ 									 0x180, XOF_DOMODE);
+ 	else
+-		fd = xchat_open_file (fn, O_CREAT | O_TRUNC | O_WRONLY,
++	{
++		file_tmp = malloc( strlen( fn ) + strlen( ".bug147832" ) + 1 );
++		if( ! file_tmp )
++			return;
++		strcpy( file_tmp, fn );
++		strcat( file_tmp, ".bug147832" );
++
++		fd = xchat_open_file (file_tmp, O_CREAT | O_TRUNC | O_WRONLY,
+ 									 0x180, XOF_DOMODE | XOF_FULLPATH);
++	}
++
+ 	if (fd < 0)
+ 	{
+ 		fe_message (_("Error opening keys config file\n"), FE_MSG_ERROR);
++		if( file_tmp )
++			free( file_tmp );
+ 		return;
+ 	}
+-	write (fd, buf,
++	nb = write (fd, buf,
+ 			 snprintf (buf, 510, "# XChat key bindings config file\n\n"));
+ 
+ 	kb = keys_root;
+@@ -869,41 +882,77 @@
+ 		if (kb->mod & STATE_CTRL)
+ 		{
+ 			i++;
+-			write (fd, "C", 1);
++			if( nb > 0 ) nb = write (fd, "C", 1);
+ 		}
+ 		if (kb->mod & STATE_ALT)
+ 		{
+ 			i++;
+-			write (fd, "A", 1);
++			if( nb > 0 ) nb = write (fd, "A", 1);
+ 		}
+ 		if (kb->mod & STATE_SHIFT)
+ 		{
+ 			i++;
+-			write (fd, "S", 1);
++			if( nb > 0 ) nb = write (fd, "S", 1);
+ 		}
+ 		if (i == 0)
+-			write (fd, "None\n", 5);
++		{
++			if( nb > 0 ) nb = write (fd, "None\n", 5);
++		}
+ 		else
+-			write (fd, "\n", 1);
++			if( nb > 0 ) nb = write (fd, "\n", 1);
+ 
+-		write (fd, buf, snprintf (buf, 510, "%s\n%s\n", kb->keyname,
++		if( nb > 0 ) nb = write (fd, buf, snprintf (buf, 510, "%s\n%s\n", kb->keyname,
+ 										  key_actions[kb->action].name));
+ 		if (kb->data1 && kb->data1[0])
+-			write (fd, buf, snprintf (buf, 510, "D1:%s\n", kb->data1));
++		{
++			if( nb > 0 ) nb = write (fd, buf, snprintf (buf, 510, "D1:%s\n", kb->data1));
++		}
+ 		else
+-			write (fd, "D1!\n", 4);
++			if( nb > 0 ) nb = write (fd, "D1!\n", 4);
+ 
+ 		if (kb->data2 && kb->data2[0])
+-			write (fd, buf, snprintf (buf, 510, "D2:%s\n", kb->data2));
++		{
++			if( nb > 0 ) nb = write (fd, buf, snprintf (buf, 510, "D2:%s\n", kb->data2));
++		}
+ 		else
+-			write (fd, "D2!\n", 4);
++			if( nb > 0 ) nb = write (fd, "D2!\n", 4);
+ 
+-		write (fd, "\n", 1);
++		if( nb > 0 ) nb = write (fd, "\n", 1);
+ 
+ 		kb = kb->next;
+ 	}
+ 
+-	close (fd);
++	if( nb <= 0 )
++	{
++		fprintf( stderr, "key_save_kbs: write() failed\n" );
++		close( fd );
++		if( file_tmp )
++			free( file_tmp );
++		return;
++	}
++
++	if( close (fd) != 0 )
++	{
++		if( file_tmp )
++			free( file_tmp );
++		return;
++	}
++
++	if( ! fn )
++		rc = xchat_rename_file( "keybindings.conf.bug147832", "keybindings.conf", XOF_DOMODE );
++	else
++		rc = xchat_rename_file( file_tmp, fn, XOF_DOMODE | XOF_FULLPATH );
++
++	if( rc != 0 )
++	{
++		perror( "key_save_kbs: xchat_rename_file() failed" );
++		if( file_tmp )
++			free( file_tmp );
++		return;
++	}
++
++	if( file_tmp )
++		free( file_tmp );
+ }
+ 
+ /* I just know this is going to be a nasty parse, if you think it's bugged

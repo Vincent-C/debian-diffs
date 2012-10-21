@@ -1,0 +1,79 @@
+Write to temporary file and then rename.
+Same approach like I did for bug 463072.
+Fixes loss of data when disk is full.
+
+--- ../orig/xchat-2.8.8/./src/fe-gtk/chanlist.c	2009-08-16 09:40:18.000000000 +0000
++++ ./src/fe-gtk/chanlist.c	2012-09-30 13:09:03.000000000 +0000
+@@ -480,6 +480,7 @@
+ {
+ 	time_t t = time (0);
+ 	int fh, users;
++	ssize_t nb;
+ 	char *chan, *topic;
+ 	char buf[1024];
+ 	GtkTreeModel *model = GET_MODEL (serv);
+@@ -488,14 +489,25 @@
+ 	if (!file)
+ 		return;
+ 
+-	fh = xchat_open_file (file, O_TRUNC | O_WRONLY | O_CREAT, 0600,
++	char *file_tmp = malloc( strlen( file ) + strlen( ".bug147832" ) + 1 );
++	if( ! file_tmp )
++		return;
++
++	strcpy( file_tmp, file );
++	strcat( file_tmp, ".bug147832" );
++
++	fh = xchat_open_file (file_tmp, O_TRUNC | O_WRONLY | O_CREAT, 0600,
+ 								 XOF_DOMODE | XOF_FULLPATH);
+ 	if (fh == -1)
++	{
++		perror( "chanlist_filereq_done: xchat_open_file failed" );
++		free( file_tmp );
+ 		return;
++	}
+ 
+ 	snprintf (buf, sizeof buf, "XChat Channel List: %s - %s\n",
+ 				 serv->servername, ctime (&t));
+-	write (fh, buf, strlen (buf));
++	nb = write (fh, buf, strlen (buf));
+ 
+ 	if (gtk_tree_model_get_iter_first (model, &iter))
+ 	{
+@@ -508,12 +520,34 @@
+ 			snprintf (buf, sizeof buf, "%-16s %-5d%s\n", chan, users, topic);
+ 			g_free (chan);
+ 			g_free (topic);
+-			write (fh, buf, strlen (buf));
++			if( nb > 0 ) nb = write (fh, buf, strlen (buf));
+ 		}
+ 		while (gtk_tree_model_iter_next (model, &iter));
+ 	}
+ 
+-	close (fh);
++	if( nb <= 0 )
++	{
++		fprintf( stderr, "chanlist_filereq_done: write() failed\n" );
++		close( fh );
++		free( file_tmp );
++		return;
++	}
++
++	if( close (fh) != 0 )
++	{
++		perror( "chanlist_filereq_done: close() failed" );
++		free( file_tmp );
++		return;
++	}
++
++	if( xchat_rename_file( file_tmp, file, XOF_DOMODE | XOF_FULLPATH ) != 0 )
++	{
++		perror( "chanlist_filereq_done: xchat_rename_file() failed" );
++		free( file_tmp );
++		return;
++	}
++
++	free( file_tmp );
+ }
+ 
+ static void

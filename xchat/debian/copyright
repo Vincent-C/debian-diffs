@@ -1,0 +1,166 @@
+This package was debianized by David N. Welton davidw@cks.com on
+Sun, 27 Sep 1998 14:15:53 -0700.
+
+It was downloaded from:
+
+    http://xchat.org/
+
+Upstream author:
+
+    Peter Zelezny <zed@xchat.org>
+    and many other authors
+
+Copyright:
+
+    Copyright (c) 1998-2008 Peter Zelezny
+    Copyright (C) 2004-2006 Christian Hammond
+    Copyright (C) 2002 Evan Martin
+    Copyright (c) 2002-2003 Gustavo Niemeyer <niemeyer@conectiva.com>
+    Copyright (C) 2004 Scott James Remnant <scott@netsplit.com>.
+    Copyright (C) 1997-2001, Michael Jennings
+    Copyright (C) 2006 Claessens Xavier
+    Copyright (C) 2006 Damjan Jovanovic
+    Copyright (C) 2002-2007 Daniel P. Stasinski
+    Copyright (C) 2000  --  DaP <profeta@freemail.c3.hu>
+    Copyright (C) 1984-2008 Free Software Foundation, Inc.
+    Copyright (C) 1994 X Consortium
+    Copyright (C) 1995-1997, 2000-2006 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
+
+License:
+
+    This program is released under the GPL v2 with the additional exemption
+    that compiling, linking, and/or using OpenSSL is allowed. You may
+    provide binary packages linked to the OpenSSL libraries, provided that
+    all other requirements of the GPL are met. 
+    See file COPYING for details.
+
+License:
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Library General Public License as published
+    by the Free Software Foundation; either version 2, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public
+    License along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+    USA.
+
+License:
+
+    The GNU C Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    The GNU C Library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with the GNU C Library; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+
+License:
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+    MA 02110-1301, USA.
+
+License:
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+    MA 02110-1301, USA.
+
+License:
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to
+    deal in the Software without restriction, including without limitation the
+    rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+    sell copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies of the Software, its documentation and marketing & publicity
+    materials, and acknowledgment shall be given in the documentation, materials
+    and software packages that this Software was used.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+    THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License:
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to
+    deal in the Software without restriction, including without limitation the
+    rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+    sell copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+   
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+   
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+    X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+    AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNEC-
+    TION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   
+    Except as contained in this notice, the name of the X Consortium shall not
+    be used in advertising or otherwise to promote the sale, use or other deal-
+    ings in this Software without prior written authorization from the X Consor-
+    tium.
+   
+    FSF changes to this file are in the public domain.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License may be found in `/usr/share/common-licenses/GPL'.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License v2 may be found in `/usr/share/common-licenses/GPL-2'.
+
+On Debian GNU/Linux systems, the complete text of the GNU Lesser General
+Public License can be found in `/usr/share/common-licenses/LGPL'.
+
+On Debian GNU/Linux systems, the complete text of the GNU Lesser General
+Public License v2 can be found in `/usr/share/common-licenses/LGPL-2'.
+
+On Debian GNU/Linux systems, the complete text of the GNU Lesser General
+Public License v2.1 can be found in `/usr/share/common-licenses/LGPL-2.1'.
+

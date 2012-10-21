@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+if [ -d /usr/share/doc/xchat -a ! -L /usr/share/doc/xchat ]; then
+  rm -rf /usr/share/doc/xchat
+  ln -sf xchat-common /usr/share/doc/xchat
+fi
+
+#DEBHELPER#

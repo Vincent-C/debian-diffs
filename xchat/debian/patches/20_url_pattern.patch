@@ -1,0 +1,16 @@
+## 20_url_pattern.dpatch by ???
+##
+## DP: Fix url patterns
+--- a/src/fe-gtk/xtext.c
++++ b/src/fe-gtk/xtext.c
+@@ -1868,7 +1868,9 @@
+ 		len++;
+ 	}
+ 
+-	if (len > 0 && word[len-1]=='.')
++	/* ignore trailing dots and commas. */
++	/* FIXME: locales? */
++	while (len > 0 && (word[len-1]=='.' || word[len-1]==',' || word[len-1]==';'))
+ 	{
+ 		len--;
+ 		str--;

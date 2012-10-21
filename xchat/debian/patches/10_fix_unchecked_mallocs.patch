@@ -1,0 +1,14 @@
+## 10_fix_unchecked_mallocs.dpatch by Paul Wise <pabs3@bonedaddy.net>
+##
+## DP: Fix unchecked mallocs throughout the source code.
+--- a/src/common/xchat.c
++++ b/src/common/xchat.c
+@@ -342,6 +342,8 @@
+ 	session *sess;
+ 
+ 	sess = malloc (sizeof (struct session));
++	if(sess == NULL)
++		return NULL;
+ 	memset (sess, 0, sizeof (struct session));
+ 
+ 	sess->server = serv;

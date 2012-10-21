@@ -1,0 +1,73 @@
+## 41_casecomp.dpatch by ???
+##
+## DP: Downloaded from http://www.phys.ethz.ch/~mweyland/casecomp.patch
+## DP: this will modify tab completion so that uppercase letters will
+## DP: only match to uppercase, while lowercase match bot
+--- a/src/common/cfgfiles.c
++++ b/src/common/cfgfiles.c
+@@ -387,6 +387,8 @@
+ 	{"completion_sort", P_OFFINT (completion_sort), TYPE_INT},
+ 	{"completion_suffix", P_OFFSET (nick_suffix), TYPE_STR},
+ 
++	{"completion_cinsens", P_OFFINT (completion_cinsens), TYPE_BOOL},
++
+ 	{"dcc_auto_chat", P_OFFINT (autodccchat), TYPE_INT},
+ 	{"dcc_auto_resume", P_OFFINT (autoresume), TYPE_BOOL},
+ 	{"dcc_auto_send", P_OFFINT (autodccsend), TYPE_INT},
+--- a/src/common/util.c
++++ b/src/common/util.c
+@@ -1350,7 +1350,7 @@
+ 	register unsigned char *s2 = (unsigned char *) str2;
+ 	register int res;
+ 
+-	while ((res = rfc_tolower (*s1) - rfc_tolower (*s2)) == 0)
++	while ((res = hal_casecomp(s1,s2)) == 0)
+ 	{
+ 		s1++;
+ 		s2++;
+@@ -1361,6 +1361,25 @@
+ 	return (res);
+ }
+ 
++int
++hal_casecomp ( char *s1, char *s2)
++{
++
++/* This function, called by rfc_ncasecmp, enables enhanced tab
++ * completition: It completes te<tab> to Test but not Te<tab> to
++ * test2. (This is useful if you have two users Test1 and test2 in
++ * the channel. Can be toggeled wit /set completion_cinsens (0|1)
++ *
++ *  -- Mathias Weyland <mathias@weyland.ch>, 6.9.2004
++*/
++	if((*s2 - rfc_tolower (*s2)) || prefs.completion_cinsens)
++	{
++		return (rfc_tolower (*s1) - rfc_tolower (*s2));
++	} else {
++		return (*s1 - *s2);
++	}
++}
++
+ const unsigned char rfc_tolowertab[] =
+ 	{ 0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa,
+ 	0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x14,
+--- a/src/common/util.h
++++ b/src/common/util.h
+@@ -26,6 +26,7 @@
+ void for_files (char *dirname, char *mask, void callback (char *file));
+ int rfc_casecmp (const char *, const char *);
+ int rfc_ncasecmp (char *, char *, int);
++int hal_casecomp ( char *s1, char *s2);
+ int buf_get_line (char *, char **, int *, int len);
+ char *nocasestrstr (const char *text, const char *tofind);
+ char *country (char *);
+--- a/src/common/xchat.h
++++ b/src/common/xchat.h
+@@ -214,6 +214,7 @@
+ 	unsigned int userlistbuttons;
+ 	unsigned int showhostname_in_userlist;
+ 	unsigned int nickcompletion;
++	unsigned int completion_cinsens;
+ 	unsigned int completion_amount;
+ 	unsigned int tabchannels;
+ 	unsigned int paned_userlist;

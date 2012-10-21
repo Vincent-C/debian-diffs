@@ -1,0 +1,7 @@
+Since release 2.6.8-3 we're not depending on python or tcl anymore,
+but we're recommending them.
+However plugins are still loaded on xchat start, so you'll get a brief
+warning if you don't have tcl or python installed, don't worry and just
+ignore it.
+
+Davide Puricelli <evo@debian.org>

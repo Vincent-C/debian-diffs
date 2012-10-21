@@ -1,0 +1,82 @@
+## DP: write ignore.conf.bug463072 and rename to ignore.conf, fixes #463072.
+--- a/src/common/cfgfiles.c
++++ b/src/common/cfgfiles.c
+@@ -1093,6 +1093,20 @@
+ 		return open (buf, flags | OFLAGS);
+ }
+ 
++int
++xchat_rename_file (char *oldpath, char *newpath, int xof_flags)
++{
++	char bufoldpath[1024];
++	char bufnewpath[1024];
++
++	if (xof_flags & XOF_FULLPATH)
++		return rename (oldpath, newpath);
++
++	snprintf (bufoldpath, sizeof (bufoldpath), "%s/%s", get_xdir_fs (), oldpath);
++	snprintf (bufnewpath, sizeof (bufnewpath), "%s/%s", get_xdir_fs (), newpath);
++	return rename (bufoldpath, bufnewpath);
++}
++
+ FILE *
+ xchat_fopen_file (const char *file, const char *mode, int xof_flags)
+ {
+--- a/src/common/cfgfiles.h
++++ b/src/common/cfgfiles.h
+@@ -25,6 +25,7 @@
+ void list_addentry (GSList ** list, char *cmd, char *name);
+ int cmd_set (session *sess, char *tbuf, char *word[], char *word_eol[]);
+ int xchat_open_file (char *file, int flags, int mode, int xof_flags);
++int xchat_rename_file (char *oldpath, char *newpath, int xof_flags);
+ FILE *xchat_fopen_file (const char *file, const char *mode, int xof_flags);
+ #define XOF_DOMODE 1
+ #define XOF_FULLPATH 2
+--- a/src/common/ignore.c
++++ b/src/common/ignore.c
+@@ -304,11 +304,12 @@
+ ignore_save ()
+ {
+ 	char buf[1024];
+-	int fh;
++	int fh, rc;
++	ssize_t nb;
+ 	GSList *temp = ignore_list;
+ 	struct ignore *ig;
+ 
+-	fh = xchat_open_file ("ignore.conf", O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
++	fh = xchat_open_file ("ignore.conf.bug463072", O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
+ 	if (fh != -1)
+ 	{
+ 		while (temp)
+@@ -318,11 +319,28 @@
+ 			{
+ 				snprintf (buf, sizeof (buf), "mask = %s\ntype = %d\n\n",
+ 							 ig->mask, ig->type);
+-				write (fh, buf, strlen (buf));
++				nb = write (fh, buf, strlen (buf));
++				if( nb == (ssize_t)-1 )
++				{
++					perror( "ignore_save: write() failed" );
++					close( fh );
++					return;
++				}
+ 			}
+ 			temp = temp->next;
+ 		}
+-		close (fh);
++		rc = close (fh);
++		if( rc != 0 )
++		{
++			perror( "ignore_save: close() failed" );
++			return;
++		}
++		rc = xchat_rename_file( "ignore.conf.bug463072", "ignore.conf", XOF_DOMODE );
++		if( rc != 0 )
++		{
++			perror( "ignore_save: xchat_rename_file() failed" );
++			return;
++		}
+ 	}
+ 
+ }

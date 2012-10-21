@@ -1,0 +1,24 @@
+## 52_fix_implicit_declaration.dpatch by Fabrice Coutadeur <fabricesp@ubuntu.com>
+##
+## Origin: http://lists.opensuse.org/opensuse-commit/2009-07/msg00981.html
+## Description: Fix "implicitly converted to pointer at ignoregui.c:192" error.
+## This fixes a FTBFS in ia64 and amd64
+--- a/src/fe-gtk/ignoregui.c
++++ b/src/fe-gtk/ignoregui.c
+@@ -36,6 +36,7 @@
+ #include <gtk/gtkliststore.h>
+ #include <gtk/gtktreeview.h>
+ #include <gtk/gtktreeselection.h>
++#include <gtk/gtkcelllayout.h>
+ #include <gtk/gtkcellrenderertext.h>
+ #include <gtk/gtkcellrenderertoggle.h>
+ 
+@@ -187,7 +188,7 @@
+ 	for (col_id=0; (col = gtk_tree_view_get_column (GTK_TREE_VIEW (view), col_id));
+ 	     col_id++)
+ 	{
+-		GList *list = gtk_tree_view_column_get_cell_renderers (col);
++		GList *list = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (col));
+ 		GList *tmp;
+ 
+ 		for (tmp = list; tmp; tmp = tmp->next)

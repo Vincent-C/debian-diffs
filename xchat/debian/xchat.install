@@ -1,0 +1,5 @@
+debian/tmp/usr/share/applications/xchat.desktop ../xchat/usr/share/applications
+debian/tmp/usr/share/pixmaps/xchat.png
+debian/tmp/usr/bin/xchat ../xchat/usr/bin
+debian/tmp/usr/lib/xchat/plugins/*.so
+xchat.xpm ../xchat/usr/share/icons/

@@ -1,0 +1,47 @@
+--- a/src/common/servlist.c
++++ b/src/common/servlist.c
+@@ -24,7 +24,7 @@
+ #include <unistd.h>
+ 
+ #include "xchat.h"
+-#include <glib/ghash.h>
++#include <glib.h>
+ 
+ #include "cfgfiles.h"
+ #include "fe.h"
+--- a/src/common/text.c
++++ b/src/common/text.c
+@@ -28,7 +28,7 @@
+ #include <sys/mman.h>
+ 
+ #include "xchat.h"
+-#include <glib/ghash.h>
++#include <glib.h>
+ #include "cfgfiles.h"
+ #include "chanopt.h"
+ #include "plugin.h"
+--- a/src/common/util.c
++++ b/src/common/util.c
+@@ -39,7 +39,7 @@
+ #include <errno.h>
+ #include "xchat.h"
+ #include "xchatc.h"
+-#include <glib/gmarkup.h>
++#include <glib.h>
+ #include <ctype.h>
+ #include "util.h"
+ #include "../../config.h"
+--- a/src/common/xchat.h
++++ b/src/common/xchat.h
+@@ -1,10 +1,6 @@
+ #include "../../config.h"
+ 
+-#include <glib/gslist.h>
+-#include <glib/glist.h>
+-#include <glib/gutils.h>
+-#include <glib/giochannel.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <time.h>			/* need time_t */
+ 
+ #ifndef XCHAT_H

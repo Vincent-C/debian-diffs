@@ -1,0 +1,21 @@
+# Patch by Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -1194,7 +1194,7 @@
+ 
+ #: src/common/textevents.h:423
+ msgid "%C22*%O$tYou are now known as $2"
+-msgstr "%C22*%O$tVous-vous appelez maintenant $2"
++msgstr "%C22*%O$tVous vous appelez maintenant $2"
+ 
+ #: src/common/text.c:347
+ msgid "Loaded log from"
+@@ -4795,7 +4795,7 @@
+ #: src/fe-gtk/setup.c:144
+ msgid "Automatic nick completion (without TAB key)"
+ msgstr ""
+-"Complétion automatique des pseudonymes (sans utilisation de la tocuhe de "
++"Complétion automatique des pseudonymes (sans utilisation de la touche de "
+ "tabulation)"
+ 
+ #: src/fe-gtk/setup.c:146

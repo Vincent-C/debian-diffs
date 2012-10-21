@@ -1,0 +1,24 @@
+Description: Fix disappearing systray icon when gnome-{panel,shell} restarts
+ According to the freedesktop.org system tray protocol, a systray client
+ should listen for a particular client message on the root window to be
+ notified when the system tray starts, which is to be sent with the
+ StructureNotify event mask. GtkStatusIcon (AFAIK) does this automatically,
+ but xchat overrides this by calling gdk_window_set_events on the root
+ window to listen only to PropertyNotify events.
+ 
+ Adding GDK_STRUCTURE_MASK to the gdk_window_set_events call in
+ src/fe-gtk/fe-gtk.c seems to fix it.
+Origin: http://sourceforge.net/support/tracker.php?aid=3427550
+Last-Update: 2012-10-21
+
+--- a/src/fe-gtk/fe-gtk.c
++++ b/src/fe-gtk/fe-gtk.c
+@@ -221,7 +221,7 @@
+ 	gtk_init (&argc, &argv);
+ 
+ #ifdef USE_XLIB
+-	gdk_window_set_events (gdk_get_default_root_window (), GDK_PROPERTY_CHANGE_MASK);
++	gdk_window_set_events (gdk_get_default_root_window (), GDK_STRUCTURE_MASK);
+ 	gdk_window_add_filter (gdk_get_default_root_window (),
+ 								  (GdkFilterFunc)root_event_cb, NULL);
+ #endif
