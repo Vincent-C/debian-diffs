@@ -1,4 +1,7 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.6.2.tar.bz2
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.6.5.tar.xz
+
+My own patchset can be found under debian/patches/vclaptop/; patches which are
+applied are also listed in debian/patches/series.
 
 This is a custom Linux kernel that I've built for personal use on my laptop.
 In case you wish to use the same setup, here are some quick n' dirty

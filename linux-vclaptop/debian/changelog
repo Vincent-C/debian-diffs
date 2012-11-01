@@ -1,3 +1,15 @@
+linux-vclaptop (3.6.5-1) unstable; urgency=low
+
+  * Local package (linux 3.6.5); custom kernel build.
+  * New upstream release.
+    - Add "ext4: fix unjournaled inode bitmap modification"; this fixes the
+      ext4 corruption bug affecting a number of stable kernel releases
+      (including 3.6.2 up until the current release).
+    - Add patchset "Add realtek pcie memstick host driver" to support the
+      Realtek PCI-E card reader (via the rts5229 kernel module) on my laptop.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 31 Oct 2012 21:42:22 -0700
+
 linux-vclaptop (3.6.2-1) unstable; urgency=low
 
   * Local package (linux 3.6.2); custom kernel build.
