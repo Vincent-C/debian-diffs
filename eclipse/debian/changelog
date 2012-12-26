@@ -1,10 +1,10 @@
-eclipse (4.2.0-1) unstable; urgency=low
+eclipse (3.8.1-1+vc1) unstable; urgency=low
 
   * New upstream release (Juno).
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 15 Jul 2012 03:07:09 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 11 Sep 2012 23:12:49 -0700
 
-eclipse (3.7.0-1) unstable; urgency=low
+eclipse (3.7.0-1+vc1) unstable; urgency=low
 
   * Initial packaging.
 
