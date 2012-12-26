@@ -1,11 +1,11 @@
-gstreamer-vaapi (0.4.0-1~vc1) unstable; urgency=low
+gstreamer-vaapi (0.4.2-1~vc1) unstable; urgency=low
 
   * Local package.
   * New upstream release.
   * Add debian/watch file.
   * Fix debian/rules override_dh_autoreconf target.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 07 Oct 2012 00:22:47 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 19 Dec 2012 23:21:11 -0800
 
 gstreamer-vaapi (0.3.6-0ubuntu3) quantal; urgency=low
 
