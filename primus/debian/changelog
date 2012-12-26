@@ -1,0 +1,79 @@
+primus (0~20121211-1~vc1) unstable; urgency=low
+
+  * Local package.
+  * Add dpkg-dev as dependency for dpkg-architecture (multi-arch).
+  * Add bash completion file.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 03 Dec 2012 19:40:49 -0800
+
+primus (201211092052git~raring1) raring; urgency=low
+
+  * Auto build.
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Fri, 09 Nov 2012 20:52:49 +0000
+
+primus (121104-0ubuntu1) precise; urgency=low
+
+  [ Dmitry Zhurikhin ]
+  * Remove obsolete patch for colon-separated paths.
+
+  [ Alexander Monakov ]
+  * Accept same libGLa and libGLd handles
+  * Remove crazy quotes, stringify conf vars via preprocessor instead
+  * Support multiple colon-separated libGL paths
+  * Reinit workers only upon glXSwapBuffers in main thread
+  * README: simplify intro, remove benchmarking note, add FAQ
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Sun, 04 Nov 2012 19:43:36 +0400
+
+primus (121031-1) precise; urgency=low
+
+  * Automatically detect correct library from colon-separated path:
+    - colon-paths.patch: make primus accept colon-separated paths.
+    - rules: remove fixup and merge different PRIMUS_libGLa paths.
+    - ubuntu_libgl_path.patch: do not always set nvidia in PRIMUS_libGL
+      because it conflicts with nouveau.
+
+ -- Peter Wu <lekensteyn@gmail.com>  Wed, 31 Oct 2012 23:27:08 +0100
+
+primus (121031) precise; urgency=low
+
+  [ Dmitry Zhurikhin ]
+  * Add debian folder to allow Ubuntu package builds
+
+  [ Alexander Monakov ]
+  * Add links to distro packages
+  * Point out libnvidia-tls.so-related adjustments
+  * Tiny addition to make debugging easier
+  * Separate log levels, only print warnings by default
+  * Do not leak texture/PBOs on MakeCurrent
+  * Close bumblebeed socket on exec
+  * Add tech notes
+  * Track windows for GLXWindows, note resizes (fixes GH-15) 
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Wed, 31 Oct 2012 22:25:12 +0400
+
+primus (121014-1ubuntu3) precise; urgency=low
+
+  * Remove dependencies from primus-lib to allow installing as multi-
+    arch package
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Thu, 25 Oct 2012 01:33:49 +0400
+
+primus (121014-1ubuntu2) precise; urgency=low
+
+  * Add multi-arch support
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Thu, 25 Oct 2012 00:17:56 +0400
+
+primus (121014-1ubuntu1) precise; urgency=low
+
+  * Add patch to fix paths for primus and nvidia shared libraries
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Wed, 24 Oct 2012 22:21:05 +0400
+
+primus (121014-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Dmitry Zhurikhin <zhurikhin@gmail.com>  Tue, 16 Oct 2012 23:35:12 +0400

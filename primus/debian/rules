@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+export DH_OPTIONS
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+PRIMUS_libGLa=/usr/lib/$(DEB_HOST_MULTIARCH)/nvidia/libGL.so.1
+PRIMUS_libGLd=/usr/lib/mesa-diverted/$(DEB_HOST_MULTIARCH)/libGL.so.1
+
+ifeq ($(DEB_HOST_ARCH), amd64)
+    # Building for 64-bit
+    CXX=g++\ -m64
+else
+    # Building for 32-bit
+    CXX=g++\ -m32
+endif
+
+%:
+	dh $@
+
+# Where to put the resulting library during build
+BUILD_LIBDIR ?= lib
+
+override_dh_auto_clean:
+	rm -rf $(BUILD_LIBDIR)
+	dh_auto_clean
+
+override_dh_install:
+	# Make all the paths explicitly
+	mkdir -p debian/primus/usr/bin/ debian/primus-lib/usr/lib/$(DEB_HOST_MULTIARCH)/primus/ debian/primus/etc/bash_completion.d/
+	cp primusrun debian/primus/usr/bin/
+	cp -r $(BUILD_LIBDIR)/* debian/primus-lib/usr/lib/$(DEB_HOST_MULTIARCH)/primus/
+	cp debian/primusrun_bash-completion debian/primus/etc/bash_completion.d/primus
+	dh_install
+
+override_dh_auto_build:
+	dh_auto_build -- LIBDIR=$(BUILD_LIBDIR) CXX=$(CXX) \
+	  PRIMUS_libGLd=$(PRIMUS_libGLd) \
+	  PRIMUS_libGLa=$(PRIMUS_libGLa)
+
+override_dh_strip:
+	dh_strip --dbg-package=primus-lib-dbg
