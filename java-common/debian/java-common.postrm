@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+case "$1" in
+purge)
+    rm -rf /etc/.java
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

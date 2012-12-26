@@ -1,0 +1,13 @@
+Document: java-policy
+Title: Debian Java Policy (proposal)
+Author: Niels Thykier
+Abstract: The Debian Java Policy (currently a proposal)
+ describes how Java packages are handled in Debian.
+Section: Debian
+
+Format: text
+Files: /usr/share/doc/java-common/policy.txt.gz
+
+Format: HTML
+Index: /usr/share/doc/java-common/debian-java-policy/index.html
+Files: /usr/share/doc/java-common/debian-java-policy/*.html

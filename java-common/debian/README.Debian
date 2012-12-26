@@ -1,0 +1,15 @@
+This package contains information about how to make your java environment
+work. The package contains the Proposed Debian Java Policy and
+the Debian Java FAQ. It should probably be enough to get things going.
+
+They can be found at
+/usr/share/doc/java-common/debian-java-faq/index.html
+and
+/usr/share/doc/java-common/debian-java-policy/index.html
+
+Previously it existed a bunch of *-dummy packages. They have now been
+removed from the archive. If you need to fulfill the dependencies you have
+to make your own dummy package. The equivs package might help you with
+this.
+
+ Ola Lundqvist <opal@debian.org>

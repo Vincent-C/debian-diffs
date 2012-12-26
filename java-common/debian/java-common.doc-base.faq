@@ -1,0 +1,13 @@
+Document: debian-java-faq
+Title: Debian Java FAQ
+Author: Torsten Werner
+Abstract: The Debian Java FAQ provide answers to many 
+ usual questions regarding the use of the Java programming
+ language in the Debian GNU/Linux operating system. It
+ discusses availability of compilers, virtual machines,
+ libraries and applications as well as legal issues.
+Section: Debian
+
+Format: HTML
+Index: /usr/share/doc/java-common/debian-java-faq/index.html
+Files: /usr/share/doc/java-common/debian-java-faq/*.html

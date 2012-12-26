@@ -1,0 +1,30 @@
+default-jdk-builddep transition
+===============================
+
+default-jdk-builddep was a package to provide helpers to compile
+class/jar files into native code, unfortunately its poorly chosen
+name lead to people thinking it was the "Right Thing" to
+Build-Depend on when maintaining a Java Package. This
+misunderstanding even got into the templates for AMs for reviewing
+New Maintainers (The T&SII follow up).
+
+These helper tools requires a special Java Development Kit and
+therefore on many architectures default-jdk-builddep would pull two
+full JDK.
+
+In order to end this confusion once and for all the Debian Java team
+decided to rename default-jdk-builddep to gcj-native-helper and
+reduce it to only pull the special JDK needed for native compilation.
+
+The replacement for default-jdk-builddep falls into one of two cases.
+If you create "gcj" packages (which contains jar files compiled into
+native shared libraries), default-jdk-builddep should be replaced by
+default-jdk AND gcj-native-helper. Otherwise you should replace it by
+default-jdk.
+
+If you are interested in the debate to do this rename, please have a
+look at:
+  * http://lists.debian.org/debian-java/2010/04/msg00070.html
+
+ -- Niels Thykier <niels@thykier.net>  Wed, 30 Jun 2010 22:55:00 +0200
+

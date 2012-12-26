@@ -1,0 +1,144 @@
+#!/usr/bin/make -f
+# Made with the aid of dh_make, by Craig Small
+# Sample debian/rules that uses debhelper. GNU copyright 1997 by Joey Hess.
+# Some lines taken from debmake, by Cristoph Lameter.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+, = ,
+S = $(EMPTY) $(EMPTY)
+mk_cslist = $(subst $(S),$(,)$(S),$(foreach v,$(1),$(v)-$(2)))
+vafilt = $(subst $(2)=,,$(filter $(2)=%,$(1)))
+jrel = $(shell dpkg-parsechangelog | grep -E ^Version: | sed "s/Version: 0.//")
+
+DPKG_VARS := $(shell dpkg-architecture)
+DEB_HOST_ARCH ?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH)
+DEB_HOST_MULTIARCH ?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
+
+p_jre		= gcj-jre
+p_jhl		= gcj-jre-headless
+p_jdk		= gcj-jdk
+jdk_build_dep	=
+v_jre		=
+v_jdk		= $(v_jre)
+provides	= java java2 java5
+dversion	= 1:1.5-$(jrel)
+jvmdir		= java-gcj
+
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha amd64 armel armhf i386 ia64 lpia mips mipsel powerpc powerpcspe ppc64 s390 s390x sparc sh4))
+  p_jre		= oracle-java7-jdk
+  p_jhl		= oracle-java7-jdk
+  p_jdk		= oracle-java7-jdk
+  jdk_build_dep	= gcj-jdk
+  v_jre		= $(S)(>= 7~u3-2.1.1)
+  v_jdk		= $(v_jre)
+  provides	= java java2 java5 java6 java7
+  dversion	= 1:1.7-$(jrel)
+  jvmdir	= oracle-java7-jdk
+endif
+
+p_doc		= oracle-java7-joc
+
+jre_provides	= $(call mk_cslist,$(provides),runtime)
+jhl_provides	= $(call mk_cslist,$(provides),runtime-headless)
+jdk_provides	= $(call mk_cslist,$(provides),sdk)
+
+build: build-arch
+build-arch:
+	# Do nothing :)
+
+build-indep: build-stamp
+build-stamp:
+	dh_testdir
+
+	$(MAKE)
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp install-stamp
+	$(MAKE) clean
+
+	dh_clean
+
+install-indep: install-stamp
+install-stamp: build-indep
+	dh_testdir
+	dh_testroot
+	dh_prep -i
+	dh_installdirs -i
+
+	dh_installdocs -i
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/java-common
+
+	touch install-stamp
+
+install-arch: build-arch
+	dh_testdir
+	dh_testroot
+	dh_prep -a
+
+
+binary-arch: install-arch
+ifneq (,$(p_jre))
+	dh_testdir -a
+	dh_testroot -a
+	dh_install -a
+	dh_installdocs -pdefault-jre-headless
+	dh_installchangelogs -pdefault-jre-headless
+	dh_link -pdefault-jre-headless \
+		usr/lib/jvm/$(jvmdir) usr/lib/jvm/default-java
+	for p in default-jre-headless default-jre default-jdk gcj-native-helper; do \
+	  [ -z "$$t" ] && t=$$p && continue; \
+	  mkdir -p debian/$$p/usr/share/doc; \
+	  ln -sf $$t debian/$$p/usr/share/doc/$$p; \
+	  t=$$p; \
+	done
+	dh_lintian -a
+	dh_compress -a
+	dh_fixperms -a
+	dh_installdeb -a
+	dh_gencontrol -a -- \
+		-v$(dversion) \
+		'-Vjre=$(p_jre)' \
+		'-Vjhl=$(p_jhl)' \
+		'-Vjdk=$(p_jdk)' \
+		'-Vjdk:builddep=$(jdk_build_dep)' \
+		'-Vjre:arch=$(DEB_HOST_ARCH)' \
+		'-Vjre:version=$(v_jre)' \
+		'-Vjdk:version=$(v_jdk)' \
+		'-Vjre:provides=$(jre_provides)' \
+		'-Vjhl:provides=$(jhl_provides)' \
+		'-Vjdk:provides=$(jdk_provides)' \
+
+	dh_md5sums -a
+	dh_builddeb -a
+endif
+
+# Build architecture-independent files here.
+binary-indep: build-indep install-indep
+	dh_testdir -i
+	dh_testroot -i
+	dh_install -i
+	mkdir -p debian/default-jdk-doc/usr/share/doc/default-jre-headless
+	ln -sf ../$(p_doc)/api debian/default-jdk-doc/usr/share/doc/default-jre-headless/api
+	ln -sf ../$(p_doc)/api debian/default-jdk-doc/usr/share/doc/default-jdk-doc/api
+	dh_installexamples -i
+	dh_installmenu -i
+	dh_installman -i
+	dh_installchangelogs -i
+	dh_link -i
+	dh_lintian -i
+	dh_compress -i
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i -- \
+		'-Vdoc=$(p_doc)' \
+		'-Vjdk=$(p_jdk)'
+	dh_md5sums -i
+	dh_builddeb -i
+
+binary: binary-indep binary-arch
+.PHONY: build build-arch build-indep clean binary-indep binary-arch binary install configure

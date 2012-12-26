@@ -1,0 +1,91 @@
+Source: java-common
+Section: java
+Priority: optional
+Maintainer: Debian Java Mailing List <debian-java@lists.debian.org>
+Uploaders: Matthias Klose <doko@debian.org>, Torsten Werner <twerner@debian.org>,
+ Niels Thykier <niels@thykier.net>
+Build-Depends: debhelper (>= 7)
+Build-Depends-Indep: debiandoc-sgml, docbook-utils, docbook-xml, lynx
+Standards-Version: 3.9.3
+Vcs-Svn: svn://svn.debian.org/pkg-java/trunk/java-common
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-java/trunk/java-common/
+
+Package: java-common
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Suggests: default-jre, equivs
+Description: Base of all Java packages
+ This package must be installed in the system if a Java environment
+ is desired. It covers useful information for Java users in
+ Debian GNU/Linux, including:
+  * The Java policy document which describes the layout of Java support in
+    Debian and how Java packages should behave.
+  * The Debian-Java-FAQ which provides information on the status of
+    Java support in Debian, available compilers, virtual machines, Java
+    programs and libraries as well as on legal issues.
+  * Information on how to create dummy packages to fulfill java2
+    requirements.
+
+Package: default-jre
+Architecture: any
+Depends: default-jre-headless (= ${binary:Version}), ${jre}${jre:version},
+ ${misc:Depends}
+Provides: ${jre:provides}
+Description: Standard Java or Java compatible Runtime
+ This package points to the Java runtime, or Java compatible
+ runtime recommended for the ${jre:arch} architecture,
+ which is ${jre} for ${jre:arch}.
+
+Package: default-jre-headless
+Architecture: any
+Depends: ${jhl}${jre:version}, java-common, ${misc:Depends}
+Suggests: default-jre
+Provides: ${jhl:provides}
+Replaces: openjdk-6-jre-headless (<< 6b23~pre8-2~)
+Description: Standard Java or Java compatible Runtime (headless)
+ This package points to the Java runtime, or Java compatible
+ runtime recommended for this architecture, which is
+ ${jhl} for ${jre:arch}.
+ .
+ The package is used as dependency for packages not needing a
+ graphical display during runtime.
+
+Package: default-jdk
+Architecture: any
+Depends: default-jre (= ${binary:Version}), ${jdk}${jdk:version},
+ ${misc:Depends}
+Provides: ${jdk:provides}
+Description: Standard Java or Java compatible Development Kit
+ This package points to the Java runtime, or Java compatible
+ development kit recommended for this architecture, which is
+ ${jdk} for ${jre:arch}.
+
+Package: default-jdk-doc
+Architecture: all
+Section: doc
+Depends: ${doc}, ${misc:Depends}
+Suggests: default-jdk
+Description: Standard Java or Java compatible Development Kit (documentation)
+ This package points to the documentation for the Java development kit,
+ or Java compatible development kit recommended for Debian, which is
+ ${doc}.
+
+Package: gcj-native-helper
+Architecture: any
+Depends: default-jdk (= ${binary:Version}), ${jdk:builddep}, ${misc:Depends}
+Provides: default-jdk-builddep
+Conflicts: default-jdk-builddep
+Replaces: default-jdk-builddep
+Description: Standard helper tools for creating gcj native packages
+ This package points to the build dependencies used to build
+ gcj native packages.
+ .
+ Unlike default-jdk-builddep, this package only provides the
+ helpers to compile jar/class files into native code and not
+ a Java Development Kit (JDK). You do not need this package
+ unless you are compiling jar/class files to native code.
+ .
+ Note: During the transition from default-jdk-builddep to
+ gcj-native-helper, this package will also depend on
+ default-jdk to avoid breakage.
