@@ -1,3 +1,33 @@
+firefox (17.0.1-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 30 Nov 2012 17:35:38 -0800
+
+firefox (17.0-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 20 Nov 2012 16:55:53 -0800
+
+firefox (16.0.2-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 26 Oct 2012 20:46:05 -0700
+
+firefox (16.0.1-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 11 Oct 2012 15:10:26 -0700
+
+firefox (16.0-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 09 Oct 2012 23:13:34 -0700
+
 firefox (15.0.1-1+vc1) unstable; urgency=low
 
   * New upstream release.

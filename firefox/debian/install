@@ -4,7 +4,9 @@ defaults/                      opt/firefox/
 dictionaries/                  opt/firefox/
 extensions/                    opt/firefox/
 icons/                         opt/firefox/
+modules/                       opt/firefox/
 searchplugins/                 opt/firefox/
+webapprt/                      opt/firefox/
 application.ini                opt/firefox/
 blocklist.xml                  opt/firefox/
 chrome.manifest                opt/firefox/
@@ -43,4 +45,5 @@ Throbber-small.gif             opt/firefox/
 updater                        opt/firefox/
 updater.ini                    opt/firefox/
 update-settings.ini            opt/firefox/
+webapprt-stub                  opt/firefox/
 debian/firefox.desktop         usr/share/applications/
