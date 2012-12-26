@@ -8,7 +8,7 @@ Homepage: http://www.mozillamessaging.com/en-US/thunderbird/
 
 Package: thunderbird-stable
 Architecture: amd64
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, desktop-file-utils
 Provides: mail-reader, icedove
 Description: mail/news client with RSS and integrated spam filter support
  Thunderbird is a free e-mail client. It supports different mail accounts

@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+/usr/bin/update-desktop-database
+
+#DEBHELPER#
+
+exit 0
