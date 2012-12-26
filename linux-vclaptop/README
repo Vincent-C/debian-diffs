@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.6.5.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.7.1.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -27,7 +27,8 @@ packaging).
    my case "vclaptop".
 9) Edit debian/config/defines: change abiname, remove i386 from list of archs,
    change compiler version if wanted.
-10) Edit debian/templates/control.source.in: change maintainer name and email.
+10) Edit debian/source/options: compression set to xz instead of bzip2
+    Edit debian/templates/control.source.in: change maintainer name and email.
     Edit debian/templates/control.image.type-plain.in: remove recommends for
     firmware-linux-free.
     Remove all references of liquorix from templates to avoid confusion.
@@ -35,6 +36,18 @@ packaging).
 
 Please note that everything below originates from the README file provided with
 the Liquorix kernel; not everything applies to this custom-built kernel.
+
+(README.Debian):
+
+Major changes to my customized kernel compared with the stock Debian ones:
+ - NOT optimized for size (CONFIG_CC_OPTIMIZE_FOR_SIZE=n)
+ - compiled with -march=native (corei7-avx)
+ - full preemption (CONFIG_PREEMPT=y et al.)
+ - default I/O scheduler set to deadline (CONFIG_DEFAULT_DEADLINE=y)
+ - always enable transparent hugepage (CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y)
+ - enable MTRR sanitizer by default (CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT=1)
+ - kernel timer set to 300 Hz (CONFIG_HZ=300)
+...and a number of other things.
 
 11) $ dch -i (add changelog entry). I include the major config changes I've
     made to my kernel in README.debian instead of debian/changelog.

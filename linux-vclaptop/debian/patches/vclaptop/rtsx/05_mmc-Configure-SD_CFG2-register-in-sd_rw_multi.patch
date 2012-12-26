@@ -1,0 +1,34 @@
+Beginning of patch series on LKML: https://lkml.org/lkml/2012/11/19/584
+
+
+LKML: https://lkml.org/lkml/2012/11/19/586
+
+
+From: Wei WANG <wei_wang@realsil.com.cn>
+
+For Realtek card reader, internal regsiter SD_CFG2 should be configured
+before transferring data.
+The default value of SD_CFG2 is proper for writing data. But for reading
+sequence, the timing is not good enough. So in some extreme circumstance,
+card reader may sample the response data from the card as good even if
+the data is wrong. And this will cause the bad consequence.
+In the prior version, the value of this register has been calculated,
+but forgotten to write back to the internal register.
+
+Signed-off-by: Wei WANG <wei_wang@realsil.com.cn>
+Acked-by: Chris Ball <cjb@laptop.org>
+---
+ drivers/mmc/host/rtsx_pci_sdmmc.c |    1 +
+ 1 file changed, 1 insertion(+)
+diff --git a/drivers/mmc/host/rtsx_pci_sdmmc.c b/drivers/mmc/host/rtsx_pci_sdmmc.c
+index 0e934bf..067dd46 100644
+--- a/drivers/mmc/host/rtsx_pci_sdmmc.c
++++ b/drivers/mmc/host/rtsx_pci_sdmmc.c
+@@ -407,6 +407,7 @@ static int sd_rw_multi(struct realtek_pci_sdmmc *host, struct mmc_request *mrq)
+ 	rtsx_pci_add_cmd(pcr, WRITE_REG_CMD, CARD_DATA_SOURCE,
+ 			0x01, RING_BUFFER);
+ 
++	rtsx_pci_add_cmd(pcr, WRITE_REG_CMD, SD_CFG2, 0xFF, cfg2);
+ 	rtsx_pci_add_cmd(pcr, WRITE_REG_CMD, SD_TRANSFER, 0xFF,
+ 			trans_mode | SD_TRANSFER_START);
+ 	rtsx_pci_add_cmd(pcr, CHECK_REG_CMD, SD_TRANSFER,

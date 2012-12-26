@@ -1,20 +1,29 @@
-LKML: https://lkml.org/lkml/2012/9/11/8
-Subject: [PATCH v6 3/3] drivers/memstick: Add realtek pcie memstick host driver
+LKML: https://lkml.org/lkml/2012/10/29/42
+Git: http://git.kernel.org/?p=linux/kernel/git/sameo/mfd-2.6.git;a=commitdiff;h=13467710601adbb8192576d56ad2ae6114e562ce
+
 
 From: Wei WANG <wei_wang@realsil.com.cn>
+Date: Mon, 29 Oct 2012 05:49:44 +0000 (+0800)
+Subject: memstick: Add realtek pcie memstick host driver
+X-Git-Tag: mfd-3.8-1~108
+X-Git-Url: http://git.kernel.org/?p=linux%2Fkernel%2Fgit%2Fsameo%2Fmfd-2.6.git;a=commitdiff_plain;h=13467710601adbb8192576d56ad2ae6114e562ce
+
+memstick: Add realtek pcie memstick host driver
 
 Realtek PCI-E Memstick card host driver is used to access Memstick
 card, with the help of Realtek PCI-E card reader MFD driver.
 
 Signed-off-by: Wei WANG <wei_wang@realsil.com.cn>
+Acked-by: Alex Dubov <oakad@yahoo.com>
+Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 ---
  drivers/memstick/host/Kconfig       |   10 +
  drivers/memstick/host/Makefile      |    1 +
- drivers/memstick/host/rtsx_pci_ms.c |  637 +++++++++++++++++++++++++++++++++++
- 3 files changed, 648 insertions(+)
+ drivers/memstick/host/rtsx_pci_ms.c |  641 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 652 insertions(+)
  create mode 100644 drivers/memstick/host/rtsx_pci_ms.c
 diff --git a/drivers/memstick/host/Kconfig b/drivers/memstick/host/Kconfig
-index cc0997a..d539638 100644
+index cc0997a..4f7a17f 100644
 --- a/drivers/memstick/host/Kconfig
 +++ b/drivers/memstick/host/Kconfig
 @@ -42,3 +42,13 @@ config MEMSTICK_R592
@@ -27,7 +36,7 @@ index cc0997a..d539638 100644
 +	depends on MFD_RTSX_PCI
 +	help
 +	  Say Y here to include driver code to support Memstick card interface
-+	  of Realtek PCI-E driver-based card reader
++	  of Realtek PCI-E card reader
 +
 +	  To compile this driver as a module, choose M here: the module will
 +	  be called rtsx_pci_ms.
@@ -42,10 +51,10 @@ index 31ba8d3..af3459d 100644
 +obj-$(CONFIG_MEMSTICK_REALTEK_PCI)	+= rtsx_pci_ms.o
 diff --git a/drivers/memstick/host/rtsx_pci_ms.c b/drivers/memstick/host/rtsx_pci_ms.c
 new file mode 100644
-index 0000000..602f3b4
+index 0000000..f5ddb82
 --- /dev/null
 +++ b/drivers/memstick/host/rtsx_pci_ms.c
-@@ -0,0 +1,637 @@
+@@ -0,0 +1,641 @@
 +/* Realtek PCI-Express Memstick Card Interface driver
 + *
 + * Copyright(c) 2009 Realtek Semiconductor Corp. All rights reserved.
@@ -565,20 +574,32 @@ index 0000000..602f3b4
 +
 +#endif /* CONFIG_PM */
 +
++static void rtsx_pci_ms_card_event(struct platform_device *pdev)
++{
++	struct realtek_pci_ms *host = platform_get_drvdata(pdev);
++
++	memstick_detect_change(host->msh);
++}
++
 +static int rtsx_pci_ms_drv_probe(struct platform_device *pdev)
 +{
 +	struct memstick_host *msh;
 +	struct realtek_pci_ms *host;
-+	struct rtsx_pcr *pcr = platform_get_drvdata(pdev);
++	struct rtsx_pcr *pcr;
++	struct pcr_handle *handle = pdev->dev.platform_data;
 +	int rc;
 +
++	if (!handle)
++		return -ENXIO;
++
++	pcr = handle->pcr;
 +	if (!pcr)
 +		return -ENXIO;
 +
 +	dev_dbg(&(pdev->dev),
 +			": Realtek PCI-E Memstick controller found\n");
 +
-+	msh = memstick_alloc_host(sizeof(*host), &pcr->pci->dev);
++	msh = memstick_alloc_host(sizeof(*host), &pdev->dev);
 +	if (!msh)
 +		return -ENOMEM;
 +
@@ -587,6 +608,8 @@ index 0000000..602f3b4
 +	host->msh = msh;
 +	host->pdev = pdev;
 +	platform_set_drvdata(pdev, host);
++	pcr->slots[RTSX_MS_CARD].p_dev = pdev;
++	pcr->slots[RTSX_MS_CARD].card_event = rtsx_pci_ms_card_event;
 +
 +	mutex_init(&host->host_mutex);
 +
@@ -615,6 +638,8 @@ index 0000000..602f3b4
 +		return 0;
 +
 +	pcr = host->pcr;
++	pcr->slots[RTSX_MS_CARD].p_dev = NULL;
++	pcr->slots[RTSX_MS_CARD].card_event = NULL;
 +	msh = host->msh;
 +	host->eject = true;
 +
@@ -666,24 +691,8 @@ index 0000000..602f3b4
 +		.name	= DRV_NAME_RTSX_PCI_MS,
 +	},
 +};
-+
-+static int __init realtek_pci_ms_drv_init(void)
-+{
-+	return platform_driver_register(&rtsx_pci_ms_driver);
-+}
-+
-+static void __exit realtek_pci_ms_drv_exit(void)
-+{
-+	platform_driver_unregister(&rtsx_pci_ms_driver);
-+}
-+
-+module_init(realtek_pci_ms_drv_init);
-+module_exit(realtek_pci_ms_drv_exit);
++module_platform_driver(rtsx_pci_ms_driver);
 +
 +MODULE_LICENSE("GPL");
 +MODULE_AUTHOR("Wei WANG <wei_wang@realsil.com.cn>");
 +MODULE_DESCRIPTION("Realtek PCI-E Memstick Card Host Driver");
--- 
-1.7.9.5
-
-  

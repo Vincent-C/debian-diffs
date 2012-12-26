@@ -5,8 +5,9 @@ debian/x86-memtest-WARN-if-bad-RAM-found.patch
 
 # my own patchset
 vclaptop/march-native.patch
-vclaptop/ext4-fix-unjournaled-inode-bitmap-modification.patch
-vclaptop/gpio-ich-Share-ownership-of-GPIO-groups.patch
-vclaptop/add-realtek-pcie-sdmmc-host-driver-01.patch
-vclaptop/add-realtek-pcie-sdmmc-host-driver-02.patch
-vclaptop/add-realtek-pcie-sdmmc-host-driver-03.patch
+vclaptop/rtsx/01_mfd-Add-realtek-pcie-card-reader-driver.patch
+vclaptop/rtsx/02_mmc-Add-realtek-pcie-sdmmc-host-driver.patch
+vclaptop/rtsx/03_memstick-Add-realtek-pcie-memstick-host-driver.patch
+vclaptop/rtsx/04_mfd-Select-MFD_CORE-for-rtsx.patch
+vclaptop/rtsx/05_mmc-Configure-SD_CFG2-register-in-sd_rw_multi.patch
+vclaptop/rtsx/06_mfd-Explicitely-include-slab.h-to-rtsx.patch

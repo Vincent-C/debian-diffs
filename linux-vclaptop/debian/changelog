@@ -1,3 +1,20 @@
+linux-vclaptop (3.7.1-1) unstable; urgency=low
+
+  * Local package (linux 3.7.1); custom kernel build.
+  * New upstream release.
+    - Update patchset "Add realtek pcie memstick host driver" to v7, i.e.
+      current version committed to git for 3.8.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 19 Dec 2012 01:18:11 -0800
+
+linux-vclaptop (3.6.8-1) unstable; urgency=low
+
+  * Local package (linux 3.6.8); custom kernel build.
+  * New upstream release.
+    - Drop ext4 unjournaled inode bitmap patch; applied upstream.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 26 Nov 2012 22:56:28 -0800
+
 linux-vclaptop (3.6.5-1) unstable; urgency=low
 
   * Local package (linux 3.6.5); custom kernel build.
@@ -5,8 +22,8 @@ linux-vclaptop (3.6.5-1) unstable; urgency=low
     - Add "ext4: fix unjournaled inode bitmap modification"; this fixes the
       ext4 corruption bug affecting a number of stable kernel releases
       (including 3.6.2 up until the current release).
-    - Add patchset "Add realtek pcie memstick host driver" to support the
-      Realtek PCI-E card reader (via the rts5229 kernel module) on my laptop.
+  * Add patchset "Add realtek pcie memstick host driver" to support the
+    Realtek PCI-E card reader on my laptop.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 31 Oct 2012 21:42:22 -0700
 
