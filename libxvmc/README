@@ -1,7 +1,0 @@
-Tarball: http://xorg.freedesktop.org/releases/individual/lib/libXvMC-1.0.7.tar.gz
-
-See Debian bug #640499.
-
-This fixes M-A installation conflict when installing 32-bit Nvidia
-drivers, Google Earth, broken OpenGL acceleration when using Wine, etc.
-This really should be fixed in wheezy, but until it is, here's a fix.
