@@ -1,0 +1,966 @@
+dput (0.9.6.3+nmu1+vc1) unstable; urgency=low
+
+  * Add sftp support (for Launchpad uploads). 
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 11 Nov 2012 01:58:52 -0800
+
+dput (0.9.6.3+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Discourage people to upload packages to the wrong archive (Closes: #561678)
+  * Deleted obsolete comment about gluck (Closes: #674585)
+  * Use case and example about dcut added to man page. Thanks
+    Hideki Yamane <henrich@debian.or.jp>  (Closes: #688871)
+
+ -- Alberto Á. Fuentes <pajaro@gmail.com>  Sun, 14 Oct 2012 13:04:37 +0100
+
+dput (0.9.6.3) unstable; urgency=low
+
+  * volatile archive has been discontinued (Closes: #661374)
+  * Change Vcs-Browser to anonscm.d.o from git.d.o
+  * Update Standards-Version to 3.9.3 (no changes required)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Tue, 06 Mar 2012 12:41:41 +0530
+
+dput (0.9.6.2) unstable; urgency=low
+
+  [ Gerfried Fuchs ]
+  * Remove .org from the backports target name.
+
+  [ Y Giridhar Appaji Nag ]
+  * Change the default backports configuration (Closes: #595726)
+  * Clarify the -m option in dcut.1 (Closes: #608634)
+  * Don't suggest yaclc, it is no longer in the archive
+  * Update Standards-Version to 3.9.1 (no changes required)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Thu, 10 Mar 2011 14:41:41 +0530
+
+dput (0.9.6.1) unstable; urgency=low
+
+  * Use hashlib instead of md5/sha modules for Python 2.6 (Closes: #517831)
+  * Update Standards-Version to 3.9.0 (no changes required)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Thu, 08 Jul 2010 14:15:52 +0530
+
+dput (0.9.6) unstable; urgency=low
+
+  * Correct bash completion for --delayed
+  * Use %s to print HTTP response reason string (not a number)
+  * Compute md5sums to fix lintian I: no-md5sums-control-file, thanks
+    Loïc Minier <lool@dooz.org> (Closes: #564783)
+  * Mark self.closed = 1 to prevent messing up of display with setting
+    progress_indicator=2, thanks Kan-Ru Chen <koster@debian.org.tw> for
+    the patch (Closes: #488316)
+  * Add allow_cut = 1 to security-master-* (Closes: #574506)
+  * Fix handling of version for multi-digit epochs (Closes: #577825)
+  * Update Standards-Version to 3.8.4 (no changes required)
+  * Switch to dpkg-source 3.0 (native) format
+  * Don't warn about a DELAYED/0-day upload, just print (Closes: #553198)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Fri, 21 May 2010 12:15:54 +0530
+
+dput (0.9.5.1) unstable; urgency=low
+
+  * Fix lintian (pedantic) warnings and info messages
+    + I: hyphen-used-as-minus-sign in dcut(1)
+    + P: maintainer-script-without-set-e
+    + P: copyright-refers-to-symlink-license
+  * set method = ftp as applicable in default dput.cf (Closes: #544360)
+  * Initialize options['changes'] in dcut, include the changes file itself
+    when using dcut -i.  Thanks gregor herrmann <gregoa@debian.org> for the
+    report and fix (Closes: #544440)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Mon, 31 Aug 2009 22:39:37 +0530
+
+dput (0.9.5) unstable; urgency=low
+
+  * Better (hopefully) language in default messages.  Thanks Andre
+    Klapper <a9016009@gmx.de> for the bug report(Closes: #521281)
+  * Add the new upload queue in Europe to dput.cf as "ftp-eu"
+  * Fix URL to the dev-ref section on "Handling security-related bugs".
+    Thanks Mauro Lizaur <mauro@cacavoladora.org> (Closes: #529770)
+  * Implement a -i option to dcut that reads a changes file to create a
+    commands file removing the files uploaded via the changes file.  Thanks
+    Dinesh Shanbhag <perpetualtwiddler@gmail.com> (Closes: #302292)
+  * Update Standards-Version to 3.8.3 (no changes required)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Mon, 24 Aug 2009 21:05:55 +0530
+
+dput (0.9.4) unstable; urgency=low
+
+  * Don't display "Not running dinstall." message, thanks Mark Brown
+    <broonie@debian.org> for the suggestion (Closes: #520186)
+  * Update Standards-Version to 3.8.1 (no changes required)
+  * Don't mix tabs and spaces for indentation (Closes: #506433)
+  * dcut tries $EMAIL before using pwent from getpwuid if $DEBEMAIL is
+    not available (Closes: #520694)
+  * Fix rsync upload method to dereference symlinks (Closes: #507634)
+  * Add -U option to prevent writing an upload log (Closes: #454289)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Sat, 28 Mar 2009 20:36:46 +0530
+
+dput (0.9.3) unstable; urgency=low
+
+  [ Thomas Viehmann ]
+  * debian/control: Remove Thomas from uploaders, he cannot upload
+    anymore.
+
+  [ Y Giridhar Appaji Nag ]
+  * Integrate patch from Ansgar Burchardt to reduce memory usage while
+    computing file checksum (Closes: #514388)
+  * Change version number format to x.y.x for dput and x.y for dcut
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Tue, 24 Feb 2009 23:30:58 +0530
+
+dput (0.9.2.37) unstable; urgency=low
+
+  [ Y Giridhar Appaji Nag ]
+  * Remove "DM-Upload-Allowed: yes"
+  * Add "allow_dcut = 1" to the backports.org stanza (Closes: #507170)
+  * Thanks Cyril Brulebois <kibi@debian.org> for miscellaneous usability
+    and documentation patches.
+  * Indicate 'Uploading ' for clarity when a file upload is to start.
+    Thanks "Nelson A. de Oliveira" <naoliv@debian.org> for the report and
+    Cyril Brulebois <kibi@debian.org> for the suggestion (Closes: #504614)
+  * Continue despite an FTP 553 and indicate that the file may have been
+    uploaded partially.  Based on a patch from "Steve M. Robbins"
+    <steve@sumost.ca> (Closes: #481947)
+
+  [ Thomas Viehmann ]
+  * debian/control: Doing most work makes Giridhar the maintainer.
+    That is awesome, thanks!
+  * Add Thanks to Thanks.
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Sat, 20 Dec 2008 17:42:10 +0530
+
+dput (0.9.2.36) unstable; urgency=low
+
+  * Change Uploader to official Debian ID.
+  * :s/ftp-master.debian.org/ftp.upload.debian.org/g thanks to Євгеній
+    Мещеряков <eugen@debian.org> for the report (Closes: #500024)
+  * Correct progname that was misspelt as prodname.  Thanks "Nelson A.
+  * de Oliveira" <naoliv@debian.org> for the report (Closes: #504612)
+  * Catch exceptions during ftp QUIT, patch based on fix in Ubuntu from
+    Cody Somerville <cody.somerville@canonical.com> (Closes: #484244)
+  * Change 'login = username' to 'login = *' in the default config
+    (Closes: #505451)
+  * Add repository to the .upload filename to allow upload to different
+    repository on the same host.  Thanks Loïc Minier <lool@dooz.org> for
+    the bug report (Closes: #500701)
+
+ -- Y Giridhar Appaji Nag <appaji@debian.org>  Sat, 22 Nov 2008 22:01:49 +0530
+
+dput (0.9.2.35) unstable; urgency=low
+
+  * dput.cf: add ssh-upload pointing to ssh.upload.debian.org.
+    Closes: #499731.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 22 Sep 2008 20:09:57 +0200
+
+dput (0.9.2.34) unstable; urgency=low
+
+  [ Thomas Viehmann ]
+  * Fix typo in description.
+  * dput.cf: Disable gluck_delayed. Take out warning about delayed
+    and ftp and put in warning about gluck_delayed. Closes: #497921.
+  * dcut: Remove temporary files and not break on debsign failure.
+    closes: #485711
+  * dcut: Adapt to new command interface.
+
+  [ Y Giridhar Appaji Nag ]
+  * Fix typo in dcut.1 (:s/commads/commands/g)
+  * Change Debian upload queue README URL from that on ftp.up.ac.za to
+    ftp://ftp-master.debian.org/pub/UploadQueue/README
+  * Fix lintian W: command-with-path-in-maintainer-script
+  * Add a 'allow_dcut' option for queues that can[not] handle dcut
+    changes files (Closes: #481013)
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 15 Sep 2008 23:08:09 +0200
+
+dput (0.9.2.33) unstable; urgency=low
+
+  * Leave progress_indicator as the default for mentors stanza
+  * Rename ubuntu-revu to revu and add a new stanza for Ubuntu PPAs
+  * Suggests: yaclc, thanks to Thijs Kinkhorst <thijs@debian.org> for the
+    suggestion.(Closes: #377335)
+  * Change revu fqdn from revu.tauware.de to revu.ubuntuwire.com
+  * Mention dcut in the package description, thanks Steffen Moeller
+    <steffen_moeller@gmx.de> for the suggestion (Closes: #491716)
+  * Fix syntax error in http.py that causes a traceback to be shown when an
+    HTTP upload fails.  Thanks Jonny Lamb <jonnylamb@jonnylamb.com> for the
+    bug report and the patch (Closes: #486555)
+  * For dcut with scp, try to use $USER and user login ID (in that order) if
+    login config variable it set to 'username'.  Thanks Guido Trotter
+    <ultrotter@debian.org> for the bug report and the patch (Closes: #490838)
+  * Update Standards-Version to 3.8.0 (no changes required)
+  * Add 'delayed = 7' to the gluck_delayed stanza, thanks Gerfried Fuchs
+    <rhonda@debian.at> for the suggestion (Closes: #489194)
+  * Add a simple dcut usage example to dcut.1 (Closes: #486366)
+
+ -- Y Giridhar Appaji Nag <giridhar@appaji.net>  Thu, 21 Aug 2008 00:09:55 +0530
+
+dput (0.9.2.32) unstable; urgency=high
+
+  * don't use python2.5-only <str>.partition. Closes: #479320
+
+ -- Thomas Viehmann <tv@beamnet.de>  Sun, 04 May 2008 11:55:03 +0200
+
+dput (0.9.2.31) unstable; urgency=low
+
+  Welcome the new co-maintainer!
+
+  [ Y Giridhar Appaji Nag ]
+  * Maintain dput in collab-maint on alioth in git.  Add Vcs-Browser and
+    Vcs-Git headers in debian/control
+  * Catch EOFError.  In default Pure-FTPd configuration, server closes the
+    connection for anonymous FTP logins (Closes: #473558)
+  * Fix lintian I: hyphen-used-as-minus-sign in dput.cf and lintian W:
+    manpage-has-errors-from-man in dput.1 (.P.SH changed to .SH)
+  * Add Y Giridhar Appaji Nag <giridhar@appaji.net> to Uploaders and add a
+    DM-Upload-Allowed: yes header.
+  * Allow port in FTP fqdn (defaults to 21), based on a patch submitted
+    from Ubuntu by Daniel Hahler <debian-bugs@thequod.de> (Closes: #464600)
+  * Add a mentors.debian.net stanza (called mentors) to dput.cf
+  * dput Suggests mini-dinstall because it is used for the local method.
+    Thanks Daniel Hahler for the patch (Closes: #464596)
+  * Add "-o plusdirs" to "complete" in bash_completion, so that directories
+    are also used in filename completion.  Thanks Daniel Hahler for the patch
+    (Closes: #464592)
+
+  [ Thomas Viehmann ]
+  * Allow -u to override running the gpg signature check implied by
+    --check-only. Closes: #405269
+  * Switch getopt function to allow optional arguments.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Thu, 01 May 2008 20:56:59 +0200
+
+dput (0.9.2.30) unstable; urgency=low
+
+  * Fail if pre_upload_command (or post_upload_command) exits with
+    an error code.
+  * Add warning to the configuration of the security upload queues.
+    Closes: #458628
+  * Add allowed_distributions field. The default configuration in
+    dput.cf is to refuse UNRELEASED. Closes: #384702
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 28 Jan 2008 19:38:38 +0100
+
+dput (0.9.2.29) unstable; urgency=low
+
+  * Rework http(s) upload module to better deal with authentication
+    (not send everything twice) and not read whole files for uploading.
+    Closes: #458381
+  * Add [security-master], [security-master-unembargoed], [ubuntu], and
+    [ubuntu-revu] stanzas, thanks to Steve Langasek for bug and patch.
+    Closes: #457250
+  * Check number of words in .changes Files: line. Closes: #453821
+  * Remove non-us stuff. Based on patch by Thijs Kinkhorst, thanks!
+    Closes: #376843
+  * Add better error message when .upload cannot be written to.
+    Closes: #433840
+  * Add delayed config option. Thanks to Sean Finney for bug and patch.
+    Closes: #444464
+  * dcut: Add -kkeyid option. Thanks to Christoph Berg for bug and
+    patch. Closes: #329823
+  * Bump standards version to 3.7.3 (no changes needed)
+  * Officially retire Christian Kurz and Steve Kowalik from uploaders.
+    Thank you for your contributions!
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 31 Dec 2007 21:10:08 +0100
+
+dput (0.9.2.28) unstable; urgency=low
+
+  * Add support for guessing distribution. Thanks to Christoph Berg
+    for bug report and patch. Closes: #348755
+  * Don't use login name to scp command if empty.
+    Closes: #427554, #237448
+  * Fix check_version to work with packages not in working dir.
+    Closes: #426915
+  * Add [options] to help string. Thanks to Thijs Kinkhorst for bug
+    and patch. Closes: #424910.
+  * Mention dcut in dput(1) man page. Closes: #405620.
+  * Add [volatile] and [backports.org] stanzas. Thanks to
+    Martin Zobel-Helas and Steve Langasek. Closes: #420694, #433057
+  * Align = in dput.cf. Closes: #418758
+
+ -- Thomas Viehmann <tv@beamnet.de>  Sun, 15 Jul 2007 13:22:04 +0200
+
+dput (0.9.2.27) unstable; urgency=low
+
+  * http(s)/WebDAV uploads thanks to Ross Burton. Closes: #142023
+  * dcut: Don't leave stray directories. Closes: #380356
+  * dput:
+    - Don't recommend -ol when -ol is passed. Closes: #376877
+    - Don't throw traceback when config file cannot be parsed.
+      Closes: #376796
+
+ -- Thomas Viehmann <tv@beamnet.de>  Thu, 14 Dec 2006 17:34:47 +0100
+
+dput (0.9.2.26) unstable; urgency=low
+
+  * ftp.py: Only try to analyze error code for ftplib.Error
+            exceptions. Closes: #378579
+  * Drop debconf note about configuration file change five years ago.
+    Closes: #388887
+  * Convert debian/changelog to utf8.
+  * Bump standards to 3.7.2, no changes necessary.
+  * Suggest openssh-client in debian/control. Closes: #394074.
+    Thanks Julien Danjou.
+  * Fix typos in documentation, thanks to Thijs Kinkhorst and
+    Lars Wirzenius.
+    Closes: #377334, #375454.
+  * Show upload target. Closes: #316319.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Sat, 21 Oct 2006 18:41:52 +0200
+
+dput (0.9.2.25) unstable; urgency=medium
+
+  * Relax dependency on python. Several people have pointed out that
+    caring about .pycs in dput is the overkill it seems to be. dput is
+    thus installable with python 2.3 again.
+    Closes: #374336.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 19 Jun 2006 22:40:50 +0200
+
+dput (0.9.2.24) unstable; urgency=low
+
+  * Bump python dependency for the transition.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Tue, 13 Jun 2006 23:09:50 +0200
+
+dput (0.9.2.23) unstable; urgency=low
+
+  * Don't include paths in .upload. Closes: #369885.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Tue, 13 Jun 2006 08:21:05 +0200
+
+dput (0.9.2.22) unstable; urgency=low
+
+  This is the best dput ever. And it took quite long to upload, too.
+  * Change python version detection in postinst. Closes: #342330.
+  * Christoph Berg sent in a whole lot of great patches. Thanks a lot!
+    They contain
+    - fixes for --help for delayed/0-day,
+    - a minor fix for the synopis,
+    - fixes for some typos in the README
+    - removal of the tabs in the uploading code, making the code more
+      readable
+    - adding of debugging output in scp change_mode
+    - suppresion of progress information when the output is not a
+      terminal
+    The two patches for wishlist bugs are still being considered,
+    but this round closes #366923.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Sun, 28 May 2006 13:45:39 +0200
+
+dput (0.9.2.21) unstable; urgency=low
+
+  Let's fix some bugs while thinking about how to fix some others.
+  * dcut: Use default host when appropriate. Closes: #340668.
+  * dput.cf: Fix delayed queue comment. Closes: #332764.
+    Thanks to Florian Ernst for the correction.
+  * dcut.1: Update description to be more precise. Closes: #340670.
+    Thanks to Eduard Bloch for his patch.
+  * Added Swedish translation by Daniel Nylander. Tack! Closes: #331337.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon,  5 Dec 2005 21:41:34 +0100
+
+dput (0.9.2.20) unstable; urgency=low
+
+  * Add | debconf-2.0 to debconf-dependency.
+    Thanks to Joey Hess for the reminders.
+  * Use debsign to sign command files (so you can use devscripts.conf
+    for key selection). Closes: #324183.
+  * Add Vietnamese translation of debconf template.
+    Thanks, Clytie Siddall. Closes: #313571.
+  * Added Czech translation of debconf template.
+    Thanks, Miroslav Kure. Closes: #315824.
+  * Mention default_host in dput.1. Closes: #309934.
+  * Describe the overriding of [host] in a later definition in
+    dput.cf.5. Closes: #309975.
+  * Remove old and unused ports of python functions from source.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Tue,  6 Sep 2005 19:00:57 +0200
+
+dput (0.9.2.19) unstable; urgency=low
+
+  * Fix dcut's handling of DEBEMAIL when it contains the full name.
+    Closes: #302139.
+  * Sorry, no wishlist today.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Wed,  6 Apr 2005 20:26:14 +0200
+
+dput (0.9.2.18) unstable; urgency=low
+
+  * Update bash_completion to skip commented hosts and reflect the
+    delayed range. Bug report and patch by Johannes Berg. Thanks!
+    Closes: #301247.
+  * Print dcut hint if ftp upload fails with 553 (wrong filename).
+    Closes: #285568.
+  * Add guessing of maintainer name and email to dcut.
+    Note that the actual bug (traceback) had been fixed before by
+    printing out a more or less neat error message.
+    Closes: #267649.
+  * Switch roles with Christian in debian/control so people can
+    find out faster who to put the blame on.
+  * Updated copyright notices.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Fri, 25 Mar 2005 18:22:53 +0100
+
+dput (0.9.2.17) unstable; urgency=low
+
+  * Allow 0-day delayed upload. Yeah, some people want this, as it
+    Closes: #273957.
+    Fix manpage entry for the delayed option.
+  * Recommend gluck_delayed for delayed uploads.
+    Change the maximum delay to 15. Closes: #288436.
+  * Add myself to Uploaders.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Wed,  9 Feb 2005 19:17:19 +0100
+
+dput (0.9.2.16) unstable; urgency=low
+
+  * Switch back to using passive ftp by default (as it was prior to
+    0.9.2.15) and change the documentation accordingly.
+    Also try some guessing to instruct the user when we suspect that
+    passive vs. active ftp is the problem.
+    Closes: #283370
+  * Don't output the traceback when the ftp upload fails.
+
+ -- Thomas Viehmann <tv@beamnet.de>  Mon, 17 Dec 2004 22:33:01 +0100
+
+dput (0.9.2.15) unstable; urgency=low
+
+  * More verbose error message for ftp uploads. And also use active
+    ftp per default. (Closes: #268489)
+  * Fix user name selection.
+  * dcut: gracefully fail if no uploader was specified.
+    (Closes: #268489)
+  * Again thanks to Thomas Viehmann for providing the patches
+  * Applied a patch from Matthew Palmer to improve the parsing of
+    comma-seperated values by dput. (Closes: #279975)
+
+ -- Christian Kurz <shorty@debian.org>  Sat, 13 Nov 2004 22:21:06 +0100
+
+dput (0.9.2.14) unstable; urgency=low
+
+  * Added Dutch debconf translation. Thanks to Luk Claes. This will
+    address his bugreport #245920.
+  * Added support for passing additional ssh_config options. This is
+    based on a suggestion (and loosely on a patch) by Stefan Völkel.
+    Thanks!
+  * Very minor cleanup of dput.cf(5).
+  * Fixed the debug message output for ftp connections. A patch for
+    dcut was provided by Dann Frazier. The change for dput was based
+    on it. Thanks!
+
+ -- Christian Kurz <shorty@debian.org>  Tue, 15 Jun 2004 19:48:38 +0200
+
+dput (0.9.2.13) unstable; urgency=low
+
+  * Added Japanese debconf translations. This fixes the bugreport #227825.
+  * Added duct and duct.1 manpage to create and upload .command files. This
+    will address the wishlist request #224524. Thanks to Thomas Viehmann
+    for contributing that code.
+  * dput will now recognize the options -P and --passive for passive ftp.
+    This fixes the bug report #228826.
+  * This also includes a patch from Thomas Viehmann to fix an incorrect
+    debug message. #224404
+
+ -- Christian Kurz <shorty@debian.org>  Wed, 21 Jan 2004 13:34:03 +0100
+
+dput (0.9.2.12) unstable; urgency=low
+
+  * And another release for which I've to add a big THANK YOU Thomas.
+  * Changed python dependency. This will fix the bug reported as
+    #206037.
+  * Added an option fqdn to the local defintion. This will address
+    the problem reported as #210322.
+  * Fixed a broken debug message, that was reported as bug #224404.
+
+ -- Christian Kurz <shorty@debian.org>  Tue,  6 Jan 2004 22:47:03 +0100
+
+dput (0.9.2.11) unstable; urgency=low
+
+  * Removed the host chiark from the configuration file, since it's
+    not available anymore according to Ross Burton. This will fix
+    the bug that he reported as #190744.
+  * Increased the allowed range of days for the delayed argument. This
+    wil address the bugreport #196561.
+  * Applied a patch from Thomas Viehmann to reformat the warning about
+    lintian and the option -o. This issue was reported as bug #199905.
+  * Applied a patch from Thomas Viehmann to support the usage of ~ for
+    the local upload method. This issue was reported as bug #199912.
+  * From now on, this package will use po-debconf for managing the
+    translation of the debconf note. This change was introduced due
+    to the work of Christian Perrier. This will address the issue
+    reported as #200127.
+  * Applied another patch from Thomas Viehmann to output an error
+    message if the execution of an external command fails. This will
+    address the issue reported as #172528.
+
+ -- Christian Kurz <shorty@debian.org>  Tue, 29 Apr 2003 11:09:06 +0200
+
+dput (0.9.2.10) unstable; urgency=low
+
+  * Thanks to the offer from Thomas Viehmann, dput will now have two
+    maintainers taking care of it.
+  * Included a patch from Thomas Viehmann suppress error messages from
+    dpkg which happened when the installed check was used. This will
+    close the problem reported as #154960.
+  * The option -o will now reliable simulate a normal run thanks to
+    another patch from Thomas Viehmann. This will address the issue
+    reported as #149711.
+  * dput will now check the architecture in the installed packages
+    check thanks to a patch from Thomas Viehmann. So the bug #154959
+    will now also be solved.
+  * Also dput will now not fail when trying to use a delayed directory,
+    but instead report an error. And again thanks to Thomas Viehmann
+    for the patch to solve the bug #182922.
+  * Fixed bare debug statement that should have been caught earlier. This
+    will now finally solve bug #133287.
+  * Changed dependency on python to also include python 2.3 as requested by
+    Robert Millan. He also verified that the basic functionality still works
+    fine with the newer python version. So this will address the issue
+    reported as bug #182800.
+ 
+ -- Christian Kurz <shorty@debian.org>  Wed, 12 Mar 2003 21:52:18 +0100
+
+dput (0.9.2.9) unstable; urgency=low
+
+  * Another bugfix, because something broke the rsync upload method.
+    A dummy variable will take care of this. (Closes: #171006)
+
+ -- Christian Kurz <shorty@debian.org>  Sun,  1 Dec 2002 16:39:27 +0100
+
+dput (0.9.2.8) unstable; urgency=low
+
+  * Bah, Christian doesn't need to be in Uploaders.
+  * Fix one case I missed in the local method doesn't need a fqdn set 
+    madness. 
+
+ -- Steve Kowalik <stevenk@debian.org>  Sun, 10 Nov 2002 23:12:16 +1100
+
+dput (0.9.2.7) unstable; urgency=low
+
+  * Add myself to Uploaders, which Christian's permission.
+  * Bump Standards-Version to 3.5.7.
+  * Change code that picks the method. It makes sense now.
+  * Apply 2 small hacks so that hosts that use the local method don't need to
+    specify a fqdn. (Closes: #165634)
+  * Change /etc/dput.cf to reflect the above.
+
+ -- Steve Kowalik <stevenk@debian.org>  Mon,  4 Nov 2002 02:10:15 +1100
+
+dput (0.9.2.6.7) unstable; urgency=low
+
+  * And another NMU, with shorty's blessing.
+  * Add a slash to non-US. (Closes: #162363)
+  * Fix up most of the string.{r,}find and string.split madness.
+  * Apply a rather large patch from Roland Mas <lolando@debian.org>. His
+    changes are below:
+    - Added a (very simple) module called local.py (derived from scp.py by
+      Roland Mas <lolando@debian.org>), to install to local incoming dirs.
+      This can be useful to users of mini-dinstall.
+    - Added a French translation to the Debconf template.
+    - Fixed a Lintian error.
+    - A few grammar fixes in the FAQ and README files.
+    - Added a /etc/bash_completion.d/dput file, to make dput easier to use
+      to <TAB>-addicteb people like me.
+    - Thanks Roland! (Closes: #164385)
+
+ -- Steve Kowalik <stevenk@debian.org>  Wed, 16 Oct 2002 22:37:45 +1000
+
+dput (0.9.2.6.6) unstable; urgency=low
+
+  * Another NMU.
+  * Don't set /usr/doc symlink.
+  * Update version reported by 'dput --version' from 0.9.2.2.
+  * Use readlink in postinst. (Closes: #162392)
+
+ -- Steve Kowalik <stevenk@debian.org>  Fri, 27 Sep 2002 00:52:36 +1000
+
+dput (0.9.2.6.5) unstable; urgency=low
+
+  * Non-Maintainer Upload.
+  * debian/templates: split into individual templates, and add a
+    Russian translation (thanks, Ilgiz Kalmetev; closes: #137640).
+  * debian/rules: use debconf-mergetemplates to install the templates.
+  * debian/control:
+    + transition to python2.2 (closes: #158312).
+    + add a build dependency on debconf-utils (>= 1.1.1).
+  * dput: patch from Mark Brown to make dput call dinstall from the
+    correct install directory, when doing delayed uploads (closes: #155038).
+
+ -- Jordi Mallach <jordi@debian.org>  Sat, 31 Aug 2002 00:29:23 +0200
+
+dput (0.9.2.6.4) unstable; urgency=low
+
+  * Yet another NMU.
+  * Fix up the call to getopt. (Closes: #155847) (thanks, Joey Hess.) 
+  * Don't assume ftp-master and non-us are the only hosts that have a 
+    delayed queue. (thanks, Robert McQueen.)
+
+ -- Steve Kowalik <stevenk@debian.org>  Sat, 10 Aug 2002 21:07:38 +1000
+
+dput (0.9.2.6.3) unstable; urgency=low
+
+  * Another NMU.
+  * Fix up dput -h, and the manpage. 
+
+ -- Steve Kowalik <stevenk@debian.org>  Mon, 29 Jul 2002 21:38:27 +1000
+
+dput (0.9.2.6.2) unstable; urgency=low
+
+  * NMU, with shorty's blessing.
+  * Apply my own patch to add DELAYED support. (-e command line argument,
+    no support for config file.)
+  * Thanks to Moshe Zadka for his last minute help getting it working. 
+
+ -- Steve Kowalik <stevenk@debian.org>  Sat,  1 Jun 2002 01:20:32 +1000
+
+dput (0.9.2.6.1) unstable; urgency=low
+
+  * NMU
+  * Moving to main.
+
+ -- Steve Kowalik <stevenk@debian.org>  Mon, 27 May 2002 22:49:47 +1000
+
+dput (0.9.2.6) unstable; urgency=low
+
+  * Changed lstat to stat for calculating file size.
+
+ -- Christian Kurz <shorty@debian.org>  Tue, 23 Apr 2002 10:08:02 +0200
+
+dput (0.9.2.5) unstable; urgency=low
+
+  * Fixed -o option.
+
+ -- Christian Kurz <shorty@debian.org>  Tue, 16 Apr 2002 09:15:15 +0200
+
+dput (0.9.2.4) unstable; urgency=low
+
+  * Included "--copy-links" to rsync.
+
+ -- Christian Kurz <shorty@debian.org>  Sun,  7 Apr 2002 13:01:05 +0200
+
+dput (0.9.2.3) unstable; urgency=low
+
+  *  Check for NODATA tag in GnuPG output. (Closes: #140646)
+
+ -- Christian Kurz <shorty@debian.org>  Tue,  2 Apr 2002 09:23:47 +0200
+
+dput (0.9.2.2) unstable; urgency=low
+
+  * Changed error message for simulate process. (Closes: #138191)
+
+ -- Christian Kurz <shorty@debian.org>  Thu, 14 Mar 2002 13:50:21 +0100
+
+dput (0.9.2.1) unstable; urgency=low
+
+  * Changed output of -H option. (Closes: #118735)
+  * Fixed typos in manpage. (Closes: #119343)
+  * Integrated a patch from Steven Baker to parse the GnuPG output
+    instead of depending on the exit value. (Closes: #122821)
+
+ -- Christian Kurz <shorty@debian.org>  Thu, 24 Jan 2002 09:17:24 +0100
+
+dput (0.9.2) unstable; urgency=low
+
+  * Bug fixed, that never occured during tests. (Closes: #118579)
+  * Heading heavily towards a 1.0 release, which means ConfigParser2
+    and spawnvef are finally removed, since newer python don't need
+    need this files anymore.
+
+ -- Christian Kurz <shorty@debian.org>  Fri,  9 Nov 2001 12:17:38 +0100
+
+dput (0.9.1) unstable; urgency=low
+
+  * Fixed explanation of dinstall checks in description. (Closes: #118134)
+  * Rewrote module import code. (Closes: #118579)
+  * New Option to list hosts with their handle and fqdn. (Closes: #118659)
+
+ -- Christian Kurz <shorty@debian.org>  Tue,  6 Nov 2001 22:08:05 +0100
+
+dput (0.9.0.1) unstable; urgency=low
+
+  * Applied patch from Steven Kowalik to fix the postinst.
+    (Closes: #118483)
+
+ -- Christian Kurz <shorty@debian.org>  Tue,  6 Nov 2001 16:05:22 +0100
+
+dput (0.9.0) unstable; urgency=low
+
+  * Added support for verifying sha checksums.
+  * Added passive ftp support.
+  * Updated documentation.
+  * Removed upload queue giano. (Closes: #113297)
+  * Ensured that anon-ftp uploads are really anon-ftp uploads.
+  * Introduced new option to active passive ftp from the command line.
+  * Minor Code fixes, changes and cleanups.
+  * Fixed Dependency according to suggestion in the forth-coming
+    python policy.
+  * Modified postinst according to the sample from python2.1-base.
+  * Added the FAQ as new document.
+
+ -- Christian Kurz <shorty@debian.org>  Sat, 22 Sep 2001 20:25:10 +0200
+
+dput (0.8.9.1) unstable; urgency=low
+
+  * Moved package to non-US instead. (Closes: #113156)
+
+ -- Christian Kurz <shorty@debian.org>  Sat, 22 Sep 2001 19:38:59 +0200
+
+dput (0.8.9) unstable; urgency=low
+
+  * Changed output comment for lintian. (Closes: #110568)
+  * Fixed wrong code to execute upload method. (Closes: #110807)
+  * Applied patch from Steve Kowalik to support using compression on
+    scp uploads.
+  * Now we added a dependency on GnuPG. (Closes: #110913)
+  * Changed a bit the code for executing GnuPG. (Closes: #109662)
+  * Initializing now all variables. (Closes: #111564)
+
+ -- Christian Kurz <shorty@debian.org>  Wed, 29 Aug 2001 21:47:44 +0200
+
+dput (0.8.8) unstable; urgency=low
+
+  * Included a message to show that lintian is running.
+    (Closes: #105257
+  * Changed code to call dinstall to work correctly. This has been reported
+    by Martin Michlmayr. (Closes: #105481)
+  * Rewrote login and method changing function. (Closes: #107559)
+  * Added Brazilian portuguese debconf translation from Andre Luis Lopes.
+    (Closes: #108520)
+  * Small typo fixes.
+    
+ -- Christian Kurz <shorty@debian.org>  Sun, 15 Jul 2001 11:30:02 +0200
+
+dput (0.8.7) unstable; urgency=low
+
+  * Included another "ugly" hack to guess the right upload host. Since
+    no policy enforces one true writing, maybe some of the checks should 
+    be made case-insensitive. (Closes: #103247)
+  * Included a patch from Martin Michlmayr to remove one exception.
+    (Closes: #98002)
+  * Fixed the path in the postinst to be hardcoded to the debian python one
+    because we use a compileall.py which is different from the upstream.
+    (Closes: #103721)
+
+ -- Christian Kurz <shorty@debian.org>  Tue,  3 Jul 2001 07:20:55 +0200
+
+dput (0.8.6) unstable; urgency=low
+
+  * Now we also check the size of the binary files to upload.
+  * Added some comments to the code.
+  * Rewrote version_check.
+  * Fixed broken code to calculate and test the package size.
+  * Fixed broken dput.cf, which has been noticed by JP Sugarbroad.
+    (Closes: #102277)
+
+ -- Christian Kurz <shorty@debian.org>  Tue, 12 Jun 2001 16:22:23 +0200
+
+dput (0.8.5) unstable; urgency=low
+
+  * Incorporated an idea from Steve M. Robbins to define a default host
+    for main and non-us with some fall back.
+  * Fixed a typo in the scp upload which has been noted by Decklin
+    Foster. (Closes #100476)
+  * Included some hacks to make everything work smooth again. 
+
+ -- Christian Kurz <shorty@debian.org>  Mon,  4 Jun 2001 09:40:17 +0200
+
+dput (0.8.4) unstable; urgency=low
+
+  * Added --progress to rsync to some progress indicator.
+  * Fixed now upload_logfile_creation. (Closes: #98947)
+  * Fixed scp upload definitely now. Thanks to JP Sugarbroad for catching
+    the wrong fix. (Closes: #99300)
+  * Fixed the broken chown command in scp upload.
+
+ -- Christian Kurz <shorty@debian.org>  Mon, 28 May 2001 20:49:59 +0200
+
+dput (0.8.3) unstable; urgency=low
+
+  * Fixed broken scp.py noted by Adrian Bunk. (Closes: #97047)
+  * Integrated a patch from JP Sugarbroad to fix scp.py.
+    (Closes: #97371)
+  * Fixed the broken ftp-upload method, thanks to Martin Michlmayr
+    for noticing it. (Closes: #97751)
+  * Increased the version number of dput itself. (Closes: #97786)
+  * Incorporated a hack because of a missing unique seperator between
+    upstream version number and debian version number. (Closes: #97830)
+  * Fixed broken command-line parser which has also been noticed by
+    Martin Michlmayr. (Closes: #97785)
+  * Some more asthetic patches by the "code artist" ;) Martin Michlmayr.
+    (Closes: #98003)
+  * Changed the code a bit more, so that we now also have a commands before
+    the upload available.
+  * Added a suggestion for rsync.
+  * Fixed Upload Method for ftp-master. (Closes: #98745)
+  * Changed names from ftp-master-scp and non-us-scp to ftp-master-secure
+    and non-us-secure, since those host are also supported by the rsync
+    upload method.
+
+ -- Christian Kurz <shorty@debian.org>  Fri, 11 May 2001 18:46:20 +0200
+
+dput (0.8.2) unstable; urgency=low
+
+  * Fixed the broken version_check() after Laurence J. Lane pointed me 
+    to it. (Closes: #95462)
+  * And now we had to fix the simulate option since we broke it. Now 
+    simulating an upload should work again. Thanks to Matt Kraai for 
+    catching that one. (Closes: #95520)
+  * Changed version_check to handle a package that is in state not-installed
+    correctly as not installed on the system instead of assuming that it's
+    installed. (Closes: #95941)
+  * Changed wording of -V switch according to a suggestion from André
+    Dahlqvist.
+  * Changed scp to change permission on file. (Closes: #96366)
+  * Changed the incoming path for non-us in dput.cf (Closes: #94852)
+  * Specified username and password for the UploadQueues in dput.cf.
+  * Removed Option -U, since it will be default.
+  * Changed dput to handle the new gpg output. (Closes: #96438)
+
+ -- Christian Kurz <shorty@debian.org>  Fri, 27 Apr 2001 20:48:36 +0200
+
+dput (0.8.1) unstable; urgency=low
+
+  * Fixed two typos. (Closes: #93582) 
+  * Import also sys module in scp. (Closes: #93701)
+  * Fixed binary only uploads.
+  * Fixed some typos. (Closes: #94044)
+  * Added German debconf translation from Sebastian Feller.
+    (Closes: #94274)
+  * Added Spanish debconf translation from Jordi Mallach.
+
+ -- Christian Kurz <shorty@debian.org>  Wed, 11 Apr 2001 22:14:11 +0200
+
+dput (0.8) unstable; urgency=low
+
+  * Switch to the rfc822 module to parse the .changes file. Thanks to
+    Sean 'Shaleh' Perry for contributing this patch to dput.
+  * New Option -U/--username introduced to extract the username from
+    the enviroment.
+  * Now the manpage shows where to name the host to upload too.
+  * And the feature of running dinstall will now also work again.
+    (Closes: #90101)
+  * New Option -V/--check-version to check if the user has tested the 
+    package before putting it on the ftp-server.
+  * Fix the call to lintian to work correctly with the current lintian 
+    implemenatation in perl.
+  * Changed dput to use a modular concept for including upload functions. 
+    This has been suggested by Wichert Akkerman and the necessary patch
+    has been created by Sean 'Shaleh' Perry. For more information about
+    this look into the manpages.
+  * Changed format of the config-file. (Closes: #88681)
+  * Added a debconf note about the config-file change, only shown in
+    upgrades from old versions.
+  * Now we should be able to handle multiple .changes-files correctly.
+    (Closes: #89104)
+  * Now will now require a .dsc-file only if you do a source upload. In case
+    of a binary upload, no such file is required anymore. (Closes: #89105)
+  * Warning for a missing tar.gz or orig.tar.gz will only appear when
+    really such a archive is missing. (Closes: #89936)
+  * And now dput will correctly try to start dinstall and run it, if the
+    user wants to do so. (Closes: #90101)
+  * Oh, we also incorporated the UploadQueue on non-us as the default incoming
+    directory for packages. (Closes: #92419)
+  * Changed filename detection to handle all architectures. (Closes: #93155)
+
+ -- Christian Kurz <shorty@debian.org>  Fri, 23 Mar 2001 23:42:57 +0100
+
+dput (0.7.1) unstable; urgency=low
+
+  * Bugfix release, since the orig.tar.gz-check was broken.
+  * Also fixed the broken upload_check.
+
+ -- Christian Kurz <shorty@debian.org>  Thu, 22 Mar 2001 10:18:58 +0100
+
+dput (0.7) unstable; urgency=low
+
+  * Changed some wording to sound better. (Closes: #88685)
+  * Applied a patch from Sean 'Shaleh' Perry to parse a .dput.cf file
+    on top of the system-wide /etc/dput.cf file. (Closes: #88684)
+  * Explained some features in the README and also changed the
+    description to name some of the features.
+  * Changed behaviour to correctly identify the host where the upload
+    should be put to, even when using multiple files. (Close: #89104)
+  * Rewrote parser for the .changes file to also handle binary-only
+    uploads from now on.
+  * Rewrote error message if you named any other file then a .changes
+    file on the command line.
+
+ -- Christian Kurz <shorty@debian.org>  Thu, 15 Mar 2001 22:00:26 +0100
+
+dput (0.6) unstable; urgency=low
+
+  * Included new manpages from Jordi Mallach.
+  * Minor Code Cleanup.
+  * Added -d/--debug to get debugging info if needed.
+  * Now dput will refuse to start an upload until the maintainer really
+    named the .changes file. ;)
+  * Modified standard dput.cf to prefer scp over ftp.
+  * Corrected behaviour of guessing the upload host to only guess it, when
+    no host is named on the command line.
+  * Added option run_dinstall to do a dry run of dinstall on the just uploaded
+    files. Also there's the commandline option -D/--dinstall for this purpose.
+
+ -- Christian Kurz <shorty@debian.org>  Thu,  1 Mar 2001 22:14:53 +0100
+
+dput (0.5) unstable; urgency=low
+
+  * Removed COPYING from debian package and added copyright file.
+  * Added option -l/--lintian and config-file option run_lintian to
+    support the usage of lintian before the upload happens.
+  * For some of our lazy maintainers ;) dput will guess the correct host
+    to upload the package to.
+  * Moved some more code into it's own function.
+
+ -- Christian Kurz <shorty@debian.org>  Sun, 25 Feb 2001 20:47:58 +0100
+
+dput (0.4) unstable; urgency=low
+
+  * The Test for tar.gz. should also handle debian native packages 
+    correctly and packages with an epoch.
+  * Uploading of non-US software to an host != non-US will give an
+    error message and refuse to work.
+  * The scp upload will now run in Batched mode, so you need to enter
+    your passphrase only once.
+  * Fixed upload of packages, since I forgot to upload the
+  * changes-file.
+  * Added a manpage for dput.cf.
+  * Support rsync uploads.
+
+ -- Christian Kurz <shorty@debian.org>  Sun, 25 Feb 2001 18:07:31 +0100
+
+dput (0.3) unstable; urgency=low
+
+  * Added option -c/--config to allow other config files.
+  * Added option -o/--check-only for running only some checks
+    against the package.
+  * Now the signature test will also be run on the dsc-file.
+  * Check for orig.tar.gz or tar.gz files in the upload and warn the
+    user of they are not needed. This should also handle debian native
+    packages correctly and packages with an epoch.
+  * Uploading of non-US software to an host != non-US will give an
+    error message and refuse to work.
+  * The scp upload will now run in Batched mode, so you need to enter
+    your passphrase only once.
+  * Fixed upload of packages, since I forgot to upload the changes-file.
+  * Added a manpage for dput.cf.
+
+ -- Christian Kurz <shorty@debian.org>  Mon, 19 Feb 2001 22:00:01 +0100
+
+dput (0.2) unstable; urgency=low
+
+  * Merged two config files into one config file.
+  * Rewrote dput to use the single config file.
+
+ -- Christian Kurz <shorty@debian.org>  Mon, 19 Feb 2001 20:58:41 +0100
+
+dput (0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Christian Kurz <shorty@debian.org>  Mon, 19 Feb 2001 15:44:33 +0100

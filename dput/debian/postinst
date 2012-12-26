@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+DIR='/usr/share/dput/'
+
+case "$1" in
+	configure|abort-upgrade|abort-remove|abort-deconfigure)
+		python -c 'import sys, compileall ; exit_status = int(not compileall.main()); sys.exit(exit_status)' -q $DIR
+	;;
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
+esac
+

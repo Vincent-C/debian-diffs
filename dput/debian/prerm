@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+dpkg --listfiles dput | awk '$0~/\.py$/ {print $0"c\n" $0"o"}' | xargs rm -f >&2
