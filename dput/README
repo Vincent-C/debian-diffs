@@ -1,0 +1,3 @@
+Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/dput_0.9.6.3%2Bnmu1ubuntu1.tar.gz
+
+This package also contains sftp.py, to support SFTP uploads.
