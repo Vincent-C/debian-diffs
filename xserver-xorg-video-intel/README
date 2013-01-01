@@ -5,10 +5,10 @@ rather than experimental, SNA acceleration is compiled and enabled by default
 (./configure flags: --enable-sna --with-default-accel=sna). This renders
 xorg.conf unnecessary for usage of SNA acceleration.
 
-~~Additionally, a number of power-saving options are enabled by default in
+(Additionally, a number of power-saving options are enabled by default in
 /etc/modprobe.d/i915-kms.conf: i915_enable_fbc=1 i915_enable_rc6=1
-lvds_downclock=1).~~
-(The above is no longer true in my packaging since these options will automatically be enabled if your hardware works well with them, e.g. Ivy Bridge comes with i915_enable_fbc=1 and i915_enable_rc6=3 from linux >= 3.4. Forcing these options may cause stability issues.)
+lvds_downclock=1).)
+The above is no longer true in my packaging since these options will automatically be enabled if your hardware works well with them, e.g. Ivy Bridge comes with i915_enable_fbc=1 and i915_enable_rc6=3 from linux >= 3.4. Forcing these options may cause stability issues.
 
 The acceleration method is still switchable at runtime with a xorg.conf
 snippet, if you wish to use the older UXA, e.g.:
