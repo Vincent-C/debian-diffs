@@ -1,4 +1,4 @@
-xserver-xorg-video-intel (2:2.20.16-1+vc1) unstable; urgency=low
+xserver-xorg-video-intel (2:2.20.17-1+vc1) unstable; urgency=low
 
   * Local package.
   * New upstream release.
@@ -6,7 +6,7 @@ xserver-xorg-video-intel (2:2.20.16-1+vc1) unstable; urgency=low
   * Build with --with-default-accel=sna (this avoids the need to add a
     xorg.conf snippet to enable SNA acceleration).
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 15 Dec 2012 16:20:51 -0800
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 26 Dec 2012 23:03:56 -0800
 
 xserver-xorg-video-intel (2:2.20.5-1) experimental; urgency=low
 
