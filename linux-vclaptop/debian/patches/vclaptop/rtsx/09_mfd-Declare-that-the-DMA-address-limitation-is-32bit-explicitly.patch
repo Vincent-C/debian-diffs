@@ -1,0 +1,31 @@
+LKML: https://lkml.org/lkml/2013/1/8/87
+[PATCH v4 3/8] MFD:rtsx: Declare that the DMA address limitation is 32bit explicitly
+
+From: Wei WANG <wei_wang@realsil.com.cn>
+
+Realtek PCIe card reader only supports 32bit DMA.
+This declaration can improve the readability
+
+Signed-off-by: Wei WANG <wei_wang@realsil.com.cn>
+---
+ drivers/mfd/rtsx_pcr.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+diff --git a/drivers/mfd/rtsx_pcr.c b/drivers/mfd/rtsx_pcr.c
+index fa2c2bc..1dc64bb 100644
+--- a/drivers/mfd/rtsx_pcr.c
++++ b/drivers/mfd/rtsx_pcr.c
+@@ -1010,6 +1010,10 @@ static int __devinit rtsx_pci_probe(struct pci_dev *pcidev,
+ 		pci_name(pcidev), (int)pcidev->vendor, (int)pcidev->device,
+ 		(int)pcidev->revision);
+ 
++	ret = pci_set_dma_mask(pcidev, DMA_BIT_MASK(32));
++	if (ret < 0)
++		return ret;
++
+ 	ret = pci_enable_device(pcidev);
+ 	if (ret)
+ 		return ret;
+-- 
+1.7.9.5
+
+  

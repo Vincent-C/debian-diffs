@@ -1,0 +1,67 @@
+Beginning of patchset on LKML: https://lkml.org/lkml/2013/1/8/92
+[PATCH v4 0/8] rtsx patchset for MFD and MMC tree
+
+From: Wei WANG <wei_wang@realsil.com.cn>
+
+v2:
+1. Add commit message for patch 2
+2. Move pci_set_dma_mask before the pci_enable_device(pcidev) call
+
+v3:
+1. Add commit message for patch 3
+2. Add patch 8: Use macro defines to replace some variables
+
+v4:
+1. Describe why patch 3 is needed
+2. Modify a comment character in patch 7
+
+Wei WANG (8):
+  MFD:rtsx: Fix typo in comment
+  MFD:rtsx: Remove redundant code
+  MFD:rtsx: Declare that the DMA address limitation is 32bit explicitly
+  MFD:rtsx: Add callback function switch_output_voltage
+  MMC:rtsx: Using callback function to switch output voltage
+  MFD:rtsx: Add callback function conv_clk_and_div_n
+  MFD:rtsx: Fix checkpatch warning
+  MFD:rtsx: Use macro defines to replace some variables
+
+ drivers/mfd/rtl8411.c             |   29 ++++++++++++++++++++++++
+ drivers/mfd/rts5209.c             |   21 +++++++++++++++++
+ drivers/mfd/rts5229.c             |   21 +++++++++++++++++
+ drivers/mfd/rtsx_pcr.c            |   45 +++++++++++++++++++++++++------------
+ drivers/mfd/rtsx_pcr.h            |    3 +++
+ drivers/mmc/host/rtsx_pci_sdmmc.c |   30 +++++--------------------
+ include/linux/mfd/rtsx_common.h   |    3 +++
+ include/linux/mfd/rtsx_pci.h      |   27 +++++++++++++++++-----
+ 8 files changed, 135 insertions(+), 44 deletions(-)
+
+
+
+LKML: https://lkml.org/lkml/2013/1/8/93
+[PATCH v4 1/8] MFD:rtsx: Fix typo in comment
+
+From: Wei WANG <wei_wang@realsil.com.cn>
+
+Fix a misspelling word in comment
+
+Signed-off-by: Wei WANG <wei_wang@realsil.com.cn>
+---
+ include/linux/mfd/rtsx_pci.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/include/linux/mfd/rtsx_pci.h b/include/linux/mfd/rtsx_pci.h
+index 060b721..bebe9f9 100644
+--- a/include/linux/mfd/rtsx_pci.h
++++ b/include/linux/mfd/rtsx_pci.h
+@@ -452,7 +452,7 @@
+ #define	SD_RSP_TYPE_R6			0x01
+ #define	SD_RSP_TYPE_R7			0x01
+ 
+-/* SD_CONFIURE3 */
++/* SD_CONFIGURE3 */
+ #define	SD_RSP_80CLK_TIMEOUT_EN		0x01
+ 
+ /* Card Transfer Reset Register */
+-- 
+1.7.9.5
+
+  

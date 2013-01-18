@@ -1,3 +1,13 @@
+linux-vclaptop (3.7.3-1) unstable; urgency=low
+
+  * Local package (linux 3.7.3); custom kernel build.
+  * New upstream release.
+    - Fix several drm/i915 related GPU hangs (see FDO #54226 and #55984) and
+      iwlwifi hangs.
+    - Add new realtek card patchset v4: "rtsx patchset for MFD and MMC tree".
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 17 Jan 2013 22:42:08 -0800
+
 linux-vclaptop (3.7.1-1) unstable; urgency=low
 
   * Local package (linux 3.7.1); custom kernel build.

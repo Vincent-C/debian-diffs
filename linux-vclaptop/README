@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.7.1.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.7.3.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -26,8 +26,8 @@ packaging).
 8) Edit debian/config/amd64/defines: "liquorix" to whatever name you want, in
    my case "vclaptop".
 9) Edit debian/config/defines: change abiname, remove i386 from list of archs,
-   change compiler version if wanted.
-10) Edit debian/source/options: compression set to xz instead of bzip2
+   change compiler version if wanted. Remove debian/config/i386/.
+10) Edit debian/source/options: compression set to xz, compression level = 6.
     Edit debian/templates/control.source.in: change maintainer name and email.
     Edit debian/templates/control.image.type-plain.in: remove recommends for
     firmware-linux-free.
