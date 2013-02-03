@@ -1,15 +1,25 @@
-xchat (2.8.8-7+vc1) unstable; urgency=low
+xchat (2.8.8-7.1+vc1) unstable; urgency=low
 
   * Local package.
-  * Stop spamming systray with notify-send icons. (Closes: #682599)
-    - Add libnotify-dev to build-depends; remove libnotify1 from recommends.
-    - Add debian/patches/80_libnotify07.patch.
   * Stop systray icon from disappearing every time gnome-{shell,panel}
     disappears/crashes/kills itself. (Closes: #675439)
-    - Add debian/patches/81_fix_disappearing_systray.patch.
+    - Add debian/patches/80_fix_disappearing_systray.patch.
   * Update debian/watch file. (Closes: #675428)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 21 Oct 2012 02:15:17 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 29 Dec 2012 13:59:30 -0800
+
+xchat (2.8.8-7.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Dynamically load libnotify.so.4 (instead of libnotify.so.1, which is
+    no longer in sid) when sending notifications to the system tray, for
+    better integration with Gnome 3. (Closes: #682599)
+     + debian/control: recommend libnotify4 instead of libnotify1
+     + debian/patches/66_load_libnotify4.patch: new patch
+    A better fix would be to link against libnotify, but Bart Martens prefers
+    to delay this until Jessie (it will be a larger diff).
+
+ -- Sébastien Villemot <sebastien@debian.org>  Sat, 08 Dec 2012 15:06:39 +0100
 
 xchat (2.8.8-7) unstable; urgency=low
 

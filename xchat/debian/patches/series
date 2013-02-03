@@ -23,5 +23,5 @@
 63_save_keybindings.patch
 64_save_pevents.patch
 65_save_sound.patch
-80_libnotify07.patch
-81_fix_disappearing_systray.patch
+66_load_libnotify4.patch
+80_fix_disappearing_systray.patch

@@ -1,0 +1,49 @@
+Description: Dynamically load libnotify.so.4 instead of libnotify.so.1
+ Dynamically load libnotify.so.4 (instead of libnotify.so.1, which is no longer
+ in sid) when sending notifications to the system tray, for better integration
+ with Gnome 3. This patch also adapts for the new libnotify API.
+Origin: http://xchat.svn.sourceforge.net/viewvc/xchat/src/fe-gtk/plugin-tray.c?r1=1453&r2=1470
+Bug: http://sourceforge.net/tracker/index.php?func=detail&aid=3109838&group_id=239&atid=100239
+Bug-Debian: http://bugs.debian.org/682599
+Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=693362
+Reviewed-by: Sébastien Villemot <sebastien@debian.org>
+Last-Update: 2012-12-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/fe-gtk/plugin-tray.c
++++ b/src/fe-gtk/plugin-tray.c
+@@ -125,8 +125,9 @@
+ /* prototypes */
+ static gboolean (*nn_init) (char *);
+ static void (*nn_uninit) (void);
+-static void *(*nn_new_with_status_icon) (const gchar *summary, const gchar *message, const gchar *icon, GtkStatusIcon *status_icon);
+-static void *(*nn_new) (const gchar *summary, const gchar *message, const gchar *icon, GtkWidget *attach);
++/* recent versions of libnotify don't take the fourth GtkWidget argument, but passing an
++ * extra NULL argument will be fine */
++static void *(*nn_new) (const gchar *summary, const gchar *message, const gchar *icon, gpointer dummy);
+ static gboolean (*nn_show) (void *noti, GError **error);
+ static void (*nn_set_timeout) (void *noti, gint timeout);
+ 
+@@ -148,20 +149,14 @@
+ 
+ 	if (!nn_mod)
+ 	{
+-		nn_mod = g_module_open ("libnotify", G_MODULE_BIND_LAZY);
++		nn_mod = g_module_open ("libnotify.so.4", G_MODULE_BIND_LAZY);
+ 		if (!nn_mod)
+-		{
+-			nn_mod = g_module_open ("libnotify.so.1", G_MODULE_BIND_LAZY);
+-			if (!nn_mod)
+-				return FALSE;
+-		}
++			return FALSE;
+ 
+ 		if (!g_module_symbol (nn_mod, "notify_init", (gpointer)&nn_init))
+ 			goto bad;
+ 		if (!g_module_symbol (nn_mod, "notify_uninit", (gpointer)&nn_uninit))
+ 			goto bad;
+-		if (!g_module_symbol (nn_mod, "notify_notification_new_with_status_icon", (gpointer)&nn_new_with_status_icon))
+-			goto bad;
+ 		if (!g_module_symbol (nn_mod, "notify_notification_new", (gpointer)&nn_new))
+ 			goto bad;
+ 		if (!g_module_symbol (nn_mod, "notify_notification_show", (gpointer)&nn_show))
