@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with python2
+
+override_dh_auto_build:
+
+override_dh_auto_test:
+
+override_dh_auto_install:
+	USE_MESAGL=1 python setup.py install --root=$(CURDIR)/debian/tmp \
+	                                     --install-layout=deb
+
+override_dh_install:
+	dh_install --fail-missing
