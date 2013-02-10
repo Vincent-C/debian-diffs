@@ -1,3 +1,9 @@
+nixnote (1.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 10 Feb 2013 15:08:57 -0800
+
 nixnote (1.4+repack1-1) unstable; urgency=low
 
   * Actual upstream 1.4 release.

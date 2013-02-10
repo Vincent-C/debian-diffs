@@ -1,1 +1,4 @@
-Tarball: https://launchpad.net/~vincent-c/+archive/nevernote/+files/nixnote_1.4+repack1.orig.tar.gz
+Tarball: https://launchpad.net/~vincent-c/+archive/nevernote/+files/nixnote_1.5.orig.tar.gz
+
+(The above modified tarball embeds both 32-bit and 64-bit QtJambi libs so that
+a single arch:all binary package is sufficient.)
