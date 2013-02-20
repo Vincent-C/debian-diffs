@@ -1,0 +1,22 @@
+From: Adrian Johnson <ajohnson@redneon.com>
+Date: Thu, 5 Jul 2012 21:59:33 +0930
+Subject: cff: use correct size for buffer
+
+Bug 51443
+---
+ src/cairo-cff-subset.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cairo-cff-subset.c b/src/cairo-cff-subset.c
+index aeaf5b1..b3b6026 100644
+--- a/src/cairo-cff-subset.c
++++ b/src/cairo-cff-subset.c
+@@ -302,7 +302,7 @@ decode_real (unsigned char *p, double *real)
+     char buffer2[200];
+     char *q;
+     char *buf = buffer;
+-    char *buf_end = buffer + sizeof (buf);
++    char *buf_end = buffer + sizeof (buffer);
+ 
+     locale_data = localeconv ();
+     decimal_point = locale_data->decimal_point;

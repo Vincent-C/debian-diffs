@@ -1,0 +1,13 @@
+Index: cairo-1.12.2/src/cairo-polygon-intersect.c
+===================================================================
+--- cairo-1.12.2.orig/src/cairo-polygon-intersect.c	2012-04-19 13:17:58.000000000 +0100
++++ cairo-1.12.2/src/cairo-polygon-intersect.c	2013-01-26 23:08:54.000000000 +0000
+@@ -1231,6 +1231,8 @@
+ 	    } while (1);
+ 
+ 	    right = left->next;
++	    if (!right)
++		    return;
+ 	    do {
+ 		if unlikely ((right->deferred.other))
+ 		    edges_end (right, top, polygon);

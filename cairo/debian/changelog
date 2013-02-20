@@ -1,9 +1,38 @@
-cairo (1.12.2-2+vc1) unstable; urgency=low
+cairo (1.12.2-3+vc1) unstable; urgency=low
 
   * Local package.
-  * Import patches from Ubuntu and Arch Linux. 
+  * Import several patches from Ubuntu and Arch Linux. 
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 07 Jun 2012 23:20:02 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 18 Feb 2013 19:00:57 -0800
+
+cairo (1.12.2-3) unstable; urgency=low
+
+  * Team upload.
+
+  [ intrigeri ]
+  * Fix several printing related problems:
+    - Evince crash when printing certain PDF files (Closes: #672336)
+    - Evince producing broken print output (Closes: #679105)
+    Patches cherry-picked from upstream:
+    - 07_cff-subsetting-Ignore-charset-for-non-cid-fonts.patch
+    - 08_cff_convert_._to_locale_specific_decimal_point_befor.patch
+    - 09_cff_use_correct_size_for_buffer.patch
+    - 10_cff_subsetting_widths_can_be_floating_point.patch
+
+  [ Michael Biebl ]
+  * Fix segmentation fault when rendering SVGs at certain sizes.
+    (Closes: #697482)
+    Patch cherry-picked from upstream:
+    - 11_polygon-reduce_reduce_broken_stopped-edge_continuation.patch
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 31 Jan 2013 16:22:34 +0100
+
+cairo (1.12.2-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * (Closes: #690799)  evince crashes with a certain PDF file
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 26 Jan 2013 23:22:12 +0000
 
 cairo (1.12.2-2) unstable; urgency=low
 

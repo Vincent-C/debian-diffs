@@ -3,5 +3,11 @@
 03_export-symbols.patch
 05-flto.patch
 06_hurd-map-noreserve.patch
-server_side_gradients.patch
+07_cff-subsetting-Ignore-charset-for-non-cid-fonts.patch
+08_cff_convert_._to_locale_specific_decimal_point_befor.patch
+09_cff_use_correct_size_for_buffer.patch
+10_cff_subsetting_widths_can_be_floating_point.patch
+11_polygon-reduce_reduce_broken_stopped-edge_continuation.patch
+intersect-dereference.diff
 cairo-respect-fontconfig.patch
+server_side_gradients.patch
