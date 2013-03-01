@@ -6,22 +6,3 @@ debian/x86-memtest-WARN-if-bad-RAM-found.patch
 ## my own patchset
 # build with -march=native
 vclaptop/march-native.patch
-
-# drm/i915 GPU hang fix (FDO bugzilla #55984)
-vclaptop/i915/drm-i915-Invalidate-the-relocation-presumed-offsets-along-the-slow-path.patch
-
-# Realtek PCI-E SD/MMC card reader support
-vclaptop/rtsx/01_mfd-Add-realtek-pcie-card-reader-driver.patch
-vclaptop/rtsx/02_mmc-Add-realtek-pcie-sdmmc-host-driver.patch
-vclaptop/rtsx/03_memstick-Add-realtek-pcie-memstick-host-driver.patch
-vclaptop/rtsx/04_mfd-Select-MFD_CORE-for-rtsx.patch
-vclaptop/rtsx/05_mmc-Configure-SD_CFG2-register-in-sd_rw_multi.patch
-vclaptop/rtsx/06_mfd-Explicitely-include-slab.h-to-rtsx.patch
-vclaptop/rtsx/07_mfd-Fix-typo-in-comment.patch
-vclaptop/rtsx/08_mfd-Remove-redundant-code.patch
-vclaptop/rtsx/09_mfd-Declare-that-the-DMA-address-limitation-is-32bit-explicitly.patch
-vclaptop/rtsx/10_mfd-Add-callback-function-switch_output_voltage.patch
-vclaptop/rtsx/11_mmc-Using-callback-function-to-switch-output-voltage.patch
-vclaptop/rtsx/12_mfd-Add-callback-function-conv_clk_and_div_n.patch
-vclaptop/rtsx/13_mfd-Fix-checkpatch-warning.patch
-vclaptop/rtsx/14_mfd-Use-macro-defines-to-replace-some-variables.patch
