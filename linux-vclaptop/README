@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.8.1.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.8.13.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -34,6 +34,7 @@ packaging).
     Remove all references of liquorix from templates to avoid confusion.
     Edit debian/README.* with the following header:
 
+(README.Debian):
 Please note that everything below originates from the README file provided with
 the Liquorix kernel; not everything applies to this custom-built kernel.
 

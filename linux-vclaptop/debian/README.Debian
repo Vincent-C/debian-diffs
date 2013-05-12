@@ -5,7 +5,7 @@ the Liquorix kernel; not everything applies to this custom-built kernel.
 
 Major changes to my customized kernel compared with the stock Debian ones:
  - NOT optimized for size (CONFIG_CC_OPTIMIZE_FOR_SIZE=n)
- - compiled with -march=native (corei7-avx)
+ - compiled with -march=core-avx-i (3rd gen Intel Ivy Bridge)
  - full preemption (CONFIG_PREEMPT=y et al.)
  - default I/O scheduler set to deadline (CONFIG_DEFAULT_DEADLINE=y)
  - always enable transparent hugepage (CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y)

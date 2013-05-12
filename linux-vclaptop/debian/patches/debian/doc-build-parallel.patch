@@ -9,11 +9,9 @@ file having already been compressed and removed.
 Since dh_compress will compress manual pages later, we don't need
 to run gzip here at all.
 
-diff --git a/Documentation/DocBook/Makefile b/Documentation/DocBook/Makefile
-index 5a2882d..71c7077 100644
 --- a/Documentation/DocBook/Makefile
 +++ b/Documentation/DocBook/Makefile
-@@ -159,7 +159,7 @@ quiet_cmd_db2html = HTML   $@
+@@ -159,7 +159,7 @@
              cp $(PNG-$(basename $(notdir $@))) $(patsubst %.html,%,$@); fi
  
  quiet_cmd_db2man = MAN     $@

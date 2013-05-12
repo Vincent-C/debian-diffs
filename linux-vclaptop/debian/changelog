@@ -1,3 +1,19 @@
+linux-vclaptop (3.8.13-1) unstable; urgency=low
+
+  * Local package (linux 3.8.13); custom kernel build.
+  * New upstream release.
+    - Includes several iwlwifi commits that may fix hangs.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 11 May 2013 21:44:59 -0700
+
+linux-vclaptop (3.8.5-1) unstable; urgency=low
+
+  * Local package (linux 3.8.5); custom kernel build.
+  * New upstream release.
+    - Includes: mfd:rtsx: Fix issue that booting OS with SD card inserted
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 28 Mar 2013 19:46:43 -0700
+
 linux-vclaptop (3.8.1-1) unstable; urgency=low
 
   * Local package (linux 3.8.1); custom kernel build.
