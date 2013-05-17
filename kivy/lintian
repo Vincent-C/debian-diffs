@@ -1,0 +1,20 @@
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/_event.so dictionnary dictionary
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/context_instructions.so independant independent
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/context_instructions.so informations information
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/fbo.so automaticly automatically
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/opengl_utils.so capabilites capabilities
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/texture.so seperate separate
+I: python-kivy: spelling-error-in-binary usr/lib/python2.7/dist-packages/kivy/graphics/vertex_instructions.so begining beginning
+W: python-kivy: hardening-no-fortify-functions usr/lib/python2.7/dist-packages/kivy/graphics/vertex_instructions.so
+P: python-kivy: no-upstream-changelog
+I: python-kivy: capitalization-error-in-description python Python
+W: python-kivy: duplicate-font-file usr/share/pyshared/kivy/data/fonts/DejaVuSans.ttf also in ttf-dejavu-core
+W: python-kivy: duplicate-font-file usr/share/pyshared/kivy/data/fonts/DroidSans-Bold.ttf also in fonts-droid
+I: python-kivy: font-in-non-font-package usr/share/pyshared/kivy/data/fonts/DroidSans-BoldItalic.ttf
+I: python-kivy: font-in-non-font-package usr/share/pyshared/kivy/data/fonts/DroidSans-Italic.ttf
+W: python-kivy: duplicate-font-file usr/share/pyshared/kivy/data/fonts/DroidSans.ttf also in fonts-droid
+W: python-kivy: duplicate-font-file usr/share/pyshared/kivy/data/fonts/DroidSansMono.ttf also in fonts-droid
+I: python-kivy: arch-dep-package-has-big-usr-share 3004kB 60%
+W: python-kivy: script-not-executable usr/share/pyshared/kivy/tools/packaging/osx/kivy.sh
+P: python-kivy-examples: no-upstream-changelog
+I: python-kivy-examples: capitalization-error-in-description python Python
