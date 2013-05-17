@@ -1,3 +1,15 @@
+thunderbird-stable (17.0.6-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 14 May 2013 18:03:30 -0700
+
+thunderbird-stable (17.0.5-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 02 Apr 2013 19:15:24 -0700
+
 thunderbird-stable (17.0.3-1+vc1) unstable; urgency=low
 
   * New upstream release.
