@@ -1,3 +1,27 @@
+firefox (21.0-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 14 May 2013 18:02:02 -0700
+
+firefox (20.0.1-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 11 Apr 2013 20:05:47 -0700
+
+firefox (20.0-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 02 Apr 2013 19:13:12 -0700
+
+firefox (19.0.2-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 07 Mar 2013 21:02:41 -0800
+
 firefox (19.0-1+vc1) unstable; urgency=low
 
   * New upstream release.
