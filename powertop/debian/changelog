@@ -1,3 +1,10 @@
+powertop (2.3-0~vc1) unstable; urgency=low
+
+  * Local package.
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 18 Mar 2013 19:29:37 -0700
+
 powertop (2.2-0~vc1) unstable; urgency=low
 
   * Local package.
