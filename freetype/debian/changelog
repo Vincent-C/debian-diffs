@@ -1,9 +1,58 @@
-freetype (2.4.9-1+vc1) unstable; urgency=low
+freetype (2.4.11-0~vc1) unstable; urgency=low
 
-  * Local package.
-  * Add patch to fix ugly line height squeezing. (Closes: #636776, #636844)
+  * New upstream release; build for Debian sid.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 08 Jun 2012 03:02:15 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 26 May 2013 19:40:19 -0700
+
+freetype (2.4.11-0ubuntu1) raring; urgency=low
+
+  * New upstream version
+  * debian/patches-freetype/CVE-2012-5668.patch,
+    debian/patches-freetype/CVE-2012-5669.patch,
+    debian/patches-freetype/CVE-2012-5670.patch:
+    - dropped, those fixes are in the new version
+  * debian/patches-ft2demos/compiler_hardening_fixes.patch:
+    - changed unsigned char* to char* to fix "pointer targets in assignment
+      differ in signedness" build error
+  * debian/libfreetype6.symbols: updated for the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 08 Feb 2013 12:50:09 +0100
+
+freetype (2.4.10-0ubuntu2) raring; urgency=low
+
+  * SECURITY UPDATE: denial of service and possible code execution via NULL
+    pointer dereference
+    - debian/patches-freetype/CVE-2012-5668.patch: reset props_size in case
+      of allocation error in src/bdf/bdflib.c.
+    - CVE-2012-5668
+  * SECURITY UPDATE: denial of service and possible code execution via heap
+    buffer over-read in BDF parsing
+    - debian/patches-freetype/CVE-2012-5669.patch: use correct array size
+      in src/bdf/bdflib.c.
+    - CVE-2012-5669
+  * SECURITY UPDATE: denial of service and possible code execution via out-
+    of-bounds write
+    - debian/patches-freetype/CVE-2012-5670.patch: normalize negative
+      parameter in src/bdf/bdflib.c.
+    - CVE-2012-5670
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 14 Jan 2013 13:24:57 -0500
+
+freetype (2.4.10-0ubuntu1) quantal; urgency=low
+
+  * New upstream version
+  * debian/libfreetype6.symbols:
+    - new version update
+  * debian/patches-freetype/savannah-bug-35847.patch,
+    debian/patches-freetype/savannah-bug-35833.patch:
+    - dropped, the fixes are in the new version
+  * Resynchronize on Debian, remaining diff:
+  * debian/patches-freetype/revert_scalable_fonts_metric.patch:
+    - revert commit "Fix metrics on size request for scalable fonts.",
+      it's breaking gtk underlining markups and creating some other 
+      issues as well (lp: #972223)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 03 Aug 2012 13:57:01 +0200
 
 freetype (2.4.9-1) unstable; urgency=low
 
