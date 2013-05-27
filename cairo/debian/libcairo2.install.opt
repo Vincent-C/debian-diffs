@@ -1,1 +1,0 @@
-debian/install/opt/usr/lib/libcairo.so.* @OPTLIBDIR@
