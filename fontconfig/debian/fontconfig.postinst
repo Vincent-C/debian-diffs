@@ -27,4 +27,11 @@ if [ "$1" = configure ]; then
   printf "Regenerating fonts cache... "
   fc-cache -s -f -v 1>/var/log/fontconfig.log 2>&1 || (printf "failed.\nSee /var/log/fontconfig.log for more information.\n"; exit 1)
   printf "done.\n"
+
+  if dpkg --compare-versions "$2" lt-nl 2.10.1-0ubuntu1; then  
+    if [ -d /etc/fonts/conf.avail ]; then
+      rmdir --ignore-fail-on-non-empty /etc/fonts/conf.avail
+    fi
+  fi
+
 fi

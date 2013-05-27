@@ -3,14 +3,9 @@
 Recently, fontconfig changed to not include bitmapped fonts in the
 default font set.  There is now a Debconf question about this.
 
-If you wish to enable bitmapped fonts manually, either reconfigure
-fontconfig-config (with dpkg-reconfigure fontconfig-config), or remove the
-/etc/fonts/conf.d/70-no-bitmaps.conf symbolic link and add a symlink named
-70-yes-bitmaps.conf pointing to ../conf.avail/70-yes-bitmaps.conf:
-
-  cd /etc/fonts/conf.d && \
-    rm -f 70-no-bitmaps.conf && \
-    ln -s ../conf.avail/70-yes-bitmaps.conf
+If you wish to enable bitmapped fonts manually, either reconfigure this
+package (with dpkg-reconfigure fontconfig-config), or remove the 
+symbolic link /etc/fonts/conf.d/30-debconf-no-bitmaps.conf
 
 *****************
 

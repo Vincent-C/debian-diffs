@@ -1,50 +1,24 @@
---- /dev/null
-+++ b/conf.d/11-lcd-filter-lcddefault.conf
-@@ -0,0 +1,11 @@
-+<?xml version="1.0"?>
-+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-+<!-- conf.d/lcd-filter-lcddefault.conf -->
-+<fontconfig>
-+<!--  Use lcddefault as default for LCD filter -->
-+  <match target="font">
-+    <edit mode="assign" name="lcdfilter">
-+      <const>lcddefault</const>
-+    </edit>
-+  </match>
-+</fontconfig>
---- a/conf.d/Makefile.am
-+++ b/conf.d/Makefile.am
-@@ -37,6 +37,7 @@
- 	10-sub-pixel-vbgr.conf \
- 	10-sub-pixel-vrgb.conf \
- 	10-unhinted.conf \
-+	11-lcd-filter-lcddefault.conf \
- 	11-lcdfilter-default.conf \
- 	11-lcdfilter-legacy.conf \
- 	11-lcdfilter-light.conf \
-@@ -66,6 +67,7 @@
+Index: fontconfig-2.10.1/conf.d/Makefile.am
+===================================================================
+--- fontconfig-2.10.1.orig/conf.d/Makefile.am	2012-08-02 22:28:09.226578434 +0200
++++ fontconfig-2.10.1/conf.d/Makefile.am	2012-08-02 22:28:15.990578713 +0200
+@@ -28,6 +28,7 @@
  	10-antialias.conf \
  	10-hinting.conf \
  	10-hinting-slight.conf \
-+	11-lcd-filter-lcddefault.conf \
- 	20-fix-globaladvance.conf \
++	11-lcdfilter-default.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \
---- a/conf.d/Makefile.in
-+++ b/conf.d/Makefile.in
-@@ -288,6 +288,7 @@
- 	10-sub-pixel-vbgr.conf \
- 	10-sub-pixel-vrgb.conf \
- 	10-unhinted.conf \
-+	11-lcd-filter-lcddefault.conf \
- 	11-lcdfilter-default.conf \
- 	11-lcdfilter-legacy.conf \
- 	11-lcdfilter-light.conf \
-@@ -316,6 +317,7 @@
-  	10-antialias.conf \
-  	10-hinting.conf \
-  	10-hinting-slight.conf \
-+	11-lcd-filter-lcddefault.conf \
- 	20-fix-globaladvance.conf \
+ 	30-metric-aliases.conf \
+Index: fontconfig-2.10.1/conf.d/Makefile.in
+===================================================================
+--- fontconfig-2.10.1.orig/conf.d/Makefile.in	2012-08-02 22:28:09.226578434 +0200
++++ fontconfig-2.10.1/conf.d/Makefile.in	2012-08-02 22:28:15.974578713 +0200
+@@ -263,6 +263,7 @@
+ 	10-antialias.conf \
+ 	10-hinting.conf \
+ 	10-hinting-slight.conf \
++	11-lcdfilter-default.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \
+ 	30-metric-aliases.conf \

@@ -1,4 +1,4 @@
-Tarball: http://ftp.de.debian.org/debian/pool/main/f/fontconfig/fontconfig_2.9.0.orig.tar.gz
+Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.2.orig.tar.bz2
 
 These patched fontconfig packages should be used in conjunction with the
 patched freetype and cairo packages in this repo to provide a more comfortable
@@ -14,4 +14,6 @@ Debian diff is based on the version in the main repository, with the following
 - 06_ubuntu_lcddefault.patch
 - 07_no_bitmaps.patch
 
-[1] https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.1-0ubuntu3.debian.tar.gz
+UPDATE (2013/03/26): package imported directly from Ubuntu without any modifications
+
+[1] https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.2-0ubuntu2.debian.tar.gz

@@ -1,6 +1,8 @@
---- a/conf.d/Makefile.am
-+++ b/conf.d/Makefile.am
-@@ -82,6 +82,7 @@
+Index: fontconfig-2.10.1/conf.d/Makefile.am
+===================================================================
+--- fontconfig-2.10.1.orig/conf.d/Makefile.am	2012-08-02 22:28:09.318578438 +0200
++++ fontconfig-2.10.1/conf.d/Makefile.am	2012-08-02 22:28:09.334578439 +0200
+@@ -41,6 +41,7 @@
  	65-fonts-persian.conf \
  	65-nonlatin.conf \
  	69-unifont.conf \
@@ -8,9 +10,11 @@
  	80-delicious.conf \
  	90-synthetic.conf
  
---- a/conf.d/Makefile.in
-+++ b/conf.d/Makefile.in
-@@ -332,6 +332,7 @@
+Index: fontconfig-2.10.1/conf.d/Makefile.in
+===================================================================
+--- fontconfig-2.10.1.orig/conf.d/Makefile.in	2012-08-02 22:28:09.318578438 +0200
++++ fontconfig-2.10.1/conf.d/Makefile.in	2012-08-02 22:28:09.338578439 +0200
+@@ -276,6 +276,7 @@
  	65-fonts-persian.conf \
  	65-nonlatin.conf \
  	69-unifont.conf \

@@ -1,29 +1,96 @@
-fontconfig (2.9.0-7.1+vc1) unstable; urgency=low
+fontconfig (2.10.2-1+vc1) unstable; urgency=low
 
   * Local package.
-  * Apply patches from Ubuntu diff. 
+  * New upstream release, built on Debian sid.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 25 Dec 2012 00:11:11 -0800
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 26 May 2013 21:19:10 -0700
 
-fontconfig (2.9.0-7.1) unstable; urgency=low
+fontconfig (2.10.2-0ubuntu2) raring; urgency=low
 
-  * Non-maintainer upload.
-  * Update README.Debian with respect to enabling bitmapped fonts: just
-    removing the no-bitmaps.conf symlink is not enough, the corresponding
-    symlink for yes-bitmaps.conf needs to be added too.
-    Thanks to Andreas Metzler <ametzler@debian.org> for the patch.
-    Closes: #684923.
+  * Remove versioned build dependency on binutils.
 
- -- intrigeri <intrigeri@debian.org>  Tue, 11 Dec 2012 15:09:54 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 06 Mar 2013 15:11:11 +0800
 
-fontconfig (2.9.0-7) unstable; urgency=low
+fontconfig (2.10.2-0ubuntu1) raring; urgency=low
 
-  * Don't clean ancient cache files on new install. Closes: #636173.
-  * Update Czech translation. Closes: #681700.
-  * Update Spanish translation. Closes: #681766.
-  * Add Polish translation. Closes: #682577.
+  * New upstream version:
+    - includes the typo fixes for lp: #1037509
 
- -- Keith Packard <keithp@debian.org>  Wed, 25 Jul 2012 08:46:48 -0700
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 26 Nov 2012 18:21:52 +0100
+
+fontconfig (2.10.1-0ubuntu3) quantal; urgency=low
+
+  * Fix fontconfig-config postinst to ignore rmdir failures when removing
+    /var/lib/defoma/fontconfig.d/ as some systems have files in there.
+    (LP: #1039828)
+
+ -- Stéphane Graber <stgraber@ubuntu.com>  Wed, 22 Aug 2012 00:09:02 -0400
+
+fontconfig (2.10.1-0ubuntu2) quantal-proposed; urgency=low
+
+  * debian/control: build-depends on pkg-config
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 03 Aug 2012 21:58:18 +0200
+
+fontconfig (2.10.1-0ubuntu1) quantal-proposed; urgency=low
+
+  * New upstream version
+  * debian/control:
+    - use "Pre-Depends: ${misc:Pre-Depends}"
+  * debian/fontconfig-config.postinst:
+    - simplify by dropping old transition code, that's not not required 
+      since precise is out. The remaining diff is mostly "don't use 
+      debconf" and remove conf.d links for hinting, subpixel and bitmap 
+      configs
+  * debian/fontconfig.postinst, debian/fontconfig.maintscript:
+    - clean deprecated conffiles on upgrade
+  * 01_fonts_nanum.patch: 
+    - refreshed for the new version
+  * 06_ubuntu_lcddefault.patch:
+    - simplified, the lcddefault config is in the new version, just keep
+      the part to enable it by default in Ubuntu
+  * debian/rules:
+    - use --with-templatedir=/etc/fonts/conf.avail to avoid starting
+      the transition from etc to usr with that upload, that will be done
+      later with another upload once the details are sorted
+
+  [ Robert Ancell ]
+  * Merge with Debian, remaining Ubuntu changes:
+    - fix buildd bustage by ignoring errors in postinst and prerm (taken
+      from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+      - add debian/fontconfig.prerm
+      - update debian/fontconfig.postinst
+    - debian/fontconfig-config.postinst: drop debconf transition;
+      we remove conf.d links for hinting, subpixel and bitmap configs
+      and stop looking at debconf, excluding 70-no-bitmaps.conf.
+    - debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf
+      from "drop debconf transition" to ensure that it doesn't get removed
+      automatically
+      - keep adding it in CONF_FILES through 07_no_bitmaps.patch as well.
+    - debian/patches/00_old_diff_gz.patch:
+      - add MgOpen Moderna family to 40-nonlatin.conf
+      - reorder Bitstream Vera and DejaVu families in 60-latin.conf
+    - debian/patches/00_old_diff_gz.patch,
+      debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch,
+      debian/patches/05_ubuntu_add_hinting_and_antialiasing_confs.patch:
+      - add extra config files:
+        - antialias and hinting.
+        - 52-languageselector.conf
+        - 53-monospace-lcd-filter.conf
+    - debian/patches/05_lcdfilterlegacy.patch: Recognize const value 
+      "lcdfilterlegacy", introduced before upstream did introduce "lcdlegacy"
+    - debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as default
+    - drop debian/fontconfig-config.templates, debian/fontconfig-config.config,
+      and associtated po files.
+    - purge debconf database when upgrading from previous versions.
+    - build for multiarch.
+  * debian/patches/01_fonts_nanum.patch:
+    Changes due to Korean migration to fonts-nanum (LP: #792471).
+    - Restore Baekmuk fonts because it's still in precise repository
+    - Remove UnBatang, Baekmuk Batang from monospace because these are serif
+      fonts.
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 01 Aug 2012 11:58:32 +0200
 
 fontconfig (2.9.0-6) unstable; urgency=low
 
@@ -71,6 +138,99 @@ fontconfig (2.9.0-1) experimental; urgency=low
 
  -- Keith Packard <keithp@debian.org>  Mon, 16 Apr 2012 13:46:56 -0700
 
+fontconfig (2.8.0-3ubuntu9) precise-proposed; urgency=low
+
+  * Cherry pick from Debian experimental: Remove defoma support.
+    Closes: #651493.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 17 Apr 2012 22:28:20 -0700
+
+fontconfig (2.8.0-3ubuntu8) precise; urgency=low
+
+  * Drop 08_ug_us_orth.patch again, as per Eagle Burkut. (Locale was renamed
+    to ug_CN@latin).
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Wed, 04 Apr 2012 12:04:19 +0200
+
+fontconfig (2.8.0-3ubuntu7) precise; urgency=low
+
+  * Add 08_ug_us_orth.patch: Add ug_US orthography.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Tue, 03 Apr 2012 08:23:25 +0200
+
+fontconfig (2.8.0-3ubuntu6) precise; urgency=low
+
+  * Add 00git_ughur_orthography.patch: Complete Uighur orthography. Patch
+    taken from upstream git head. (LP: #736413)
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Tue, 06 Mar 2012 14:44:07 +0100
+
+fontconfig (2.8.0-3ubuntu5) precise; urgency=low
+
+  * debian/patches/01_fonts_nanum.patch: Fix typo, thanks Felix Geyer for
+    spotting!
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Mon, 13 Feb 2012 15:48:18 +0100
+
+fontconfig (2.8.0-3ubuntu4) precise; urgency=low
+
+  * debian/patches/01_fonts_nanum.patch
+    - Restore Baekmuk fonts because it's still in precise repository
+    - Remove UnBatang, Baekmuk Batang from monospace because these are serif
+      fonts.
+
+ -- Jinkyu Yi <jincreator@jincreator.net>  Mon, 13 Feb 2012 07:15:33 +0100
+
+fontconfig (2.8.0-3ubuntu3) precise; urgency=low
+
+  * debian/patches/01_fonts_nanum.patch:
+    Changes due to Korean migration to fonts-nanum (LP: #792471).
+
+ -- Gunnar Hjalmarsson <ubuntu@gunnar.cc>  Wed, 08 Feb 2012 06:57:12 +0100
+
+fontconfig (2.8.0-3ubuntu2) oneiric; urgency=low
+
+  * Remove /usr/share/doc/$pkg in preinst if it's a symlink for packages
+    fontconfig, fontconfig-config, libfontconfig1-dev and libfontconfig1-dbg;
+    fixes upgrades from older borken packages; LP: #828014.  This can be
+    dropped after oneiric, as noted in the preinst snippets.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Thu, 18 Aug 2011 16:40:46 +0200
+
+fontconfig (2.8.0-3ubuntu1) oneiric; urgency=low
+
+  * Restore Debian delta, mistakenly dropped in the previous sync
+    (LP: #804249):
+    - fix buildd bustage by ignoring errors in postinst and prerm (taken
+      from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+      - add debian/fontconfig.prerm
+      - update debian/fontconfig.postinst
+    - debian/fontconfig-config.postinst: drop debconf transition;
+      we remove conf.d links for hinting, subpixel and bitmap configs
+      and stop looking at debconf, excluding 70-no-bitmaps.conf.
+    - debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf
+      from "drop debconf transition" to ensure that it doesn't get removed
+      automatically
+      - keep adding it in CONF_FILES through 07_no_bitmaps.patch as well.
+    - debian/patches/00_old_diff_gz.patch:
+      - add MgOpen Moderna family to 40-nonlatin.conf
+      - reorder Bitstream Vera and DejaVu families in 60-latin.conf
+    - debian/patches/00_old_diff_gz.patch,
+      debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch,
+      debian/patches/05_ubuntu_add_hinting_and_antialiasing_confs.patch:
+      - add extra config files:
+        - antialias and hinting.
+        - 52-languageselector.conf
+        - 53-monospace-lcd-filter.conf
+    - debian/patches/05_lcdfilterlegacy.patch: Recognize const value 
+      "lcdfilterlegacy", introduced before upstream did introduce "lcdlegacy"
+    - debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as default
+    - drop debian/fontconfig-config.templates, debian/fontconfig-config.config,
+      and associtated po files.
+    - purge debconf database when upgrading from previous versions.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 01 Jul 2011 13:06:30 +0100
+
 fontconfig (2.8.0-3) unstable; urgency=low
 
   * Multi-Arch support
@@ -78,6 +238,40 @@ fontconfig (2.8.0-3) unstable; urgency=low
      Patch from Steve Langasek <steve.langasek@canonical.com>. Closes: #614208
 
  -- Keith Packard <keithp@debian.org>  Mon, 27 Jun 2011 10:55:26 -0700
+
+fontconfig (2.8.0-2.2ubuntu1) oneiric; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - fix buildd bustage by ignoring errors in postinst and prerm (taken
+      from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+      - add debian/fontconfig.prerm
+      - update debian/fontconfig.postinst
+    - debian/fontconfig-config.postinst: drop debconf transition;
+      we remove conf.d links for hinting, subpixel and bitmap configs
+      and stop looking at debconf, excluding 70-no-bitmaps.conf.
+    - debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf
+      from "drop debconf transition" to ensure that it doesn't get removed
+      automatically
+      - keep adding it in CONF_FILES through 07_no_bitmaps.patch as well.
+    - debian/patches/00_old_diff_gz.patch:
+      - add MgOpen Moderna family to 40-nonlatin.conf
+      - reorder Bitstream Vera and DejaVu families in 60-latin.conf
+    - debian/patches/00_old_diff_gz.patch,
+      debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch,
+      debian/patches/05_ubuntu_add_hinting_and_antialiasing_confs.patch:
+      - add extra config files:
+        - antialias and hinting.
+        - 52-languageselector.conf
+        - 53-monospace-lcd-filter.conf
+    - debian/patches/05_lcdfilterlegacy.patch: Recognize const value 
+      "lcdfilterlegacy", introduced before upstream did introduce "lcdlegacy"
+    - debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as default
+    - drop debian/fontconfig-config.templates, debian/fontconfig-config.config,
+      and associtated po files.
+    - purge debconf database when upgrading from previous versions.
+    - build for multiarch.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 20 May 2011 11:47:37 -0700
 
 fontconfig (2.8.0-2.2) unstable; urgency=low
 
@@ -88,6 +282,58 @@ fontconfig (2.8.0-2.2) unstable; urgency=low
 
  -- Christian Perrier <bubulle@debian.org>  Thu, 07 Apr 2011 19:50:12 +0200
 
+fontconfig (2.8.0-2.1ubuntu3) natty; urgency=low
+
+  * Build for multiarch.  FFe LP: #733501.
+  * Add versioned build-dependency on multiarch-aware cdbs, and on the
+    multiarch-enabling debhelper.
+  * Add Pre-Depends on ${misc:Pre-Depends}.
+  * Mark libfontconfig Multi-Arch: same.
+  * Install udeb contents to /usr/lib, not to multiarch lib paths.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 19 Mar 2011 13:30:55 -0700
+
+fontconfig (2.8.0-2.1ubuntu2) natty; urgency=low
+
+  * Mark fontconfig and fontconfig-config Multi-Arch: foreign, to indicate
+    that they satisfy the dependencies of packages from other than the
+    native arch.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 20 Feb 2011 03:06:44 -0800
+
+fontconfig (2.8.0-2.1ubuntu1) natty; urgency=low
+
+  * Merge from Debian unstable, remaining changes: (LP: #680236)
+    - fix buildd bustage by ignoring errors in postinst and prerm (taken
+      from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+      - add debian/fontconfig.prerm
+      - update debian/fontconfig.postinst
+    - debian/fontconfig-config.postinst: drop debconf transition;
+      we remove conf.d links for hinting, subpixel and bitmap configs
+      and stop looking at debconf, excluding 70-no-bitmaps.conf.
+    - debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf
+      from "drop debconf transition" to ensure that it doesn't get removed
+      automatically
+      - keep adding it in CONF_FILES through 07_no_bitmaps.patch as well.
+    - debian/patches/00_old_diff_gz.patch:
+      - add MgOpen Moderna family to 40-nonlatin.conf
+      - reorder Bitstream Vera and DejaVu families in 60-latin.conf
+    - debian/patches/00_old_diff_gz.patch,
+      debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch,
+      debian/patches/05_ubuntu_add_hinting_and_antialiasing_confs.patch:
+      - add extra config files:
+        - antialias and hinting.
+        - 52-languageselector.conf
+        - 53-monospace-lcd-filter.conf
+    - debian/patches/05_lcdfilterlegacy.patch: Recognize const value 
+      "lcdfilterlegacy", introduced before upstream did introduce "lcdlegacy"
+    - debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as default
+    - drop debian/fontconfig-config.templates, debian/fontconfig-config.config,
+      and associtated po files.
+    - purge debconf database when upgrading from previous versions.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Tue, 23 Nov 2010 15:22:57 +0100
+
 fontconfig (2.8.0-2.1) unstable; urgency=low
 
   * Non-maintainer upload.
@@ -96,6 +342,39 @@ fontconfig (2.8.0-2.1) unstable; urgency=low
     - Vietnamese (Clytie Siddall).  Closes: #568985
 
  -- Christian Perrier <bubulle@debian.org>  Sat, 17 Apr 2010 18:41:05 +0200
+
+fontconfig (2.8.0-2ubuntu1) lucid; urgency=low
+
+  * Merge from Debian testing, remaining changes: (LP: #490326)
+    - fix buildd bustage by ignoring errors in postinst and prerm (taken
+      from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+      - add debian/fontconfig.prerm
+      - update debian/fontconfig.postinst
+    - debian/fontconfig-config.postinst: drop debconf transition;
+      we remove conf.d links for hinting, subpixel and bitmap configs
+      and stop looking at debconf, excluding 70-no-bitmaps.conf.
+    - debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf
+      from "drop debconf transition" to ensure that it doesn't get removed
+      automatically
+      - keep adding it in CONF_FILES through 07_no_bitmaps.patch as well.
+    - debian/patches/00_old_diff_gz.patch:
+      - add MgOpen Moderna family to 40-nonlatin.conf
+      - reorder Bitstream Vera and DejaVu families in 60-latin.conf
+    - debian/patches/00_old_diff_gz.patch,
+      debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch,
+      debian/patches/05_ubuntu_add_hinting_and_antialiasing_confs.patch:
+      - add extra config files:
+        - antialias and hinting.
+        - 52-languageselector.conf
+        - 53-monospace-lcd-filter.conf
+    - debian/patches/05_lcdfilterlegacy.patch: Recognize const value 
+      "lcdfilterlegacy", introduced before upstream did introduce "lcdlegacy"
+    - debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as default
+    - drop debian/fontconfig-config.templates, debian/fontconfig-config.config,
+      and associtated po files.
+  * purge debconf database when upgrading from previous versions.
+
+ -- Mathieu Trudel <mathieu-tl@ubuntu.com>  Thu, 14 Jan 2010 13:23:47 -0500
 
 fontconfig (2.8.0-2) unstable; urgency=low
 
@@ -172,6 +451,172 @@ fontconfig (2.6.0-2) unstable; urgency=low
 
  -- Josselin Mouette <joss@debian.org>  Mon, 10 Nov 2008 17:47:30 +0100
 
+fontconfig (2.6.0-1ubuntu13) lucid; urgency=low
+
+  * fix buildd bustage by ignoring errors in postinst and prerm (taken
+    from debian NMU by Riku Voipio <riku.voipio@iki.fi>)
+    - add debian/fontconfig.prerm
+    - update debian/fontconfig.postinst
+
+ -- Alexander Sack <asac@ubuntu.com>  Tue, 05 Jan 2010 18:58:29 +0100
+
+fontconfig (2.6.0-1ubuntu12) jaunty; urgency=low
+
+  * more config rules cleanup; dont create 10-no-sub-pixel.conf link in package
+    (conf.d/Makefile.am,Makefile.in)
+    - update debian/patches/00_old_diff_gz.patch
+  * remove languageselector.conf link creation from Makefile.am
+    - update debian/patches/00_old_diff_gz.patch
+  * also fix buildsystem patches to ship 10-hinting-slight.conf instead of
+    10-hinting-medium.conf
+    - update debian/patches/00_old_diff_gz.patch
+    - update debian/patches/06_ubuntu_lcddefault.patch
+    - update debian/patches/07_no_bitmaps.patch
+  * retrigger "drop debconf transition" for this upload
+    - update debian/fontconfig-config.postinst
+
+ -- Alexander Sack <asac@ubuntu.com>  Thu, 19 Mar 2009 13:49:15 +0100
+
+fontconfig (2.6.0-1ubuntu11) jaunty; urgency=low
+
+  * fix typo in postinst to ensure that all files targetted in "cleanup old conf.d
+    links transition" get really removed; also make the transition version bounds
+    backport friendly
+    - update debian/fontconfig-config.postinst
+
+ -- Alexander Sack <asac@ubuntu.com>  Wed, 18 Mar 2009 21:58:21 +0100
+
+fontconfig (2.6.0-1ubuntu10) jaunty; urgency=low
+
+  * debian/patches/07_no_bitmaps.patch: enable 70-no-bitmaps.conf by
+    default; we add it to the CONF_LINKS in conf.d/Makefile.am,in to
+    fix regressions reported (LP: #305394, #344629)
+  * debian/fontconfig-config.postinst: also exclude 70-no-bitmaps.conf from
+    "drop debconf transition" to ensure that it doesn't get removed
+    automatically (LP: #305394, #344629)
+  * debian/patches/20_anymetric.patch: drop rules and code patch that
+    introduced FC_ANY_METRICS - this change never made it upstream and
+    firefox doesnt use it anymore.
+
+ -- Alexander Sack <asac@ubuntu.com>  Wed, 18 Mar 2009 18:37:18 +0100
+
+fontconfig (2.6.0-1ubuntu9) jaunty; urgency=low
+
+  * fix build failure due to droppage of 02_ubuntu_fonts_conf.patch; we
+    also had to remove the 52-languageselector.conf parts from our
+    debian/patches/00_old_diff_gz.patch
+  * fix buildd bustage introduced in 2.6.0-1ubuntu7; including debconf
+    /usr/share/debconf/confmodule after removing all debconf is wrong;
+    dont do that anymore.
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 16 Mar 2009 23:48:13 +0100
+
+fontconfig (2.6.0-1ubuntu8) jaunty; urgency=low
+
+  * debian/fontconfig-config.postinst: cleanup old conf.d links transition;
+    we remove autohint.conf,no-bitmaps.conf,no-sub-pixel.conf,sub-pixel.conf,
+    unhinted.conf,yes-bitmaps.conf which have been reported as left overs;
+    we are polite and use rm_conffile for files that exist but are not symbolic
+    links; see LP: #332992 and LP: #305394
+  * remove debian/patches/02_ubuntu_fonts_conf.patch which got superseeded by
+    files shipped by language-selector package.
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 16 Mar 2009 21:05:38 +0100
+
+fontconfig (2.6.0-1ubuntu7) jaunty; urgency=low
+
+  * debian/fontconfig-config.postinst: drop debconf transition;
+    we remove conf.d links for hinting, subpixel and bitmap configs
+    and stop looking at debconf
+    - remove debian/fontconfig-config.templates accordingly
+    - remove debian/po/ directory with template translations
+    - debian/rules: remove debconfpo logics
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 16 Mar 2009 20:58:51 +0100
+
+fontconfig (2.6.0-1ubuntu6) jaunty; urgency=low
+
+  * add debian/patches/20_anymetric.patch: fork anymetrics changes from
+    debian/patches/00_old_diff_gz.patch into separate patch - which is supposed
+    to be dropped soonish
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 16 Mar 2009 20:33:41 +0100
+
+fontconfig (2.6.0-1ubuntu5) jaunty; urgency=low
+
+  * add debian/patches/00_old_diff_gz.patch: eliminate stuff from diff.gz
+    and move it to its own diff for now
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 16 Mar 2009 20:24:59 +0100
+
+fontconfig (2.6.0-1ubuntu4) intrepid; urgency=low
+
+  * add debian/patches/06_ubuntu_lcddefault.patch: set lcddefault as
+    default for the lcd-filter now that Cairo prefers lcdlegacy. This
+    is needed to restore our previous behavior. Thanks to Sylvain Pasche.
+    (LP: #271088, #264254)
+
+ -- Fabien Tassin <fta@ubuntu.com>  Wed, 17 Sep 2008 00:40:14 +0200
+
+fontconfig (2.6.0-1ubuntu3) intrepid; urgency=low
+
+  * Recognize const value "lcdfilterlegacy", introduced before upstream
+    did introduce "lcdlegacy". LP: #243130.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 12 Sep 2008 19:34:01 +0200
+
+fontconfig (2.6.0-1ubuntu2) intrepid; urgency=low
+
+  * fixed conf.d/Makefile.am and conf.d/Makefile.in to really install
+    52-languageselector.conf and 53-monospace-lcd-filter.conf
+    (LP: 243130)
+
+ -- Arne Goetje <arne@ubuntu.com>  Thu, 26 Jun 2008 17:31:33 +0800
+
+fontconfig (2.6.0-1ubuntu1) intrepid; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - conf.d/40-nonlatin.conf: Add `MgOpen Moderna' to the list of fonts
+      for which we might fall back to sans-serif.
+    - conf.d/60-latin.conf: Prefer DejaVu over Bitstream Vera,
+      as done for dapper.
+    - 52-languageselector.conf loads language-selector.conf.
+    - Include 52-languageselector.conf in the lists in conf.d/Makefile.am so
+      that it actually gets installed and used.  Fixes LP 73714.
+    - Some hackery in the debconf config script which attempts to upgrade
+      user preferences across the many changes which have occurred to the
+      debconf questions.  In particular:
+      + Do not attempt to divine enable_bitmaps option by reading the
+        symlinks in /etc.  This leaves the only way to permanently change
+        the behaviour being dpkg-reconfigure.  The divination code was
+        wrong and was intended by Debian to preserve pre-debconf
+        configuration.  It would be nicer to preserve handmade updates to
+        the /etc directory.
+      + Always create /etc/fontconfig/conf.d/ symlink for enabling or
+        disabling bitmap fonts.  This records the state from debconf
+        unambiguously into the filesystem and will make it possible for
+        future upgrades (from Edgy or later) to preserve handmade changes.
+    - Add a (optional) include for "language-selector.conf" in fonts.conf
+    - debian/patches/03_preferred_symbol_font.patch:
+      + prefer "Standard Symbols L" as symbol font (Ubuntu: #37745)
+    - Fix incorrect location of /usr/share/X11/fonts.
+    - Correctly fix the (eg) firefox vs. (eg) evince font metrics problem:
+      + New FC_ANY_METRICS property, boolean.
+      + Change URW Nimbus and AMT font aliases in 30-{urw,metric}-aliases.conf
+        into equivalent <match> directives so that we can add an additional
+        test which disables them when the anymetrics property is true.
+    - debian/rules (clean): Clean doc directory.
+    - add debian/patches/05_ubuntu_hinting_and_antialias_confs.patch:
+      - adds 10-antialias.conf, 10-hinting.conf, 10-hinting-full.conf,
+        10-hinting-medium.conf and 10-hinting-slight.conf
+    - modified conf.d/Makefile.am and conf.d/Makefile.in so that
+      10-antialias.conf, 10-hinting.conf, 10-hinting-medium.conf and 
+      10-no-subpixel.conf get linked by default to have te same default
+      settings for all Ubuntu flavors. 10-hinting-full.conf and
+      10-hinting-slight.conf will go into conf.avail/ .
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 25 Jun 2008 11:08:02 +0200
+
 fontconfig (2.6.0-1) unstable; urgency=low
 
   * upstream release of 2.6
@@ -213,6 +658,79 @@ fontconfig (2.5.92-1) unstable; urgency=low
 
  -- Keith Packard <keithp@debian.org>  Sat, 03 May 2008 22:33:28 -0700
  
+fontconfig (2.5.0-2ubuntu3) hardy; urgency=low
+
+  * add debian/patches/05_ubuntu_hinting_and_antialias_confs.patch:
+    - adds 10-antialias.conf, 10-hinting.conf, 10-hinting-full.conf,
+           10-hinting-medium.conf and 10-hinting-slight.conf
+  * modified conf.d/Makefile.am and conf.d/Makefile.in so that
+    10-antialias.conf, 10-hinting.conf, 10-hinting-medium.conf and 
+    10-no-subpixel.conf get linked by default to have te same default
+    settings for all Ubuntu flavors. 10-hinting-full.conf and
+    10-hinting-slight.conf will go into conf.avail/ .
+
+ -- Arne Goetje <arne@ubuntu.com>  Thu, 28 Feb 2008 04:30:30 +0800
+
+fontconfig (2.5.0-2ubuntu2) hardy; urgency=low
+
+  * debian/patches/03_lcd_filter_freedesktop_bug13566.patch:
+    - changed to fix a small error
+
+  [ Fabien Tassin ]
+  * Replace Ubuntu's lcd patch by patch from Freedesktop bug #13566
+    which will allow native Cairo 1.6 lcd filtering (as per
+    Freedesktop bug #10301)
+    - drop debian/patches/03_ubuntu_lcd_filter.patch
+    - add debian/patches/03_lcd_filter_freedesktop_bug13566.patch
+    - update debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch
+
+ -- Sebastien Bacher <seb128@canonical.com>  Fri, 21 Dec 2007 11:30:18 +0100
+
+fontconfig (2.5.0-2ubuntu1) hardy; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - conf.d/40-nonlatin.conf: Add `MgOpen Moderna' to the list of fonts
+      for which we might fall back to sans-serif.
+    - conf.d/60-latin.conf: Prefer DejaVu over Bitstream Vera,
+      as done for dapper.
+    - 52-languageselector.conf loads language-selector.conf.
+    - Include 52-languageselector.conf in the lists in conf.d/Makefile.am so
+      that it actually gets installed and used.  Fixes LP 73714.
+    - Some hackery in the debconf config script which attempts to upgrade
+      user preferences across the many changes which have occurred to the
+      debconf questions.  In particular:
+      + Do not attempt to divine enable_bitmaps option by reading the
+        symlinks in /etc.  This leaves the only way to permanently change
+        the behaviour being dpkg-reconfigure.  The divination code was
+        wrong and was intended by Debian to preserve pre-debconf
+        configuration.  It would be nicer to preserve handmade updates to
+        the /etc directory.
+      + Always create /etc/fontconfig/conf.d/ symlink for enabling or
+        disabling bitmap fonts.  This records the state from debconf
+        unambiguously into the filesystem and will make it possible for
+        future upgrades (from Edgy or later) to preserve handmade changes.
+    - Add a (optional) include for "language-selector.conf" in fonts.conf
+    - debian/patches/03_preferred_symbol_font.patch:
+      + prefer "Standard Symbols L" as symbol font (Ubuntu: #37745)
+    - Fix incorrect location of /usr/share/X11/fonts.
+    - Correctly fix the (eg) firefox vs. (eg) evince font metrics problem:
+      + New FC_ANY_METRICS property, boolean.
+      + Change URW Nimbus and AMT font aliases in 30-{urw,metric}-aliases.conf
+        into equivalent <match> directives so that we can add an additional
+        test which disables them when the anymetrics property is true.
+  * Link using -Bsymbolic-functions.
+  * debian/rules (clean): Clean doc directory.
+  * debian/rules: Set shell to /bin/bash.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Dec 2007 14:16:40 +0000
+
+fontconfig (2.5.0-2) unstable; urgency=low
+ 
+  * Install remaining documentation
+  * Add doc-base support (closes: #516580)
+
+ -- Keith Packard <keithp@debian.org>  Sat, 17 Nov 2007 13:31:13 -0800
+
 fontconfig (2.5.0-1) unstable; urgency=low
 
   * Upstream release of 2.5
@@ -273,6 +791,67 @@ fontconfig (2.4.2-1.3) unstable; urgency=low
 
  -- Junichi Uekawa <dancer@debian.org>  Wed, 10 Oct 2007 21:46:44 +0900
 
+fontconfig (2.4.2-1.2ubuntu4) gutsy; urgency=low
+
+  * Explicitely remove the doc directories on upgrade for the now symlinked
+    doc directories.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 05 Oct 2007 18:36:25 +0200
+
+fontconfig (2.4.2-1.2ubuntu3) gutsy; urgency=low
+
+  * Symlink doc directories to avoid duplicate file:
+  * fontconfig-config: Don't install the upstream changelog.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 04 Oct 2007 15:59:22 +0200
+
+fontconfig (2.4.2-1.2ubuntu2) gutsy; urgency=low
+
+  * debian/patches/03_ubuntu_lcd_filter.patch:
+    - Allow LCD filter configuration for when subpixel rendering
+  * debian/patches/04_ubuntu_monospace_lcd_filter_conf.patch:
+    - Use the legacy LCD filter for Monospace fonts smaller than 12px.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu, 20 Sep 2007 21:31:16 +0100
+
+fontconfig (2.4.2-1.2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian; remaining changes:
+  * Correctly fix the (eg) firefox vs. (eg) evince font metrics
+    problem:
+    - New FC_ANY_METRICS property, boolean.
+    - Change URW Nimbus and AMT font aliases in 30-{urw,amt}-aliases.conf
+      into equivalent <match> directives so that we can add an additional
+      test which disables them when the anymetrics property is true.
+    (reported to Debian #299697.)
+  * Add `MgOpen Moderna' as well as `MgOpen Modata' to the list of fonts
+    for which we might fall back to sans-serif.
+    (reported to Debian, bug number pending.)
+  * Some hackery in the debconf config script which attempts to upgrade
+    user preferences across the many changes which have occurred to the
+    debconf questions.  In particular:
+  * Do not attempt to divine enable_bitmaps option by reading
+    the symlinks in /etc.  This leaves the only way to permanently change
+    the behaviour being dpkg-reconfigure.  The divination code was wrong
+    and was intended by Debian to preserve pre-debconf configuration.
+    It would be nicer to preserve handmade updates to the /etc directory,
+    so, also:
+  * Always create /etc/fontconfig/conf.d/ symlink for enabling or
+    disabling bitmap fonts.  This records the state from debconf
+    unambiguously into the filesystem and will make it possible for future
+    upgrades (from Edgy or later) to preserve handmade changes.  
+  * Add a (optional) include for "language-selector.conf" in fonts.conf
+  * debian/patches/03_preferred_symbol_font.patch:
+    - prefer "Standard Symbols L" as symbol font (Ubuntu: #37745)
+  * Fix incorrect location of /usr/share/X11/fonts.
+  * 52-languageselector.conf loads language-selector.conf.
+  * Include 52-languageselector.conf in the lists in conf.d/Makefile.am so
+    that it actually gets installed and used.  Fixes LP 73714.
+  * conf.d/60-latin.conf: Prefer DejaVu over Bitstream Vera,
+    as done for dapper.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 23 May 2007 14:01:03 +0200
+
 fontconfig (2.4.2-1.2) unstable; urgency=low
 
   * Non-maintainer upload to fix previous NMU errors (and other errors..:-).
@@ -297,6 +876,15 @@ fontconfig (2.4.2-1.1) unstable; urgency=low
 
  -- Christian Perrier <bubulle@debian.org>  Tue, 20 Feb 2007 08:40:24 +0100
 
+fontconfig (2.4.2-1ubuntu1) feisty; urgency=low
+
+  * Merge with Debian unstable; remaining changes:
+    - see 2.4.1-2ubuntu[12].
+  * conf.d/60-latin.conf: Prefer DejaVu over Bitstream Vera,
+    as done for dapper.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri,  5 Jan 2007 18:41:16 +0100
+
 fontconfig (2.4.2-1) unstable; urgency=low
 
   * Incorporate old Galacian translation (closes 361259)
@@ -317,6 +905,50 @@ fontconfig (2.4.2-1) unstable; urgency=low
 
  -- Keith Packard <keithp@debian.org>  Sat,  2 Dec 2006 16:24:55 -0800
  
+fontconfig (2.4.1-2ubuntu2) feisty; urgency=low
+
+  * Include 52-languageselector.conf in the lists in conf.d/Makefile.am so
+    that it actually gets installed and used.  Fixes LP 73714.
+  * Reran automake (1.9.6+nogfdl-3).
+
+ -- Ian Jackson <iwj@ubuntu.com>  Wed, 29 Nov 2006 12:09:01 +0000
+
+fontconfig (2.4.1-2ubuntu1) feisty; urgency=low
+
+  * Merge from debian unstable.
+  
+  Ubuntu changes kept from previous versions follow:
+  * Correctly fix the (eg) firefox vs. (eg) evince font metrics
+    problem:
+    - New FC_ANY_METRICS property, boolean.
+    - Change URW Nimbus and AMT font aliases in 30-{urw,amt}-aliases.conf
+      into equivalent <match> directives so that we can add an additional
+      test which disables them when the anymetrics property is true.
+    (reported to Debian #299697.)
+  * Add `MgOpen Moderna' as well as `MgOpen Modata' to the list of fonts
+    for which we might fall back to sans-serif.
+    (reported to Debian, bug number pending.)
+  * Some hackery in the debconf config script which attempts to upgrade
+    user preferences across the many changes which have occurred to the
+    debconf questions.  In particular:
+  * Do not attempt to divine enable_bitmaps option by reading
+    the symlinks in /etc.  This leaves the only way to permanently change
+    the behaviour being dpkg-reconfigure.  The divination code was wrong
+    and was intended by Debian to preserve pre-debconf configuration.
+    It would be nicer to preserve handmade updates to the /etc directory,
+    so, also:
+  * Always create /etc/fontconfig/conf.d/ symlink for enabling or
+    disabling bitmap fonts.  This records the state from debconf
+    unambiguously into the filesystem and will make it possible for future
+    upgrades (from Edgy or later) to preserve handmade changes.  
+  * Add a (optional) include for "language-selector.conf" in fonts.conf
+  * debian/patches/03_preferred_symbol_font.patch:
+    - prefer "Standard Symbols L" as symbol font (Ubuntu: #37745)
+  * Fix incorrect location of /usr/share/X11/fonts.
+  * 52-languageselector.conf loads language-selector.conf.
+
+ -- Ian Jackson <iwj@ubuntu.com>  Tue, 28 Nov 2006 18:39:27 +0000
+
 fontconfig (2.4.1-2) unstable; urgency=low
 
   * Identify current debconf configuration using either
