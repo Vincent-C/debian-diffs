@@ -1,4 +1,4 @@
-xserver-xorg-video-intel (2:2.21.8-1+vc1) unstable; urgency=low
+xserver-xorg-video-intel (2:2.21.9-1+vc1) unstable; urgency=low
 
   * Local package.
     - Remove debian/patches/.
@@ -7,7 +7,7 @@ xserver-xorg-video-intel (2:2.21.8-1+vc1) unstable; urgency=low
   * Build with --with-default-accel=sna (this avoids the need to add a
     xorg.conf snippet to enable SNA acceleration).
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 27 May 2013 11:50:36 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 07 Jun 2013 01:09:04 -0700
 
 xserver-xorg-video-intel (2:2.20.14-1) experimental; urgency=low
 
