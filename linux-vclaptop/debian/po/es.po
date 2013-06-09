@@ -3,9 +3,10 @@
 #
 #   Changes:
 #    - Initial translation
-#    Omar Campagne <ocampagne@gmail.com> 2010
-#    - Updates
-#       TRANSLATOR
+#    Omar Campagne <ocampagne@gmail.com> 2010, 2011
+#   
+#    - Review and update
+#    Javier Fernandez-Sanguino, December 2010
 #
 # Traductores, si no conocen el formato PO, merece la pena leer la
 # documentación de gettext, especialmente las secciones dedicadas a este
@@ -28,9 +29,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: linux-2.6 2.6.32+5\n"
-"Report-Msgid-Bugs-To: linux-aptosid-2.6@packages.debian.org\n"
-"POT-Creation-Date: 2010-08-18 15:53+0200\n"
-"PO-Revision-Date: 2010-06-06 19:04+0200\n"
+"Report-Msgid-Bugs-To: linux-2.6@packages.debian.org\n"
+"POT-Creation-Date: 2011-07-04 04:24+0100\n"
+"PO-Revision-Date: 2011-07-16 17:59+0200\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
 "Language: es\n"
@@ -39,12 +40,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.6.1\n"
+"X-POFile-SpellExtra: initrd postinsthook conf lib contrib yes IDE depmod\n"
+"X-POFile-SpellExtra: runningversion img script boot Free exitvalue version\n"
+"X-POFile-SpellExtra: Debian CORE free running dobootloader UUID dep SIGNAL\n"
+"X-POFile-SpellExtra: Guidelines modulesbase vmlinuz postinst\n"
 
 #. Type: boolean
 #. Description
 #: ../templates/temp.image.plain/templates:2001
 msgid "Abort installation after depmod error?"
-msgstr "¿Desea interrumpir la instalación después de un fallo de depmod?"
+msgstr ""
+"¿Desea interrumpir la instalación cuando se produzca un fallo de depmod?"
 
 #. Type: boolean
 #. Description
@@ -136,7 +142,7 @@ msgid ""
 msgstr ""
 "Este sistema ejecuta actualmente la versión ${runningversion} de Linux, y se "
 "está instalando la versión ${version}. Puede que los controladores incluidos "
-"en la nueva versión requieran ficheros de firmware adicionales."
+"en la nueva versión requieran ficheros de firmware adicionales:"
 
 #. Type: note
 #. Description
@@ -156,115 +162,18 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../templates/temp.image.plain/templates:5001
-#, fuzzy
-#| msgid "Boot loader configuration check needed"
-msgid "Boot loader configuration must be updated"
-msgstr "Se necesita comprobar la configuración del gestor de arranque"
+msgid "Ramdisk configuration must be updated"
+msgstr "Se debe actualizar la configuración del disco RAM"
 
 #. Type: error
 #. Description
 #: ../templates/temp.image.plain/templates:5001
 msgid ""
-"Kernel packages no longer update a default boot loader.  You should remove "
-"'do_bootloader = yes' from /etc/kernel-img.conf."
+"Kernel packages will no longer run a specific ramdisk creator.  The ramdisk "
+"creator package must install a script in /etc/kernel/postinst.d, and you "
+"should remove the line beginning 'ramdisk =' from /etc/kernel-img.conf."
 msgstr ""
-
-#. Type: error
-#. Description
-#: ../templates/temp.image.plain/templates:5001
-msgid ""
-"If the boot loader needs to be updated whenever a new kernel is installed, "
-"the boot loader package should install a script in /etc/kernel/postinst.d.  "
-"Alternately, you can specify the command to update the boot loader by "
-"setting the 'postinst_hook' variable in /etc/kernel-img.conf."
-msgstr ""
-
-#~ msgid "Update disk device IDs in system configuration?"
-#~ msgstr ""
-#~ "¿Desea actualizar los identificadores de los dispositivos de disco en la "
-#~ "configuración del sistema?"
-
-#~ msgid ""
-#~ "The new Linux kernel version provides different drivers for some PATA "
-#~ "(IDE) controllers. The names of some hard disk, CD-ROM, and tape devices "
-#~ "may change."
-#~ msgstr ""
-#~ "La nueva versión del núcleo Linux proporciona controladores diferentes "
-#~ "para algunos controladores PATA (IDE). Puede que cambien los nombres de "
-#~ "algunos dispositivos de disco duro, disco óptico y de cinta."
-
-#~ msgid ""
-#~ "It is now recommended to identify disk devices in configuration files by "
-#~ "label or UUID (unique identifier) rather than by device name, which will "
-#~ "work with both old and new kernel versions."
-#~ msgstr ""
-#~ "Se recomienda identificar los dispositivos de disco en los ficheros de "
-#~ "configuración mediante la etiqueta o el UUID (identificador único), en "
-#~ "lugar del nombre de dispositivo, lo cual funcionará con las versiones "
-#~ "antiguas y recientes del núcleo."
-
-#~ msgid ""
-#~ "If you choose to not update the system configuration automatically, you "
-#~ "must update device IDs yourself before the next system reboot or the "
-#~ "system may become unbootable."
-#~ msgstr ""
-#~ "Si selecciona no actualizar la configuración del sistema automáticamente, "
-#~ "tendrá que actualizar los identificadores de dispositivo manualmente "
-#~ "antes del siguiente arranque del sistema, o puede que el sistema no pueda "
-#~ "arrancar."
-
-#~ msgid "Apply configuration changes to disk device IDs?"
-#~ msgstr ""
-#~ "¿Desea realizar estos cambios en la configuración de los identificadores "
-#~ "de dispositivos de disco?"
-
-#~ msgid "These devices will be assigned UUIDs or labels:"
-#~ msgstr "Se van a asignar etiquetas o UUID a los siguientes dispositivos:"
-
-#~ msgid "These configuration files will be updated:"
-#~ msgstr "Se van a actualizar los siguientes ficheros de configuración:"
-
-#~ msgid "The device IDs will be changed as follows:"
-#~ msgstr ""
-#~ "Se van a modificar los identificadores de dispositivo de la siguiente "
-#~ "forma:"
-
-#~ msgid "Configuration files still contain deprecated device names"
-#~ msgstr ""
-#~ "Los ficheros de configuración aún contienen nombres obsoletos de "
-#~ "dispositivo"
-
-#~ msgid ""
-#~ "The following configuration files still use some device names that may "
-#~ "change when using the new kernel:"
-#~ msgstr ""
-#~ "Los siguientes ficheros de configuración aún usan algunos nombres de "
-#~ "dispositivo que pueden cambiar al usar el núcleo nuevo:"
-
-#~ msgid "Boot loader configuration check needed"
-#~ msgstr "Se necesita comprobar la configuración del gestor de arranque"
-
-#~ msgid ""
-#~ "The boot loader configuration for this system was not recognized. These "
-#~ "settings in the configuration may need to be updated:"
-#~ msgstr ""
-#~ "No se reconoció la configuración del gestor de arranque en este sistema. "
-#~ "Puede que se tengan que actualizar estas opciones de configuración."
-
-#~ msgid ""
-#~ " * The root device ID passed as a kernel parameter;\n"
-#~ " * The boot device ID used to install and update the boot loader."
-#~ msgstr ""
-#~ " * El identificador del dispositivo raíz introducido como un parámetro "
-#~ "del\n"
-#~ "   núcleo\n"
-#~ " * El identificador del dispositivo de arranque usado para instalar y\n"
-#~ "   actualizar el gestor de arranque."
-
-#~ msgid ""
-#~ "You should generally identify these devices by UUID or label. However, on "
-#~ "MIPS systems the root device must be identified by name."
-#~ msgstr ""
-#~ "Se recomienda identificar estos dispositivos mediante la etiqueta o el "
-#~ "UUID. Por otra parte, en los sistemas MIPS tiene que identificar el "
-#~ "dispositivo raíz por su nombre."
+"Los paquetes de núcleo ya no ejecutarán un creador de disco RAM. El paquete "
+"de creador de disco RAM debe instalar un script en «/etc/kernel/postinst.d», "
+"y el usuario debería eliminar manualmente la línea que empieza con «ramdisk "
+"=» del fichero «/etc/kernel-img.conf»."

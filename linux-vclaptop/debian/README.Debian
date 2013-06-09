@@ -1,19 +1,15 @@
 Please note that everything below originates from the README file provided with
 the Liquorix kernel; not everything applies to this custom-built kernel.
 
-(README.Debian):
-
 Major changes to my customized kernel compared with the stock Debian ones:
  - NOT optimized for size (CONFIG_CC_OPTIMIZE_FOR_SIZE=n)
- - compiled with -march=core-avx-i (3rd gen Intel Ivy Bridge)
+ - compiled with -march=native (corei7-avx)
  - full preemption (CONFIG_PREEMPT=y et al.)
  - default I/O scheduler set to deadline (CONFIG_DEFAULT_DEADLINE=y)
  - always enable transparent hugepage (CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y)
  - enable MTRR sanitizer by default (CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT=1)
  - kernel timer set to 300 Hz (CONFIG_HZ=300)
 ...and a number of other things.
-
-
 
 
 linux-aptosid-2.6 for debian types

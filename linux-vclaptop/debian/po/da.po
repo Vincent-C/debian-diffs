@@ -1,14 +1,14 @@
 # Danish translation linux-2.6.
-# Copyright (C) 2010 linux-2.6 & Joe Hansen.
+# Copyright (C) 2011 linux-2.6 & Joe Hansen.
 # This file is distributed under the same license as the linux-2.6 package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2010.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linux-2.6\n"
-"Report-Msgid-Bugs-To: linux-aptosid-2.6@packages.debian.org\n"
-"POT-Creation-Date: 2010-08-18 15:53+0200\n"
-"PO-Revision-Date: 2010-06-18 05:26+0100\n"
+"Report-Msgid-Bugs-To: linux-2.6@packages.debian.org\n"
+"POT-Creation-Date: 2011-07-04 04:24+0100\n"
+"PO-Revision-Date: 2011-07-03 05:26+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
 "Language: da\n"
@@ -128,102 +128,18 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../templates/temp.image.plain/templates:5001
-#, fuzzy
-#| msgid "Boot loader configuration check needed"
-msgid "Boot loader configuration must be updated"
-msgstr "Behov for tjek af opstartsindlæseren (boot loader)"
+msgid "Ramdisk configuration must be updated"
+msgstr "Konfiguration af ramdisk skal opdateres"
 
 #. Type: error
 #. Description
 #: ../templates/temp.image.plain/templates:5001
 msgid ""
-"Kernel packages no longer update a default boot loader.  You should remove "
-"'do_bootloader = yes' from /etc/kernel-img.conf."
+"Kernel packages will no longer run a specific ramdisk creator.  The ramdisk "
+"creator package must install a script in /etc/kernel/postinst.d, and you "
+"should remove the line beginning 'ramdisk =' from /etc/kernel-img.conf."
 msgstr ""
-
-#. Type: error
-#. Description
-#: ../templates/temp.image.plain/templates:5001
-msgid ""
-"If the boot loader needs to be updated whenever a new kernel is installed, "
-"the boot loader package should install a script in /etc/kernel/postinst.d.  "
-"Alternately, you can specify the command to update the boot loader by "
-"setting the 'postinst_hook' variable in /etc/kernel-img.conf."
-msgstr ""
-
-#~ msgid "Update disk device IDs in system configuration?"
-#~ msgstr "Opdater diskenheds-id'er i systemkonfigurationen?"
-
-#~ msgid ""
-#~ "The new Linux kernel version provides different drivers for some PATA "
-#~ "(IDE) controllers. The names of some hard disk, CD-ROM, and tape devices "
-#~ "may change."
-#~ msgstr ""
-#~ "Den nye version af Linuxkernen har forskellige drivere for nogle PATA-"
-#~ "kontrollere (IDE). Navnene på nogle harddiske, cd-rom og båndenheder kan "
-#~ "skifte."
-
-#~ msgid ""
-#~ "It is now recommended to identify disk devices in configuration files by "
-#~ "label or UUID (unique identifier) rather than by device name, which will "
-#~ "work with both old and new kernel versions."
-#~ msgstr ""
-#~ "Det anbefales, at du identificerer diskenheder i konfigurationsfiler med "
-#~ "etiket eller UUID (unik identifikation) fremfor via enhedsnavn, som vil "
-#~ "virke med både gamle og nye kerneversioner."
-
-#~ msgid ""
-#~ "If you choose to not update the system configuration automatically, you "
-#~ "must update device IDs yourself before the next system reboot or the "
-#~ "system may become unbootable."
-#~ msgstr ""
-#~ "Hvis du vælger at opdatere systemkonfigurationen automatisk, skal du selv "
-#~ "opdatere enheds-id'er før systemets næste genstart eller også kan "
-#~ "systemet måske ikke startes."
-
-#~ msgid "Apply configuration changes to disk device IDs?"
-#~ msgstr "Anvend disse konfigurationsændringer til diskenheds-id'er?"
-
-#~ msgid "These devices will be assigned UUIDs or labels:"
-#~ msgstr "Disse enheder vil få tildelt UUID'er eller etiketter:"
-
-#~ msgid "These configuration files will be updated:"
-#~ msgstr "Disse konfigurationsfiler vil blive opdateret:"
-
-#~ msgid "The device IDs will be changed as follows:"
-#~ msgstr "Enheds-id'erne vil blive ændret som vist i det følgende:"
-
-#~ msgid "Configuration files still contain deprecated device names"
-#~ msgstr "Konfigurationsfiler inderholder stadig forældede enhedsnavne"
-
-#~ msgid ""
-#~ "The following configuration files still use some device names that may "
-#~ "change when using the new kernel:"
-#~ msgstr ""
-#~ "De følgende konfigurationsfiler bruger stadig nogle enhedsnavne som måske "
-#~ "vil ændre sig, når den nye kerne bruges:"
-
-#~ msgid "Boot loader configuration check needed"
-#~ msgstr "Behov for tjek af opstartsindlæseren (boot loader)"
-
-#~ msgid ""
-#~ "The boot loader configuration for this system was not recognized. These "
-#~ "settings in the configuration may need to be updated:"
-#~ msgstr ""
-#~ "Opstartslæserens (boot loader) konfiguration på dette system blev ikke "
-#~ "genkendt. Disse indstillinger i konfigurationen skal måske opdateres:"
-
-#~ msgid ""
-#~ " * The root device ID passed as a kernel parameter;\n"
-#~ " * The boot device ID used to install and update the boot loader."
-#~ msgstr ""
-#~ " * Rootenheds-id'et passeret som en kerneparameter;\n"
-#~ " * Rootenheds-id'et brugt til at installere og opdatere "
-#~ "opstartsindlæseren (boot loader)"
-
-#~ msgid ""
-#~ "You should generally identify these devices by UUID or label. However, on "
-#~ "MIPS systems the root device must be identified by name."
-#~ msgstr ""
-#~ "Vi anbefaler, at du identificerer disse enheder efter UUID eller etiket. "
-#~ "På MIPS-systemer skal rootenheden dog være identificeret med navn."
+"Kernepakker vil ikke længere køre et specifikt ramdiskoprettelsesprogram. "
+"Pakken for ramdiskrettelsesprogrammet skal installere et skript i /etc/"
+"kernel/postinst.d, og du skal fjerne linjen der begynder med »ramdisk =« "
+"fra /etc/kernel-img.conf."
