@@ -3,9 +3,8 @@ Section: math
 Priority: optional
 Maintainer: Varun Hiremath <varun@debian.org>
 Uploaders: Torsten Werner <twerner@debian.org>
-XS-Python-Version: >= 2.3
-Build-Depends: debhelper (>= 5), cdbs (>= 0.4.43), python-all-dev (>= 2.3.5-11),
- python-central (>= 0.6.0), quilt
+X-Python-Version: >= 2.3
+Build-Depends: debhelper (>= 5), cdbs (>= 0.4.90~), python (>= 2.6.6-3~), quilt
 Standards-Version: 3.7.3
 Homepage: http://lybniz2.sourceforge.net/
 Vcs-Svn: https://bollin.googlecode.com/svn/lybniz/
@@ -13,8 +12,7 @@ Vcs-Browser: http://bollin.googlecode.com/svn/lybniz/
 
 Package: lybniz
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, python-gtk2, python-gnome2
-XB-Python-Version: ${python:Versions}
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-gnome2
 Description: mathematical function graph plotter
  Lybniz is a simple desktop graph plotter. It can currently plot three
  functions and allows you to navigate the plot. Functions are entered
