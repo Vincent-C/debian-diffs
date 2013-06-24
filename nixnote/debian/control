@@ -21,7 +21,6 @@ Description: open source clone designed to interact with Evernote
 
 Package: nevernote
 Architecture: all
-Section: oldlibs
 Priority: extra
 Depends: nixnote, ${misc:Depends}
 Description: transitional package for Nixnote
