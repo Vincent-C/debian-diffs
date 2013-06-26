@@ -1,3 +1,9 @@
+firefox (22.0-1+vc1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 25 Jun 2013 19:59:08 -0700
+
 firefox (21.0-1+vc1) unstable; urgency=low
 
   * New upstream release.

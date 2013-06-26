@@ -27,7 +27,6 @@ libsmime3.so                   opt/firefox/
 libsoftokn3.chk                opt/firefox/
 libsoftokn3.so                 opt/firefox/
 libssl3.so                     opt/firefox/
-libxpcom.so                    opt/firefox/
 libxul.so                      opt/firefox/
 mozilla-xremote-client         opt/firefox/
 omni.ja                        opt/firefox/
