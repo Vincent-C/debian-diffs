@@ -1,12 +1,12 @@
-Source: eclipse
+Source: eclipse4.3
 Section: devel
 Priority: optional
 Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Homepage: http://www.eclipse.org/
 
-Package: eclipse
+Package: eclipse4.3
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Eclipse IDE for Java Developers

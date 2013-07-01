@@ -1,6 +1,4 @@
 #!/bin/sh
 
-export GDK_NATIVE_WINDOWS=true
-
-cd /opt/eclipse
+cd /opt/eclipse4.3/
 ./eclipse
