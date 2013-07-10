@@ -44,10 +44,7 @@ CONFIGURE_FLAGS = \
 	--enable-menu \
 	--enable-vaapi \
 	--disable-arts \
-	--language=all \
-	--disable-dvdread-internal \
-	--disable-libdvdcss-internal \
-	--disable-libmpeg2-internal
+	--language=all
 
 # generate debugging symbols for mplayer-dbg for all archs but mipsen,
 # see bug #520113

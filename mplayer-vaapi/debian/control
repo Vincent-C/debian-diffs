@@ -58,6 +58,7 @@ Build-Depends:
  libsvga1-dev [i386 amd64],
  libswscale-dev (>= 4:0.8~),
  libtheora-dev (>= 1.0~beta1),
+ libva-dev,
  libvdpau-dev [i386 amd64],
  libvorbis-dev,
  libvorbisidec-dev,

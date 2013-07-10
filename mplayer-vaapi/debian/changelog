@@ -1,17 +1,19 @@
-mplayer-vaapi (2:1.1+svn35107-1+vc1) unstable; urgency=low
+mplayer-vaapi (99:1.1.1+svn36265-1+vc1) unstable; urgency=low
 
   * Local package.
   * New upstream git snapshot from mplayer vaapi gitorious tree, based off of
-    mplayer svn r35107 (post-release of version 1.1), with ffmpeg git.
+    mplayer svn r36265 (post-release of version 1.1.1), with ffmpeg git rev
+    bc63a76.
   * Enable VA-API support.
     - Add libva-dev to build-depends; build with --enable-vaapi
-  * Disable runtime CPU detection; build binary optimized for this specific
-    machine (-march=corei7-avx).
-  * Build single binary with --disable-gui; drop mplayer-gui package.
+    - Ship /etc/mplayer/mplayer.conf with vaapi enabled by default.
+  * Disable runtime CPU detection; build binary optimized for build host.
+  * Build single binary with --disable-gui; drop mplayer-gui package. VA-API
+    patches seem to make mplayer-gui FTBFS.
   * Rename source package as mplayer-vaapi.
   * Drop all existing patches.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 07 Oct 2012 02:25:00 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 10 Jul 2013 01:24:46 -0700
 
 mplayer (2:1.0~rc4.dfsg1+svn34540-1) unstable; urgency=low
 
