@@ -1,10 +1,15 @@
 Source: fontconfig
 Section: fonts
 Priority: optional
-Maintainer: Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Keith Packard <keithp@debian.org>
+Maintainer: Keith Packard <keithp@debian.org>
 Uploaders: Josselin Mouette <joss@debian.org>
-Build-Depends: cdbs (>= 0.4.93), debhelper (>= 9), libfreetype6-dev (>= 2.1.7), libexpat1-dev, po-debconf, pkg-config
+Build-Depends: cdbs (>= 0.4.93),
+               debhelper (>= 9),
+               libfreetype6-dev (>= 2.1.7),
+               libexpat1-dev,
+               binutils (>= 2.12.90.0.9),
+               pkg-config,
+               po-debconf
 Standards-Version: 3.9.3
 
 Package: fontconfig
@@ -33,7 +38,6 @@ Description: generic font configuration library - support binaries
 Package: fontconfig-config
 Section: fonts
 Architecture: all
-Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ucf (>= 0.29), ttf-dejavu-core | ttf-bitstream-vera | ttf-freefont | gsfonts-x11
 Replaces: fontconfig (<< 2.3.2-2)
 Conflicts: fontconfig (<< 2.3.2-2)

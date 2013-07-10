@@ -1,0 +1,14 @@
+Index: fontconfig-2.10.2/conf.d/README
+===================================================================
+--- fontconfig-2.10.2.orig/conf.d/README	2012-02-20 04:49:18.000000000 +0100
++++ fontconfig-2.10.2/conf.d/README	2013-06-26 20:27:13.865234252 +0200
+@@ -2,7 +2,8 @@ conf.d/README
+ 
+ Each file in this directory is a fontconfig configuration file.  Fontconfig
+ scans this directory, loading all files of the form [0-9][0-9]*.conf.
+-These files are normally installed in ../conf.avail and then symlinked here,
++These files are normally installed in /usr/share/fontconfig/conf.avail 
++(or the former ../conf.avail location) and then symlinked here,
+ allowing them to be easily installed and then enabled/disabled by adjusting
+ the symlinks.
+ 
