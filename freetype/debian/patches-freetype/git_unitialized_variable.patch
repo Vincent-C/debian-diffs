@@ -1,0 +1,26 @@
+From 7441dd874dd8e7127fc27125d2442b1b7e57ae88 Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Mon, 13 May 2013 07:12:46 +0000
+Subject: * src/cff/cf2font.c (cf2_getGlyphWidth): Fix uninitialized variable.
+
+Fix suggested by Vaibhav Nagarnaik <vnagarnaik@gmail.com>.
+---
+diff --git a/src/cff/cf2font.c b/src/cff/cf2font.c
+index d8e0619..69642b2 100644
+--- a/src/cff/cf2font.c
++++ b/src/cff/cf2font.c
+@@ -387,11 +387,11 @@
+     /* finish storing client outline */
+     cf2_outline_close( &font->outline );
+ 
++  exit:
+     /* FreeType just wants the advance width; there is no translation */
+     *glyphWidth = advWidth;
+ 
+     /* free resources and collect errors from objects we've used */
+-  exit:
+     cf2_setError( &font->error, lastError );
+ 
+     return font->error;
+--
+

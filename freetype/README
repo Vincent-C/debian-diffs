@@ -1,4 +1,4 @@
-Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/freetype_2.4.11.orig.tar.gz
+Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/freetype_2.4.12.orig.tar.gz
 
 These patched freetype packages should be used in conjunction with the patched
 cairo and fontconfig packages in this repo to provide a more comfortable

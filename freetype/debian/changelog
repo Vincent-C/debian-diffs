@@ -1,8 +1,18 @@
-freetype (2.4.11-0~vc1) unstable; urgency=low
+freetype (2.4.12-1~vc1) unstable; urgency=low
 
-  * New upstream release; build for Debian sid.
+  * New upstream release; no change backport from Ubuntu.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 26 May 2013 19:40:19 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 10 Jul 2013 02:09:31 -0700
+
+freetype (2.4.12-0ubuntu1) saucy; urgency=low
+
+  * New upstream version (lp: #1179523)
+  * debian/patches-freetype/git_unitialized_variable.patch,
+    debian/patches-ft2demos/init_variables.patch:
+    - fix an unitialized variable warnings which were breaking the build
+  * debian/libfreetype6.symbols: updated
+  
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 13 May 2013 13:12:42 +0200
 
 freetype (2.4.11-0ubuntu1) raring; urgency=low
 
