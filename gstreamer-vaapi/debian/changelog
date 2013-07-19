@@ -1,4 +1,4 @@
-gstreamer-vaapi (0.5.4-1~vc1) unstable; urgency=low
+gstreamer-vaapi (0.5.5.1-1~vc1) unstable; urgency=low
 
   * Local package.
   * New upstream release.
