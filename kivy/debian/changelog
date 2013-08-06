@@ -1,3 +1,9 @@
+kivy (1.7.2-1~vc2) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 05 Aug 2013 21:34:09 -0700
+
 kivy (1.7.1-1~vc1) unstable; urgency=low
 
   * New upstream release.
