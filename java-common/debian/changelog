@@ -1,9 +1,42 @@
-java-common (0.48+vc1) unstable; urgency=low
+java-common (0.49+vc1) unstable; urgency=low
 
   * Local package.
-  * Replace openjdk with oracle-jdk.
+  * Replace openjdk with oracle-java7-jdk.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 25 Dec 2012 17:14:18 -0800
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 15 Aug 2013 22:16:19 -0700
+
+java-common (0.49) unstable; urgency=low
+
+  [ Sylvestre Ledru ]
+  * Team upload.
+  * Finalize the upload to switch to OpenJDK 7.
+    See http://lists.debian.org/debian-devel-announce/2013/08/msg00000.html
+  * Fix empty-binary-package on gcj-native-helper, default-jre & default-jdk
+  * Remove local variables in the changelog
+  * Update of the Debian Java FAQ (was starting to become obsolete)
+  * Update of the Java policy:
+    - Recommend default-jre & default-jre-headless for Java libraries
+    - Create a section "Building Java packages"
+      - Promote default-jdk
+      - Advice to use javahelper
+      - Recommend maven-debian-helper
+    - Remove some deprecated references to java-runtime{1,2}
+    - Minor improvements
+    - State the license of the policy (Closes: #687841)
+
+  [ tony mancill ]
+  * Upload to unstable to make openjdk-7 the default on architectures
+    where it is supported.
+  * Bump Standards-Version to 3.9.4.
+  * Update Vcs-Svn URL.
+
+  [ Matthias Klose ]
+  * Don't blindly update to OpenJDK7 on architectures where it is not
+    supported or not even built.
+  * Provide a /usr/share/java/java_defaults.mk makefile fragment for
+    supported java architectures and versions.
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Mon, 05 Aug 2013 17:18:05 +0200
 
 java-common (0.48) experimental; urgency=low
 
@@ -539,6 +572,4 @@ java-common (0.0-1) unstable; urgency=low
 
  -- Stephane Bortzmeyer <bortzmeyer@debian.org>  Wed, 23 Jun 1999 15:03:43 +0200
 
-Local variables:
-mode: debian-changelog
-End:
+
