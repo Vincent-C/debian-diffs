@@ -1,13 +1,52 @@
-xserver-xorg-video-intel (2:2.21.14-1+vc1) unstable; urgency=low
+xserver-xorg-video-intel (2:2.21.15-1+vc1) unstable; urgency=low
 
   * Local package.
     - Remove debian/patches/.
   * New upstream release.
-  * Rebuild against current Xorg version in wheezy.
   * Build with --with-default-accel=sna (this avoids the need to add a
     xorg.conf snippet to enable SNA acceleration).
+  * Disable valgrindified ioctls for debugging
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Mon, 05 Aug 2013 02:23:35 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 21 Aug 2013 20:24:16 -0700
+
+xserver-xorg-video-intel (2:2.21.14-4) unstable; urgency=low
+
+  * Link the driver against pixman to get correct dependency (closes: #719518).
+    Thanks to Martin Perazzo for the report!
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 12 Aug 2013 19:48:43 +0200
+
+xserver-xorg-video-intel (2:2.21.14-3) unstable; urgency=low
+
+  * Add patch to deal with missing 'struct sysinfo' in kfreebsd's
+    <sys/sysinfo.h>.
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 12 Aug 2013 15:31:14 +0200
+
+xserver-xorg-video-intel (2:2.21.14-2) unstable; urgency=low
+
+  * Don't enable valgrind on kfreebsd.
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 12 Aug 2013 10:09:25 +0200
+
+xserver-xorg-video-intel (2:2.21.14-1) unstable; urgency=low
+
+  * New upstream release (closes: #697336).
+
+  [ Maarten Lankhorst ]
+  * Add valgrind to build-depends.
+  * Enable valgrind by default.
+
+  [ Sven Joachim ]
+  * Drop patch 0002-Update-manpage-for-new-accelmethod-option.patch,
+    superseded by upstream changes.
+  * Use dpkg-buildflags.
+  * Disable silent build rules.
+
+  [ Julien Cristau ]
+  * Add kfreebsd to the package's architecture list (closes: #671870).
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 12 Aug 2013 08:12:23 +0200
 
 xserver-xorg-video-intel (2:2.20.14-1) experimental; urgency=low
 

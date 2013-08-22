@@ -33,12 +33,13 @@ Build-Depends:
  libudev-dev [linux-any],
  quilt,
  xutils-dev (>= 1:7.5+4),
+ valgrind [amd64 armel armhf i386 mips mipsel powerpc s390x],
 Standards-Version: 3.9.3
 Vcs-Git: git://git.debian.org/git/pkg-xorg/driver/xserver-xorg-video-intel
 Vcs-Browser: http://git.debian.org/?p=pkg-xorg/driver/xserver-xorg-video-intel.git
 
 Package: xserver-xorg-video-intel
-Architecture: amd64 i386
+Architecture: amd64 i386 kfreebsd-amd64 kfreebsd-i386
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
@@ -59,7 +60,7 @@ Description: X.Org X server -- Intel i8xx, i9xx display driver
  This package is built from the X.org xf86-video-intel driver module.
 
 Package: xserver-xorg-video-intel-dbg
-Architecture: amd64 i386
+Architecture: amd64 i386 kfreebsd-amd64 kfreebsd-i386
 Depends:
  xserver-xorg-video-intel (= ${binary:Version}),
  ${shlibs:Depends},
