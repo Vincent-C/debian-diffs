@@ -3,11 +3,11 @@ Section: metapackages
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Build-Depends: cdbs (>= 0.4.90),
                debhelper (>= 8),
                gnome-pkg-tools (>= 0.10)
-Vcs-Svn: svn://anonscm.debian.org/svn/pkg-gnome/desktop/unstable/meta-gnome3/
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/meta-gnome3/
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/meta-gnome3/
 
 Package: gnome-core
@@ -340,8 +340,8 @@ Priority: extra
 Depends: libatk1.0-dbg,
          libclutter-1.0-dbg,
          libclutter-gtk-1.0-dbg,
-         libcogl9-dbg,
-         libcogl-pango0-dbg,
+         libcogl12-dbg,
+         libcogl-pango12-dbg,
          libglib2.0-0-dbg,
          libgstreamer1.0-0-dbg,
          libgtk2.0-0-dbg,
