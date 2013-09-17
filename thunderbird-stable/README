@@ -1,4 +1,4 @@
-Tarball: http://download.cdn.mozilla.net/pub/mozilla.org/thunderbird/releases/latest/linux-x86_64/en-US/thunderbird-17.0.8.tar.bz2
+Tarball: http://download.cdn.mozilla.net/pub/mozilla.org/thunderbird/releases/latest/linux-x86_64/en-US/thunderbird-24.0.tar.bz2
 
 This package just installs the binary components of Mozilla Thunderbird
 (en-US), built and distributed by upstream.
