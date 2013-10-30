@@ -1,23 +1,19 @@
-Index: fontconfig-2.10.1/conf.d/Makefile.am
-===================================================================
---- fontconfig-2.10.1.orig/conf.d/Makefile.am	2012-08-02 22:28:09.226578434 +0200
-+++ fontconfig-2.10.1/conf.d/Makefile.am	2012-08-02 22:28:15.990578713 +0200
-@@ -28,6 +28,7 @@
- 	10-antialias.conf \
+--- a/conf.d/Makefile.am
++++ b/conf.d/Makefile.am
+@@ -30,6 +30,7 @@
  	10-hinting.conf \
  	10-hinting-slight.conf \
+ 	10-scale-bitmap-fonts.conf \
 +	11-lcdfilter-default.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \
  	30-metric-aliases.conf \
-Index: fontconfig-2.10.1/conf.d/Makefile.in
-===================================================================
---- fontconfig-2.10.1.orig/conf.d/Makefile.in	2012-08-02 22:28:09.226578434 +0200
-+++ fontconfig-2.10.1/conf.d/Makefile.in	2012-08-02 22:28:15.974578713 +0200
-@@ -263,6 +263,7 @@
- 	10-antialias.conf \
+--- a/conf.d/Makefile.in
++++ b/conf.d/Makefile.in
+@@ -331,6 +331,7 @@
  	10-hinting.conf \
  	10-hinting-slight.conf \
+ 	10-scale-bitmap-fonts.conf \
 +	11-lcdfilter-default.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \

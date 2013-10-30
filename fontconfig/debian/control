@@ -9,6 +9,7 @@ Build-Depends: cdbs (>= 0.4.93),
                libexpat1-dev,
                binutils (>= 2.12.90.0.9),
                pkg-config,
+               gperf,
                po-debconf
 Standards-Version: 3.9.3
 

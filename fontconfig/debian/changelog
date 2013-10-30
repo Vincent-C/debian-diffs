@@ -1,9 +1,19 @@
-fontconfig (2.10.2-2+vc1) unstable; urgency=low
+fontconfig (2.11.0-1+vc1) unstable; urgency=low
 
   * Local package.
-  * Import patches from Ubuntu.
+  * Include Ubuntu fontconfig patches.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 10 Jul 2013 02:17:15 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 30 Oct 2013 02:59:57 -0700
+
+fontconfig (2.11.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * fontconfig-config.preinst: removed, not needed anymore.
+  * Add build-dependency on gperf.
+  * Bump shlibs.
+  * 01_conf.d_README.patch: dropped, obsolete.
+
+ -- Josselin Mouette <joss@debian.org>  Sun, 20 Oct 2013 20:02:49 +0200
 
 fontconfig (2.10.2-2) unstable; urgency=low
 

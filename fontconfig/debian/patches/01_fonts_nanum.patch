@@ -5,10 +5,10 @@ Bug-Ubuntu: https://launchpad.net/bugs/792471
 Origin: https://bugs.freedesktop.org/attachment.cgi?id=56872
 Author: Jinkyu Yi <jincreator@jincreator.net>
 
-Index: fontconfig-2.10.1/conf.d/40-nonlatin.conf
+Index: fontconfig-2.10.93/conf.d/40-nonlatin.conf
 ===================================================================
---- fontconfig-2.10.1.orig/conf.d/40-nonlatin.conf	2012-08-02 22:28:09.226578434 +0200
-+++ fontconfig-2.10.1/conf.d/40-nonlatin.conf	2012-08-02 22:28:09.246578435 +0200
+--- fontconfig-2.10.93.orig/conf.d/40-nonlatin.conf	2013-05-21 13:46:47.194358681 +0200
++++ fontconfig-2.10.93/conf.d/40-nonlatin.conf	2013-05-21 13:46:47.186358682 +0200
 @@ -62,6 +62,10 @@
  		<default><family>serif</family></default>
  	</alias>

@@ -1,7 +1,5 @@
-Index: fontconfig-2.10.2/conf.d/40-nonlatin.conf
-===================================================================
---- fontconfig-2.10.2.orig/conf.d/40-nonlatin.conf	2012-07-24 04:01:32.000000000 +0200
-+++ fontconfig-2.10.2/conf.d/40-nonlatin.conf	2012-11-26 18:22:41.488844279 +0100
+--- a/conf.d/40-nonlatin.conf
++++ b/conf.d/40-nonlatin.conf
 @@ -161,6 +161,10 @@
  		<default><family>sans-serif</family></default>
  	</alias>
@@ -13,10 +11,8 @@ Index: fontconfig-2.10.2/conf.d/40-nonlatin.conf
  		<family>Sazanami Gothic</family>
  		<default><family>sans-serif</family></default>
  	</alias>
-Index: fontconfig-2.10.2/conf.d/60-latin.conf
-===================================================================
---- fontconfig-2.10.2.orig/conf.d/60-latin.conf	2012-02-20 04:49:18.000000000 +0100
-+++ fontconfig-2.10.2/conf.d/60-latin.conf	2012-11-26 18:22:38.608844139 +0100
+--- a/conf.d/60-latin.conf
++++ b/conf.d/60-latin.conf
 @@ -4,8 +4,8 @@
  	<alias>
  		<family>serif</family>
@@ -47,21 +43,19 @@ Index: fontconfig-2.10.2/conf.d/60-latin.conf
  			<family>Inconsolata</family>
  			<family>Andale Mono</family>
  			<family>Courier New</family>
-Index: fontconfig-2.10.2/conf.d/Makefile.am
-===================================================================
---- fontconfig-2.10.2.orig/conf.d/Makefile.am	2012-10-30 01:53:37.000000000 +0100
-+++ fontconfig-2.10.2/conf.d/Makefile.am	2012-11-26 18:22:38.608844139 +0100
-@@ -25,6 +25,9 @@
- 	README
+--- a/conf.d/Makefile.am
++++ b/conf.d/Makefile.am
+@@ -26,6 +26,9 @@
+ DOC_FILES = $(DOC_SOURCES:.in=)
  
  CONF_LINKS = \
 +	10-antialias.conf \
 +	10-hinting.conf \
 +	10-hinting-slight.conf \
+ 	10-scale-bitmap-fonts.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \
- 	30-metric-aliases.conf \
-@@ -47,7 +50,12 @@
+@@ -50,7 +53,12 @@
  
  templatedir = $(TEMPLATEDIR)
  template_DATA =				\
@@ -72,9 +66,9 @@ Index: fontconfig-2.10.2/conf.d/Makefile.am
 +	10-hinting-medium.conf		\
 +	10-hinting-slight.conf		\
  	10-no-sub-pixel.conf		\
+ 	10-scale-bitmap-fonts.conf	\
  	10-sub-pixel-bgr.conf		\
- 	10-sub-pixel-rgb.conf		\
-@@ -66,6 +74,7 @@
+@@ -70,6 +78,7 @@
  	49-sansserif.conf		\
  	50-user.conf			\
  	51-local.conf			\
@@ -82,23 +76,21 @@ Index: fontconfig-2.10.2/conf.d/Makefile.am
  	60-latin.conf			\
  	65-fonts-persian.conf		\
  	65-khmer.conf			\
-Index: fontconfig-2.10.2/conf.d/Makefile.in
-===================================================================
---- fontconfig-2.10.2.orig/conf.d/Makefile.in	2012-11-26 09:22:02.000000000 +0100
-+++ fontconfig-2.10.2/conf.d/Makefile.in	2012-11-26 18:22:38.608844139 +0100
-@@ -285,6 +285,9 @@
- 	README
- 
+--- a/conf.d/Makefile.in
++++ b/conf.d/Makefile.in
+@@ -327,6 +327,9 @@
+ DOC_SOURCES = README.in
+ DOC_FILES = $(DOC_SOURCES:.in=)
  CONF_LINKS = \
 +	10-antialias.conf \
 +	10-hinting.conf \
 +	10-hinting-slight.conf \
+ 	10-scale-bitmap-fonts.conf \
  	20-unhint-small-vera.conf \
  	30-urw-aliases.conf \
- 	30-metric-aliases.conf \
-@@ -303,7 +306,12 @@
- EXTRA_DIST = $(template_DATA) $(DOC_FILES)
+@@ -349,7 +352,12 @@
  config_DATA = $(DOC_FILES)
+ templatedir = $(TEMPLATEDIR)
  template_DATA = \
 +	10-antialias.conf		\
  	10-autohint.conf		\
@@ -107,9 +99,9 @@ Index: fontconfig-2.10.2/conf.d/Makefile.in
 +	10-hinting-medium.conf		\
 +	10-hinting-slight.conf		\
  	10-no-sub-pixel.conf		\
+ 	10-scale-bitmap-fonts.conf	\
  	10-sub-pixel-bgr.conf		\
- 	10-sub-pixel-rgb.conf		\
-@@ -322,6 +330,7 @@
+@@ -369,6 +377,7 @@
  	49-sansserif.conf		\
  	50-user.conf			\
  	51-local.conf			\

@@ -1,7 +1,7 @@
-Index: fontconfig-2.10.1/conf.d/10-antialias.conf
+Index: fontconfig-2.10.93/conf.d/10-antialias.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/10-antialias.conf	2012-08-02 22:28:09.298578437 +0200
++++ fontconfig-2.10.93/conf.d/10-antialias.conf	2013-05-21 13:46:52.970358432 +0200
 @@ -0,0 +1,8 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -11,10 +11,10 @@ Index: fontconfig-2.10.1/conf.d/10-antialias.conf
 +    <edit name="antialias" mode="assign"><bool>true</bool></edit>
 +  </match>
 +</fontconfig>
-Index: fontconfig-2.10.1/conf.d/10-hinting.conf
+Index: fontconfig-2.10.93/conf.d/10-hinting.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/10-hinting.conf	2012-08-02 22:28:09.298578437 +0200
++++ fontconfig-2.10.93/conf.d/10-hinting.conf	2013-05-21 13:46:52.970358432 +0200
 @@ -0,0 +1,8 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -24,10 +24,10 @@ Index: fontconfig-2.10.1/conf.d/10-hinting.conf
 +    <edit name="hinting" mode="assign"><bool>true</bool></edit>
 +  </match>
 +</fontconfig>
-Index: fontconfig-2.10.1/conf.d/10-hinting-full.conf
+Index: fontconfig-2.10.93/conf.d/10-hinting-full.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/10-hinting-full.conf	2012-08-02 22:28:09.298578437 +0200
++++ fontconfig-2.10.93/conf.d/10-hinting-full.conf	2013-05-21 13:46:52.970358432 +0200
 @@ -0,0 +1,8 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -37,10 +37,10 @@ Index: fontconfig-2.10.1/conf.d/10-hinting-full.conf
 +    <edit name="hintstyle" mode="assign"><const>hintfull</const></edit>
 +  </match>
 +</fontconfig>
-Index: fontconfig-2.10.1/conf.d/10-hinting-medium.conf
+Index: fontconfig-2.10.93/conf.d/10-hinting-medium.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/10-hinting-medium.conf	2012-08-02 22:28:09.298578437 +0200
++++ fontconfig-2.10.93/conf.d/10-hinting-medium.conf	2013-05-21 13:46:52.970358432 +0200
 @@ -0,0 +1,8 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -50,10 +50,10 @@ Index: fontconfig-2.10.1/conf.d/10-hinting-medium.conf
 +    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
 +  </match>
 +</fontconfig>
-Index: fontconfig-2.10.1/conf.d/10-hinting-slight.conf
+Index: fontconfig-2.10.93/conf.d/10-hinting-slight.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/10-hinting-slight.conf	2012-08-02 22:28:09.298578437 +0200
++++ fontconfig-2.10.93/conf.d/10-hinting-slight.conf	2013-05-21 13:46:52.970358432 +0200
 @@ -0,0 +1,8 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">

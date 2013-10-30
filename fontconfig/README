@@ -1,4 +1,4 @@
-Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.2.orig.tar.bz2
+Tarball: http://ftp.debian.org/debian/pool/main/f/fontconfig/fontconfig_2.11.0.orig.tar.bz2
 
 These patched fontconfig packages should be used in conjunction with the
 patched freetype and cairo packages in this repo to provide a more comfortable
@@ -6,14 +6,13 @@ font rendering experience in Debian (at least, IMHO, fonts look better than
 with Debian's default cairo/freetype/fontconfig packages).
 
 Debian diff is based on the version in the main repository, with the following
-6 patches from Ubuntu [1]:
+7 patches from Ubuntu [1]:
 - 00_old_diff_gz.patch
+- 01_fonts_nanum.patch
 - 04_ubuntu_monospace_lcd_filter_conf.patch
 - 05_lcdfilterlegacy.patch
 - 05_ubuntu_add_hinting_and_antialiasing_confs.patch
 - 06_ubuntu_lcddefault.patch
 - 07_no_bitmaps.patch
 
-UPDATE (2013/03/26): package imported directly from Ubuntu without any modifications
-
-[1] https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.2-0ubuntu2.debian.tar.gz
+[1] https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.10.93-0ubuntu1.debian.tar.gz

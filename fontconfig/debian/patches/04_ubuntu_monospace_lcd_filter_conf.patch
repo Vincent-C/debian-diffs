@@ -1,7 +1,7 @@
-Index: fontconfig-2.10.1/conf.d/53-monospace-lcd-filter.conf
+Index: fontconfig-2.10.93/conf.d/53-monospace-lcd-filter.conf
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ fontconfig-2.10.1/conf.d/53-monospace-lcd-filter.conf	2012-08-02 22:28:09.262578436 +0200
++++ fontconfig-2.10.93/conf.d/53-monospace-lcd-filter.conf	2013-05-21 13:46:49.330358589 +0200
 @@ -0,0 +1,22 @@
 +<?xml version="1.0"?>
 +<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
