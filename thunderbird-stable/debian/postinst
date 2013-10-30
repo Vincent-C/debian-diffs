@@ -1,7 +1,19 @@
 #!/bin/sh
 set -e
 
-/usr/bin/update-desktop-database
+case "$1" in
+    configure)
+    [ -x /usr/bin/update-desktop-database ] && /usr/bin/update-desktop-database
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
 
 #DEBHELPER#
 
