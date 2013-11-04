@@ -1,3 +1,10 @@
+linux-vclaptop (3.12-1) unstable; urgency=low
+
+  * Local package (linux 3.12); custom kernel build.
+  * New upstream release.
+
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 03 Nov 2013 18:39:56 -0800
+
 linux-vclaptop (3.9.11-1) unstable; urgency=low
 
   * Local package (linux 3.9.11); custom kernel build.
