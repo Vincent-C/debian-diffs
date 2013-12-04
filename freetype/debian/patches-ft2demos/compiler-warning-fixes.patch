@@ -1,0 +1,18 @@
+Description: Fix a wrong cast that triggers a compiler warning
+ Every other assignment is properly cast to (char *) instead of
+ (unsigned char *).  Fix this inconsistency.
+Author: Steve Langasek <vorlon@debian.org>
+
+Index: ft2demos-2.5.1/src/ftdiff.c
+===================================================================
+--- ft2demos-2.5.1.orig/src/ftdiff.c
++++ ft2demos-2.5.1/src/ftdiff.c
+@@ -1445,7 +1445,7 @@
+           if (fread( text, tsize, 1, tfile ) < 1) {
+             fprintf( stderr, "could not read '%s'\n", textfile );
+             free( text );
+-            text = (unsigned char *)default_text;
++            text = (char *)default_text;
+           } else {
+             text[tsize] = 0;
+           }

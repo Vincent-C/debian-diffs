@@ -1,5 +1,4 @@
 freetype-2.1.7-backwards.compat.patch -p0
 enable-subpixel-rendering.patch
 enable-gxvalid-otvalid.patch
-revert_scalable_fonts_metric.patch
-git_unitialized_variable.patch
+ubuntu_revert_scalable_fonts_metric.patch

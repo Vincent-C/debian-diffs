@@ -1,10 +1,9 @@
 Source: freetype
 Section: libs
 Priority: optional
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Steve Langasek <vorlon@debian.org>
+Maintainer: Steve Langasek <vorlon@debian.org>
 Uploaders: Anthony Fok <foka@debian.org>, Keith Packard <keithp@keithp.com>
-Build-Depends: bzip2, debhelper (>= 8.9.4), docbook-to-man, gettext (>= 0.10.36-2), libx11-dev, x11proto-core-dev, libz-dev, quilt
+Build-Depends: bzip2, debhelper (>= 8.9.4), docbook-to-man, gettext (>= 0.10.36-2), libx11-dev, x11proto-core-dev, libz-dev, quilt, libpng-dev
 Standards-Version: 3.9.2
 Homepage: http://www.freetype.org
 

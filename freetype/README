@@ -1,4 +1,4 @@
-Tarball: https://launchpad.net/ubuntu/+archive/primary/+files/freetype_2.4.12.orig.tar.gz
+Tarball: http://ftp.debian.org/debian/pool/main/f/freetype/freetype_2.5.1.orig.tar.gz
 
 These patched freetype packages should be used in conjunction with the patched
 cairo and fontconfig packages in this repo to provide a more comfortable
@@ -6,11 +6,7 @@ font rendering experience in Debian (at least, IMHO, fonts look better than
 with Debian's default cairo/freetype/fontconfig packages).
 
 Debian diff is based on the version in the main repository, with the following
-patches:
-- revert_Fix_metrics_on_size_request_for_scalable_fonts.patch
-  (see debian/patches/; closes #636776, #636844)
-
-UPDATE (2013/03/26): package imported from Ubuntu and used as-is
-
-
-
+patches imported from Ubuntu:
+- debian/patches-freetype/revert_scalable_fonts_metric.patch:
+  revert commit "Fix metrics on size request for scalable fonts.",
+  which breaks gtk underlining markups (Closes: #636776, #636844)

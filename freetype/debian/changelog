@@ -1,68 +1,44 @@
-freetype (2.4.12-1~vc1) unstable; urgency=low
+freetype (2.5.1-1+vc1) unstable; urgency=low
 
-  * New upstream release; no change backport from Ubuntu.
+  * Local package.
+  * Import Ubuntu freetype patches.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 10 Jul 2013 02:09:31 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 01:20:41 -0800
 
-freetype (2.4.12-0ubuntu1) saucy; urgency=low
+freetype (2.5.1-1) unstable; urgency=low
 
-  * New upstream version (lp: #1179523)
-  * debian/patches-freetype/git_unitialized_variable.patch,
-    debian/patches-ft2demos/init_variables.patch:
-    - fix an unitialized variable warnings which were breaking the build
-  * debian/libfreetype6.symbols: updated
-  
- -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 13 May 2013 13:12:42 +0200
+  * New upstream release.  Closes: #717952, #729231.
+    - Add build-dependency on libpng-dev.
+    - Dropped patches, included upstream: savannah-bug-35847.patch,
+      savannah-bug-35833.patch, savannah-bug-37905.patch,
+      savannah-bug-37906.patch, savannah-bug-37907.patch
+    - Internal symbols have been dropped in this version.  No soname change
+      because the symbols are not supposed to be used, but past experience
+      suggests that this may break some third-party software anyway.
+  * compiler_hardening_fixes.patch: fix wrong snprintf() calls in ttdebug.c
+    that cause an overflow 100% of the time.
+  * debian/patches-ft2demos/compiler-warning-fixes.patch: Fix a wrong
+    cast that triggers a compiler warning.
+  * debian/patches-ft2demos/revert-wrong-extern.patch: revert wrong
+    upstream commit that causes a build failure.
 
-freetype (2.4.11-0ubuntu1) raring; urgency=low
+ -- Steve Langasek <vorlon@debian.org>  Thu, 28 Nov 2013 07:05:47 +0000
 
-  * New upstream version
-  * debian/patches-freetype/CVE-2012-5668.patch,
-    debian/patches-freetype/CVE-2012-5669.patch,
-    debian/patches-freetype/CVE-2012-5670.patch:
-    - dropped, those fixes are in the new version
-  * debian/patches-ft2demos/compiler_hardening_fixes.patch:
-    - changed unsigned char* to char* to fix "pointer targets in assignment
-      differ in signedness" build error
-  * debian/libfreetype6.symbols: updated for the new version
+freetype (2.4.9-1.1) unstable; urgency=high
 
- -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 08 Feb 2013 12:50:09 +0100
+  * Non-maintainer upload.
+    Upload ACKed by Steve Langasek <vorlon@debian.org> on #debian-devel.
+  * Add savannah-bug-37905.patch patch
+    [SECURITY] CVE-2012-5668: NULL Pointer Dereference in bdf_free_font.
+    (Closes: #696691)
+  * Add savannah-bug-37906.patch patch
+    [SECURITY] CVE-2012-5669: Out-of-bounds read in _bdf_parse_glyphs.
+    (Closes: #696691)
+  * Add savannah-bug-37907.patch patch
+    [SECURITY] CVE-2012-5670: Out-of-bounds write in _bdf_parse_glyphs.
+    (Closes: #696691)
 
-freetype (2.4.10-0ubuntu2) raring; urgency=low
-
-  * SECURITY UPDATE: denial of service and possible code execution via NULL
-    pointer dereference
-    - debian/patches-freetype/CVE-2012-5668.patch: reset props_size in case
-      of allocation error in src/bdf/bdflib.c.
-    - CVE-2012-5668
-  * SECURITY UPDATE: denial of service and possible code execution via heap
-    buffer over-read in BDF parsing
-    - debian/patches-freetype/CVE-2012-5669.patch: use correct array size
-      in src/bdf/bdflib.c.
-    - CVE-2012-5669
-  * SECURITY UPDATE: denial of service and possible code execution via out-
-    of-bounds write
-    - debian/patches-freetype/CVE-2012-5670.patch: normalize negative
-      parameter in src/bdf/bdflib.c.
-    - CVE-2012-5670
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 14 Jan 2013 13:24:57 -0500
-
-freetype (2.4.10-0ubuntu1) quantal; urgency=low
-
-  * New upstream version
-  * debian/libfreetype6.symbols:
-    - new version update
-  * debian/patches-freetype/savannah-bug-35847.patch,
-    debian/patches-freetype/savannah-bug-35833.patch:
-    - dropped, the fixes are in the new version
-  * Resynchronize on Debian, remaining diff:
-  * debian/patches-freetype/revert_scalable_fonts_metric.patch:
-    - revert commit "Fix metrics on size request for scalable fonts.",
-      it's breaking gtk underlining markups and creating some other 
-      issues as well (lp: #972223)
-
- -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 03 Aug 2012 13:57:01 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 28 Dec 2012 21:32:28 +0100
 
 freetype (2.4.9-1) unstable; urgency=low
 
