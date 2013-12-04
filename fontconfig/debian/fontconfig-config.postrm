@@ -10,7 +10,7 @@ case "$1" in
 		ucf --purge $CONF
 	    fi
 	    rm -f $CONF
-	    rm -rf /etc/fonts/conf.d
+	    rmdir -p --ignore-fail-on-non-empty /etc/fonts/conf.d
 	    rmdir /usr/local/share/fonts 2>/dev/null || true
 	    ;;
 esac

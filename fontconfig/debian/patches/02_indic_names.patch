@@ -1,0 +1,48 @@
+Description: Correct the font names for nonlatin languages
+ This patch does the following.
+   1. Use Rachana as serif font for Malayalam as Meera is only Sans
+      family.
+   2. Remove TSCu_Paranar since its legacy encoded non-unicode font.
+   3. Remove non existing fonts malayalam and sampige.
+Author: Vasudev Kamath <kamathvasudev@gmail.com>
+Bug-Debian: http://bugs.debian.org/661245
+Origin: http://lists.freedesktop.org/archives/fontconfig/2011-December/003725.html
+Last-Update: 2013-06-09
+
+--- fontconfig-2.9.0.orig/conf.d/65-nonlatin.conf
++++ fontconfig-2.9.0/conf.d/65-nonlatin.conf
+@@ -19,8 +19,6 @@
+ 			<family>Urdu Nastaliq Unicode</family> <!-- arabic (ur) -->
+ 			<family>Raghindi</family> <!-- devanagari -->
+ 			<family>Mukti Narrow</family> <!-- bengali -->
+-			<family>malayalam</family> <!-- malayalam -->
+-			<family>Sampige</family> <!-- kannada -->
+ 			<family>padmaa</family> <!-- gujarati -->
+ 			<family>Hapax Berbère</family> <!-- tifinagh -->
+ 			<family>MS Mincho</family> <!-- han (ja) -->
+@@ -58,7 +56,7 @@
+ 			<family>Lohit Sindhi</family>
+  			<family>Lohit Punjabi</family>
+  			<family>Lohit Tamil</family>
+-			<family>Meera</family>
++			<family>Rachana</family>
+ 			<family>Lohit Malayalam</family>
+  			<family>Lohit Kannada</family>
+  			<family>Lohit Telugu</family>
+@@ -90,8 +88,6 @@
+ 			<family>Urdu Nastaliq Unicode</family> <!-- arabic (ur) -->
+ 			<family>Raghindi</family> <!-- devanagari -->
+ 			<family>Mukti Narrow</family> <!-- bengali -->
+-			<family>malayalam</family> <!-- malayalam -->
+-			<family>Sampige</family> <!-- kannada -->
+ 			<family>padmaa</family> <!-- gujarati -->
+ 			<family>Hapax Berbère</family> <!-- tifinagh -->
+ 			<family>MS Gothic</family> <!-- han (ja) -->
+@@ -116,7 +112,6 @@
+  			<family>AR PL Mingti2L Big5</family>
+ 			<family>ＭＳ ゴシック</family>
+ 			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
+-			<family>TSCu_Paranar</family> <!-- tamil -->
+ 			<family>NanumGothic</family> <!-- hangul (ko) -->
+ 			<family>UnDotum</family> <!-- hangul (ko) -->
+ 			<family>Baekmuk Dotum</family> <!-- hangul (ko) -->

@@ -1,0 +1,37 @@
+Index: fontconfig-2.11.0/conf.d/40-nonlatin.conf
+===================================================================
+--- fontconfig-2.11.0.orig/conf.d/40-nonlatin.conf	2013-10-11 05:10:16.000000000 +0200
++++ fontconfig-2.11.0/conf.d/40-nonlatin.conf	2013-11-23 20:07:57.014462811 +0100
+@@ -157,10 +157,18 @@
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+ 	<alias>
++		<family>MgOpen Moderna</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>MgOpen Modata</family>
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+ 	<alias>
++		<family>MgOpen Cosmetica</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>Sazanami Gothic</family>
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+Index: fontconfig-2.11.0/conf.d/65-nonlatin.conf
+===================================================================
+--- fontconfig-2.11.0.orig/conf.d/65-nonlatin.conf	2013-11-23 19:46:48.344446457 +0100
++++ fontconfig-2.11.0/conf.d/65-nonlatin.conf	2013-11-23 20:08:19.277655168 +0100
+@@ -99,7 +99,9 @@
+ 			<family>WenQuanYi Bitmap Song</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>AR PL ShanHeiSun Uni</family> <!--han (ja,zh-cn,zh-tw) -->
+ 			<family>AR PL New Sung</family> <!-- han (zh-cn,zh-tw) -->
++			<family>MgOpen Moderna</family>
+ 			<family>MgOpen Modata</family>
++			<family>MgOpen Cosmetica</family>
+ 			<family>VL Gothic</family>
+ 			<family>IPAMonaGothic</family>
+ 			<family>IPAGothic</family>

@@ -1,0 +1,43 @@
+--- fontconfig-2.11.0/src/fcdefault.c.orig	2013-11-23 19:20:06.830607956 +0100
++++ fontconfig-2.11.0/src/fcdefault.c	2013-11-23 19:21:43.839078546 +0100
+@@ -150,15 +150,33 @@
+ # if defined (HAVE_GETEXECNAME)
+ 	const char *p = getexecname ();
+ # else
+-	char buf[PATH_MAX + 1];
+-	int len;
++	int size = 128;
+ 	char *p = NULL;
+ 
+-	len = readlink ("/proc/self/exe", buf, sizeof (buf) - 1);
+-	if (len != -1)
+-	{
+-	    buf[len] = '\0';
+-	    p = buf;
++	while (1) {
++	    char *buf = malloc (size);
++	    int len;
++
++	    if (buf == NULL)
++		break;
++
++	    len = readlink ("/proc/self/exe", buf, size - 1);
++
++	    if (len < 0)
++	    {
++		free(buf);
++		break;
++	    }
++
++	    if (len < size - 1)
++	    {
++		buf[len] = '\0';
++		p = buf;
++		break;
++	    }
++
++	    free (buf);
++	    size *= 2;
+ 	}
+ # endif
+ 	if (p)

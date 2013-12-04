@@ -1,9 +1,33 @@
-fontconfig (2.11.0-1+vc1) unstable; urgency=low
+fontconfig (2.11.0-2+vc1) unstable; urgency=low
 
   * Local package.
   * Include Ubuntu fontconfig patches.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 30 Oct 2013 02:59:57 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 00:56:41 -0800
+
+fontconfig (2.11.0-2) unstable; urgency=low
+
+  * fontconfig-config.postrm: be less aggressive in removing fonts.d.
+    Closes: #728598.
+  * Break xpdf (<= 3.03-11). Closes: #728444.
+  * 01_path_max.patch: patch from Samuel Thibault to stop requiring 
+    PATH_MAX. Closes: #729189.
+  * fontconfig-config.links: enable lcdfilter by default.
+    Closes: #638262, #605574.
+  * 02_indic_names.patch: patch from Vasudev Kamath to fix Indic font 
+    family names. Closes: #661245.
+  * Mark libfontconfig1-dev as multi-arch: same. Closes: #677885.
+  * 03_locale_c.utf8.patch: based on a patch from Martin Dickopp. Treat 
+    C.UTF-8 and C.utf8 locales as built in the C library.
+    Closes: #717423.
+  * Update font packages names. Closes: #712682.
+  * Enable fonts-liberation as an alternative. Closes: #663553.
+  * Also drop alternate dependency on gsfonts-x11.
+  * 04_mgopen_fonts.patch: new patch. Add more MgOpen fonts to default 
+    sans typefaces. Closes: #400767.
+  * ja.po: updated. Closes: #695078.
+
+ -- Josselin Mouette <joss@debian.org>  Fri, 22 Nov 2013 10:15:58 +0100
 
 fontconfig (2.11.0-1) unstable; urgency=low
 

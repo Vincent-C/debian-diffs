@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: fontconfig\n"
 "Report-Msgid-Bugs-To: fontconfig@packages.debian.org\n"
 "POT-Creation-Date: 2012-04-30 10:00-0700\n"
-"PO-Revision-Date: 2007-04-17 23:47+0900\n"
-"Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
+"PO-Revision-Date: 2012-12-04 08:30+0900\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -45,10 +45,8 @@ msgstr "なし"
 #. Type: select
 #. Description
 #: ../fontconfig-config.templates:2002
-#, fuzzy
-#| msgid "Font tuning method for screen:"
 msgid "Font tuning method for screen (system default):"
-msgstr "画面上のフォント調整方法:"
+msgstr "画面上のフォント調整方法 (システムのデフォルト):"
 
 #. Type: select
 #. Description
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "サブピクセルレベルでテキストを描画すると、一般にフラット (LCD) 画面で少し見栄"
 "えが良くなりますが、CRT 画面では、文字に色が散りばめられたように見えてしまい"
-"ます。「自動」を選ぶと、LCD 画面を検出したときのみにこれを有効にします。"
+"ます。「自動」を選ぶと、LCD 画面を検出したときにのみこれを有効にします。"
 
 #. Type: boolean
 #. Description

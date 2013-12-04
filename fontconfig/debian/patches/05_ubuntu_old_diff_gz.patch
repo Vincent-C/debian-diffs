@@ -1,18 +1,7 @@
---- a/conf.d/40-nonlatin.conf
-+++ b/conf.d/40-nonlatin.conf
-@@ -161,6 +161,10 @@
- 		<default><family>sans-serif</family></default>
- 	</alias>
- 	<alias>
-+		<family>MgOpen Moderna</family>
-+		<default><family>sans-serif</family></default>
-+	</alias>
-+	<alias>
- 		<family>Sazanami Gothic</family>
- 		<default><family>sans-serif</family></default>
- 	</alias>
---- a/conf.d/60-latin.conf
-+++ b/conf.d/60-latin.conf
+Index: fontconfig-2.11.0/conf.d/60-latin.conf
+===================================================================
+--- fontconfig-2.11.0.orig/conf.d/60-latin.conf	2013-11-06 11:30:46.228295938 +0100
++++ fontconfig-2.11.0/conf.d/60-latin.conf	2013-11-06 11:30:46.220295937 +0100
 @@ -4,8 +4,8 @@
  	<alias>
  		<family>serif</family>
@@ -43,8 +32,10 @@
  			<family>Inconsolata</family>
  			<family>Andale Mono</family>
  			<family>Courier New</family>
---- a/conf.d/Makefile.am
-+++ b/conf.d/Makefile.am
+Index: fontconfig-2.11.0/conf.d/Makefile.am
+===================================================================
+--- fontconfig-2.11.0.orig/conf.d/Makefile.am	2013-11-06 11:30:46.228295938 +0100
++++ fontconfig-2.11.0/conf.d/Makefile.am	2013-11-06 11:30:46.220295937 +0100
 @@ -26,6 +26,9 @@
  DOC_FILES = $(DOC_SOURCES:.in=)
  
@@ -76,8 +67,10 @@
  	60-latin.conf			\
  	65-fonts-persian.conf		\
  	65-khmer.conf			\
---- a/conf.d/Makefile.in
-+++ b/conf.d/Makefile.in
+Index: fontconfig-2.11.0/conf.d/Makefile.in
+===================================================================
+--- fontconfig-2.11.0.orig/conf.d/Makefile.in	2013-11-06 11:30:46.228295938 +0100
++++ fontconfig-2.11.0/conf.d/Makefile.in	2013-11-06 11:30:46.224295937 +0100
 @@ -327,6 +327,9 @@
  DOC_SOURCES = README.in
  DOC_FILES = $(DOC_SOURCES:.in=)
