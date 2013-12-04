@@ -1,9 +1,23 @@
-java-common (0.49+vc1) unstable; urgency=low
+java-common (0.50+vc1) unstable; urgency=low
 
   * Local package.
   * Replace openjdk with oracle-java7-jdk.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 15 Aug 2013 22:16:19 -0700
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 01:59:23 -0800
+
+java-common (0.50) unstable; urgency=low
+
+  * Remove the 'Libraries must depend on the needed runtime environment'
+    from the policy. It was wrong and conflicting with lintian.
+    (Closes: #730133)
+  * Bump Standards-Version to 3.9.5.
+  * Add myself among the uploaders
+
+  [ Damien Raude-Morvan ]
+  * Promote openjdk-7 as default-java on kfreebsd-{i386,amd64}.
+
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 23 Nov 2013 14:55:24 +0100
 
 java-common (0.49) unstable; urgency=low
 

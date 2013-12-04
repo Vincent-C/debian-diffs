@@ -16,17 +16,17 @@ DPKG_VARS := $(shell dpkg-architecture)
 DEB_HOST_ARCH ?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH)
 DEB_HOST_MULTIARCH ?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
 
-p_jre		= oracle-java7-jdk
-p_jhl		= oracle-java7-jdk
-p_jdk		= oracle-java7-jdk
+p_jre		= gcj-jre
+p_jhl		= gcj-jre-headless
+p_jdk		= gcj-jdk
 jdk_build_dep	=
 v_jre		=
 v_jdk		= $(v_jre)
-provides	= java java2 java5 java6 java7
+provides	= java java2 java5
 dversion	= 1:1.5-$(jrel)
-jvmdir		= oracle-java7-jdk
+jvmdir		= java-gcj
 
-p_doc		= oracle-java7-joc
+p_doc		= oracle-java7-jdk
 
 include debian/java_defaults.mk
 
@@ -34,23 +34,22 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(java7_architectures)))
   p_jre		= oracle-java7-jdk
   p_jhl		= oracle-java7-jdk
   p_jdk		= oracle-java7-jdk
-  jdk_build_dep	= gcj-jdk
+  jdk_build_dep	= oracle-java7-jdk
   v_jre		= $(S)(>= 7~u3-2.1.1)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6 java7
   dversion	= 1:1.7-$(jrel)
-  jvmdir	= oracle-java7-jdk$(if $(DEB_HOST_MULTIARCH),-$(DEB_HOST_ARCH))
-else ifneq (,$(filter $(DEB_HOST_ARCH),$(java6_architectures)))
+  jvmdir	= jdk-7-oracle-x64
   p_jre		= oracle-java7-jdk
   p_jhl		= oracle-java7-jdk
   p_jdk		= oracle-java7-jdk
-  jdk_build_dep	= gcj-jdk
+  jdk_build_dep	= oracle-java7-jdk
   v_jre		= $(S)(>= 6b23~pre8-2~)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6
   dversion	= 1:1.6-$(jrel)
-  jvmdir	= oracle-java7-jdk$(if $(DEB_HOST_MULTIARCH),-$(DEB_HOST_ARCH))
-  p_doc		= oracle-java7-joc
+  jvmdir	= jdk-7-oracle-x64
+  p_doc		= oracle-java7-jdk
 endif
 
 jre_provides	= $(call mk_cslist,$(provides),runtime)
