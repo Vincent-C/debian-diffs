@@ -1,2 +1,2 @@
 version=3
-http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/(\d.*)/linux-x86_64/en-US/thunderbird-(.*).tar.bz2
+http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/latest/linux-x86_64/en-US/thunderbird-(.*).tar.bz2
