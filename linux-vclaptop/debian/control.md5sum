@@ -1,10 +1,10 @@
 96a2409a86e14f8e4ae459f8a1805eb2  debian/bin/gencontrol.py
-b3798116cc56bce5a329311b0bc8136b  debian/changelog
+4aac55caa7dd1b227d0ec1692d07a36a  debian/changelog
 5c4a4e6bf117012b1bd8f6a99590406d  debian/templates/control.headers.in
 471b9a3d8f1bb35df0c185c262d99bf9  debian/templates/control.image-dbg.in
 c4f9bcc4b00853431bbd56738d9d85f0  debian/templates/control.image.type-plain.in
 d41d8cd98f00b204e9800998ecf8427e  debian/templates/control.main.in
-ec45812aae01eca39462f353e83f21ee  debian/templates/control.source.in
+a61ce0798c34787e0f3bd147b5fdfb60  debian/templates/control.source.in
 83a58c446d8027f8a660c39bdf4beab0  debian/templates/image-dbg.lintian-override.in
-f34fd9b6f8f9ae7bb87bc26f6b200e0b  debian/config/defines
+15df59e9d2a7e36a6f465a5e338c24c1  debian/config/defines
 e195eb9a6802d900a253d8b262dabe88  debian/config/amd64/defines
