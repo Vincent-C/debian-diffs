@@ -40,7 +40,7 @@ Index: ft2demos-2.5.1/src/ftdiff.c
 +          if (fread( text, tsize, 1, tfile ) < 1) {
 +            fprintf( stderr, "could not read '%s'\n", textfile );
 +            free( text );
-+            text = (unsigned char *)default_text;
++            text = (char *)default_text;
 +          } else {
 +            text[tsize] = 0;
 +          }

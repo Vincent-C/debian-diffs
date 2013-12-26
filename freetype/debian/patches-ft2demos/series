@@ -1,4 +1,3 @@
 ft2demos-2.1.7-no-rpath.patch -p0
 compiler_hardening_fixes.patch
-compiler-warning-fixes.patch
 revert-wrong-extern.patch

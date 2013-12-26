@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Steve Langasek <vorlon@debian.org>
 Uploaders: Anthony Fok <foka@debian.org>, Keith Packard <keithp@keithp.com>
-Build-Depends: bzip2, debhelper (>= 8.9.4), docbook-to-man, gettext (>= 0.10.36-2), libx11-dev, x11proto-core-dev, libz-dev, quilt, libpng-dev
+Build-Depends: bzip2, debhelper (>= 8.9.4), docbook-to-man, gettext (>= 0.10.36-2), libx11-dev, x11proto-core-dev, libz-dev, quilt, libpng-dev, autoconf, automake, libtool
 Standards-Version: 3.9.2
 Homepage: http://www.freetype.org
 
@@ -49,7 +49,7 @@ Description: FreeType 2 font engine, shared library files
 Package: libfreetype6-dev
 Architecture: any
 Section: libdevel
-Depends: libfreetype6 (= ${binary:Version}), libc6-dev | libc-dev, zlib1g-dev | libz-dev, ${misc:Depends}
+Depends: libfreetype6 (= ${binary:Version}), libc6-dev | libc-dev, zlib1g-dev | libz-dev, libpng-dev, ${misc:Depends}
 Description: FreeType 2 font engine, development files
  The FreeType project is a team of volunteers who develop free,
  portable and high-quality software solutions for digital typography. 

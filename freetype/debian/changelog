@@ -1,9 +1,41 @@
-freetype (2.5.1-1+vc1) unstable; urgency=low
+freetype (2.5.2-1+vc1) unstable; urgency=medium
 
   * Local package.
-  * Import Ubuntu freetype patches.
+  * Merge from Ubuntu:
+    - debian/patches-freetype/revert_scalable_fonts_metric.patch:
+      revert commit "Fix metrics on size request for scalable fonts.",
+      which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 01:20:41 -0800
+ -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 26 Dec 2013 02:08:11 -0800
+
+freetype (2.5.2-1) unstable; urgency=low
+
+  * New upstream release
+    - fixes a crasher bug with certain fonts.  Closes: #733052.
+    - drop of additional symbols which were previously exported but are only
+      meant for debugging and upstream recommends not enabling them when
+      building in "release mode".  If this impacts users of freetype, we can
+      re-enable these symbols later.
+  * Call autogen.sh on build to refresh autotools; not using dh-autoreconf
+    because the upstream directory structure is non-standard and it's a
+    throw-away dir, so there's no advantage to dh-autoreconf's rollback
+    support.
+  * Fix symbols file with respect to more complete version info found in
+    Ubuntu.
+  * Drop debian/patches-ft2demos/compiler-warning-fixes.patch, which is
+    actually a bug in the compiler_hardening_fixes.patch; fix it there
+    instead.
+  * Fix libpng detection when cross-building.
+
+ -- Steve Langasek <vorlon@debian.org>  Wed, 25 Dec 2013 09:06:22 +0000
+
+freetype (2.5.1-2) unstable; urgency=low
+
+  * Drop unnecessary GPLv2.txt from libfreetype6-dev.
+  * Add missing dependency on libpng-dev to libfreetype6-dev.
+    Closes: #732062.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 17 Dec 2013 20:04:17 -0800
 
 freetype (2.5.1-1) unstable; urgency=low
 

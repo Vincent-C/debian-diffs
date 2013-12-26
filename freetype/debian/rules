@@ -5,6 +5,12 @@
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_BUILD_ARCH     ?= $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
+ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
+  export LIBPNG_CFLAGS = -I/usr/include/libpng12
+  export LIBPNG_LDFLAGS = -lpng12
+endif
 
 # Workaround for spurious error when building with gcc-4.4
 ifeq (,$(filter m68k alpha,$(DEB_HOST_ARCH)))
@@ -65,6 +71,7 @@ patch: unpack patch-stamp
 patch-stamp:
 	cd $(freetype_u) \
 	    && QUILT_PATCHES=../debian/patches-freetype quilt --quiltrc /dev/null push -a
+	cd $(freetype_u) && ./autogen.sh
 	cd $(ft2demos_u) \
 	    && QUILT_PATCHES=../debian/patches-ft2demos quilt --quiltrc /dev/null push -a
 	touch patch-stamp
@@ -102,7 +109,7 @@ endif
 ifneq (,$(findstring $(devpkg), $(shell dh_listpackages)))
 	dh_installdocs --link-doc=$(libpkg) -p$(devpkg) \
 		-Xreference/README -Xreference/.gitignore \
-		-XLICENSE.TXT -XGPL.TXT -XBUILD -XINSTALL \
+		-XLICENSE.TXT -XGPL.TXT -XGPLv2.txt -XBUILD -XINSTALL \
 		$(addprefix -X,$(libdoc)) \
 		$(ftdocs_d)/docs/*
 endif
