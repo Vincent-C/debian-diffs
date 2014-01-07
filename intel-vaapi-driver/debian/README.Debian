@@ -1,0 +1,48 @@
+intel-vaapi-driver for Debian
+-----------------------------
+
+Supported hardware:
+------------------
+
+Sandybridge Intel® HD Graphics 2000/3000
+            (used in 2nd Generation Intel® Core™ i7/i5/i3 processor family)
+HD          Intel® HD Graphics
+            (used in Intel® 2010 Core™ i7/i5/i3 processor family)
+GMA3150     Intel® Graphics Media Accelerator 3150
+            (used in Intel® Atom™ processor N450/D410/D450 family)
+G45         Intel® G45 Express Chipset
+Q45         Intel® Q45 Express Chipset
+G43         Intel® G43 Express Chipset
+Q43         Intel® Q43 Express Chipset
+B43         Intel® B43 Express Chipset
+G41         Intel® G41 Express Chipset
+GM45        Mobile Intel® GM45/GS45/GL40 Express Chipset
+G35         Intel® G35 Express Chipset
+Q35         Intel® Q35 Express Chipset
+Q33         Intel® Q33 Express Chipset
+G33         Intel® G33/G31 Express Chipset
+965GM       Mobile Intel® GM965 Express Chipset
+965G        G965 Integrated Graphics Controller
+965Q        Q963/Q965 Integrated Graphics Controller
+946GZ       946GZ/GL Integrated Graphics Controller
+945G        945G Integrated Graphics Controller
+945GM       Mobile 945GM/GMS/940GML Express Integrated Graphics Controller
+915G        82915G/GV/910GL Express Chipset Family Graphics Controller
+915GM       Mobile 915GM/GMS/910GML Express Graphics Controller
+865G        82865G Integrated Graphics Controller
+855GM       82852/855GM Integrated Graphics Device
+845G        82845G/GL[Brookdale-G]/GE Chipset Integrated Graphics Device
+i830M       82830 Chipset Graphics Controller
+815 82815   Chipset Graphics Controller
+810 82810   Chipset Graphics Controller
+810-DC100   82810-M DC-100 System and Graphics Controller
+
+Codecs:
+------
+
+H.264   D   ILK+
+H.264   E   SNB+
+MPEG-2  D   CTG+
+VC-1    D   SNB+
+
+ -- Matteo F. Vescovi <mfv.debian@gmail.com>  Mon, 09 Jan 2012 10:00:00 +0100

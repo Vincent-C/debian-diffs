@@ -1,0 +1,33 @@
+From: "Matteo F. Vescovi" <mfv.debian@gmail.com>
+Date: Fri, 27 Sep 2013 09:49:05 +0200
+Subject: Fix_FTBFS_on_kFreeBSD
+
+---
+ src/intel_driver.h | 1 +
+ src/intel_memman.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/intel_driver.h b/src/intel_driver.h
+index 9631b96..561553b 100644
+--- a/src/intel_driver.h
++++ b/src/intel_driver.h
+@@ -5,6 +5,7 @@
+ #include <pthread.h>
+ #include <signal.h>
+ #include <stdbool.h>
++#include <stdint.h>
+ 
+ #include <drm.h>
+ #include <i915_drm.h>
+diff --git a/src/intel_memman.c b/src/intel_memman.c
+index 7d56e96..bacad73 100644
+--- a/src/intel_memman.c
++++ b/src/intel_memman.c
+@@ -28,6 +28,7 @@
+  */
+ 
+ #include <assert.h>
++#include <stdint.h>
+ 
+ #include "intel_driver.h"
+ 

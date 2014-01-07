@@ -1,0 +1,19 @@
+Upstream fix for colors with messed up contrast/saturation with gnome-mplayer and vaapi.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=73016
+http://cgit.freedesktop.org/vaapi/intel-driver/commit/?id=54cb60f3d973ce6a908ea57f5aa7481803fe653a
+
+--- a/src/i965_drv_video.h
++++ b/src/i965_drv_video.h
+@@ -60,9 +60,9 @@
+ #define I965_SURFACE_FLAG_BOTTOME_FIELD_FIRST   0x00000002
+ 
+ #define DEFAULT_BRIGHTNESS      0
+-#define DEFAULT_CONTRAST        10
++#define DEFAULT_CONTRAST        50
+ #define DEFAULT_HUE             0
+-#define DEFAULT_SATURATION      10
++#define DEFAULT_SATURATION      50
+ 
+ struct i965_surface
+ {
