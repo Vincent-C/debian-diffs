@@ -1,3 +1,0 @@
-Tarball: http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/intel-driver-1.2.2.tar.gz
-
-Includes patch to fix #734246 (messed up colors with gnome-mplayer + VA-API).

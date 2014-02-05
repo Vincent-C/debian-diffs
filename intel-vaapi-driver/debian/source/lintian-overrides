@@ -1,2 +1,0 @@
-# This package is a transitional package to i965-va-driver-dbg.
-intel-vaapi-driver source: dbg-package-missing-depends libva-intel-vaapi-driver-dbg

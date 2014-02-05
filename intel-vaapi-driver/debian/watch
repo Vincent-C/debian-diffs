@@ -1,3 +1,0 @@
-version=3
-# we look for urls like http://cgit.freedesktop.org/vaapi/intel-driver/snapshot/intel-driver-1.0.5.tar.bz2
-http://cgit.freedesktop.org/vaapi/intel-driver/ /vaapi/intel-driver/snapshot/intel-driver-([\d+\.]+)\.tar\.gz
