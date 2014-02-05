@@ -1,9 +1,9 @@
 Source: thunderbird-stable
 Section: mail
 Priority: optional
-Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.3
+Standards-Version: 3.9.5
 Homepage: http://www.mozillamessaging.com/en-US/thunderbird/
 
 Package: thunderbird-stable
