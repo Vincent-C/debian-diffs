@@ -5,4 +5,4 @@ This is the latest official release of Firefox 64-bit, downloaded and built by M
 
 http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/linux-x86_64/en-US/firefox-$(VERSION).tar.bz2
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 22 Mar 2011 19:52:58 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 22 Mar 2011 19:52:58 -0700

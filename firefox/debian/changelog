@@ -1,3 +1,9 @@
+firefox (27.0-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 04 Feb 2014 19:12:43 -0800
+
 firefox (26.0-1+vc1) unstable; urgency=medium
 
   * New upstream release.
