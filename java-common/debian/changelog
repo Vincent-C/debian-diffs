@@ -1,21 +1,38 @@
-java-common (0.50+vc1) unstable; urgency=low
+java-common (0.51+vc1) unstable; urgency=medium
 
   * Local package.
   * Replace openjdk with oracle-java7-jdk.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 01:59:23 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 04 Feb 2014 19:31:48 -0800
+
+java-common (0.51) unstable; urgency=low
+
+  [ Sylvestre Ledru ]
+  * Fix some wrong version declarations
+
+  [ Matthias Klose ]
+  * Promote openjdk-7 as default-java on arm64, mips, mipsel, powerpcspe,
+    ppc64el, x32.
+  * Revert back to gcj on ia64. openjdk-7 fails to build, not porter feedback.
+  * Revert back to gcj on s390. openjdk-7 fails to build, not a release
+    architecture anymore.
+  * Revert back to gcj on sparc and sparc64. Hotspot for sparc isn't
+    maintained anymore upstream.  No porter feedback about a Zero port.
+  * Revert back to gcj on kfreebsd-{i386,amd64}.  The port is not yet
+    available upstream.  No feedback from the kfreebsd porters, and no
+    updates for new upstream versions.
+  * Bump the epoch on the default-{jre-headless,jre,jdk} packages.
+
+ -- Niels Thykier <niels@thykier.net>  Sat, 01 Feb 2014 13:03:13 +0100
 
 java-common (0.50) unstable; urgency=low
 
   * Remove the 'Libraries must depend on the needed runtime environment'
     from the policy. It was wrong and conflicting with lintian.
     (Closes: #730133)
-  * Bump Standards-Version to 3.9.5.
-  * Add myself among the uploaders
 
   [ Damien Raude-Morvan ]
   * Promote openjdk-7 as default-java on kfreebsd-{i386,amd64}.
-
 
  -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 23 Nov 2013 14:55:24 +0100
 

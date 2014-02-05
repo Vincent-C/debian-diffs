@@ -3,13 +3,14 @@
 # java{,5,6,7,8}_architectures
 
 java8_architectures =
-java7_architectures = alpha amd64 armel armhf arm64 i386 ia64 lpia \
-		kfreebsd-amd64 kfreebsd-i386 powerpc ppc64 \
-		s390x sh4 sparc sparc64
-java6_architectures = $(java7_architectures) \
-		mips mipsel powerpcspe s390
+java7_architectures = alpha amd64 arm64 armel armhf arm64 i386 lpia \
+		mips mipsel \
+		powerpc powerpcspe ppc64 ppc64el \
+		s390x sh4 x32
+java6_architectures = $(java7_architectures)
 java5_architectures = $(java6_architectures) \
-		hppa m68k x32 hurd-i386
+		hppa ia64 m68k s390 sparc sparc64 \
+		kfreebsd-amd64 kfreebsd-i386 hurd-i386
 java_architectures = $(java5_architectures)
 
 _java_host_arch := $(if $(DEB_HOST_ARCH),$(DEB_HOST_ARCH),$(shell dpkg-architecture -qDEB_HOST_ARCH))

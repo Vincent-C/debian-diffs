@@ -23,7 +23,7 @@ jdk_build_dep	=
 v_jre		=
 v_jdk		= $(v_jre)
 provides	= java java2 java5
-dversion	= 1:1.5-$(jrel)
+dversion	= 2:1.5-$(jrel)
 jvmdir		= oracle-java7-jdk
 
 p_doc		= oracle-java7-jdk
@@ -38,8 +38,8 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(java7_architectures)))
   v_jre		= $(S)(>= 7~u3-2.1.1)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6 java7
-  dversion	= 1:1.7-$(jrel)
-  jvmdir	= jdk-7-oracle-x64
+  dversion	= 2:1.7-$(jrel)
+  jvmdir	= oracle-java7-jdk
 else ifneq (,$(filter $(DEB_HOST_ARCH),$(java6_architectures)))
   p_jre		= oracle-java7-jdk
   p_jhl		= oracle-java7-jdk
@@ -48,8 +48,8 @@ else ifneq (,$(filter $(DEB_HOST_ARCH),$(java6_architectures)))
   v_jre		= $(S)(>= 6b23~pre8-2~)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6
-  dversion	= 1:1.6-$(jrel)
-  jvmdir	= jdk-7-oracle-x64
+  dversion	= 2:1.6-$(jrel)
+  jvmdir	= oracle-java7-jdk
   p_doc		= oracle-java7-jdk
 endif
 
