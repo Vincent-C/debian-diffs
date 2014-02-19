@@ -1,14 +1,41 @@
-xserver-xorg-video-intel (2:2.99.906-1+vc1) unstable; urgency=low
+xserver-xorg-video-intel (2:2.99.910-1+vc1) unstable; urgency=medium
 
   * Local package.
-    - Remove debian/patches/.
+    - Remove all patches.
   * New upstream release.
+  * Source format 3.0 (quilt).
   * Build with --with-default-accel=sna (this avoids the need to add a
     xorg.conf snippet to enable SNA acceleration).
+  * Install upstream changelog from source tarball.
   * Disable valgrindified ioctls for debugging.
   * Install /usr/bin/intel-virtual-output.
+    - Add libxinerama-dev, libxrandr-dev, libxdamage-dev, libxcursor-dev,
+      libxtst-dev, libxrender-dev, libpixman-1-dev to build-depends.
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 13 Nov 2013 10:01:05 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 18 Feb 2014 22:28:33 -0800
+
+xserver-xorg-video-intel (2:2.21.15-2) unstable; urgency=medium
+
+  [ Michael Stapelberg ]
+  * Revert back to 1.0 source format.
+
+  [ Julien Cristau ]
+  * Cherry-pick upstream build fix for xserver 1.15 (closes: #736980).
+
+ -- Julien Cristau <jcristau@debian.org>  Tue, 04 Feb 2014 15:24:32 +0100
+
+xserver-xorg-video-intel (2:2.21.15-1) unstable; urgency=low
+
+  * New upstream release.
+  * Drop patches Check-for-struct-sysinfo-as-well-as-sys-sysinfo.h.patch and
+    Link-the-driver-against-pixman.patch, they were applied upstream.
+  * Add myself to Uploaders to prevent lintian NMU warnings
+  * Bump Standards-Version to 3.9.4 (no changes necessary)
+  * Canonicalize Vcs-* fields
+  * Explicitly set source format to '3.0 (quilt)'
+  * Move homepage from description to homepage: field
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Wed, 28 Aug 2013 19:39:47 +0200
 
 xserver-xorg-video-intel (2:2.21.14-4) unstable; urgency=low
 
