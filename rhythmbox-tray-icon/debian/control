@@ -1,13 +1,24 @@
 Source: rhythmbox-tray-icon
-Section: python
-Priority: extra
-Maintainer: Tom Parker <palfrey@tevp.net>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.2
-Homepage: http://github.com/palfrey/rhythmbox-tray-icon
+Section: gnome
+Priority: optional
+Maintainer: Vincent Cheng <vcheng@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: https://mendhak.github.com/rhythmbox-tray-icon/
+Vcs-Git: git://github.com/mendhak/rhythmbox-tray-icon.git
+Vcs-Browser: https://github.com/mendhak/rhythmbox-tray-icon.git
 
 Package: rhythmbox-tray-icon
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, rhythmbox (>=2.90), gir1.2-rb-3.0, gir1.2-gtk-3.0, gir1.2-gdkpixbuf-2.0, python-gi-cairo, gnome-icon-theme-full | gnome-icon-theme
-Description: Restores the tray icon functionality from the 0.x series.
- If you're running Ubuntu, install gnome-icon-theme-full
+Depends:
+ gir1.2-gdkpixbuf-2.0,
+ gir1.2-gtk-3.0,
+ gir1.2-rb-3.0,
+ gnome-icon-theme-full | gnome-icon-theme,
+ python-gi-cairo,
+ rhythmbox (>=2.90),
+ ${misc:Depends}
+Description: tray icon to control basic Rhythmbox features
+ A tray icon to control basic Rhythmbox features. Requires Rhythmbox 2.9+.
+ .
+ You can rate the track, play/pause, go previous, go next, or quit.

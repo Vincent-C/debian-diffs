@@ -1,2 +1,4 @@
-tray_icon.py usr/lib/rhythmbox/plugins/tray-icon
-tray_icon.plugin usr/lib/rhythmbox/plugins/tray-icon
+tray_icon.plugin  /usr/lib/rhythmbox/plugins/rhythmbox-tray-icon/
+tray_icon.py      /usr/lib/rhythmbox/plugins/rhythmbox-tray-icon/
+tray_playing.png  /usr/lib/rhythmbox/plugins/rhythmbox-tray-icon/
+tray_stopped.png  /usr/lib/rhythmbox/plugins/rhythmbox-tray-icon/
