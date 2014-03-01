@@ -1,3 +1,9 @@
+eclipse4.3 (4.3.2-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 28 Feb 2014 23:39:02 -0800
+
 eclipse4.3 (4.3.1-1+vc1) unstable; urgency=low
 
   * New upstream release.
