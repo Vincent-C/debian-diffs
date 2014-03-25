@@ -1,4 +1,4 @@
-xserver-xorg-video-intel (2:2.99.910-1+vc1) unstable; urgency=medium
+xserver-xorg-video-intel (2:2.99.911-1+vc1) unstable; urgency=medium
 
   * Local package.
     - Remove all patches.
@@ -11,8 +11,10 @@ xserver-xorg-video-intel (2:2.99.910-1+vc1) unstable; urgency=medium
   * Install /usr/bin/intel-virtual-output.
     - Add libxinerama-dev, libxrandr-dev, libxdamage-dev, libxcursor-dev,
       libxtst-dev, libxrender-dev, libpixman-1-dev to build-depends.
+  * Install /usr/lib/xserver-xorg-video-intel/xf86-video-intel-backlight-helper
+    /usr/share/polkit-1/actions/org.x.xf86-video-intel.backlight-helper.policy.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 18 Feb 2014 22:28:33 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 25 Mar 2014 01:26:19 -0700
 
 xserver-xorg-video-intel (2:2.21.15-2) unstable; urgency=medium
 
