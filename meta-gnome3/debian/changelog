@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.8+4+vc1) unstable; urgency=low
+meta-gnome3 (1:3.8+5+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -9,7 +9,17 @@ meta-gnome3 (1:3.8+4+vc1) unstable; urgency=low
     - libreoffice*
     - tracker* (and dependencies: gnome-boxes, gnome-documents)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 02 Oct 2013 15:34:11 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 06 Apr 2014 01:18:09 -0700
+
+meta-gnome3 (1:3.8+5) unstable; urgency=medium
+
+  [ Laurent Bigonville ]
+  * Add dependency against gvfs-fuse to gnome-core (Closes: #725706)
+
+  [ Emilio Pozuelo Monfort ]
+  * Update for new libcogl SONAME.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Thu, 27 Mar 2014 11:27:04 +0100
 
 meta-gnome3 (1:3.8+4) unstable; urgency=low
 
