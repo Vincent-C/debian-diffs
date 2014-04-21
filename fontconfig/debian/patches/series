@@ -2,9 +2,11 @@
 02_indic_names.patch
 03_locale_c.utf8.patch
 04_mgopen_fonts.patch
-05_ubuntu_old_diff_gz.patch
-06_ubuntu_monospace_lcd_filter_conf.patch
-07_ubuntu_lcdfilterlegacy.patch
-08_ubuntu_add_hinting_and_antialiasing_confs.patch
-09_ubuntu_lcddefault.patch
-10_ubuntu_no_bitmaps.patch
+05_doc_files.patch
+ubuntu/00_old_diff_gz.patch
+ubuntu/01_fonts_nanum.patch
+ubuntu/04_ubuntu_monospace_lcd_filter_conf.patch
+ubuntu/05_lcdfilterlegacy.patch
+ubuntu/05_ubuntu_add_hinting_and_antialiasing_confs.patch
+ubuntu/06_ubuntu_lcddefault.patch
+ubuntu/07_no_bitmaps.patch

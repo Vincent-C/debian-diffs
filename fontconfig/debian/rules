@@ -16,7 +16,7 @@ else
 WITHARCH=
 endif
 
-DEB_CONFIGURE_EXTRA_FLAGS := $(WITHARCH) --disable-docs --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) --with-add-fonts=/usr/X11R6/lib/X11/fonts,/usr/local/share/fonts
+DEB_CONFIGURE_EXTRA_FLAGS := $(WITHARCH) --enable-docs --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) --with-add-fonts=/usr/local/share/fonts
 
 # tight versioning
 DEB_DH_MAKESHLIBS_ARGS_libfontconfig1 := -V"libfontconfig1 (>= 2.11)" --add-udeb="fontconfig-udeb"

@@ -1,0 +1,18 @@
+To build the current package:
+
+ 1) Clone the debian fontconfig repository:
+
+    $ git clone -o debian ssh://git.debian.org/git/pkg-freedesktop/fontconfig-debian fontconfig
+    $ cd fontconfig
+   
+ 2) Mix in the upstream fontconfig repository objects:
+
+    $ git remote add upstream git://anongit.freedesktop.org/git/fontconfig
+    $ git fetch upstream
+
+    This doesn't check the files out into the directory, it just
+    adds the remote repository so that the objects are available
+
+ 3) Build the package
+
+    $ git-buildpackage

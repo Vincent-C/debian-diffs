@@ -1,9 +1,35 @@
-fontconfig (2.11.0-2+vc1) unstable; urgency=low
+fontconfig (2.11.0-5+vc1) unstable; urgency=medium
 
   * Local package.
-  * Include Ubuntu fontconfig patches.
+  * Import patches from Ubuntu (debian/patches/ubuntu/).
+  * debian/rules: 
+    - don't add /usr/X11R6/lib/X11/fonts to the fonts path, that's a 
+      deprecated location and it leads to polling on the directory,
+      which means wakeups and extra power usage (lp: #1266873)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 04 Dec 2013 00:56:41 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 21 Apr 2014 02:47:14 -0700
+
+fontconfig (2.11.0-5) unstable; urgency=medium
+
+  * Add documentation about how to build stuff
+  * Add patch including documentation. Closes #739743.
+  * Let dpkg remove /etc/fonts/conf.d. Closes: #739785.
+
+ -- Keith Packard <keithp@keithp.com>  Sun, 23 Feb 2014 17:09:30 -0800
+
+fontconfig (2.11.0-4) unstable; urgency=medium
+
+  * Remove spurious files from fontconfig-config package
+
+ -- Keith Packard <keithp@keithp.com>  Fri, 21 Feb 2014 17:48:07 -0800
+
+fontconfig (2.11.0-3) unstable; urgency=low
+
+  * Regenerate files as needed for build from upstream git repository
+  * Add debian/gbp.conf to control git-buildpackage
+  * Remove links made in /etc/fonts/conf.d and debconf entries. Closes #730361.
+
+ -- Keith Packard <keithp@keithp.com>  Fri, 21 Feb 2014 16:23:16 -0800
 
 fontconfig (2.11.0-2) unstable; urgency=low
 

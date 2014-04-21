@@ -4,14 +4,38 @@ set -e
 
 CONF=/etc/fonts/local.conf
 
+# Duplicate list of all possible links in /etc/fonts/conf.d created
+# in postinst
+unhinted="10-unhinted.conf"
+autohint="10-autohint.conf"
+subpixel="10-sub-pixel-rgb.conf"
+no_subpixel="10-no-sub-pixel.conf"
+yes_bitmaps="70-yes-bitmaps.conf"
+no_bitmaps="70-no-bitmaps.conf"
+
+CONFFILES="$unhinted $autohint $subpixel $no_subpixel $yes_bitmaps $no_bitmaps"
+CONFDIR=/etc/fonts/conf.d
+
 case "$1" in
 	purge)
 	    if [ -x /usr/bin/ucf ]; then
 		ucf --purge $CONF
 	    fi
 	    rm -f $CONF
-	    rmdir -p --ignore-fail-on-non-empty /etc/fonts/conf.d
+
+	    # Remove any files linked in postinst
+	    for c in $CONFFILES; do
+		rm -f $CONFDIR/$c
+	    done
+
+	    # Remove an empty local fonts directory
 	    rmdir /usr/local/share/fonts 2>/dev/null || true
+
+	    # Purge debconf database
+	    if [ -e /usr/share/debconf/confmodule ]; then
+		. /usr/share/debconf/confmodule
+		db_purge
+	    fi
 	    ;;
 esac
 
