@@ -1,18 +1,19 @@
 Source: ponysay
-Section: non-free/misc
+Section: misc
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Bugs: mailto:vcheng@debian.org
 Build-Depends: debhelper (>= 7.0.50~), texinfo, python3
 Standards-Version: 3.9.5
 Homepage: https://github.com/erkin/ponysay
+Vcs-Browser: https://github.com/Vincent-C/debian-diffs/tree/master/ponysay
 
 Package: ponysay
 Architecture: all
 Depends: ${misc:Depends}, python3
 Description: pony re-implementation of cowsay
- Ponysay displays an image of a "My Little Pony" pony saying a message
- provided by the user in a terminal, or a quote from the show "My Little
- Pony: Friendship is Magic" (MLP:FiM). Historically ponysay was a
- wrapper for cowsay, but has since become an independent reimplementation
- of cowsay.
+ Ponysay displays an image of a "My Little Pony: Friendship is Magic"
+ (MLP:FiM) pony saying a message provided by the user in a terminal. It can
+ also be used in conjunction with fortunes (similarly to cowsay).
+ Historically ponysay was a wrapper for cowsay, but has since become an
+ independent reimplementation of cowsay.
