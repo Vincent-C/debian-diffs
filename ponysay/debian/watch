@@ -1,2 +1,2 @@
 version=3
-https://github.com/erkin/ponysay/tags .*/erkin/ponysay/zipball/(.*)
+https://github.com/erkin/ponysay/tags .*/erkin/ponysay/archive/(.*)\.(?:tgz|tbz2|txz|tar\.(?:gz|bz2|xz))

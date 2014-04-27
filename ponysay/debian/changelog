@@ -1,43 +1,47 @@
-ponysay (3.0.1-1+vc1) unstable; urgency=low
+ponysay (3.0.1+20140420-1) unstable; urgency=medium
+
+  * New upstream git snapshot (dbdbeb3141).
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 27 Apr 2014 03:40:17 -0700
+
+ponysay (3.0.1-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 05 Apr 2013 21:55:36 -0700
 
-ponysay (2.9.1-1+vc1) unstable; urgency=low
+ponysay (2.9.1-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Sun, 28 Oct 2012 15:41:11 -0700
 
-ponysay (2.9-1+vc1) unstable; urgency=low
+ponysay (2.9-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 27 Oct 2012 21:52:42 -0700
 
-ponysay (2.8-1+vc1) unstable; urgency=low
+ponysay (2.8-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 23 Oct 2012 22:37:05 -0700
 
-ponysay (2.8~20121003-1+vc1) unstable; urgency=low
+ponysay (2.8~20121003-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Wed, 03 Oct 2012 20:01:37 -0700
 
-ponysay (2.6-1+vc1) unstable; urgency=low
+ponysay (2.6-1) unstable; urgency=low
 
-  * Local package.
   * New upstream release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Tue, 18 Sep 2012 22:18:26 -0700
 
-ponysay (2.6~20120907-1+vc1) unstable; urgency=low
+ponysay (2.6~20120907-1) unstable; urgency=low
 
-  * Local package.
   * Initial release.
 
  -- Vincent Cheng <Vincentc1208@gmail.com>  Fri, 07 Sep 2012 15:29:02 -0700

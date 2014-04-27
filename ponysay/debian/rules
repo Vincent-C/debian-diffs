@@ -4,17 +4,22 @@
 	dh $@ 
 
 override_dh_auto_clean:
-	python3 ./setup.py clean --freedom=partial
-	rm -rf $(CURDIR)/debian/ponythink/
+	# NOT distutils compliant! Also, requires Python >= 3.0
+	python3 $(CURDIR)/setup.py clean --freedom=partial --everything
 
 override_dh_auto_configure:
 
 override_dh_auto_build:
+	python3 $(CURDIR)/setup.py build --freedom=partial --everything \
+	        --prefix=/usr --dest-dir=debian/ponysay \
+	        --with-pdf=debian/ponysay/usr/share/doc/ponysay
 
 override_dh_auto_install:
-	# NOT distutils compliant! Also, requires Python >= 3.0
-	python3 ./setup.py --prefix=/usr --freedom=partial \
-	                   --dest-dir=debian/ponysay install
+	python3 $(CURDIR)/setup.py install --freedom=partial --everything \
+	        --prefix=/usr --dest-dir=debian/ponysay \
+	        --with-pdf=debian/ponysay/usr/share/doc/ponysay
+	# W: ponysay: extra-license-file usr/share/licenses/ponysay/COPYING
+	rm -rf $(CURDIR)/debian/ponysay/usr/share/licenses/
 
 override_dh_fixperms:
 	dh_fixperms
@@ -23,5 +28,8 @@ override_dh_fixperms:
 	rm -f $(CURDIR)/debian/ponysay/usr/share/info/dir.gz
 
 get-orig-source:
-	git clone git://github.com/erkin/ponysay.git
-	cd ponysay && rm -rf .git .gitignore
+	git clone https://github.com/erkin/ponysay.git
+	rm -rf ponysay/.git
+	mv ponysay ponysay-3.0.1+20140420
+	tar cJf ponysay_3.0.1+20140420.orig.tar.xz ponysay-3.0.1+20140420/
+	rm -rf ponysay-3.0.1+20140420
