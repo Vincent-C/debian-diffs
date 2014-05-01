@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.13.5.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.14.2.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -31,6 +31,7 @@ packaging).
     Edit debian/templates/control.source.in: change maintainer name and email.
     Edit debian/templates/control.image.type-plain.in: remove recommends for
     firmware-linux-free.
+    Edit debian/templates/image.plain.bug/control: liquorix -> vclaptop
     Remove all references of liquorix from templates to avoid confusion.
     Edit debian/README.* with the following header:
 

@@ -1,6 +1,5 @@
 ## debian specific patches
 debian/kernelvariables.patch
-debian/doc-build-parallel.patch
 debian/x86-memtest-WARN-if-bad-RAM-found.patch
 
 ## my own patchset
