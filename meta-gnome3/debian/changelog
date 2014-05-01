@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.8+5+vc1) unstable; urgency=medium
+meta-gnome3 (1:3.8+6+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -9,7 +9,27 @@ meta-gnome3 (1:3.8+5+vc1) unstable; urgency=medium
     - libreoffice*
     - tracker* (and dependencies: gnome-boxes, gnome-documents)
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 06 Apr 2014 01:18:09 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 30 Apr 2014 17:54:57 -0700
+
+meta-gnome3 (1:3.8+6) unstable; urgency=medium
+
+  [ Michael Biebl ]
+  * Demote xul-ext-adblock-plus to Suggests. Icedove and Iceweasel receive
+    major updates via stable-security causing them to get out of sync and
+    making xul-ext-adblock-plus and thus the gnome metapackage uninstallable.
+    Closes: #715555
+
+  [ Laurent Bigonville ]
+  * Drop recommends against nautilus-sendto-empathy, the plugin is not built
+    anymore
+
+  [ Josselin Mouette ]
+  * Remove gnome-panel, gnome-applets, gnome-power-manager and 
+    gnome-screensaver. They will all live in gnome-session-flashback and 
+    they are not installable in experimental until the gnome-desktop 
+    transition.
+
+ -- Josselin Mouette <joss@debian.org>  Sat, 26 Apr 2014 11:18:07 +0200
 
 meta-gnome3 (1:3.8+5) unstable; urgency=medium
 
