@@ -26,31 +26,43 @@ provides	= java java2 java5
 dversion	= 2:1.5-$(jrel)
 jvmdir		= oracle-java7-jdk
 
-p_doc		= oracle-java7-jdk
+p_doc		= oracle-java7-doc
 
 include debian/java_defaults.mk
 
-ifneq (,$(filter $(DEB_HOST_ARCH),$(java7_architectures)))
+ifneq (,$(filter $(DEB_HOST_ARCH),$(java8_architectures)))
+  p_jre         = oracle-java8-jdk
+  p_jhl         = oracle-java8-jdk
+  p_jdk         = oracle-java8-jdk
+  jdk_build_dep = oracle-java8-jdk
+  v_jre         = $(S)(>= 8~)
+  v_jdk         = $(v_jre)
+  provides      = java java2 java5 java6 java7 java8
+  dversion      = 2:1.8-$(jrel)
+  jvmdir        = jdk-8-oracle-x64
+  p_doc         = oracle-java8-doc
+else ifneq (,$(filter $(DEB_HOST_ARCH),$(java7_architectures)))
   p_jre		= oracle-java7-jdk
   p_jhl		= oracle-java7-jdk
   p_jdk		= oracle-java7-jdk
   jdk_build_dep	= oracle-java7-jdk
-  v_jre		= $(S)(>= 7~u3-2.1.1)
+  v_jre		= $(S)(>= 7~)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6 java7
   dversion	= 2:1.7-$(jrel)
-  jvmdir	= oracle-java7-jdk
+  jvmdir	= jdk-7-oracle-x64
+  p_doc         = oracle-java7-doc
 else ifneq (,$(filter $(DEB_HOST_ARCH),$(java6_architectures)))
   p_jre		= oracle-java7-jdk
   p_jhl		= oracle-java7-jdk
   p_jdk		= oracle-java7-jdk
-  jdk_build_dep	= oracle-java7-jdk
-  v_jre		= $(S)(>= 6b23~pre8-2~)
+  jdk_build_dep	= gcj-jdk
+  v_jre		= $(S)(>= 7~)
   v_jdk		= $(v_jre)
   provides	= java java2 java5 java6
   dversion	= 2:1.6-$(jrel)
-  jvmdir	= oracle-java7-jdk
-  p_doc		= oracle-java7-jdk
+  jvmdir	= jdk-7-oracle-x64
+  p_doc         = oracle-java7-doc
 endif
 
 jre_provides	= $(call mk_cslist,$(provides),runtime)

@@ -1,9 +1,23 @@
-java-common (0.51+vc1) unstable; urgency=medium
+java-common (0.52+vc1) unstable; urgency=medium
 
   * Local package.
   * Replace openjdk with oracle-java7-jdk.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 04 Feb 2014 19:31:48 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 14 May 2014 20:50:16 -0700
+
+java-common (0.52) unstable; urgency=medium
+
+  * Team upload.
+  * Use OpenJDK 7 on mips64el (Closes: #747179)
+  * Prepared the default values for Java 8
+  * Use 'set -e' instead of '#!/bin/sh -e' in debian/java-common.postrm
+  * Switch to debhelper level 9
+  * debian/control:
+    - Standards-Version updated to 3.9.5 (no changes)
+    - Use a canonical URL for the Vcs-Svn field
+    - Added the Homepage field
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 06 May 2014 11:10:05 +0200
 
 java-common (0.51) unstable; urgency=low
 

@@ -4,11 +4,12 @@ Priority: optional
 Maintainer: Debian Java Mailing List <debian-java@lists.debian.org>
 Uploaders: Matthias Klose <doko@debian.org>, Torsten Werner <twerner@debian.org>,
  Niels Thykier <niels@thykier.net>
-Build-Depends: debhelper (>= 7)
+Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: debiandoc-sgml, docbook-utils, docbook-xml, lynx
-Standards-Version: 3.9.4
-Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/java-common
+Standards-Version: 3.9.5
+Vcs-Svn: svn://anonscm.debian.org/pkg-java/trunk/java-common
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-java/trunk/java-common/
+Homepage: https://wiki.debian.org/Java/
 
 Package: java-common
 Architecture: all

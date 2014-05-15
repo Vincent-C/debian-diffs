@@ -4,7 +4,7 @@
 
 java8_architectures =
 java7_architectures = alpha amd64 arm64 armel armhf arm64 i386 lpia \
-		mips mipsel \
+		mips mipsel mips64el \
 		powerpc powerpcspe ppc64 ppc64el \
 		s390x sh4 x32
 java6_architectures = $(java7_architectures)
