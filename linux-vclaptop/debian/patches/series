@@ -4,4 +4,4 @@ debian/x86-memtest-WARN-if-bad-RAM-found.patch
 
 ## my own patchset
 # build with optimized gcc flags
-vclaptop/optimize-march-mtune-flags.patch
+vclaptop/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch

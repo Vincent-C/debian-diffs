@@ -4,7 +4,7 @@ abiname: 2
 [base]
 arches:
  amd64
-compiler: gcc-4.8
+compiler: gcc-4.9
 featuresets:
  none
 
@@ -16,6 +16,6 @@ type: plain
 initramfs-tools: update-initramfs
 
 [relations]
-gcc-4.8: gcc-4.8
+gcc-4.9: gcc-4.9
 initramfs-fallback: linux-initramfs-tool
 initramfs-tools: initramfs-tools
