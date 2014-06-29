@@ -7,8 +7,8 @@ Source: meta-gnome3
 Section: metapackages
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Andreas Henriksson <andreas@fatal.se>, Emilio Pozuelo Monfort <pochu@debian.org>, Josselin Mouette <joss@debian.org>, Michael Biebl <biebl@debian.org>
-Standards-Version: 3.9.4
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Emilio Pozuelo Monfort <pochu@debian.org>, Josselin Mouette <joss@debian.org>, Laurent Bigonville <bigon@debian.org>, Michael Biebl <biebl@debian.org>
+Standards-Version: 3.9.5
 Build-Depends: cdbs (>= 0.4.90),
                debhelper (>= 8),
                gnome-pkg-tools (>= 0.10)
@@ -16,7 +16,7 @@ Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/meta-gnome3/
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/meta-gnome3/
 
 Package: gnome-core
-Architecture: any
+Architecture: linux-any
 Depends: libatk-adaptor (>= 2.4),
          at-spi2-core (>= 2.4),
          baobab (>= 3.4),
@@ -34,7 +34,7 @@ Depends: libatk-adaptor (>= 2.4),
          sound-theme-freedesktop,
          gnome-calculator (>= 3.8),
          gconf2 (>= 3.2.5),
-         gdm3 (>= 3.4),
+         gdm3 (>= 3.4) [linux-any],
          glib-networking (>= 2.32),
          gnome-backgrounds (>= 3.4),
          gnome-bluetooth (>= 3.4) [linux-any],
@@ -54,7 +54,7 @@ Depends: libatk-adaptor (>= 2.4),
          gnome-screenshot (>= 3.4),
          gnome-session (>= 3.4),
          gnome-settings-daemon (>= 3.4),
-         gnome-shell (>= 3.4),
+         gnome-shell (>= 3.4) [linux-any],
          gnome-system-log (>= 3.4),
          gnome-system-monitor (>= 3.4),
          gnome-terminal (>= 3.4),
@@ -85,20 +85,21 @@ Depends: libatk-adaptor (>= 2.4),
          yelp (>= 3.4),
          zenity (>= 3.4),
          ${misc:Depends}
-Recommends: network-manager-gnome [linux-any]
+Recommends: network-manager-gnome [linux-any],
+            anacron
 Suggests: gnome
 Description: GNOME Desktop Environment -- essential components
  These are the core components of the GNOME Desktop environment, an
  intuitive and attractive desktop.
  .
- This meta-package depends on a basic set of programs, including a file
+ This metapackage depends on a basic set of programs, including a file
  manager, an image viewer, a web browser, a video player and other
  tools.
  .
  It contains the official “core” modules of the GNOME desktop.
 
 Package: gnome
-Architecture: any
+Architecture: linux-any
 Depends: gnome-core (= ${binary:Version}),
          desktop-base,
          network-manager-gnome (>= 0.9.4) [linux-any],
@@ -112,7 +113,7 @@ Depends: gnome-core (= ${binary:Version}),
          gnome-nettool (>= 3.2) [!kfreebsd-any],
          nautilus-sendto (>= 3.0),
          gnome-orca (>= 3.4),
-         rygel-preferences (>= 0.14),
+         rygel-preferences (>= 0.14) [!kfreebsd-any],
          seahorse (>= 3.4),
          totem (>= 3.0),
          vinagre (>= 3.4),
@@ -134,13 +135,13 @@ Depends: gnome-core (= ${binary:Version}),
 # Plugins for core and apps
          cups-pk-helper (>= 0.2),
          gedit-plugins (>= 3.4),
-         gnome-shell-extensions (>= 3.4),
+         gnome-shell-extensions (>= 3.4) [linux-any],
          gstreamer1.0-libav (>= 0.10.13),
          gstreamer1.0-plugins-ugly (>= 0.10.19),
          rhythmbox-plugins,
          rhythmbox-plugin-cdrecorder,
-         rygel-playbin,
-         rygel,
+         rygel-playbin [!kfreebsd-any],
+         rygel-tracker [!kfreebsd-any] | rygel [!kfreebsd-any],
          telepathy-gabble,
          telepathy-rakia,
          telepathy-salut,
@@ -157,7 +158,7 @@ Description: Full GNOME Desktop Environment, with extra components
  This is the GNOME Desktop environment, an intuitive and attractive
  desktop, with extra components.
  .
- This meta-package depends on the standard distribution of the GNOME
+ This metapackage depends on the standard distribution of the GNOME
  desktop environment, plus a complete range of plugins and other
  applications integrating with GNOME and Debian, providing the best
  possible environment to date.
@@ -195,11 +196,11 @@ Priority: extra
 Architecture: all
 Depends: gnome (>= ${source:Version}),
          ${misc:Depends}
-Description: The GNOME Desktop Environment - transitional package
+Description: GNOME Desktop Environment - transitional package
  This is the GNOME Desktop environment, an intuitive and attractive
  desktop.
  .
- This meta-package is obsolete and has been replaced by “gnome”.
+ This metapackage is obsolete and has been replaced by “gnome”.
 
 Package: gnome-platform-devel
 Architecture: any
@@ -226,7 +227,7 @@ Description: GNOME development platform
  “platform” for the GNOME Desktop environment, an intuitive and
  attractive desktop.
  .
- This meta-package depends on the recommended components to develop and
+ This metapackage depends on the recommended components to develop and
  build applications using GNOME technologies. Most of these components
  have long-term API stability guarantees.
 
@@ -306,7 +307,7 @@ Description: GNOME Desktop Environment -- development components
  These are the development components of the core components of the
  GNOME Desktop environment, an intuitive and attractive desktop.
  .
- This meta-package depends on everything you need to build applications
+ This metapackage depends on everything you need to build applications
  for GNOME, in C, C++ and Python languages; it isn't of much use for
  anything else.
  .
@@ -329,7 +330,7 @@ Description: GNOME Desktop Environment -- development tools
  These are the development tools of the GNOME Desktop environment, an
  intuitive and attractive desktop.
  .
- This meta-package depends on a recommended set of applications to
+ This metapackage depends on a recommended set of applications to
  develop new programs for GNOME.
 
 Package: gnome-dbg
@@ -350,7 +351,7 @@ Depends: libatk1.0-dbg,
          libpango1.0-0-dbg,
          ${misc:Depends}
 Description: debugging symbols for the GNOME desktop environment
- This meta-package brings all debugging symbols for the platform 
+ This metapackage brings all debugging symbols for the platform 
  libraries of the GNOME desktop environment, an intuitive and attractive 
  desktop. They contain debugging information for these libraries,
  which can help providing useful traces in bug reports.
@@ -383,7 +384,7 @@ Recommends: devhelp,
 Suggests: gnome-core-devel,
           python-doc
 Description: API reference documentation for the GNOME libraries
- This meta-package brings all available API documentation for the
+ This metapackage brings all available API documentation for the
  libraries of the GNOME platform, as well as their important 
  dependencies. This should be most of the documentation you need to 
  write GNOME applications.
