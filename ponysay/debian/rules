@@ -30,6 +30,6 @@ override_dh_fixperms:
 get-orig-source:
 	git clone https://github.com/erkin/ponysay.git
 	rm -rf ponysay/.git
-	mv ponysay ponysay-3.0.1+20140420
-	tar cJf ponysay_3.0.1+20140420.orig.tar.xz ponysay-3.0.1+20140420/
-	rm -rf ponysay-3.0.1+20140420
+	mv ponysay ponysay-3.0.1+20140624
+	tar cJf ponysay_3.0.1+20140624.orig.tar.xz ponysay-3.0.1+20140624/
+	rm -rf ponysay-3.0.1+20140624

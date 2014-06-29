@@ -1,3 +1,9 @@
+ponysay (3.0.1+20140624-1) unstable; urgency=medium
+
+  * New upstream git snapshot (417d634bdc).
+
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 28 Jun 2014 20:07:13 -0700
+
 ponysay (3.0.1+20140420-1) unstable; urgency=medium
 
   * New upstream git snapshot (dbdbeb3141).
