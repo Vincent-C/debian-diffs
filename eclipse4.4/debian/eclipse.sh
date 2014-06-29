@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /opt/eclipse4.3/
+cd /opt/eclipse4.4/
 ./eclipse
