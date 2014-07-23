@@ -1,17 +1,17 @@
 Source: gnome-themes-zukitwo
 Section: gnome
 Priority: optional
-Maintainer: Vincent Cheng <Vincentc1208@gmail.com>
+Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.4
-Homepage: http://gnome-look.org/content/show.php?content=146290
+Standards-Version: 3.9.5
+Homepage: http://lassekongo83.deviantart.com/art/Zukitwo-203936861
 
 Package: gnome-themes-zukitwo
 Architecture: all
 Depends:
  gtk2-engines-murrine (>= 0.98.1.1),
  gtk2-engines-pixbuf,
- libgtk-3-0 (>= 3.4),
+ libgtk-3-0 (>= 3.12),
  ${misc:Depends},
  ${shlibs:Depends}
 Recommends:

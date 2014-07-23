@@ -1,9 +1,9 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: gnome-themes-zukitwo-colors
-Source: http://gnome-look.org/content/show.php?content=146290
+Upstream-Name: zukitwo
+Source: Vincent Cheng <vcheng@debian.org>
 
 Files: *
-Copyright: 2011-2012 Karashata
+Copyright: 2011-2014 lassekongo83.deviantart.com
 License: GPL-3.0+
 
 Files: debian/*
