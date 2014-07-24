@@ -1,4 +1,4 @@
-xserver-xorg-video-intel (2:2.99.912-1+vc1) unstable; urgency=medium
+xserver-xorg-video-intel (2:2.99.914-1+vc1) unstable; urgency=medium
 
   * Local package.
     - Remove all patches.
@@ -14,7 +14,7 @@ xserver-xorg-video-intel (2:2.99.912-1+vc1) unstable; urgency=medium
   * Install /usr/lib/xserver-xorg-video-intel/xf86-video-intel-backlight-helper
     /usr/share/polkit-1/actions/org.x.xf86-video-intel.backlight-helper.policy.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jun 2014 20:26:23 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Jul 2014 20:33:11 -0700
 
 xserver-xorg-video-intel (2:2.21.15-2) unstable; urgency=medium
 
