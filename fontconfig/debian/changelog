@@ -1,4 +1,4 @@
-fontconfig (2.11.0-5+vc1) unstable; urgency=medium
+fontconfig (2.11.0-6+vc1) unstable; urgency=medium
 
   * Local package.
   * Import patches from Ubuntu (debian/patches/ubuntu/).
@@ -7,7 +7,19 @@ fontconfig (2.11.0-5+vc1) unstable; urgency=medium
       deprecated location and it leads to polling on the directory,
       which means wakeups and extra power usage (lp: #1266873)
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 21 Apr 2014 02:47:14 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 19 Aug 2014 00:06:22 -0700
+
+fontconfig (2.11.0-6) unstable; urgency=medium
+
+  [ Keith Packard ]
+  * Fix misplaced 11-lcdfilter-default.conf. Closes: #731724.
+  * Remove spurious /etc/fonts.conf.d.
+
+  [ Josselin Mouette ]
+  * Add conf.avail directory to the udeb. Closes: #739011.
+  * Use xz compression for the “upstream” tarball.
+
+ -- Josselin Mouette <joss@debian.org>  Wed, 13 Aug 2014 19:52:24 +0200
 
 fontconfig (2.11.0-5) unstable; urgency=medium
 

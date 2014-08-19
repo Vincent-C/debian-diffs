@@ -91,4 +91,11 @@ if [ ! -d $LOCALDIR ]; then
   fi
 fi
 
+# fontconfig-config 2.11.0-5 (and earlier) created /etc/fonts.conf.d by mistake
+# remove it
+
+if [ -d /etc/fonts.conf.d ]; then
+    rmdir --ignore-fail-on-non-empty /etc/fonts.conf.d
+fi
+
 #DEBHELPER#
