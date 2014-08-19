@@ -1,4 +1,4 @@
-freetype (2.5.2-1+vc1) unstable; urgency=medium
+freetype (2.5.2-1.1+vc1) unstable; urgency=medium
 
   * Local package.
   * Merge from Ubuntu:
@@ -6,7 +6,16 @@ freetype (2.5.2-1+vc1) unstable; urgency=medium
       revert commit "Fix metrics on size request for scalable fonts.",
       which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Thu, 26 Dec 2013 02:08:11 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 09 Aug 2014 13:05:32 -0700
+
+freetype (2.5.2-1.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix two security issues in the CFF rasterizer (closes: #741299)
+    - CVE-2014-2240: out-of-bounds read/write in cf2hints.c.
+    - CVE-2014-2241: denial-of-service in cf2ft.c.
+
+ -- Michael Gilbert <mgilbert@debian.org>  Mon, 28 Jul 2014 02:56:08 +0000
 
 freetype (2.5.2-1) unstable; urgency=low
 
