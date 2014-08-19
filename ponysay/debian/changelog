@@ -1,3 +1,9 @@
+ponysay (3.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 19 Aug 2014 00:29:50 -0700
+
 ponysay (3.0.1+20140624-1) unstable; urgency=medium
 
   * New upstream git snapshot (417d634bdc).
