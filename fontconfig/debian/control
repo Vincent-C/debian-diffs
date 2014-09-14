@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Keith Packard <keithp@debian.org>
 Uploaders: Josselin Mouette <joss@debian.org>
 Build-Depends: cdbs (>= 0.4.93),
+               dh-autoreconf,
                debhelper (>= 9),
                libfreetype6-dev (>= 2.1.7),
                libexpat1-dev,

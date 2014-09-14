@@ -1,4 +1,4 @@
-fontconfig (2.11.0-6+vc1) unstable; urgency=medium
+fontconfig (2.11.0-6.1+vc1) unstable; urgency=medium
 
   * Local package.
   * Import patches from Ubuntu (debian/patches/ubuntu/).
@@ -7,7 +7,14 @@ fontconfig (2.11.0-6+vc1) unstable; urgency=medium
       deprecated location and it leads to polling on the directory,
       which means wakeups and extra power usage (lp: #1266873)
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 19 Aug 2014 00:06:22 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 14 Sep 2014 00:09:10 -0700
+
+fontconfig (2.11.0-6.1) unstable; urgency=low
+
+  * Non-maintainer upload to delayed.
+  * Add dh-autoreconf to support ppc64el. Closes: #748378
+
+ -- Andreas Barth <aba@ayous.org>  Wed, 20 Aug 2014 18:32:20 +0000
 
 fontconfig (2.11.0-6) unstable; urgency=medium
 
