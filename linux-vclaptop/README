@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.15.2.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.16.3.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.

@@ -2,5 +2,5 @@ Section: kernel
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Standards-Version: 3.9.2
-Build-Depends: debhelper, cpio, module-init-tools, python, dpkg-dev, bc
+Build-Depends: debhelper, cpio, kmod, python, dpkg-dev, bc
 Homepage: http://kernel.org/
