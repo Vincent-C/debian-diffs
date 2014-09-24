@@ -1,0 +1,19 @@
+Description: don't let libtool suppress compiler output
+ We always want to see the compiler output when building, so that in the
+ event of a build failure we have debuggable logs.  Don't let libtool
+ suppress this output.
+Author: Steve Langasek <vorlon@debian.org>
+
+Index: freetype-2.5.2/builds/unix/unix-cc.in
+===================================================================
+--- freetype-2.5.2.orig/builds/unix/unix-cc.in
++++ freetype-2.5.2/builds/unix/unix-cc.in
+@@ -89,7 +89,7 @@
+ #
+ #
+ CCraw := $(CC)
+-CC    := $(LIBTOOL) --mode=compile $(CCraw)
++CC    := $(LIBTOOL) --mode=compile $(CCraw) -no-suppress
+ 
+ # Linker flags.
+ #

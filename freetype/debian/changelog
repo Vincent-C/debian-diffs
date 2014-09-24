@@ -1,12 +1,35 @@
-freetype (2.5.2-1.1+vc1) unstable; urgency=medium
+freetype (2.5.2-2+vc1) unstable; urgency=medium
 
   * Local package.
+  * Re-enable new Adobe CFF hinter.
+    - remove debian/patches/enable-old-cff.patch
   * Merge from Ubuntu:
     - debian/patches-freetype/revert_scalable_fonts_metric.patch:
       revert commit "Fix metrics on size request for scalable fonts.",
       which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <vcheng@debian.org>  Sat, 09 Aug 2014 13:05:32 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 24 Sep 2014 00:51:02 -0700
+
+freetype (2.5.2-2) unstable; urgency=medium
+
+  * Acknowledge security NMU; thanks to Michael Gilbert.
+  * Standards-Version 3.9.6.
+  * Bump debhelper build-dependency to 9.
+  * debian/patches/enable-old-cff.patch: disable the new CFF hinter from
+    Adobe, working around wrong hinting with some toolkits on Linux.  Thanks
+    to Samat K Jain <samat@samat.org> for preparing the patch.
+    Closes: #730742.
+  * debian/patches-freetype/0001-Fix-Savannah-bug-40997.patch: Cherry-pick
+    upstream patch to fix a double free.  Closes: #747002, LP: #1310728.
+  * debian/patches-freetype/0002-Fix-Savannah-bug-42418.patch: Cherry-pick
+    upstream patch to fix cjk font rendering issue.  LP: #1310017.
+  * debian/patches-freetype/verbose-libtool.patch: don't let libtool
+    suppress compiler output.
+  * debian/patches-freetype/no-uninitialized-bbox.patch: ensure that our
+    variable is reliably initialized before use, fixing a build failure on
+    ppc64el when building with -O3.
+
+ -- Steve Langasek <vorlon@debian.org>  Fri, 19 Sep 2014 06:27:10 +0000
 
 freetype (2.5.2-1.1) unstable; urgency=high
 

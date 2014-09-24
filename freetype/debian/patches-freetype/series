@@ -1,6 +1,10 @@
+no-uninitialized-bbox.patch
 freetype-2.1.7-backwards.compat.patch -p0
 enable-subpixel-rendering.patch
 enable-gxvalid-otvalid.patch
-revert_scalable_fonts_metric.patch
 CVE-2014-2240.patch
 CVE-2014-2241.patch
+0001-Fix-Savannah-bug-40997.patch
+0002-Fix-Savannah-bug-42418.patch
+verbose-libtool.patch
+revert_scalable_fonts_metric.patch

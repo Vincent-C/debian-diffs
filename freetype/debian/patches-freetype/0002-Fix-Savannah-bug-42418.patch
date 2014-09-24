@@ -1,0 +1,627 @@
+From 98e510ee94e552e9e9f80891aa87b2b472d0f276 Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Origin: http://git.savannah.gnu.org/cgit/freetype/freetype2.git/patch/?id=98e510ee94e552e9e9f80891aa87b2b472d0f276
+Bug: https://savannah.nongnu.org/bugs/?42148
+Bug-Ubuntu: https://launchpad.net/bugs/1310017
+Date: Sun, 20 Apr 2014 20:11:27 +0000
+Subject: [autofit] Fix Savannah bug #42148.
+
+(The original patch is modified to fit in version shipped with Ubuntu.)
+
+The adaptation of the cjk auto-hinter module to blue stringsets in
+2013-08-25 had three severe bugs.  Mea culpa.
+
+1. Contrary to the latin auto-hinter, characters for reference and
+   overshoot values of a blue zone are specified separately.  Due to
+   the screwed-up change it didn't work at all.
+
+2. A boolean comparison was erroneously replaced with a cast,
+   causing invalid results with the `^' operator later on.  The
+   visual artifact caused by this problem is the topic of the bug
+   report.
+
+3. Two flag values were inverted, causing incorrect assignment of
+   reference and overshoot values.
+
+* src/autofit/afblue.dat: Fix CJK bluestrings, introducing a new
+syntax to have both reference and overshoot characters in a single
+string.  This is error #1.
+Add extensive comments.
+
+* src/autofit/afblue.hin (AF_BLUE_PROPERTY_CJK_FILL): Removed, no
+longer used.
+(AF_BLUE_PROPERTY_CJK_TOP, AF_BLUE_PROPERTY_CJK_HORIZ): Fix values.
+This is error #3.
+
+* src/autofit/afblue.c, src/autofit/afblue.h: Regenerated.
+
+* src/autofit/afcjk.c (af_cjk_metrics_init_blues): Correct error #1.
+Use character `|' to separate characters for reference and overshoot
+values.
+Improve tracing messages, synchronizing them with the latin
+auto-hinter.
+(af_cjk_hints_compute_blue_edges): Fix value of `is_top_right_blue'.
+This is error #2.
+(af_cjk_align_linked_edge): Add tracing message.
+
+* src/autofit/afcjk.h (AF_CJK_IS_FILLED_BLUE): Removed, no longer
+used.
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,46 @@
++2014-04-20  Werner Lemberg  <wl@gnu.org>
++
++	[autofit] Fix Savannah bug #42148.
++
++	The adaptation of the cjk auto-hinter module to blue stringsets in
++	2013-08-25 had three severe bugs.  Mea culpa.
++
++	1. Contrary to the latin auto-hinter, characters for reference and
++	   overshoot values of a blue zone are specified separately.  Due to
++	   the screwed-up change it didn't work at all.
++
++	2. A boolean comparison was erroneously replaced with a cast,
++	   causing invalid results with the `^' operator later on.  The
++	   visual artifact caused by this problem is the topic of the bug
++	   report.
++
++	3. Two flag values were inverted, causing incorrect assignment of
++	   reference and overshoot values.
++
++	* src/autofit/afblue.dat: Fix CJK bluestrings, introducing a new
++	syntax to have both reference and overshoot characters in a single
++	string.  This is error #1.
++	Add extensive comments.
++
++	* src/autofit/afblue.hin (AF_BLUE_PROPERTY_CJK_FILL): Removed, no
++	longer used.
++	(AF_BLUE_PROPERTY_CJK_TOP, AF_BLUE_PROPERTY_CJK_HORIZ): Fix values.
++	This is error #3.
++
++	* src/autofit/afblue.c, src/autofit/afblue.h: Regenerated.
++
++	* src/autofit/afcjk.c (af_cjk_metrics_init_blues): Correct error #1.
++	Use character `|' to separate characters for reference and overshoot
++	values.
++	Improve tracing messages, synchronizing them with the latin
++	auto-hinter.
++	(af_cjk_hints_compute_blue_edges): Fix value of `is_top_right_blue'.
++	This is error #2.
++	(af_cjk_align_linked_edge): Add tracing message.
++
++	* src/autofit/afcjk.h (AF_CJK_IS_FILLED_BLUE): Removed, no longer
++	used.
++
+ 2013-12-08  Werner Lemberg  <wl@gnu.org>
+ 
+ 	* Version 2.5.2 released.
+--- a/src/autofit/afblue.c
++++ b/src/autofit/afblue.c
+@@ -64,8 +64,7 @@
+     '\xE4', '\xBB', '\x96', '\xE4', '\xBB', '\xAC', '\xE4', '\xBD', '\xA0', '\xE4', '\xBE', '\x86', '\xE5', '\x80', '\x91', '\xE5', '\x88', '\xB0', '\xE5', '\x92', '\x8C', '\xE5', '\x9C', '\xB0',  /* 他们你來們到和地 */
+     '\xE5', '\xAF', '\xB9', '\xE5', '\xB0', '\x8D', '\xE5', '\xB0', '\xB1', '\xE5', '\xB8', '\xAD', '\xE6', '\x88', '\x91', '\xE6', '\x97', '\xB6', '\xE6', '\x99', '\x82', '\xE6', '\x9C', '\x83',  /* 对對就席我时時會 */
+     '\xE6', '\x9D', '\xA5', '\xE7', '\x82', '\xBA', '\xE8', '\x83', '\xBD', '\xE8', '\x88', '\xB0', '\xE8', '\xAA', '\xAA', '\xE8', '\xAF', '\xB4', '\xE8', '\xBF', '\x99', '\xE9', '\x80', '\x99',  /* 来為能舰說说这這 */
+-    '\xE9', '\xBD', '\x8A',  /* 齊 */
+-    '\0',
++    '\xE9', '\xBD', '\x8A', '|',  /* 齊 | */
+     '\xE5', '\x86', '\x9B', '\xE5', '\x90', '\x8C', '\xE5', '\xB7', '\xB2', '\xE6', '\x84', '\xBF', '\xE6', '\x97', '\xA2', '\xE6', '\x98', '\x9F', '\xE6', '\x98', '\xAF', '\xE6', '\x99', '\xAF',  /* 军同已愿既星是景 */
+     '\xE6', '\xB0', '\x91', '\xE7', '\x85', '\xA7', '\xE7', '\x8E', '\xB0', '\xE7', '\x8F', '\xBE', '\xE7', '\x90', '\x86', '\xE7', '\x94', '\xA8', '\xE7', '\xBD', '\xAE', '\xE8', '\xA6', '\x81',  /* 民照现現理用置要 */
+     '\xE8', '\xBB', '\x8D', '\xE9', '\x82', '\xA3', '\xE9', '\x85', '\x8D', '\xE9', '\x87', '\x8C', '\xE9', '\x96', '\x8B', '\xE9', '\x9B', '\xB7', '\xE9', '\x9C', '\xB2', '\xE9', '\x9D', '\xA2',  /* 軍那配里開雷露面 */
+@@ -74,8 +73,7 @@
+     '\xE4', '\xB8', '\xAA', '\xE4', '\xB8', '\xBA', '\xE4', '\xBA', '\xBA', '\xE4', '\xBB', '\x96', '\xE4', '\xBB', '\xA5', '\xE4', '\xBB', '\xAC', '\xE4', '\xBD', '\xA0', '\xE4', '\xBE', '\x86',  /* 个为人他以们你來 */
+     '\xE5', '\x80', '\x8B', '\xE5', '\x80', '\x91', '\xE5', '\x88', '\xB0', '\xE5', '\x92', '\x8C', '\xE5', '\xA4', '\xA7', '\xE5', '\xAF', '\xB9', '\xE5', '\xB0', '\x8D', '\xE5', '\xB0', '\xB1',  /* 個們到和大对對就 */
+     '\xE6', '\x88', '\x91', '\xE6', '\x97', '\xB6', '\xE6', '\x99', '\x82', '\xE6', '\x9C', '\x89', '\xE6', '\x9D', '\xA5', '\xE7', '\x82', '\xBA', '\xE8', '\xA6', '\x81', '\xE8', '\xAA', '\xAA',  /* 我时時有来為要說 */
+-    '\xE8', '\xAF', '\xB4',  /* 说 */
+-    '\0',
++    '\xE8', '\xAF', '\xB4', '|',  /* 说 | */
+     '\xE4', '\xB8', '\xBB', '\xE4', '\xBA', '\x9B', '\xE5', '\x9B', '\xA0', '\xE5', '\xAE', '\x83', '\xE6', '\x83', '\xB3', '\xE6', '\x84', '\x8F', '\xE7', '\x90', '\x86', '\xE7', '\x94', '\x9F',  /* 主些因它想意理生 */
+     '\xE7', '\x95', '\xB6', '\xE7', '\x9C', '\x8B', '\xE7', '\x9D', '\x80', '\xE7', '\xBD', '\xAE', '\xE8', '\x80', '\x85', '\xE8', '\x87', '\xAA', '\xE8', '\x91', '\x97', '\xE8', '\xA3', '\xA1',  /* 當看着置者自著裡 */
+     '\xE8', '\xBF', '\x87', '\xE8', '\xBF', '\x98', '\xE8', '\xBF', '\x9B', '\xE9', '\x80', '\xB2', '\xE9', '\x81', '\x8E', '\xE9', '\x81', '\x93', '\xE9', '\x82', '\x84', '\xE9', '\x87', '\x8C',  /* 过还进進過道還里 */
+@@ -85,8 +83,7 @@
+     '\xE4', '\xBA', '\x9B', '\xE4', '\xBB', '\xAC', '\xE4', '\xBD', '\xA0', '\xE4', '\xBE', '\x86', '\xE5', '\x80', '\x91', '\xE5', '\x88', '\xB0', '\xE5', '\x92', '\x8C', '\xE5', '\x9C', '\xB0',  /* 些们你來們到和地 */
+     '\xE5', '\xA5', '\xB9', '\xE5', '\xB0', '\x86', '\xE5', '\xB0', '\x87', '\xE5', '\xB0', '\xB1', '\xE5', '\xB9', '\xB4', '\xE5', '\xBE', '\x97', '\xE6', '\x83', '\x85', '\xE6', '\x9C', '\x80',  /* 她将將就年得情最 */
+     '\xE6', '\xA0', '\xB7', '\xE6', '\xA8', '\xA3', '\xE7', '\x90', '\x86', '\xE8', '\x83', '\xBD', '\xE8', '\xAA', '\xAA', '\xE8', '\xAF', '\xB4', '\xE8', '\xBF', '\x99', '\xE9', '\x80', '\x99',  /* 样樣理能說说这這 */
+-    '\xE9', '\x80', '\x9A',  /* 通 */
+-    '\0',
++    '\xE9', '\x80', '\x9A', '|',  /* 通 | */
+     '\xE5', '\x8D', '\xB3', '\xE5', '\x90', '\x97', '\xE5', '\x90', '\xA7', '\xE5', '\x90', '\xAC', '\xE5', '\x91', '\xA2', '\xE5', '\x93', '\x81', '\xE5', '\x93', '\x8D', '\xE5', '\x97', '\x8E',  /* 即吗吧听呢品响嗎 */
+     '\xE5', '\xB8', '\x88', '\xE5', '\xB8', '\xAB', '\xE6', '\x94', '\xB6', '\xE6', '\x96', '\xAD', '\xE6', '\x96', '\xB7', '\xE6', '\x98', '\x8E', '\xE7', '\x9C', '\xBC', '\xE9', '\x96', '\x93',  /* 师師收断斷明眼間 */
+     '\xE9', '\x97', '\xB4', '\xE9', '\x99', '\x85', '\xE9', '\x99', '\x88', '\xE9', '\x99', '\x90', '\xE9', '\x99', '\xA4', '\xE9', '\x99', '\xB3', '\xE9', '\x9A', '\x8F', '\xE9', '\x9A', '\x9B',  /* 间际陈限除陳随際 */
+@@ -95,8 +92,7 @@
+     '\xE4', '\xBA', '\x8B', '\xE5', '\x89', '\x8D', '\xE5', '\xAD', '\xB8', '\xE5', '\xB0', '\x86', '\xE5', '\xB0', '\x87', '\xE6', '\x83', '\x85', '\xE6', '\x83', '\xB3', '\xE6', '\x88', '\x96',  /* 事前學将將情想或 */
+     '\xE6', '\x94', '\xBF', '\xE6', '\x96', '\xAF', '\xE6', '\x96', '\xB0', '\xE6', '\xA0', '\xB7', '\xE6', '\xA8', '\xA3', '\xE6', '\xB0', '\x91', '\xE6', '\xB2', '\x92', '\xE6', '\xB2', '\xA1',  /* 政斯新样樣民沒没 */
+     '\xE7', '\x84', '\xB6', '\xE7', '\x89', '\xB9', '\xE7', '\x8E', '\xB0', '\xE7', '\x8F', '\xBE', '\xE7', '\x90', '\x83', '\xE7', '\xAC', '\xAC', '\xE7', '\xB6', '\x93', '\xE8', '\xB0', '\x81',  /* 然特现現球第經谁 */
+-    '\xE8', '\xB5', '\xB7',  /* 起 */
+-    '\0',
++    '\xE8', '\xB5', '\xB7', '|',  /* 起 | */
+     '\xE4', '\xBE', '\x8B', '\xE5', '\x88', '\xA5', '\xE5', '\x88', '\xAB', '\xE5', '\x88', '\xB6', '\xE5', '\x8A', '\xA8', '\xE5', '\x8B', '\x95', '\xE5', '\x90', '\x97', '\xE5', '\x97', '\x8E',  /* 例別别制动動吗嗎 */
+     '\xE5', '\xA2', '\x9E', '\xE6', '\x8C', '\x87', '\xE6', '\x98', '\x8E', '\xE6', '\x9C', '\x9D', '\xE6', '\x9C', '\x9F', '\xE6', '\x9E', '\x84', '\xE7', '\x89', '\xA9', '\xE7', '\xA1', '\xAE',  /* 增指明朝期构物确 */
+     '\xE7', '\xA7', '\x8D', '\xE8', '\xAA', '\xBF', '\xE8', '\xB0', '\x83', '\xE8', '\xB2', '\xBB', '\xE8', '\xB4', '\xB9', '\xE9', '\x82', '\xA3', '\xE9', '\x83', '\xBD', '\xE9', '\x96', '\x93',  /* 种調调費费那都間 */
+@@ -142,22 +138,14 @@
+     { AF_BLUE_STRING_HEBREW_DESCENDER, 0                             },
+     { AF_BLUE_STRING_MAX,              0                             },
+ #ifdef AF_CONFIG_OPTION_CJK
+-    { AF_BLUE_STRING_CJK_TOP_FILL,      AF_BLUE_PROPERTY_CJK_TOP |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    },
+-    { AF_BLUE_STRING_CJK_TOP_UNFILL,    AF_BLUE_PROPERTY_CJK_TOP     },
+-    { AF_BLUE_STRING_CJK_BOTTOM_FILL,   AF_BLUE_PROPERTY_CJK_FILL    },
+-    { AF_BLUE_STRING_CJK_BOTTOM_UNFILL, 0                            },
++    { AF_BLUE_STRING_CJK_TOP,    AF_BLUE_PROPERTY_CJK_TOP     },
++    { AF_BLUE_STRING_CJK_BOTTOM, 0                            },
+ #ifdef AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT
+-    { AF_BLUE_STRING_CJK_LEFT_FILL,     AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    },
+-    { AF_BLUE_STRING_CJK_LEFT_UNFILL,   AF_BLUE_PROPERTY_CJK_HORIZ   },
+-    { AF_BLUE_STRING_CJK_RIGHT_FILL,    AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_RIGHT |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    },
+-    { AF_BLUE_STRING_CJK_RIGHT_UNFILL,  AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_RIGHT   },
++    { AF_BLUE_STRING_CJK_LEFT,   AF_BLUE_PROPERTY_CJK_HORIZ   },
++    { AF_BLUE_STRING_CJK_RIGHT,  AF_BLUE_PROPERTY_CJK_HORIZ |
++                                 AF_BLUE_PROPERTY_CJK_RIGHT   },
+ #endif /* AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT */
+-    { AF_BLUE_STRING_MAX,               0                            },
++    { AF_BLUE_STRING_MAX,        0                            },
+ #endif /* AF_CONFIG_OPTION_CJK                */
+ 
+   };
+--- a/src/autofit/afblue.dat
++++ b/src/autofit/afblue.dat
+@@ -2,7 +2,7 @@
+ //
+ //    Auto-fitter data for blue strings.
+ //
+-//  Copyright 2013 by
++//  Copyright 2013, 2014 by
+ //  David Turner, Robert Wilhelm, and Werner Lemberg.
+ //
+ //  This file is part of the FreeType project, and may only be used,
+@@ -63,6 +63,8 @@
+ // characters, not bytes.
+ 
+ 
++// The blue zone string data, to be used in the blue stringsets below.
++
+ AF_BLUE_STRING_ENUM AF_BLUE_STRINGS_ARRAY AF_BLUE_STRING_MAX_LEN:
+ 
+   AF_BLUE_STRING_LATIN_CAPITAL_TOP
+@@ -105,22 +107,20 @@
+ 
+ #ifdef AF_CONFIG_OPTION_CJK
+ 
+-  AF_BLUE_STRING_CJK_TOP_FILL
++  AF_BLUE_STRING_CJK_TOP
+     "他们你來們到和地"
+     "对對就席我时時會"
+     "来為能舰說说这這"
+-    "齊"
+-  AF_BLUE_STRING_CJK_TOP_UNFILL
++    "齊 |"
+     "军同已愿既星是景"
+     "民照现現理用置要"
+     "軍那配里開雷露面"
+     "顾"
+-  AF_BLUE_STRING_CJK_BOTTOM_FILL
++  AF_BLUE_STRING_CJK_BOTTOM
+     "个为人他以们你來"
+     "個們到和大对對就"
+     "我时時有来為要說"
+-    "说"
+-  AF_BLUE_STRING_CJK_BOTTOM_UNFILL
++    "说 |"
+     "主些因它想意理生"
+     "當看着置者自著裡"
+     "过还进進過道還里"
+@@ -128,22 +128,20 @@
+ 
+ #ifdef AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT
+ 
+-  AF_BLUE_STRING_CJK_LEFT_FILL
++  AF_BLUE_STRING_CJK_LEFT
+     "些们你來們到和地"
+     "她将將就年得情最"
+     "样樣理能說说这這"
+-    "通"
+-  AF_BLUE_STRING_CJK_LEFT_UNFILL
++    "通 |"
+     "即吗吧听呢品响嗎"
+     "师師收断斷明眼間"
+     "间际陈限除陳随際"
+     "隨"
+-  AF_BLUE_STRING_CJK_RIGHT_FILL
++  AF_BLUE_STRING_CJK_RIGHT
+     "事前學将將情想或"
+     "政斯新样樣民沒没"
+     "然特现現球第經谁"
+-    "起"
+-  AF_BLUE_STRING_CJK_RIGHT_UNFILL
++    "起 |"
+     "例別别制动動吗嗎"
+     "增指明朝期构物确"
+     "种調调費费那都間"
+@@ -154,6 +152,79 @@
+ #endif /* AF_CONFIG_OPTION_CJK                */
+ 
+ 
++// The blue zone stringsets, as used in the script styles, cf. `afstyles.h'.
++//
++// The AF_BLUE_PROPERTY_XXX flags are defined in `afblue.h'; here some
++// explanations.
++//
++// A blue zone in general is defined by a reference and an overshoot line.
++// During the hinting process, all coordinate values between those two lines
++// are set equal to the reference value, provided that the blue zone is not
++// wider than 0.75 pixels (otherwise the blue zone gets ignored).  All
++// entries must have `AF_BLUE_STRING_MAX' as the final line.
++//
++//
++// latin auto-hinter
++// -----------------
++//
++// Characters in a blue string are automatically classified as having a flat
++// (reference) or a round (overshoot) extremum.  The blue zone is then set
++// up by the mean values of all flat extrema and all round extrema,
++// respectively.  Only horizontal blue zones (i.e., adjusting vertical
++// coordinate values) are supported.
++//
++// For the latin auto-hinter, the overshoot should be larger than the
++// reference for top zones, and vice versa for bottom zones.
++//
++//   LATIN_TOP
++//     Take the maximum flat and round coordinate values of the blue string
++//     characters.  If not set, take the minimum values.
++//
++//   LATIN_X_HEIGHT
++//     Scale all glyphs vertically from the corresponding script to make the
++//     reference line of this blue zone align on the grid.  The scaling
++//     takes place before all other blue zones get aligned to the grid.
++//     Only one blue character string of a script style can have this flag.
++//
++//   LATIN_LONG
++//     Apply an additional constraint for blue zone values: Don't
++//     necessarily use the extremum as-is but a segment of the topmost (or
++//     bottommost) contour that is longer than a heuristic threshold, and
++//     which is not too far away vertically from the real extremum.  This
++//     ensures that small bumps in the outline are ignored (for example, the
++//     `vertical serifs' found in many Hebrew glyph designs).
++//
++//     The segment must be at least EM/25 font units long, and the distance
++//     to the extremum must be smaller than EM/4.
++//
++//
++// cjk auto-hinter
++// ---------------
++//
++// Characters in a blue string are *not* automatically classified.  Instead,
++// first come the characters used for the overshoot value, then the
++// character `|', then the characters used for the reference value.  The
++// blue zone is then set up by the mean values of all reference values and
++// all overshoot values, respectively.  Both horizontal and vertical blue
++// zones (i.e., adjusting vertical and horizontal coordinate values,
++// respectively) are supported.
++//
++// For the cjk auto-hinter, the overshoot should be smaller than the
++// reference for top zones, and vice versa for bottom zones.
++//
++//   CJK_TOP
++//     Take the maximum flat and round coordinate values of the blue string
++//     characters.  If not set, take the minimum values.
++//
++//   CJK_RIGHT
++//     A synonym for CJK_TOP.  If CJK_HORIZ is set, this flag indicates the
++//     right blue zone, taking horizontal maximum values.
++//
++//   CJK_HORIZ
++//     Define a blue zone for horizontal hinting (i.e., vertical blue
++//     zones).  If not set, this is a blue zone for vertical hinting.
++
++
+ AF_BLUE_STRINGSET_ENUM AF_BLUE_STRINGSETS_ARRAY AF_BLUE_STRINGSET_MAX_LEN:
+ 
+   AF_BLUE_STRINGSET_LATN
+@@ -195,22 +266,14 @@
+ #ifdef AF_CONFIG_OPTION_CJK
+ 
+   AF_BLUE_STRINGSET_HANI
+-    { AF_BLUE_STRING_CJK_TOP_FILL,      AF_BLUE_PROPERTY_CJK_TOP |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    }
+-    { AF_BLUE_STRING_CJK_TOP_UNFILL,    AF_BLUE_PROPERTY_CJK_TOP     }
+-    { AF_BLUE_STRING_CJK_BOTTOM_FILL,   AF_BLUE_PROPERTY_CJK_FILL    }
+-    { AF_BLUE_STRING_CJK_BOTTOM_UNFILL, 0                            }
++    { AF_BLUE_STRING_CJK_TOP,    AF_BLUE_PROPERTY_CJK_TOP     }
++    { AF_BLUE_STRING_CJK_BOTTOM, 0                            }
+ #ifdef AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT
+-    { AF_BLUE_STRING_CJK_LEFT_FILL,     AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    }
+-    { AF_BLUE_STRING_CJK_LEFT_UNFILL,   AF_BLUE_PROPERTY_CJK_HORIZ   }
+-    { AF_BLUE_STRING_CJK_RIGHT_FILL,    AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_RIGHT |
+-                                        AF_BLUE_PROPERTY_CJK_FILL    }
+-    { AF_BLUE_STRING_CJK_RIGHT_UNFILL,  AF_BLUE_PROPERTY_CJK_HORIZ |
+-                                        AF_BLUE_PROPERTY_CJK_RIGHT   }
++    { AF_BLUE_STRING_CJK_LEFT,   AF_BLUE_PROPERTY_CJK_HORIZ   }
++    { AF_BLUE_STRING_CJK_RIGHT,  AF_BLUE_PROPERTY_CJK_HORIZ |
++                                 AF_BLUE_PROPERTY_CJK_RIGHT   }
+ #endif /* AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT */
+-    { AF_BLUE_STRING_MAX,               0                            }
++    { AF_BLUE_STRING_MAX,        0                            }
+ 
+ #endif /* AF_CONFIG_OPTION_CJK                */
+ 
+--- a/src/autofit/afblue.h
++++ b/src/autofit/afblue.h
+@@ -7,7 +7,7 @@
+ /*                                                                         */
+ /*    Auto-fitter data for blue strings (specification).                   */
+ /*                                                                         */
+-/*  Copyright 2013 by                                                      */
++/*  Copyright 2013, 2014 by                                                */
+ /*  David Turner, Robert Wilhelm, and Werner Lemberg.                      */
+ /*                                                                         */
+ /*  This file is part of the FreeType project, and may only be used,       */
+@@ -67,7 +67,7 @@
+   /* At the bottommost level, we define strings for finding blue zones. */
+ 
+ 
+-#define AF_BLUE_STRING_MAX_LEN  25
++#define AF_BLUE_STRING_MAX_LEN  52
+ 
+   /* The AF_Blue_String enumeration values are offsets into the */
+   /* `af_blue_strings' array.                                   */
+@@ -93,17 +93,13 @@
+     AF_BLUE_STRING_HEBREW_DESCENDER = 203,
+     af_blue_1_1 = 213,
+ #ifdef AF_CONFIG_OPTION_CJK
+-    AF_BLUE_STRING_CJK_TOP_FILL = af_blue_1_1 + 1,
+-    AF_BLUE_STRING_CJK_TOP_UNFILL = af_blue_1_1 + 77,
+-    AF_BLUE_STRING_CJK_BOTTOM_FILL = af_blue_1_1 + 153,
+-    AF_BLUE_STRING_CJK_BOTTOM_UNFILL = af_blue_1_1 + 229,
+-    af_blue_1_1_1 = af_blue_1_1 + 304,
++    AF_BLUE_STRING_CJK_TOP = af_blue_1_1 + 1,
++    AF_BLUE_STRING_CJK_BOTTOM = af_blue_1_1 + 154,
++    af_blue_1_1_1 = af_blue_1_1 + 306,
+ #ifdef AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT
+-    AF_BLUE_STRING_CJK_LEFT_FILL = af_blue_1_1_1 + 1,
+-    AF_BLUE_STRING_CJK_LEFT_UNFILL = af_blue_1_1_1 + 77,
+-    AF_BLUE_STRING_CJK_RIGHT_FILL = af_blue_1_1_1 + 153,
+-    AF_BLUE_STRING_CJK_RIGHT_UNFILL = af_blue_1_1_1 + 229,
+-    af_blue_1_2_1 = af_blue_1_1_1 + 304,
++    AF_BLUE_STRING_CJK_LEFT = af_blue_1_1_1 + 1,
++    AF_BLUE_STRING_CJK_RIGHT = af_blue_1_1_1 + 154,
++    af_blue_1_2_1 = af_blue_1_1_1 + 306,
+ #else
+     af_blue_1_2_1 = af_blue_1_1_1 + 0,
+ #endif /* AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT */
+@@ -140,13 +136,12 @@
+ #define AF_BLUE_PROPERTY_LATIN_X_HEIGHT  ( 1 << 1 )
+ #define AF_BLUE_PROPERTY_LATIN_LONG      ( 1 << 2 )
+ 
+-#define AF_BLUE_PROPERTY_CJK_HORIZ  ( 1 << 0 )
+-#define AF_BLUE_PROPERTY_CJK_TOP    ( 1 << 1 )
+-#define AF_BLUE_PROPERTY_CJK_FILL   ( 1 << 2 )
++#define AF_BLUE_PROPERTY_CJK_TOP    ( 1 << 0 )
++#define AF_BLUE_PROPERTY_CJK_HORIZ  ( 1 << 1 )
+ #define AF_BLUE_PROPERTY_CJK_RIGHT  AF_BLUE_PROPERTY_CJK_TOP
+ 
+ 
+-#define AF_BLUE_STRINGSET_MAX_LEN  9
++#define AF_BLUE_STRINGSET_MAX_LEN  7
+ 
+   /* The AF_Blue_Stringset enumeration values are offsets into the */
+   /* `af_blue_stringsets' array.                                   */
+@@ -160,9 +155,9 @@
+     af_blue_2_1 = 24,
+ #ifdef AF_CONFIG_OPTION_CJK
+     AF_BLUE_STRINGSET_HANI = af_blue_2_1 + 0,
+-    af_blue_2_1_1 = af_blue_2_1 + 4,
++    af_blue_2_1_1 = af_blue_2_1 + 2,
+ #ifdef AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT
+-    af_blue_2_2_1 = af_blue_2_1_1 + 4,
++    af_blue_2_2_1 = af_blue_2_1_1 + 2,
+ #else
+     af_blue_2_2_1 = af_blue_2_1_1 + 0,
+ #endif /* AF_CONFIG_OPTION_CJK_BLUE_HANI_VERT */
+--- a/src/autofit/afblue.hin
++++ b/src/autofit/afblue.hin
+@@ -4,7 +4,7 @@
+ /*                                                                         */
+ /*    Auto-fitter data for blue strings (specification).                   */
+ /*                                                                         */
+-/*  Copyright 2013 by                                                      */
++/*  Copyright 2013, 2014 by                                                */
+ /*  David Turner, Robert Wilhelm, and Werner Lemberg.                      */
+ /*                                                                         */
+ /*  This file is part of the FreeType project, and may only be used,       */
+@@ -100,9 +100,8 @@
+ #define AF_BLUE_PROPERTY_LATIN_X_HEIGHT  ( 1 << 1 )
+ #define AF_BLUE_PROPERTY_LATIN_LONG      ( 1 << 2 )
+ 
+-#define AF_BLUE_PROPERTY_CJK_HORIZ  ( 1 << 0 )
+-#define AF_BLUE_PROPERTY_CJK_TOP    ( 1 << 1 )
+-#define AF_BLUE_PROPERTY_CJK_FILL   ( 1 << 2 )
++#define AF_BLUE_PROPERTY_CJK_TOP    ( 1 << 0 )
++#define AF_BLUE_PROPERTY_CJK_HORIZ  ( 1 << 1 )
+ #define AF_BLUE_PROPERTY_CJK_RIGHT  AF_BLUE_PROPERTY_CJK_TOP
+ 
+ 
+--- a/src/autofit/afcjk.c
++++ b/src/autofit/afcjk.c
+@@ -221,6 +221,8 @@
+     FT_Int      num_fills;
+     FT_Int      num_flats;
+ 
++    FT_Bool     fill;
++
+     AF_CJKBlue  blue;
+     FT_Error    error;
+     AF_CJKAxis  axis;
+@@ -229,22 +231,6 @@
+     AF_Blue_Stringset         bss = metrics->root.script_class->blue_stringset;
+     const AF_Blue_StringRec*  bs  = &af_blue_stringsets[bss];
+ 
+-#ifdef FT_DEBUG_LEVEL_TRACE
+-    FT_String*  cjk_blue_name[4] =
+-    {
+-      (FT_String*)"bottom",    /* --   , --  */
+-      (FT_String*)"top",       /* --   , TOP */
+-      (FT_String*)"left",      /* HORIZ, --  */
+-      (FT_String*)"right"      /* HORIZ, TOP */
+-    };
+-
+-    FT_String*  cjk_blue_type_name[2] =
+-    {
+-      (FT_String*)"unfilled",  /* --   */
+-      (FT_String*)"filled"     /* FILL */
+-    };
+-#endif
+-
+ 
+     /* we walk over the blue character strings as specified in the    */
+     /* script's entry in the `af_blue_stringset' array, computing its */
+@@ -266,15 +252,29 @@
+       else
+         axis = &metrics->axis[AF_DIMENSION_VERT];
+ 
+-      FT_TRACE5(( "blue zone %d:\n", axis->blue_count ));
++#ifdef FT_DEBUG_LEVEL_TRACE
++      {
++        FT_String*  cjk_blue_name[4] =
++        {
++          (FT_String*)"bottom",    /* --   , --  */
++          (FT_String*)"top",       /* --   , TOP */
++          (FT_String*)"left",      /* HORIZ, --  */
++          (FT_String*)"right"      /* HORIZ, TOP */
++        };
++
++
++        FT_TRACE5(( "blue zone %d (%s):\n",
++                    axis->blue_count,
++                    cjk_blue_name[AF_CJK_IS_HORIZ_BLUE( bs ) |
++                                  AF_CJK_IS_TOP_BLUE( bs )   ] ));
++      }
++#endif /* FT_DEBUG_LEVEL_TRACE */
+ 
+       num_fills = 0;
+       num_flats = 0;
+ 
+-      FT_TRACE5(( "  cjk blue %s/%s\n",
+-                  cjk_blue_name[AF_CJK_IS_HORIZ_BLUE( bs ) |
+-                                AF_CJK_IS_TOP_BLUE( bs )   ],
+-                  cjk_blue_type_name[!!AF_CJK_IS_FILLED_BLUE( bs )] ));
++      fill = 1;  /* start with characters that define fill values */
++      FT_TRACE5(( "  [overshoot values]\n" ));
+ 
+       while ( *p )
+       {
+@@ -287,6 +287,14 @@
+ 
+         GET_UTF8_CHAR( ch, p );
+ 
++        /* switch to characters that define flat values */
++        if ( ch == '|' )
++        {
++          fill = 0;
++          FT_TRACE5(( "  [reference values]\n" ));
++          continue;
++        }
++
+         /* load the character in the face -- skip unknown or empty ones */
+         glyph_index = FT_Get_Char_Index( face, ch );
+         if ( glyph_index == 0 )
+@@ -374,7 +382,7 @@
+           FT_TRACE5(( "  U+%04lX: best_pos = %5ld\n", ch, best_pos ));
+         }
+ 
+-        if ( AF_CJK_IS_FILLED_BLUE( bs ) )
++        if ( fill )
+           fills[num_fills++] = best_pos;
+         else
+           flats[num_flats++] = best_pos;
+@@ -386,15 +394,15 @@
+          *  we couldn't find a single glyph to compute this blue zone,
+          *  we will simply ignore it then
+          */
+-        FT_TRACE5(( "    empty\n" ));
++        FT_TRACE5(( "  empty\n" ));
+         continue;
+       }
+ 
+-      /* we have computed the contents of the `fill' and `flats' tables, */
+-      /* now determine the reference position of the blue zone --        */
+-      /* we simply take the median value after a simple sort             */
+-      af_sort_pos( num_flats, flats );
++      /* we have computed the contents of the `fill' and `flats' tables,   */
++      /* now determine the reference and overshoot position of the blue -- */
++      /* we simply take the median value after a simple sort               */
+       af_sort_pos( num_fills, fills );
++      af_sort_pos( num_flats, flats );
+ 
+       blue       = &axis->blues[axis->blue_count];
+       blue_ref   = &blue->ref.org;
+@@ -433,7 +441,7 @@
+           *blue_ref   =
+           *blue_shoot = ( shoot + ref ) / 2;
+ 
+-          FT_TRACE5(( "  [overshoot smaller than reference,"
++          FT_TRACE5(( "  [reference smaller than overshoot,"
+                       " taking mean value]\n" ));
+         }
+       }
+@@ -1186,8 +1194,10 @@
+         /* zone, check for left edges                                      */
+         /*                                                                 */
+         /* of course, that's for TrueType                                  */
+-        is_top_right_blue = FT_BOOL( blue->flags & AF_CJK_BLUE_TOP );
+-        is_major_dir      = FT_BOOL( edge->dir == axis->major_dir );
++        is_top_right_blue =
++          (FT_Byte)( ( blue->flags & AF_CJK_BLUE_TOP ) != 0 );
++        is_major_dir =
++          FT_BOOL( edge->dir == axis->major_dir );
+ 
+         /* if it is a top zone, the edge must be against the major    */
+         /* direction; if it is a bottom zone, it must be in the major */
+@@ -1484,6 +1494,12 @@
+ 
+ 
+     stem_edge->pos = base_edge->pos + fitted_width;
++
++    FT_TRACE5(( "  CJKLINK: edge %d @%d (opos=%.2f) linked to %.2f,"
++                " dist was %.2f, now %.2f\n",
++                stem_edge - hints->axis[dim].edges, stem_edge->fpos,
++                stem_edge->opos / 64.0, stem_edge->pos / 64.0,
++                dist / 64.0, fitted_width / 64.0 ));
+   }
+ 
+ 
+--- a/src/autofit/afcjk.h
++++ b/src/autofit/afcjk.h
+@@ -4,7 +4,7 @@
+ /*                                                                         */
+ /*    Auto-fitter hinting routines for CJK script (specification).         */
+ /*                                                                         */
+-/*  Copyright 2006, 2007, 2011-2013 by                                     */
++/*  Copyright 2006, 2007, 2011-2014 by                                     */
+ /*  David Turner, Robert Wilhelm, and Werner Lemberg.                      */
+ /*                                                                         */
+ /*  This file is part of the FreeType project, and may only be used,       */
+@@ -55,8 +55,6 @@
+           ( (b)->properties & AF_BLUE_PROPERTY_CJK_TOP )
+ #define AF_CJK_IS_HORIZ_BLUE( b ) \
+           ( (b)->properties & AF_BLUE_PROPERTY_CJK_HORIZ )
+-#define AF_CJK_IS_FILLED_BLUE( b ) \
+-          ( (b)->properties & AF_BLUE_PROPERTY_CJK_FILL )
+ #define AF_CJK_IS_RIGHT_BLUE  AF_CJK_IS_TOP_BLUE
+ 
+ #define AF_CJK_MAX_WIDTHS  16
+--- a/src/autofit/aflatin.c
++++ b/src/autofit/aflatin.c
+@@ -2099,7 +2099,7 @@
+ 
+     FT_TRACE5(( "  LINK: edge %d (opos=%.2f) linked to %.2f,"
+                 " dist was %.2f, now %.2f\n",
+-                stem_edge-hints->axis[dim].edges, stem_edge->opos / 64.0,
++                stem_edge - hints->axis[dim].edges, stem_edge->opos / 64.0,
+                 stem_edge->pos / 64.0, dist / 64.0, fitted_width / 64.0 ));
+   }
+ 

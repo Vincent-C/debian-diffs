@@ -1,0 +1,17 @@
+Description: ensure that our variable is reliably initialized before use
+ This fixes a build failure on ppc64el when building with -O3.
+Author: Steve Langasek <vorlon@debian.org>
+
+Index: freetype-2.5.2/src/base/ftoutln.c
+===================================================================
+--- freetype-2.5.2.orig/src/base/ftoutln.c
++++ freetype-2.5.2/src/base/ftoutln.c
+@@ -1027,7 +1027,7 @@
+   FT_EXPORT_DEF( FT_Orientation )
+   FT_Outline_Get_Orientation( FT_Outline*  outline )
+   {
+-    FT_BBox     cbox;
++    FT_BBox     cbox = {0,0,0,0};
+     FT_Int      xshift, yshift;
+     FT_Vector*  points;
+     FT_Vector   v_prev, v_cur;
