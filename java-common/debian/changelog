@@ -1,3 +1,9 @@
+java-common (0.52+vc2) unstable; urgency=medium
+
+  * Default to oracle-java8-jdk.
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 15 Oct 2014 00:17:13 -0700
+
 java-common (0.52+vc1) unstable; urgency=medium
 
   * Local package.

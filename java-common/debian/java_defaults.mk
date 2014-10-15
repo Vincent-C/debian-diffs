@@ -2,7 +2,7 @@
 # makefile fragment to define the macros java_default_version,
 # java{,5,6,7,8}_architectures
 
-java8_architectures =
+java8_architectures = amd64 i386
 java7_architectures = alpha amd64 arm64 armel armhf arm64 i386 lpia \
 		mips mipsel mips64el \
 		powerpc powerpcspe ppc64 ppc64el \
