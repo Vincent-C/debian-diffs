@@ -1,0 +1,17 @@
+Description: Don't strip -lgmodule-2.0 from RDYNAMIC_LIBS
+Author: Svante Signell <svante.signell@gmail.com>
+Bug: 763855
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/configure.in
++++ b/configure.in
+@@ -445,8 +445,7 @@
+ 	if test "$have_dl" = yes; then
+ 		AC_DEFINE(USE_PLUGIN)
+ 		AC_PATH_PROG(pkgconfigpath, pkg-config)
+-		dnl we just need the -Wl,--export-dynamic, but not -lgmodule-2.0
+-		RDYNAMIC_FLAGS="`$pkgconfigpath gmodule-2.0 --libs | $sedpath 's/ -lgmodule-2.0//'`"
++		RDYNAMIC_FLAGS="`$pkgconfigpath gmodule-2.0 --libs`"
+ 		LIBS="$LIBS $RDYNAMIC_FLAGS"
+ 		if test "$LD" = ""; then
+ 			VS="`ld --help | grep version-script 2> /dev/null`"

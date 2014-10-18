@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Davide Puricelli (evo) <evo@debian.org>
 Uploaders: Bart Martens <bartm@debian.org>
 Standards-Version: 3.8.4.0
-Build-Depends: debhelper (>= 5), bison, libssl-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.0.6), libperl-dev, gettext (>= 0.10.37), libtool, zlib1g-dev, perl (>= 5.8), python-dev, tcl-dev, autotools-dev, libdbus-glib-1-dev, libgtkspell-dev, gconf2, dpkg-dev (>= 1.13.19), libsexy-dev, chrpath, imagemagick
+Build-Depends: debhelper (>= 5), bison, libssl-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.0.6), libperl-dev, gettext (>= 0.10.37), libtool, zlib1g-dev, perl (>= 5.8), python-dev, tcl-dev, autotools-dev, libdbus-glib-1-dev, libgtkspell-dev, gconf2, dpkg-dev (>= 1.13.19), libsexy-dev, chrpath, imagemagick, autoconf
 Homepage: http://www.xchat.org/
 
 Package: xchat

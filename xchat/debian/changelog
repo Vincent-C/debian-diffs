@@ -1,4 +1,4 @@
-xchat (2.8.8-7.1+vc1) unstable; urgency=low
+xchat (2.8.8-7.2+vc1) unstable; urgency=medium
 
   * Local package.
   * Stop systray icon from disappearing every time gnome-{shell,panel}
@@ -6,7 +6,16 @@ xchat (2.8.8-7.1+vc1) unstable; urgency=low
     - Add debian/patches/80_fix_disappearing_systray.patch.
   * Update debian/watch file. (Closes: #675428)
 
- -- Vincent Cheng <Vincentc1208@gmail.com>  Sat, 29 Dec 2012 13:59:30 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 17 Oct 2014 22:31:13 -0700
+
+xchat (2.8.8-7.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Don't strip -lgmodule-2.0 from RDYNAMIC_LIBS. Patch from
+    Svante Signell <svante.signell@gmail.com>
+    (Closes: #726132, #763855)
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Mon, 13 Oct 2014 20:56:21 +0100
 
 xchat (2.8.8-7.1) unstable; urgency=low
 

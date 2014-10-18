@@ -12,8 +12,10 @@ configure: configure-stamp
 configure-stamp:
 	[ -f config.sub.d-r-orig ] || cp -p config.sub config.sub.d-r-orig
 	[ -f config.guess.d-r-orig ] || cp -p config.guess config.guess.d-r-orig
+	[ -f configure.d-r-orig ] || cp -p configure configure.d-r-orig
 	cp -f /usr/share/misc/config.sub .
 	cp -f /usr/share/misc/config.guess .
+	autoconf
 	[ -f xchat.xpm ] || convert -resize 32x32 xchat.png xchat.xpm
 	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --datadir=/usr/share --sysconfdir=/etc --enable-python --enable-ipv6  \
 	--disable-mmx --enable-openssl --enable-tcl=/usr/lib \
@@ -36,6 +38,7 @@ clean-stamp:
 	[ ! -f Makefile ] || $(MAKE) distclean
 	[ ! -f config.sub.d-r-orig ] || mv config.sub.d-r-orig config.sub
 	[ ! -f config.guess.d-r-orig ] || mv config.guess.d-r-orig config.guess
+	[ ! -f configure.d-r-orig ] || mv configure.d-r-orig configure
 	rm -f xchat.xpm
 	rm -f config.log
 	rm -f xchat xchat-gnome
