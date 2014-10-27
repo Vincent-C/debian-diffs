@@ -1,3 +1,8 @@
-Zukitwo*	usr/share/themes/
-panelbg.png	usr/share/themes/
-README		usr/share/themes/
+Zukitwo         usr/share/themes/
+ZukiShell       usr/share/themes/
+INSTALL         usr/share/themes/ZukiShell/
+INSTALL         usr/share/themes/Zukitwo/
+panelbg.png     usr/share/themes/ZukiShell/
+panelbg.png     usr/share/themes/Zukitwo/
+README          usr/share/themes/ZukiShell/
+README          usr/share/themes/Zukitwo/

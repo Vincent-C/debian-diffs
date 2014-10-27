@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: zukitwo
-Source: Vincent Cheng <vcheng@debian.org>
+Source: http://lassekongo83.deviantart.com/art/Zukitwo-203936861
 
 Files: *
 Copyright: 2011-2014 lassekongo83.deviantart.com
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2013 Vincent Cheng <Vincentc1208@gmail.com>
+Copyright: 2013-2014 Vincent Cheng <vcheng@debian.org>
 License: GPL-3.0+
 
 License: GPL-3.0+

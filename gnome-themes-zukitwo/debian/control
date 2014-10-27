@@ -3,7 +3,7 @@ Section: gnome
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://lassekongo83.deviantart.com/art/Zukitwo-203936861
 
 Package: gnome-themes-zukitwo
@@ -11,7 +11,7 @@ Architecture: all
 Depends:
  gtk2-engines-murrine (>= 0.98.1.1),
  gtk2-engines-pixbuf,
- libgtk-3-0 (>= 3.12),
+ libgtk-3-0 (>= 3.14),
  ${misc:Depends},
  ${shlibs:Depends}
 Recommends:

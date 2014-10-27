@@ -1,3 +1,9 @@
+gnome-themes-zukitwo (0~20141022-1) unstable; urgency=medium
+
+  * New upstream release with gnome-shell 3.14 support.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 26 Oct 2014 22:59:36 -0700
+
 gnome-themes-zukitwo (0~20140523-1) unstable; urgency=medium
 
   * New upstream snapshot with gnome-shell 3.12 support.
