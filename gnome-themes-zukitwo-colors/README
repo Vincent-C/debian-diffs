@@ -1,5 +1,0 @@
-Tarball (.zip): http://www.deviantart.com/download/310434222/zukitwo_colors_by_karashata-d54toku.zip
-
-If you're using gnome-shell, you must also install the User Theme extension to
-enable it (which can be easily done with gnome-tweak-tool):
-# apt-get install gnome-shell-extensions gnome-tweak-tool
