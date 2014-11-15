@@ -13,21 +13,21 @@ Major changes to my customized kernel compared with the stock Debian ones:
 
 
 
-linux-aptosid-2.6 for debian types
+linux-liquorix
 ------------------------
 
 Patches
 -------
-Liquorix applies small changes and upstream backports to the kernel source.
+liquorix applies small changes and upstream backports to the kernel source.
 These are split up into separated patches addressing individual problems. 
 Each of the patch files contains a description and mentions the author. The 
 patches can be found at:
-http://liquorix.net/sources
+https://github.com/zen-kernel/zen-kernel
 
 Config Files
 ------------
 The .config files used to build the various linux-image files are dynamically
-generated during the linux-liquorix-2.6 package build.  See the source package for
+generated during the linux-liquorix package build. See the source package for
 details.  Each linux-image-* package provides the complete .config file that
 was used to generate it.  This file is installed in /boot.
 Additionally the configuration of the currently running kernel is stored under
@@ -60,16 +60,15 @@ Rebuilding Adaptec AIC7xxx/79xx firmware
 ----------------------------------------
 You can rebuild the firmware for the Adaptec AIC7xxx/79xx SCSI Adapters. To
 do so you need to set AIC7XXX_BUILD_FIRMWARE/AIC79XX_BUILD_FIRMWARE config
-options.  Note that this requires to have the development packages for
+options.  Note that this requires one to have the development packages for
 berkelydb (libdb4.2-dev) installed.
 
-Non-free bits restored
+Non-free bits removed
 ---------------------
-Be rest assured that you can use this kernel with a live cd with all supported
-wireless cards.
+See the patches under debian/patches/dfsg/
 
 Further information
 -------------------
-[be aware that there are some packaging differences between Liquorix and Debian]
+[be aware that there are some packaging differences between liquorix and Debian]
 Debian Linux Kernel Handbook: http://kernel-handbook.alioth.debian.org
 Debian Wiki: http://wiki.debian.org/DebianKernel

@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.16.3.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.17.3.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -24,15 +24,13 @@ packaging).
 7) Drop kernel config into debian/config/kernelarch-x86; rename as
    "config-arch-64".
 8) Edit debian/config/amd64/defines: "liquorix" to whatever name you want, in
-   my case "vclaptop".
+   my case "vclaptop". debian/config/amd64/none/defines: remove reference to
+   xen.
 9) Edit debian/config/defines: change abiname, remove i386 from list of archs,
    change compiler version if wanted. Remove debian/config/i386/.
-10) Edit debian/source/options: compression set to xz, compression level = 6.
+10) debian/templates: find . -type f -exec sed -i 's/liquorix/vclaptop/' {} +
+    Edit debian/source/options: compression set to xz, compression level = 6.
     Edit debian/templates/control.source.in: change maintainer name and email.
-    Edit debian/templates/control.image.type-plain.in: remove recommends for
-    firmware-linux-free.
-    Edit debian/templates/image.plain.bug/control: liquorix -> vclaptop
-    Remove all references of liquorix from templates to avoid confusion.
     Edit debian/README.* with the following header:
 
 (README.Debian):
@@ -55,5 +53,6 @@ Major changes to my customized kernel compared with the stock Debian ones:
     Do not forget to change source package name and version if desired.
 
 12) $ fakeroot debian/rules debian/control-real
+    Remove liquorix maintainer scripts if still present.
 13) $ debuild -jN    # where N = number of CPU cores
 14) # dpkg -i *.deb  # or upload to personal repo and apt-get install

@@ -1,12 +1,19 @@
 [base]
+featuresets:
+ none
 flavours:
  vclaptop-amd64
 kernel-arch: x86
 
+[build]
+debug-info: false
+image-file: arch/x86/boot/bzImage
+
 [image]
+bootloaders: grub-pc extlinux grub-efi-amd64
 configs:
- kernelarch-x86/config-arch-64
-suggests: grub2 | grub-gfxboot | grub-legacy, crda
+install-stem: vmlinuz
+suggests: crda
 
 [vclaptop-amd64_description]
 hardware: 64-bit PCs

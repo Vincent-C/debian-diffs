@@ -1,18 +1,3 @@
-Please note that everything below originates from the README file provided with
-the Liquorix kernel; not everything applies to this custom-built kernel.
-
-Major changes to my customized kernel compared with the stock Debian ones:
- - NOT optimized for size (CONFIG_CC_OPTIMIZE_FOR_SIZE=n)
- - compiled with -march=native (corei7-avx)
- - full preemption (CONFIG_PREEMPT=y et al.)
- - default I/O scheduler set to deadline (CONFIG_DEFAULT_DEADLINE=y)
- - always enable transparent hugepage (CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS=y)
- - enable MTRR sanitizer by default (CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT=1)
- - kernel timer set to 300 Hz (CONFIG_HZ=300)
-...and a number of other things.
-
-
-
 Updating the upstream source
 ============================
 
@@ -20,7 +5,7 @@ Updating the upstream source
    of debian/rules can be used, it extracts the upstream version from 
    debian/changelog.
 
-3) Unpack linux-liquorix-2.6-<version>.orig.tar.gz, cd into the new directory,
+3) Unpack linux-liquorix-<version>.orig.tar.gz, cd into the new directory,
    and do a 'svn export' to get the debian/ subdirectory.
 
 Applying patches to the liquorix kernel tree
@@ -54,7 +39,6 @@ run during an automatic build. The following variables are substituted
 into the templates:
 
 @version@      Upstream kernel version, for example 2.6.11.
-@major@        The major version, for example 2.6
 @arch@         The Debian arch name, such as powerpc or i386.
 @flavour@      The build flavour, such as 686 or k7-smp.
 @class@        The CPU/architecture class; displayed in synopsis.  It should

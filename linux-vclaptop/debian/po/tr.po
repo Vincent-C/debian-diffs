@@ -1,96 +1,275 @@
-# Turkish translation of linux-2.6 debconf template.
-# Copyright (C) 2012
-# This file is distributed under the same license as the linux-2.6 package.
+# THIS IS A GENERATED FILE; DO NOT EDIT IT!
+# Translators should edit debian/templates/po/tr.po instead.
+#
+# Turkish translation of linux debconf template.
+# Copyright (C) 2012 Mert Dirik
+# This file is distributed under the same license as the linux package.
 # Mert Dirik <mertdirik@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linux-2.6 3.2.4-1\n"
-"Report-Msgid-Bugs-To: linux-2.6@packages.debian.org\n"
-"POT-Creation-Date: 2011-07-04 04:24+0100\n"
-"PO-Revision-Date: 2012-02-12 22:36+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-23 03:04+0200\n"
+"PO-Revision-Date: 2014-07-19 00:28+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
-"Language: \n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:2001
+#: ../image.plain.templates.in:2001
 msgid "Abort installation after depmod error?"
 msgstr "depmod hatasından sonra kurulum iptal edilsin mi?"
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:2001
-msgid "The 'depmod' command exited with the exit code ${exit_value} (${SIGNAL}${CORE})."
-msgstr "'depmod' komutu ${exit_value} (${SIGNAL}${CORE}) çıkış koduyla sonlandı."
+#: ../image.plain.templates.in:2001
+msgid ""
+"The 'depmod' command exited with the exit code ${exit_value} "
+"(${SIGNAL}${CORE})."
+msgstr ""
+"'depmod' komutu ${exit_value} (${SIGNAL}${CORE}) çıkış koduyla sonlandı."
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:2001
-msgid "Since this image uses initrd, the ${modules_base}/=V/modules.dep file will not be deleted, even though it may be invalid."
-msgstr "Bu görüntü initrd kullandığından ötürü ${modules_base}/=V/modules.dep dosyası, dosya geçersiz olsa da silinmeyecektir."
+#: ../image.plain.templates.in:2001
+msgid ""
+"Since this image uses initrd, the ${modules_base}/3.17-3-vclaptop-amd64/"
+"modules.dep file will not be deleted, even though it may be invalid."
+msgstr ""
+"Bu görüntü initrd kullandığından ötürü ${modules_base}/"
+"3.17-3-vclaptop-amd64/modules.dep dosyası, dosya geçersiz olsa da "
+"silinmeyecektir."
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:2001
-msgid "You should abort the installation and fix the errors in depmod, or regenerate the initrd image with a known good modules.dep file. If you don't abort the installation, there is a danger that the system will fail to boot."
-msgstr "Ya kurulumu iptal edip depmod'daki hataları düzeltmeli ya da initrd görüntüsünü düzgün olduğu bilinen bir modules.dep dosyasıyla yeniden oluşturmalısınız. Kurulumu iptal etmediğiniz takdirde sisteminizin başlamama olasılığı vardır."
+#: ../image.plain.templates.in:2001
+msgid ""
+"You should abort the installation and fix the errors in depmod, or "
+"regenerate the initrd image with a known good modules.dep file. If you don't "
+"abort the installation, there is a danger that the system will fail to boot."
+msgstr ""
+"Ya kurulumu iptal edip depmod'daki hataları düzeltmeli ya da initrd "
+"görüntüsünü düzgün olduğu bilinen bir modules.dep dosyasıyla yeniden "
+"oluşturmalısınız. Kurulumu iptal etmediğiniz takdirde sisteminizin başlamama "
+"olasılığı vardır."
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:3001
+#: ../image.plain.templates.in:3001
 msgid "Abort kernel removal?"
 msgstr "Çekirdeği kaldırma işlemi iptal edilsin mi?"
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:3001
-msgid "You are running a kernel (version ${running}) and attempting to remove the same version."
-msgstr "Kullandığınız çekirdekle (${running}) aynı sürümdeki çekirdeği kaldırmaya çalışıyorsunuz."
+#: ../image.plain.templates.in:3001
+msgid ""
+"You are running a kernel (version ${running}) and attempting to remove the "
+"same version."
+msgstr ""
+"Kullandığınız çekirdekle (${running}) aynı sürümdeki çekirdeği kaldırmaya "
+"çalışıyorsunuz."
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:3001
-msgid "This can make the system unbootable as it will remove /boot/vmlinuz-${running} and all modules under the directory /lib/modules/${running}. This can only be fixed with a copy of the kernel image and the corresponding modules."
-msgstr "Bu eylem sisteminizi başlatılamaz hale getirebilir ( /boot/vmlinuz-${running} dosyasını ve  /lib/modules/${running} dizinindeki tüm modülleri kaldıracağından dolayı). Bu durum yalnızca bir çekirdek görüntüsü ve bu görüntüye uygun modüller yardımıyla düzeltilebilir."
+#: ../image.plain.templates.in:3001
+msgid ""
+"This can make the system unbootable as it will remove /boot/vmlinuz-"
+"${running} and all modules under the directory /lib/modules/${running}. This "
+"can only be fixed with a copy of the kernel image and the corresponding "
+"modules."
+msgstr ""
+"Bu eylem sisteminizi başlatılamaz hale getirebilir ( /boot/vmlinuz-"
+"${running} dosyasını ve  /lib/modules/${running} dizinindeki tüm modülleri "
+"kaldıracağından dolayı). Bu durum yalnızca bir çekirdek görüntüsü ve bu "
+"görüntüye uygun modüller yardımıyla düzeltilebilir."
 
 #. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:3001
-msgid "It is highly recommended to abort the kernel removal unless you are prepared to fix the system after removal."
-msgstr "Kaldırma işlemi sonrasında sistemi düzeltmeye hazır olmadığınız takdirde kaldırma işleminden vazgeçmeniz şiddetle tavsiye edilir."
+#: ../image.plain.templates.in:3001
+msgid ""
+"It is highly recommended to abort the kernel removal unless you are prepared "
+"to fix the system after removal."
+msgstr ""
+"Kaldırma işlemi sonrasında sistemi düzeltmeye hazır olmadığınız takdirde "
+"kaldırma işleminden vazgeçmeniz şiddetle tavsiye edilir."
 
 #. Type: note
 #. Description
-#: ../templates/temp.image.plain/templates:4001
-msgid "Required firmware files may be missing"
-msgstr "Gerekli aygıt yazılımları eksik"
+#: ../image.plain.templates.in:4001
+msgid "Boot loader configuration must be updated to load initramfs"
+msgstr "initramfs'i yüklemek için açılış önyükleyicisi güncellenmeli"
 
 #. Type: note
 #. Description
-#: ../templates/temp.image.plain/templates:4001
-msgid "This system is currently running Linux ${runningversion} and you are installing Linux ${version}.  In the new version some of the drivers used on this system may require additional firmware files:"
-msgstr "Bu sistem şu anda Linux ${runningversion} kullanıyor ve siz Linux ${version} sürümünü kurmak üzeresiniz. Yeni sürümde bu sistemde kullanmakta olduğunuz bazı sürücüler ek aygıt yazılımları (firmware) gerektirebilir:"
+#: ../image.plain.templates.in:4001
+msgid ""
+"This kernel package will build an \"initramfs\" file (/boot/initrd.img-"
+"3.17-3-vclaptop-amd64) for the system's boot loader to use in addition to "
+"the kernel itself. This method, formerly unsupported on MIPS, enables a more "
+"flexible boot process, and future kernel versions may require a "
+"corresponding initrd.img to boot."
+msgstr ""
+"Çekirdek paketi, sistem ön yükleyicinin kullanması için çekirdeğe ek olarak "
+"bir de \"initramfs\" dosyası (/boot/initrd.img-3.17-3-vclaptop-amd64) "
+"oluşturacak. MIPS mimarisinde eskiden desteklenmeyen bu yöntem, daha esnek "
+"bir ön yükleme sürecine imkan tanır. Gelecekte yayımlanacak olan yeni "
+"çekirdek sürümleri kendilerine uyumlu olan yeni initrd.img dosyaları "
+"gerektirebilir."
 
 #. Type: note
 #. Description
-#: ../templates/temp.image.plain/templates:4001
-msgid "Most firmware files are not included in the system because they do not conform to the Debian Free Software Guidelines. You may need to reconfigure the package manager to include the contrib and non-free sections of the package archive before you can install these firmware files."
-msgstr "Çoğu aygıt yazılımı Debian Özgür Yazılım Yönergeleri'ne uymadığı için sisteme dahil edilmez. Bu aygıt yazılımlarını kurabilmek için öncelikle paket yöneticisini paket arşivinin contrib ve non-free kısımlarını kullanacak şekilde ayarlamanız gerekir."
+#: ../image.plain.templates.in:4001
+msgid ""
+"The currently running kernel was booted without an initramfs. You should "
+"reconfigure the boot loader to load the initramfs for Linux version "
+"3.17-3, and for each later version. This is probably most easily "
+"accomplished by using the initrd.img symbolic link maintained by the kernel "
+"package."
+msgstr ""
+"Şu an kullanımda olan çekirdek initramfs olmadan başlatıldı. Açılış "
+"önyükleyicisini Linux 3.17-3 ve daha sonraki her sürümün initramfs'lerini "
+"yükleyecek şekilde yeniden yapılandırmanız gerekmektedir. Bunu yapmanın en "
+"kolay yolu genelde çekirdek paketi tarafından idare edilen initrd.img "
+"sembolik bağlantısını kullanmaktır."
+# Turkish translation of linux debconf template.
+# Copyright (C) 2012 Mert Dirik
+# This file is distributed under the same license as the linux package.
+# Mert Dirik <mertdirik@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linux-2.6 3.2.4-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-23 03:04+0200\n"
+"PO-Revision-Date: 2014-07-19 00:28+0200\n"
+"Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
+"Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#. Type: error
+#. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:5001
-msgid "Ramdisk configuration must be updated"
-msgstr "Ramdisk yapılandırılmasının güncellenmesi gerekli"
+#: ../image.plain.templates.in:2001
+msgid "Abort installation after depmod error?"
+msgstr "depmod hatasından sonra kurulum iptal edilsin mi?"
 
-#. Type: error
+#. Type: boolean
 #. Description
-#: ../templates/temp.image.plain/templates:5001
-msgid "Kernel packages will no longer run a specific ramdisk creator.  The ramdisk creator package must install a script in /etc/kernel/postinst.d, and you should remove the line beginning 'ramdisk =' from /etc/kernel-img.conf."
-msgstr "Çekirdek paketleri bundan böyle özel ramdisk oluşturucularını kullanamaz. ramdisk oluşturucu paket /etc/kernel/postinst.d konumuna bir betik kurmalıdır. Sizin de /etc/kernel-img.conf dosyasında 'ramdisk =' ile başlayan satırı kaldırmanız gerekmektedir."
+#: ../image.plain.templates.in:2001
+msgid ""
+"The 'depmod' command exited with the exit code ${exit_value} "
+"(${SIGNAL}${CORE})."
+msgstr ""
+"'depmod' komutu ${exit_value} (${SIGNAL}${CORE}) çıkış koduyla sonlandı."
 
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:2001
+msgid ""
+"Since this image uses initrd, the ${modules_base}/3.17-3-vclaptop-amd64/"
+"modules.dep file will not be deleted, even though it may be invalid."
+msgstr ""
+"Bu görüntü initrd kullandığından ötürü ${modules_base}/"
+"3.17-3-vclaptop-amd64/modules.dep dosyası, dosya geçersiz olsa da "
+"silinmeyecektir."
+
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:2001
+msgid ""
+"You should abort the installation and fix the errors in depmod, or "
+"regenerate the initrd image with a known good modules.dep file. If you don't "
+"abort the installation, there is a danger that the system will fail to boot."
+msgstr ""
+"Ya kurulumu iptal edip depmod'daki hataları düzeltmeli ya da initrd "
+"görüntüsünü düzgün olduğu bilinen bir modules.dep dosyasıyla yeniden "
+"oluşturmalısınız. Kurulumu iptal etmediğiniz takdirde sisteminizin başlamama "
+"olasılığı vardır."
+
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:3001
+msgid "Abort kernel removal?"
+msgstr "Çekirdeği kaldırma işlemi iptal edilsin mi?"
+
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:3001
+msgid ""
+"You are running a kernel (version ${running}) and attempting to remove the "
+"same version."
+msgstr ""
+"Kullandığınız çekirdekle (${running}) aynı sürümdeki çekirdeği kaldırmaya "
+"çalışıyorsunuz."
+
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:3001
+msgid ""
+"This can make the system unbootable as it will remove /boot/vmlinuz-"
+"${running} and all modules under the directory /lib/modules/${running}. This "
+"can only be fixed with a copy of the kernel image and the corresponding "
+"modules."
+msgstr ""
+"Bu eylem sisteminizi başlatılamaz hale getirebilir ( /boot/vmlinuz-"
+"${running} dosyasını ve  /lib/modules/${running} dizinindeki tüm modülleri "
+"kaldıracağından dolayı). Bu durum yalnızca bir çekirdek görüntüsü ve bu "
+"görüntüye uygun modüller yardımıyla düzeltilebilir."
+
+#. Type: boolean
+#. Description
+#: ../image.plain.templates.in:3001
+msgid ""
+"It is highly recommended to abort the kernel removal unless you are prepared "
+"to fix the system after removal."
+msgstr ""
+"Kaldırma işlemi sonrasında sistemi düzeltmeye hazır olmadığınız takdirde "
+"kaldırma işleminden vazgeçmeniz şiddetle tavsiye edilir."
+
+#. Type: note
+#. Description
+#: ../image.plain.templates.in:4001
+msgid "Boot loader configuration must be updated to load initramfs"
+msgstr "initramfs'i yüklemek için açılış önyükleyicisi güncellenmeli"
+
+#. Type: note
+#. Description
+#: ../image.plain.templates.in:4001
+msgid ""
+"This kernel package will build an \"initramfs\" file (/boot/initrd.img-"
+"3.17-3-vclaptop-amd64) for the system's boot loader to use in addition to "
+"the kernel itself. This method, formerly unsupported on MIPS, enables a more "
+"flexible boot process, and future kernel versions may require a "
+"corresponding initrd.img to boot."
+msgstr ""
+"Çekirdek paketi, sistem ön yükleyicinin kullanması için çekirdeğe ek olarak "
+"bir de \"initramfs\" dosyası (/boot/initrd.img-3.17-3-vclaptop-amd64) "
+"oluşturacak. MIPS mimarisinde eskiden desteklenmeyen bu yöntem, daha esnek "
+"bir ön yükleme sürecine imkan tanır. Gelecekte yayımlanacak olan yeni "
+"çekirdek sürümleri kendilerine uyumlu olan yeni initrd.img dosyaları "
+"gerektirebilir."
+
+#. Type: note
+#. Description
+#: ../image.plain.templates.in:4001
+msgid ""
+"The currently running kernel was booted without an initramfs. You should "
+"reconfigure the boot loader to load the initramfs for Linux version "
+"3.17-3, and for each later version. This is probably most easily "
+"accomplished by using the initrd.img symbolic link maintained by the kernel "
+"package."
+msgstr ""
+"Şu an kullanımda olan çekirdek initramfs olmadan başlatıldı. Açılış "
+"önyükleyicisini Linux 3.17-3 ve daha sonraki her sürümün initramfs'lerini "
+"yükleyecek şekilde yeniden yapılandırmanız gerekmektedir. Bunu yapmanın en "
+"kolay yolu genelde çekirdek paketi tarafından idare edilen initrd.img "
+"sembolik bağlantısını kullanmaktır."

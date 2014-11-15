@@ -39,8 +39,8 @@ REQUIREMENTS
 linux version >=3.15
 gcc version >=4.9
 
---- a/arch/x86/include/asm/module.h	2014-08-03 18:25:02.000000000 -0400
-+++ b/arch/x86/include/asm/module.h	2014-09-13 09:37:16.721385247 -0400
+--- a/arch/x86/include/asm/module.h
++++ b/arch/x86/include/asm/module.h
 @@ -15,6 +15,20 @@
  #define MODULE_PROC_FAMILY "586MMX "
  #elif defined CONFIG_MCORE2
@@ -83,9 +83,9 @@ gcc version >=4.9
  #elif defined CONFIG_MELAN
  #define MODULE_PROC_FAMILY "ELAN "
  #elif defined CONFIG_MCRUSOE
---- a/arch/x86/Kconfig.cpu	2014-08-03 18:25:02.000000000 -0400
-+++ b/arch/x86/Kconfig.cpu	2014-09-13 09:37:16.721385247 -0400
-@@ -137,9 +137,8 @@ config MPENTIUM4
+--- a/arch/x86/Kconfig.cpu
++++ b/arch/x86/Kconfig.cpu
+@@ -137,9 +137,8 @@
  		-Paxville
  		-Dempsey
  
@@ -96,7 +96,7 @@ gcc version >=4.9
  	depends on X86_32
  	---help---
  	  Select this for an AMD K6-family processor.  Enables use of
-@@ -147,7 +146,7 @@ config MK6
+@@ -147,7 +146,7 @@
  	  flags to GCC.
  
  config MK7
@@ -105,7 +105,7 @@ gcc version >=4.9
  	depends on X86_32
  	---help---
  	  Select this for an AMD Athlon K7-family processor.  Enables use of
-@@ -155,12 +154,62 @@ config MK7
+@@ -155,12 +154,62 @@
  	  flags to GCC.
  
  config MK8
@@ -169,7 +169,7 @@ gcc version >=4.9
  config MCRUSOE
  	bool "Crusoe"
  	depends on X86_32
-@@ -251,8 +300,17 @@ config MPSC
+@@ -251,8 +300,17 @@
  	  using the cpu family field
  	  in /proc/cpuinfo. Family 15 is an older Xeon, Family 6 a newer one.
  
@@ -188,7 +188,7 @@ gcc version >=4.9
  	---help---
  
  	  Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and
-@@ -260,14 +318,55 @@ config MCORE2
+@@ -260,14 +318,55 @@
  	  family in /proc/cpuinfo. Newer ones have 6 and older ones 15
  	  (not a typo)
  
@@ -250,7 +250,7 @@ gcc version >=4.9
  
  config GENERIC_CPU
  	bool "Generic-x86-64"
-@@ -276,6 +375,19 @@ config GENERIC_CPU
+@@ -276,6 +375,19 @@
  	  Generic x86-64 CPU.
  	  Run equally well on all x86-64 CPUs.
  
@@ -270,7 +270,7 @@ gcc version >=4.9
  endchoice
  
  config X86_GENERIC
-@@ -300,7 +412,7 @@ config X86_INTERNODE_CACHE_SHIFT
+@@ -300,7 +412,7 @@
  config X86_L1_CACHE_SHIFT
  	int
  	default "7" if MPENTIUM4 || MPSC
@@ -279,7 +279,7 @@ gcc version >=4.9
  	default "4" if MELAN || M486 || MGEODEGX1
  	default "5" if MWINCHIP3D || MWINCHIPC6 || MCRUSOE || MEFFICEON || MCYRIXIII || MK6 || MPENTIUMIII || MPENTIUMII || M686 || M586MMX || M586TSC || M586 || MVIAC3_2 || MGEODE_LX
  
-@@ -331,11 +443,11 @@ config X86_ALIGNMENT_16
+@@ -331,11 +443,11 @@
  
  config X86_INTEL_USERCOPY
  	def_bool y
@@ -293,7 +293,7 @@ gcc version >=4.9
  
  config X86_USE_3DNOW
  	def_bool y
-@@ -359,17 +471,17 @@ config X86_P6_NOP
+@@ -359,17 +471,17 @@
  
  config X86_TSC
  	def_bool y
@@ -314,9 +314,9 @@ gcc version >=4.9
  
  config X86_MINIMUM_CPU_FAMILY
  	int
---- a/arch/x86/Makefile	2014-08-03 18:25:02.000000000 -0400
-+++ b/arch/x86/Makefile	2014-09-13 09:37:16.721385247 -0400
-@@ -92,13 +92,33 @@ else
+--- a/arch/x86/Makefile
++++ b/arch/x86/Makefile
+@@ -89,13 +89,33 @@
  	KBUILD_CFLAGS += $(call cc-option,-mpreferred-stack-boundary=3)
  
          # FIXME - should be integrated in Makefile.cpu (Makefile_32.cpu)
@@ -353,9 +353,9 @@ gcc version >=4.9
          cflags-$(CONFIG_GENERIC_CPU) += $(call cc-option,-mtune=generic)
          KBUILD_CFLAGS += $(cflags-y)
  
---- a/arch/x86/Makefile_32.cpu	2014-08-03 18:25:02.000000000 -0400
-+++ b/arch/x86/Makefile_32.cpu	2014-09-13 09:37:16.721385247 -0400
-@@ -23,7 +23,15 @@ cflags-$(CONFIG_MK6)		+= -march=k6
+--- a/arch/x86/Makefile_32.cpu
++++ b/arch/x86/Makefile_32.cpu
+@@ -23,7 +23,15 @@
  # Please note, that patches that add -march=athlon-xp and friends are pointless.
  # They make zero difference whatsosever to performance at this time.
  cflags-$(CONFIG_MK7)		+= -march=athlon
@@ -371,7 +371,7 @@ gcc version >=4.9
  cflags-$(CONFIG_MCRUSOE)	+= -march=i686 $(align)-functions=0 $(align)-jumps=0 $(align)-loops=0
  cflags-$(CONFIG_MEFFICEON)	+= -march=i686 $(call tune,pentium3) $(align)-functions=0 $(align)-jumps=0 $(align)-loops=0
  cflags-$(CONFIG_MWINCHIPC6)	+= $(call cc-option,-march=winchip-c6,-march=i586)
-@@ -32,8 +40,14 @@ cflags-$(CONFIG_MCYRIXIII)	+= $(call cc-
+@@ -32,8 +40,14 @@
  cflags-$(CONFIG_MVIAC3_2)	+= $(call cc-option,-march=c3-2,-march=i686)
  cflags-$(CONFIG_MVIAC7)		+= -march=i686
  cflags-$(CONFIG_MCORE2)		+= -march=i686 $(call tune,core2)

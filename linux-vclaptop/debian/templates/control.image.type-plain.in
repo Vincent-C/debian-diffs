@@ -1,13 +1,15 @@
 Package: linux-image-@abiname@@localversion@
-Provides: linux-image, linux-modules-@abiname@@localversion@
+Provides: linux-modules-@abiname@@localversion@
 Pre-Depends: debconf | debconf-2.0
-Depends: kmod, bc, ${shlibs:Depends}, ${misc:Depends}
-Recommends: firmware-linux-free (>= 3~)
+Depends: kmod, ${misc:Depends}
+Conflicts: r8168-dkms, hal
+Recommends: firmware-linux-free
 Suggests: linux-doc-@version@
 Description: Linux @upstreamversion@ for @class@
  The Linux kernel @upstreamversion@ and modules for use on @longclass@.
 
 Package: linux-image@localversion@
+Section: metapackages
 Priority: extra
 Depends: linux-image-@abiname@@localversion@ (= ${binary:Version}), ${misc:Depends}
 Recommends: linux-headers@localversion@ (= ${binary:Version})
@@ -16,6 +18,7 @@ Description: Linux image for vclaptop on @class@
  @longclass@ machines for vclaptop.
 
 Package: linux-headers@localversion@
+Section: metapackages
 Priority: extra
 Depends: linux-headers-@abiname@@localversion@ (= ${binary:Version}), ${misc:Depends}
 Description: Linux headers for vclaptop on @class@

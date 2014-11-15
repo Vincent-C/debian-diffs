@@ -30,7 +30,7 @@ esac
 RC_VER="${VERSION#*\~}"
 [ "x${VERSION%\~*}" = "x${RC_VER}" ] && RC_VER=""
 
-TMP_DIR="$(mktemp -d -p /tmp linux-siduction.XXXXXX)"
+TMP_DIR="$(mktemp -d -p /tmp linux-liquorix.XXXXXX)"
 pushd "${TMP_DIR}"
 	if [ -z "$RC_VER" ]; then
 		# stable kernel
@@ -38,9 +38,9 @@ pushd "${TMP_DIR}"
 		wget -Nc "http://www.kernel.org/pub/linux/kernel/v${K_VERSION}.${K_PATCHLEVEL_SYM}/${UP_TARBALL}"
 
 		if [ -n "${K_SUBLEVEL}" ]; then
-			ORIG_TARBALL="linux-siduction_${K_VERSION}.${K_PATCHLEVEL}.${K_SUBLEVEL}.orig.tar.bz2"
+			ORIG_TARBALL="linux-liquorix_${K_VERSION}.${K_PATCHLEVEL}.${K_SUBLEVEL}.orig.tar.bz2"
 		else
-			ORIG_TARBALL="linux-siduction_${K_VERSION}.${K_PATCHLEVEL}.orig.tar.bz2"
+			ORIG_TARBALL="linux-liquorix_${K_VERSION}.${K_PATCHLEVEL}.orig.tar.bz2"
 		fi
 	else
 		# rc kernel
@@ -48,9 +48,9 @@ pushd "${TMP_DIR}"
 		#wget -Nc "http://www.kernel.org/pub/linux/kernel/v${K_VERSION}.${K_PATCHLEVEL_SYM}/testing/${UP_TARBALL}"
 		cp /home/debbuilder/testkernel/private/${UP_TARBALL} ./
 		if [ -n "${K_SUBLEVEL}" ]; then
-			ORIG_TARBALL="linux-siduction_${K_VERSION}.${K_PATCHLEVEL}.${K_SUBLEVEL}~${RC_VER}.orig.tar.bz2"
+			ORIG_TARBALL="linux-liquorix_${K_VERSION}.${K_PATCHLEVEL}.${K_SUBLEVEL}~${RC_VER}.orig.tar.bz2"
 		else
-			ORIG_TARBALL="linux-siduction_${K_VERSION}.${K_PATCHLEVEL}~${RC_VER}.orig.tar.bz2"
+			ORIG_TARBALL="linux-liquorix_${K_VERSION}.${K_PATCHLEVEL}~${RC_VER}.orig.tar.bz2"
 		fi
 	fi
 popd >/dev/null 2>&1

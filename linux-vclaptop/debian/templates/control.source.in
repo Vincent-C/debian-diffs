@@ -1,6 +1,6 @@
 Section: kernel
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
-Standards-Version: 3.9.2
-Build-Depends: debhelper, cpio, kmod, python, dpkg-dev, bc
-Homepage: http://kernel.org/
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 9.20120115), cpio, python, bc
+Homepage: http://www.vclaptop.net/
