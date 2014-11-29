@@ -18,6 +18,7 @@ Package: fontconfig
 Section: fonts
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, fontconfig-config
+Pre-Depends: dpkg (>= 1.16.1)
 Replaces: fontconfig-config (<< 2.5.93-1)
 Multi-Arch: foreign
 Description: generic font configuration library - support binaries

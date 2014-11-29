@@ -1,4 +1,4 @@
-fontconfig (2.11.0-6.1+vc1) unstable; urgency=medium
+fontconfig (2.11.0-6.3+vc1) unstable; urgency=medium
 
   * Local package.
   * Import patches from Ubuntu (debian/patches/ubuntu/).
@@ -7,7 +7,25 @@ fontconfig (2.11.0-6.1+vc1) unstable; urgency=medium
       deprecated location and it leads to polling on the directory,
       which means wakeups and extra power usage (lp: #1266873)
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 14 Sep 2014 00:09:10 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 28 Nov 2014 22:46:00 -0800
+
+fontconfig (2.11.0-6.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Modify fontconfig-config.postinst to not touch the symlinks unless it's
+    a first install or a reconfigure was issued (Closes: #758973).
+
+ -- Margarita Manterola <marga@debian.org>  Sun, 23 Nov 2014 14:10:23 +0100
+
+fontconfig (2.11.0-6.2) unstable; urgency=medium
+
+  * Non-maintainer upload to delayed
+  * Switch to noawait triggers to allow self-triggering; will still need
+    Breaks from dpkg to resolve this (closes: #768599)
+  * Add Pre-Depends on dpkg to allow for noawait just in case this gets
+    backported to squeeze.
+
+ -- Don Armstrong <don@debian.org>  Mon, 10 Nov 2014 11:26:37 -0800
 
 fontconfig (2.11.0-6.1) unstable; urgency=low
 
