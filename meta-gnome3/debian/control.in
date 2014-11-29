@@ -14,9 +14,9 @@ Package: gnome-core
 Architecture: linux-any
 Depends: libatk-adaptor (>= 2.14),
          at-spi2-core (>= 2.14),
-         adwaita-icon-theme,
+         adwaita-icon-theme (>= 3.14),
          baobab (>= 3.14),
-         brasero (>= 3.11),
+         fonts-cantarell (>= 0.0.16),
          caribou (>= 0.4.15),
          caribou-antler (>= 0.4.15),
          libcaribou-gtk-module (>= 0.4.15),
@@ -26,13 +26,12 @@ Depends: libatk-adaptor (>= 2.14),
          empathy (>= 3.12),
          eog (>= 3.14),
          evince (>= 3.14),
-         fonts-cantarell (>= 0.0.16),
          sound-theme-freedesktop,
-         gnome-calculator (>= 3.14),
          gdm3 (>= 3.14) [linux-any],
          glib-networking (>= 2.42),
          gnome-backgrounds (>= 3.14),
          gnome-bluetooth (>= 3.14) [linux-any],
+         gnome-calculator (>= 3.14),
          gnome-contacts (>= 3.14),
          gnome-control-center (>= 1:3.14),
          gnome-dictionary (>= 3.14),
@@ -48,13 +47,13 @@ Depends: libatk-adaptor (>= 2.14),
          gnome-session (>= 3.14),
          gnome-settings-daemon (>= 3.14),
          gnome-shell (>= 3.14) [linux-any],
+         gnome-shell-extensions (>= 3.14) [linux-any],
          gnome-system-log (>= 3.9.90),
          gnome-system-monitor (>= 3.14),
          gnome-terminal (>= 3.14),
          gnome-themes-standard (>= 3.14),
          gnome-user-guide (>= 3.14),
          gnome-user-share (>= 3.14),
-         gnome-search-tool,
          gsettings-desktop-schemas (>= 3.14),
          gstreamer1.0-plugins-base (>= 0.10.36),
          gstreamer1.0-plugins-good (>= 0.10.31),
@@ -70,10 +69,10 @@ Depends: libatk-adaptor (>= 2.14),
          metacity (>= 1:2.34),
          mousetweaks (>= 3.12),
          nautilus (>= 3.14),
-         notification-daemon (>= 0.7.4),
          policykit-1-gnome (>= 0.105),
          pulseaudio,
          gnome-sushi (>= 3.12),
+         totem (>= 3.14),
          vino (>= 3.14),
          yelp (>= 3.14),
          zenity (>= 3.14),
@@ -95,15 +94,16 @@ Package: gnome
 Architecture: linux-any
 Depends: gnome-core (= ${binary:Version}),
          desktop-base,
-         network-manager-gnome (>= 0.9.4) [linux-any],
+         network-manager-gnome (>= 0.9.10) [linux-any],
 # Official apps modules
-         bijiben | gnote,
+         brasero (>= 3.11),
          cheese (>= 3.14) [linux-any],
          file-roller (>= 3.14),
          gedit (>= 3.14),
-         gitg,
+         gnome-clocks (>= 3.14),
          gnome-color-manager (>= 3.14),
          gnome-games (>= 1:3.14),
+         gnome-getting-started-docs (>= 3.14),
          gnome-logs (>= 3.14),
          gnome-maps (>= 3.14),
          gnome-nettool (>= 3.8) [!kfreebsd-any],
@@ -111,10 +111,10 @@ Depends: gnome-core (= ${binary:Version}),
          gnome-tweak-tool (>= 3.14),
 #         gnome-weather,
          nautilus-sendto (>= 3.8),
-         polari,
          gnome-orca (>= 3.14),
+         polari,
+         rygel-playbin (>= 0.24) [!kfreebsd-any],
          seahorse (>= 3.14),
-         totem (>= 3.14),
          vinagre (>= 3.14),
 # More applications
          alacarte (>= 3.11),
@@ -123,7 +123,6 @@ Depends: gnome-core (= ${binary:Version}),
          hamster-applet (>= 2.91.3),
          inkscape (>= 0.48),
          rhythmbox (>= 3.0),
-         shotwell [linux-any],
          simple-scan [linux-any],
          sound-juicer (>= 3.14),
          transmission-gtk,
@@ -131,13 +130,10 @@ Depends: gnome-core (= ${binary:Version}),
 # Plugins for core and apps
          cups-pk-helper (>= 0.2),
          gedit-plugins (>= 3.14),
-         gnome-shell-extensions (>= 3.14) [linux-any],
          gstreamer1.0-libav (>= 0.10.13),
          gstreamer1.0-plugins-ugly (>= 0.10.19),
          rhythmbox-plugins,
          rhythmbox-plugin-cdrecorder,
-         rygel-playbin (>= 0.24) [!kfreebsd-any],
-         rygel (>= 0.24) [!kfreebsd-any],
          telepathy-gabble,
          telepathy-rakia,
          telepathy-salut,
@@ -145,13 +141,6 @@ Depends: gnome-core (= ${binary:Version}),
 # For debconf
          libgtk2-perl (>= 1:1.130),
          ${misc:Depends}
-Recommends: gdebi,
-            telepathy-idle,
-# Official app, not yet in Jessie so only recommended for now.
-            gnome-software
-Suggests: dia-gnome,
-          gnucash,
-          planner
 Description: Full GNOME Desktop Environment, with extra components
  This is the GNOME Desktop environment, an intuitive and attractive
  desktop, with extra components.
@@ -189,36 +178,22 @@ Description: games for the GNOME desktop
  Games are now split in separate packages; this metapackage brings all
  of them but they can be installed separately.
 
-Package: gnome-desktop-environment
-Section: oldlibs
-Priority: extra
-Architecture: all
-Depends: gnome (>= ${source:Version}),
-         ${misc:Depends}
-Description: GNOME Desktop Environment - transitional package
- This is the GNOME Desktop environment, an intuitive and attractive
- desktop.
- .
- This metapackage is obsolete and has been replaced by “gnome”.
-
 Package: gnome-platform-devel
 Architecture: any
 Section: devel
-Depends: libatk1.0-dev (>= 2.4),
-         libclutter-1.0-dev (>= 1.10),
-         libclutter-gtk-1.0-dev (>= 1.2),
-         libcogl-dev (>= 1.10),
-         libgdk-pixbuf2.0-dev (>= 2.26),
-         libglib2.0-dev (>= 2.32),
-         libgstreamer1.0-dev (>= 0.10.36),
+Depends: libatk1.0-dev (>= 2.14),
+         libclutter-1.0-dev (>= 1.20),
+         libclutter-gtk-1.0-dev (>= 1.6),
+         libcogl-dev (>= 1.18),
+         libgdk-pixbuf2.0-dev (>= 2.31),
+         libglib2.0-dev (>= 2.42),
+         libgstreamer1.0-dev (>= 1.4),
          libgtk2.0-dev (>= 2.24),
-         libgail-dev (>= 2.24),
-         libgtk-3-dev (>= 3.4),
-         libgail-3-dev (>= 3.4),
-         gtk-doc-tools (>= 1.18),
-         libgtksourceview-3.0-dev (>= 3.4),
-         libpango1.0-dev (>= 1.30),
-         yelp-tools,
+         libgtk-3-dev (>= 3.14),
+         gtk-doc-tools (>= 1.21),
+         libgtksourceview-3.0-dev (>= 3.14),
+         libpango1.0-dev (>= 1.36),
+         yelp-tools (>= 3.14),
          ${misc:Depends}
 Recommends: gnome-api-docs
 Description: GNOME development platform
@@ -230,100 +205,17 @@ Description: GNOME development platform
  build applications using GNOME technologies. Most of these components
  have long-term API stability guarantees.
 
-Package: gnome-core-devel
-Architecture: linux-any
-Section: devel
-Depends: gnome-platform-devel (= ${binary:Version}),
-         libatspi2.0-dev (>= 2.4),
-         libatkmm-1.6-dev (>= 2.4),
-         libbrasero-media3-dev (>= 3.4),
-         libcaribou-dev (>= 0.4),
-         libclutter-gst-2.0-dev (>= 2.0.10),
-         libdconf-dev (>= 0.12),
-         evolution-data-server-dev (>= 3.12),
-         libedataserver1.2-dev (>= 3.12),
-         libcamel1.2-dev (>= 3.12),
-         libebook1.2-dev (>= 3.12),
-         libedata-book1.2-dev (>= 3.12),
-         libebook-contacts1.2-dev (>= 3.12),
-         libecal1.2-dev (>= 3.12),
-         libedata-cal1.2-dev (>= 3.12),
-         libebackend1.2-dev (>= 3.12),
-         libevince-dev (>= 3.14),
-         libfolks-dev (>= 0.6.9),
-         libgconf2-dev (>= 3.2),
-         libgck-1-dev (>= 3.14),
-         libgcr-3-dev (>= 3.14),
-         libgeocode-glib-dev (>= 3.14),
-         gjs (>= 1.42),
-         libgjs-dev (>= 1.42),
-         libglibmm-2.4-dev (>= 2.32),
-         libgmime-2.6-dev (>= 2.6),
-         libgnome-bluetooth-dev (>= 3.14) [linux-any],
-         gnome-common (>= 2.34),
-         libgnome-desktop-3-dev (>= 3.14),
-         libudisks2-dev (>= 2.1) [linux-any],
-         gnome-js-common (>= 0.1.2),
-         libgnome-menu-3-dev (>= 3.13),
-         gobject-introspection (>= 1.42),
-         libgirepository1.0-dev (>= 1.42),
-         libgstreamer-plugins-base1.0-dev (>= 0.10.36),
-         libgtkmm-3.0-dev (>= 3.14),
-         libgucharmap-2-90-dev (>= 1:3.14),
-         libjson-glib-dev (>= 1.0),
-         libchamplain-gtk-0.12-dev,
-         libcroco3-dev (>= 0.6.5),
-         libgnome-keyring-dev (>= 3.12),
-         libgnomekbd-dev (>= 3.6),
-         libgtop2-dev (>= 2.28.4),
-         libgweather-3-dev (>= 3.14),
-         libgxps-dev (>= 0.2),
-         libnotify-dev (>= 0.7.5),
-         libpeas-dev (>= 1.12),
-         librsvg2-dev (>= 2.36),
-         libsigc++-2.0-dev (>= 2.2.10),
-         libsoup-gnome2.4-dev (>= 2.38),
-         libwacom-dev (>= 0.4) [linux-any],
-         libwnck-3-dev (>= 3.4),
-         mm-common (>= 0.9.5),
-         libmediaart-1.0-dev,
-         libmutter-dev (>= 3.14),
-         libnautilus-extension-dev (>= 3.14),
-         libnm-gtk-dev (>= 0.9.4) [linux-any],
-         libnm-glib-dev (>= 0.9.4) [linux-any],
-         libpangomm-1.4-dev (>= 2.28),
-         python-gi-dev (>= 3.14),
-         librest-dev (>= 0.7.12),
-         libtelepathy-glib-dev (>= 0.18),
-         libtelepathy-farstream-dev (>= 0.4),
-         libtotem-plparser-dev (>= 3.10),
-         valac (>= 0.26),
-         libvte-2.91-dev,
-         yelp-tools (>= 3.14),
-         yelp-xsl (>= 3.14),
-         ${misc:Depends}
-Recommends: gnome-api-docs
-Description: GNOME Desktop Environment -- development components
- These are the development components of the core components of the
- GNOME Desktop environment, an intuitive and attractive desktop.
- .
- This metapackage depends on everything you need to build applications
- for GNOME, in C, C++ and Python languages; it isn't of much use for
- anything else.
- .
- If you want to develop a new application for GNOME, you might want to
- look at the gnome-platform-devel metapackage, which only contains the
- recommended components.
-
 Package: gnome-devel
-Architecture: all
+Architecture: any
 Section: devel
 Depends: accerciser (>= 3.14),
          anjuta (>= 2:3.14),
          anjuta-extras (>= 3.10),
          devhelp (>= 3.14),
+         gitg,
          glade (>= 3.18),
          gnome-devel-docs (>= 3.14),
+         nemiver (>= 0.9),
          ${misc:Depends}
 Recommends: gnome-platform-devel
 Description: GNOME Desktop Environment -- development tools
