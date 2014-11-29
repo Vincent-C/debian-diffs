@@ -25,4 +25,5 @@
 65_save_sound.patch
 66_load_libnotify4.patch
 67_configure_with_gmodule.patch
+68_dont_force_sslv3.patch
 80_fix_disappearing_systray.patch

@@ -1,2 +1,2 @@
 version=3
-http://sf.net/xchat/xchat-(.*)\.tar\.(?:gz|bz2|xz)
+http://xchat.org/files/source/(?:[\d\.]*)/xchat-(.*)\.tar\.(?:gz|bz2)

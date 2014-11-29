@@ -1,12 +1,19 @@
-xchat (2.8.8-7.2+vc1) unstable; urgency=medium
+xchat (2.8.8-7.3+vc1) unstable; urgency=medium
 
   * Local package.
   * Stop systray icon from disappearing every time gnome-{shell,panel}
     disappears/crashes/kills itself. (Closes: #675439)
     - Add debian/patches/80_fix_disappearing_systray.patch.
-  * Update debian/watch file. (Closes: #675428)
 
- -- Vincent Cheng <vcheng@debian.org>  Fri, 17 Oct 2014 22:31:13 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 28 Nov 2014 22:56:32 -0800
+
+xchat (2.8.8-7.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Add debian/patches/68_dont_force_sslv3.patch.
+    Provided via LP: #1381484. (Closes: #766005)
+
+ -- Sven Hoexter <hoexter@debian.org>  Fri, 07 Nov 2014 10:55:27 +0100
 
 xchat (2.8.8-7.2) unstable; urgency=medium
 
