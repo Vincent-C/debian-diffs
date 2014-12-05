@@ -14,6 +14,7 @@ firefox-bin                    opt/firefox/
 libfreebl3.chk                 opt/firefox/
 libfreebl3.so                  opt/firefox/
 libmozalloc.so                 opt/firefox/
+libmozsandbox.so               opt/firefox/
 libmozsqlite3.so               opt/firefox/
 libnspr4.so                    opt/firefox/
 libnss3.so                     opt/firefox/
