@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.14+2+vc1) unstable; urgency=medium
+meta-gnome3 (1:3.14+3+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -11,7 +11,17 @@ meta-gnome3 (1:3.14+2+vc1) unstable; urgency=medium
     - tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
 
- -- Vincent Cheng <vcheng@debian.org>  Fri, 28 Nov 2014 23:04:02 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 14 Dec 2014 23:10:04 -0800
+
+meta-gnome3 (1:3.14+3) unstable; urgency=medium
+
+  * Use goobox by default instead of sound-juicer. Closes: #771827.
+  * Add gnome-shell-extension-weather to gnome.
+  * Demote XUL extensions to suggests again, because they are not 
+    updated whenever iceweasel is upgraded in stable, despite being (at 
+    least for the keyring plugin) important security features.
+
+ -- Josselin Mouette <joss@debian.org>  Fri, 05 Dec 2014 15:18:27 +0100
 
 meta-gnome3 (1:3.14+2) unstable; urgency=medium
 
