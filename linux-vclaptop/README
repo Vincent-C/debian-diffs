@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.17.3.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.18.3.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -30,7 +30,7 @@ packaging).
    change compiler version if wanted. Remove debian/config/i386/.
 10) debian/templates: find . -type f -exec sed -i 's/liquorix/vclaptop/' {} +
     Edit debian/source/options: compression set to xz, compression level = 6.
-    Edit debian/templates/control.source.in: change maintainer name and email.
+    Edit debian/templates/control.source.in: change maintainer name and email, homepage.
     Edit debian/README.* with the following header:
 
 (README.Debian):

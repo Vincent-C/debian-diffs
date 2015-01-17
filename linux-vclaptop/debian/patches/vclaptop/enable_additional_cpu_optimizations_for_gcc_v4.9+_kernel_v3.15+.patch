@@ -316,7 +316,7 @@ gcc version >=4.9
  	int
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
-@@ -89,13 +89,33 @@
+@@ -85,13 +85,33 @@
  	KBUILD_CFLAGS += $(call cc-option,-mpreferred-stack-boundary=3)
  
          # FIXME - should be integrated in Makefile.cpu (Makefile_32.cpu)

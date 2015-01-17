@@ -3,4 +3,4 @@ Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 9.20120115), cpio, python, bc
-Homepage: http://www.vclaptop.net/
+Homepage: http://www.vcheng.org/
