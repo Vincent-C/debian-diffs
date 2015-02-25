@@ -2,6 +2,7 @@ browser/                       opt/firefox/
 components/                    opt/firefox/
 defaults/                      opt/firefox/
 dictionaries/                  opt/firefox/
+gmp-clearkey/                  opt/firefox/
 icons/                         opt/firefox/
 webapprt/                      opt/firefox/
 application.ini                opt/firefox/
@@ -14,7 +15,6 @@ firefox-bin                    opt/firefox/
 libfreebl3.chk                 opt/firefox/
 libfreebl3.so                  opt/firefox/
 libmozalloc.so                 opt/firefox/
-libmozsandbox.so               opt/firefox/
 libmozsqlite3.so               opt/firefox/
 libnspr4.so                    opt/firefox/
 libnss3.so                     opt/firefox/
@@ -29,7 +29,6 @@ libsoftokn3.chk                opt/firefox/
 libsoftokn3.so                 opt/firefox/
 libssl3.so                     opt/firefox/
 libxul.so                      opt/firefox/
-mozilla-xremote-client         opt/firefox/
 omni.ja                        opt/firefox/
 platform.ini                   opt/firefox/
 plugin-container               opt/firefox/
