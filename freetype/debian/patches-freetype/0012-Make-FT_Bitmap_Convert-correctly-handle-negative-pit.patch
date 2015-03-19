@@ -1,0 +1,169 @@
+From 91c554119a126f4476b2675a3729e8890a2b2e4a Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Wed, 19 Nov 2014 21:21:23 +0100
+Subject: Make `FT_Bitmap_Convert' correctly handle negative `pitch' values.
+ CVE-2014-9665-fixup
+
+* src/base/ftbitmap.c (FT_Bitmap_Convert): Always use positive value
+for the pitch while copying data.
+Correctly set pitch sign in target bitmap.
+
+(cherry picked from commit df485774fbbc7fd7dc9d3b278846f454654ad5df)
+---
+ freetype-2.5.2/src/base/ftbitmap.c | 63 +++++++++++++++++++++-----------------
+ 1 file changed, 35 insertions(+), 28 deletions(-)
+
+diff --git freetype-2.5.2/src/base/ftbitmap.c freetype-2.5.2/src/base/ftbitmap.c
+index 182b1cc..9223007 100644
+--- freetype-2.5.2/src/base/ftbitmap.c
++++ freetype-2.5.2/src/base/ftbitmap.c
+@@ -443,6 +443,8 @@
+     FT_Error   error = FT_Err_Ok;
+     FT_Memory  memory;
+ 
++    FT_Int  source_pitch, target_pitch;
++
+ 
+     if ( !library )
+       return FT_THROW( Invalid_Library_Handle );
+@@ -459,13 +461,15 @@
+     case FT_PIXEL_MODE_LCD_V:
+     case FT_PIXEL_MODE_BGRA:
+       {
+-        FT_Int   pad;
++        FT_Int   pad, old_target_pitch;
+         FT_Long  old_size;
+ 
+ 
+-        old_size = target->rows * target->pitch;
+-        if ( old_size < 0 )
+-          old_size = -old_size;
++        old_target_pitch = target->pitch;
++        if ( old_target_pitch < 0 )
++          old_target_pitch = -old_target_pitch;
++
++        old_size = target->rows * old_target_pitch;
+ 
+         target->pixel_mode = FT_PIXEL_MODE_GRAY;
+         target->rows       = source->rows;
+@@ -479,16 +483,18 @@
+             pad = alignment - pad;
+         }
+ 
+-        target->pitch = source->width + pad;
++        target_pitch = source->width + pad;
+ 
+-        if ( target->pitch > 0                                     &&
+-             (FT_ULong)target->rows > FT_ULONG_MAX / target->pitch )
++        if ( target_pitch > 0                                     &&
++             (FT_ULong)target->rows > FT_ULONG_MAX / target_pitch )
+           return FT_THROW( Invalid_Argument );
+ 
+-        if ( target->rows * target->pitch > old_size             &&
++        if ( target->rows * target_pitch > old_size               &&
+              FT_QREALLOC( target->buffer,
+-                          old_size, target->rows * target->pitch ) )
++                          old_size, target->rows * target_pitch ) )
+           return error;
++
++        target->pitch = target->pitch < 0 ? -target_pitch : target_pitch;
+       }
+       break;
+ 
+@@ -496,6 +502,10 @@
+       error = FT_THROW( Invalid_Argument );
+     }
+ 
++    source_pitch = source->pitch;
++    if ( source_pitch < 0 )
++      source_pitch = -source_pitch;
++
+     switch ( source->pixel_mode )
+     {
+     case FT_PIXEL_MODE_MONO:
+@@ -548,8 +558,8 @@
+             }
+           }
+ 
+-          s += source->pitch;
+-          t += target->pitch;
++          s += source_pitch;
++          t += target_pitch;
+         }
+       }
+       break;
+@@ -559,11 +569,9 @@
+     case FT_PIXEL_MODE_LCD:
+     case FT_PIXEL_MODE_LCD_V:
+       {
+-        FT_Int    width   = source->width;
+-        FT_Byte*  s       = source->buffer;
+-        FT_Byte*  t       = target->buffer;
+-        FT_Int    s_pitch = source->pitch;
+-        FT_Int    t_pitch = target->pitch;
++        FT_Int    width = source->width;
++        FT_Byte*  s     = source->buffer;
++        FT_Byte*  t     = target->buffer;
+         FT_Int    i;
+ 
+ 
+@@ -573,8 +581,8 @@
+         {
+           FT_ARRAY_COPY( t, s, width );
+ 
+-          s += s_pitch;
+-          t += t_pitch;
++          s += source_pitch;
++          t += target_pitch;
+         }
+       }
+       break;
+@@ -625,8 +633,8 @@
+             }
+           }
+ 
+-          s += source->pitch;
+-          t += target->pitch;
++          s += source_pitch;
++          t += target_pitch;
+         }
+       }
+       break;
+@@ -664,18 +672,17 @@
+           if ( source->width & 1 )
+             tt[0] = (FT_Byte)( ( ss[0] & 0xF0 ) >> 4 );
+ 
+-          s += source->pitch;
+-          t += target->pitch;
++          s += source_pitch;
++          t += target_pitch;
+         }
+       }
+       break;
+ 
++
+     case FT_PIXEL_MODE_BGRA:
+       {
+-        FT_Byte*  s       = source->buffer;
+-        FT_Byte*  t       = target->buffer;
+-        FT_Int    s_pitch = source->pitch;
+-        FT_Int    t_pitch = target->pitch;
++        FT_Byte*  s = source->buffer;
++        FT_Byte*  t = target->buffer;
+         FT_Int    i;
+ 
+ 
+@@ -696,8 +703,8 @@
+             tt += 1;
+           }
+ 
+-          s += s_pitch;
+-          t += t_pitch;
++          s += source_pitch;
++          t += target_pitch;
+         }
+       }
+       break;
+-- 
+2.1.4
+

@@ -1,0 +1,33 @@
+From 9c29f8a914862850a8e5c9fdf35d226ac7be30b8 Mon Sep 17 00:00:00 2001
+From: suzuki toshiya <mpsuzuki@hiroshima-u.ac.jp>
+Date: Wed, 26 Nov 2014 14:36:12 +0900
+Subject: =?UTF-8?q?*=20src/base/ftobjs.c=20(Mac=5FRead=5FPOST=5FResource):?=
+ =?UTF-8?q?=20Avoid=20memory=20leak=20CVE-2014-9673-fixup=0Aby=20a=20broke?=
+ =?UTF-8?q?n=20POST=20table=20in=20resource-fork.=20=20Return=20after=20fr?=
+ =?UTF-8?q?eeing=0Athe=20buffered=20POST=20table=20when=20it=20is=20found?=
+ =?UTF-8?q?=20to=20be=20broken.?=
+
+(cherry picked from commit 5aff85301bdce7677766fa1367c82ff41a739637)
+---
+ freetype-2.5.2/src/base/ftobjs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git freetype-2.5.2/src/base/ftobjs.c freetype-2.5.2/src/base/ftobjs.c
+index bd0c66e..6014a93 100644
+--- freetype-2.5.2/src/base/ftobjs.c
++++ freetype-2.5.2/src/base/ftobjs.c
+@@ -1626,9 +1626,9 @@
+       if ( error )
+         goto Exit2;
+       if ( FT_READ_LONG( rlen ) )
+-        goto Exit;
++        goto Exit2;
+       if ( FT_READ_USHORT( flags ) )
+-        goto Exit;
++        goto Exit2;
+       FT_TRACE3(( "POST fragment[%d]: offsets=0x%08x, rlen=0x%08x, flags=0x%04x\n",
+                    i, offsets[i], rlen, flags ));
+ 
+-- 
+2.1.4
+
