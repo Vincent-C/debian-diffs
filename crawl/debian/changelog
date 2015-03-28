@@ -1,4 +1,4 @@
-crawl (2:0.16.0-1~vc1) unstable; urgency=medium
+crawl (2:0.16.1-1~vc1) unstable; urgency=medium
 
   * Local package.
   * New upstream release.
@@ -6,7 +6,7 @@ crawl (2:0.16.0-1~vc1) unstable; urgency=medium
     - Remove build-deps: libsdl1.2-dev, libsdl-image1.2-dev
   * debian/rules: Disable LTO due to FTBFS (ICE with gcc-4.9).
 
- -- Vincent Cheng <vcheng@debian.org>  Thu, 19 Mar 2015 00:14:54 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 27 Mar 2015 22:50:51 -0700
 
 crawl (2:0.15.1-1) unstable; urgency=medium
 
