@@ -19,7 +19,7 @@ if ( ! $@ )
 
 $|=1;
 # Predefined values:
-my $version           = "3.18-3-vclaptop-amd64";
+my $version           = "4.0-4-vclaptop-amd64";
 my $link_in_boot      = "";
 my $kimage            = "vmlinuz";
 my $postrm_hook       = '';       #Normally we do not
@@ -257,7 +257,7 @@ foreach my $extra_file (@files_to_remove) {
 }
 
 if (-d "/lib/modules/$version" ) {
-  system ("rmdir", "/lib/modules/$version");
+  system ("rm", "-r", "-f", "/lib/modules/$version");
 }
 
 exit 0;

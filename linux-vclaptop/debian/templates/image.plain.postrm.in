@@ -257,7 +257,7 @@ foreach my $extra_file (@files_to_remove) {
 }
 
 if (-d "/lib/modules/$version" ) {
-  system ("rmdir", "/lib/modules/$version");
+  system ("rm", "-r", "-f", "/lib/modules/$version");
 }
 
 exit 0;
