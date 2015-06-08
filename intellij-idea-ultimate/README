@@ -1,0 +1,6 @@
+Download: https://www.jetbrains.com/idea/download/
+
+This package just installs the binary components of IntelliJ IDEA Ultimate,
+built and distributed by upstream. You must download the tarball yourself and
+rename it to intellij-idea-ultimate_$(VERSION).orig.tar.gz before running
+dpkg-buildpackage in the unpacked directory.
