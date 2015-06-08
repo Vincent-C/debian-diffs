@@ -1,0 +1,8 @@
+intellij-idea-ultimate for Debian
+---------------------------------
+
+This is a set of Debian packaging scripts to create an installable Debianized
+distribution of IntelliJ IDEA locally.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 07 Jun 2015 23:24:02 -0700
+
