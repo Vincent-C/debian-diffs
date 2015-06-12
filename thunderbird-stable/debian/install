@@ -2,6 +2,7 @@ chrome/                    opt/thunderbird/
 components/                opt/thunderbird/
 defaults/                  opt/thunderbird/
 dictionaries/              opt/thunderbird/
+distribution/              opt/thunderbird/
 extensions/                opt/thunderbird/
 icons/                     opt/thunderbird/
 isp/                       opt/thunderbird/
@@ -32,7 +33,6 @@ libsoftokn3.chk            opt/thunderbird/
 libsoftokn3.so             opt/thunderbird/
 libssl3.so                 opt/thunderbird/
 libxul.so                  opt/thunderbird/
-mozilla-xremote-client     opt/thunderbird/
 omni.ja                    opt/thunderbird/
 platform.ini               opt/thunderbird/
 plugin-container           opt/thunderbird/
