@@ -1,0 +1,12 @@
+configuration/                opt/eclipse4.5/
+dropins/                      opt/eclipse4.5/
+features/                     opt/eclipse4.5/
+p2/                           opt/eclipse4.5/
+plugins/                      opt/eclipse4.5/
+readme/                       opt/eclipse4.5/
+artifacts.xml                 opt/eclipse4.5/
+eclipse                       opt/eclipse4.5/
+eclipse.ini                   opt/eclipse4.5/
+icon.xpm                      opt/eclipse4.5/
+debian/eclipse.desktop        usr/share/applications/
+debian/eclipse.sh             opt/eclipse4.5/
