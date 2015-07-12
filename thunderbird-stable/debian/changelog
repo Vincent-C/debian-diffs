@@ -1,3 +1,9 @@
+thunderbird-stable (38.1.0-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 11 Jul 2015 22:18:28 -0700
+
 thunderbird-stable (38.0.1-1+vc1) unstable; urgency=medium
 
   * New upstream release.
