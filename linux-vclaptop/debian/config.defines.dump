@@ -109,7 +109,7 @@ tp59
 (dp60
 S'abiname'
 p61
-S'4'
+S'3'
 p62
 ss(S'description'
 p63
@@ -166,15 +166,15 @@ tp92
 (dp93
 S'abiname'
 p94
-S'4.0-4'
+S'4.1-3'
 p95
 sS'source'
 p96
-V4.0.4-1
+V4.1.3-1
 p97
 sS'upstream'
 p98
-S'4.0'
+S'4.1'
 p99
 ss(S'build'
 p100

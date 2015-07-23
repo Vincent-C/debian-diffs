@@ -10,7 +10,7 @@ my $capb=capb("backup");
 $|=1;
 
 # Predefined values:
-my $version         = "4.0-4-vclaptop-amd64";
+my $version         = "4.1-3-vclaptop-amd64";
 my $kimage          = "vmlinuz";
 my $preinst_hook    = '';       #Normally we do not
 my $package_name    = "linux-image-$version";
