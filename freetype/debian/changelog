@@ -1,14 +1,39 @@
-freetype (2.5.2-4+vc1) unstable; urgency=medium
+freetype (2.6-1+vc1) unstable; urgency=medium
 
   * Local package.
-  * Re-enable new Adobe CFF hinter.
-    - remove debian/patches/enable-old-cff.patch
   * Merge from Ubuntu:
     - debian/patches-freetype/revert_scalable_fonts_metric.patch:
       revert commit "Fix metrics on size request for scalable fonts.",
       which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <vcheng@debian.org>  Thu, 19 Mar 2015 00:19:30 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 13 Sep 2015 23:28:13 -0700
+
+freetype (2.6-1) unstable; urgency=medium
+
+  * New upstream release.  Closes: #793751.
+    * Includes a fix for a spurious error in FT_Get_SubGlyph_Info.
+      Closes: #778493.
+    * Includes a fix for an infinite loop in T1 font loading.
+      Closes: #798620.
+    * Includes a fix for an uninitialized memory bug in font parsers.
+      Closes: #798619.
+    * Includes fix for an out-of-bounds rate in the Adobe CFF implementation
+      (which was not previously enabled in the package build).
+      Closes: #773084.
+    * Includes a fix for a crasher in xdvi.  Closes: #733894.
+    * Fixes support for compressed pcf fonts.  Closes: #780340.
+    * Drop various cherrypicked upstream patches from the package.
+    * Ship upstream freetype-config manpage in place of our own.
+      Closes LP: #1390767.
+  * Update symbols file.  Includes dropping various private symbols that
+    don't appear to have ever been part of the API.
+  * Fix exclusion of redundant license file (txt -> TXT)
+  * Re-enable the CFF driver, now that most related fonts have been fixed.
+    Closes: #795653.
+  * Enable stage1 build without X library dependencies for bootstrapping.
+    Closes: #752270, #752271.
+
+ -- Steve Langasek <vorlon@debian.org>  Sat, 12 Sep 2015 07:29:07 +0000
 
 freetype (2.5.2-4) unstable; urgency=medium
 

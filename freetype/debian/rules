@@ -28,7 +28,7 @@ ver := $(shell dpkg-parsechangelog | sed -n -e's/^Version: \(.*\)-[^-]\+/\1/p')
 freetype_ver := $(ver)
 ftdocs_ver   := $(ver)
 ft2demos_ver := $(ver)
-dependency = $(libpkg) (>= 2.4.0)
+dependency = $(libpkg) (>= 2.6)
 
 freetype_u := freetype-$(freetype_ver)
 ftdocs_u   := freetype-doc-$(ftdocs_ver)
@@ -41,8 +41,6 @@ docpkg := $(libpkg)-doc
 demospkg := freetype2-demos
 udebpkg := libfreetype6-udeb
 docdir := usr/share/doc
-freetype_config_man := $(CURDIR)/debian/freetype-config.man
-freetype_config_sgml := $(CURDIR)/debian/freetype-config.man.sgml
 
 libdoc = FTL.TXT CHANGES TODO ft2faq.html
 
@@ -81,20 +79,22 @@ override_dh_auto_configure: patch
 
 override_dh_auto_build:
 	dh_auto_build -D $(freetype_u)
+ifneq (,$(filter $(demospkg), $(shell dh_listpackages)))
 	dh_auto_build -D $(ft2demos_u) -- TOP_DIR=../$(freetype_u) \
 		OBJ_DIR=../$(freetype_u)/objs
-	docbook-to-man $(freetype_config_sgml) > $(freetype_config_man)
+endif
 
 override_dh_auto_clean:
-	rm -f $(freetype_config_man)
 	rm -f unpack-stamp patch-stamp
 	rm -rf $(freetype_u) $(ft2demos_u) docs
 
 override_dh_auto_install:
 	dh_auto_install -D $(freetype_u) --destdir=$(CURDIR)/debian/tmp
+ifneq (,$(filter $(demospkg), $(shell dh_listpackages)))
 	$(freetype_u)/builds/unix/libtool --mode=install \
 	    cp -av `find $(ft2demos_u)/bin -type f -perm -u=x -maxdepth 1` \
 		$(CURDIR)/debian/$(demospkg)/usr/bin/
+endif
 	sed -i -e'/dependency_libs/s/'.*'//' debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libfreetype.la
 
 override_dh_install:
@@ -109,7 +109,7 @@ endif
 ifneq (,$(findstring $(devpkg), $(shell dh_listpackages)))
 	dh_installdocs --link-doc=$(libpkg) -p$(devpkg) \
 		-Xreference/README -Xreference/.gitignore \
-		-XLICENSE.TXT -XGPL.TXT -XGPLv2.txt -XBUILD -XINSTALL \
+		-XLICENSE.TXT -XGPL.TXT -XGPLv2.TXT -XBUILD -XINSTALL \
 		$(addprefix -X,$(libdoc)) \
 		$(ftdocs_d)/docs/*
 endif

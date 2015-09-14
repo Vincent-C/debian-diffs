@@ -1,0 +1,12 @@
+diff -uNr freetype-2.5.2.orig/include/config/ftoption.h freetype-2.5.2/include/config/ftoption.h
+--- freetype-2.5.2.orig/include/config/ftoption.h	2013-12-08 11:40:19.511032012 -0700
++++ freetype-2.5.2/include/config/ftoption.h	2014-04-16 02:37:21.738068874 -0600
+@@ -765,7 +765,7 @@
+   /* switch between the two engines using the `hinting-engine' property of */
+   /* the cff driver module.                                                */
+   /*                                                                       */
+-/* #define CFF_CONFIG_OPTION_OLD_ENGINE */
++ #define CFF_CONFIG_OPTION_OLD_ENGINE
+ 
+ 
+   /*************************************************************************/

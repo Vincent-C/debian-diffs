@@ -1,8 +1,8 @@
-Index: ft2demos-2.5.1/src/ftcommon.c
+Index: ft2demos-2.6/src/ftcommon.c
 ===================================================================
---- ft2demos-2.5.1.orig/src/ftcommon.c
-+++ ft2demos-2.5.1/src/ftcommon.c
-@@ -417,6 +417,7 @@
+--- ft2demos-2.6.orig/src/ftcommon.c
++++ ft2demos-2.6/src/ftcommon.c
+@@ -418,6 +418,7 @@
  
          if ( file == NULL )  /* shouldn't happen */
          {
@@ -10,13 +10,12 @@ Index: ft2demos-2.5.1/src/ftcommon.c
            free( font );
            return FT_Err_Invalid_Argument;
          }
-@@ -426,7 +427,15 @@
-         fseek( file, 0, SEEK_SET );
+@@ -430,7 +431,14 @@
+           return FT_Err_Invalid_Stream_Operation;
  
-         font->file_address = malloc( file_size );
--        fread( font->file_address, 1, file_size, file );
-+
-+        if (fread( font->file_address, 1, file_size, file ) < file_size)
+         font->file_address = malloc( (size_t)file_size );
+-        fread( font->file_address, 1, (size_t)file_size, file );
++        if (fread( font->file_address, 1, (size_t)file_size, file ) < file_size)
 +        {
 +          fclose( file );
 +          free( font->file_address );
@@ -25,43 +24,24 @@ Index: ft2demos-2.5.1/src/ftcommon.c
 +          return FT_Err_Invalid_Argument;
 +        }
  
-         font->file_size = file_size;
+         font->file_size = (size_t)file_size;
  
-Index: ft2demos-2.5.1/src/ftdiff.c
+Index: ft2demos-2.6/src/ftdiff.c
 ===================================================================
---- ft2demos-2.5.1.orig/src/ftdiff.c
-+++ ft2demos-2.5.1/src/ftdiff.c
-@@ -1442,8 +1442,13 @@
+--- ft2demos-2.6.orig/src/ftdiff.c
++++ ft2demos-2.6/src/ftdiff.c
+@@ -1501,7 +1501,13 @@
  
          if ( text != NULL )
          {
--          fread( text, tsize, 1, tfile );
--          text[tsize] = 0;
-+          if (fread( text, tsize, 1, tfile ) < 1) {
+-          fread( text, (unsigned int)tsize, 1, tfile );
++          if (fread( text, (unsigned int)tsize, 1, tfile ) < 1) {
 +            fprintf( stderr, "could not read '%s'\n", textfile );
 +            free( text );
 +            text = (char *)default_text;
 +          } else {
 +            text[tsize] = 0;
 +          }
+           text[tsize] = 0;
          }
          else
-         {
-Index: ft2demos-2.5.1/src/ttdebug.c
-===================================================================
---- ft2demos-2.5.1.orig/src/ttdebug.c
-+++ ft2demos-2.5.1/src/ttdebug.c
-@@ -1905,11 +1905,11 @@
- 
-       FT_Library_Version( library, &major, &minor, &patch );
- 
--      offset = snprintf( version_string, 64 + 1,
-+      offset = snprintf( version_string, 64,
-                          "ttdebug (FreeType) %d.%d",
-                          major, minor );
-       if ( patch )
--        offset = snprintf( version_string + offset, 64 + 1 - offset,
-+        offset = snprintf( version_string + offset, 64 - offset,
-                            ".%d",
-                            patch );
-     }

@@ -4,11 +4,11 @@ Description: revert wrong upstream commit that causes a build failure.
  stop using a C++ compiler to build your C program!
 Author: Steve Langasek <vorlon@debian.org>
 
-Index: ft2demos-2.5.1/src/ftgrid.c
+Index: ft2demos-2.6/src/ftgrid.c
 ===================================================================
---- ft2demos-2.5.1.orig/src/ftgrid.c
-+++ ft2demos-2.5.1/src/ftgrid.c
-@@ -53,10 +53,10 @@
+--- ft2demos-2.6.orig/src/ftgrid.c
++++ ft2demos-2.6/src/ftgrid.c
+@@ -52,10 +52,10 @@
    struct  AF_GlyphHintsRec_;
    typedef struct AF_GlyphHintsRec_*  AF_GlyphHints;
  

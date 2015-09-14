@@ -1,4 +1,4 @@
-Tarball: http://ftp.debian.org/debian/pool/main/f/freetype/freetype_2.5.2.orig.tar.gz
+Tarball: http://ftp.debian.org/debian/pool/main/f/freetype/freetype_2.6.orig.tar.gz
 
 These patched freetype packages should be used in conjunction with the patched
 cairo and fontconfig packages in this repo to provide a more comfortable
