@@ -1,15 +1,29 @@
-java-common (0.52+vc2) unstable; urgency=medium
-
-  * Default to oracle-java8-jdk.
-
- -- Vincent Cheng <vcheng@debian.org>  Wed, 15 Oct 2014 00:17:13 -0700
-
-java-common (0.52+vc1) unstable; urgency=medium
+java-common (0.53+vc1) unstable; urgency=medium
 
   * Local package.
-  * Replace openjdk with oracle-java7-jdk.
+  * Default to oracle-java8-jdk.
+    - Changes made to debian/java_defaults.mk, debian/rules.
 
- -- Vincent Cheng <vcheng@debian.org>  Wed, 14 May 2014 20:50:16 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 13 Sep 2015 23:13:12 -0700
+
+java-common (0.53) experimental; urgency=medium
+
+  * Team upload.
+  * Use OpenJDK 8 on amd64, arm64, armel, armhf, i386, powerpc, powerpcspe,
+    ppc64, ppc64el, s390x and x32.
+  * Prepared the default values for Java 9
+  * Policy changes:
+    - Programs must depend on the needed runtime environment, but not
+      the libraries (Closes: #730133)
+    - Replaced 'java' with 'Java' when referring to the language
+    - Mentioned the virtual packages java{5,6,7,8}-runtime(-headless)?
+  * Removed Niels Thykier from the uploaders (Closes: #770579)
+  * Changed the maintainer from 'Debian Java Mailing List'
+    to 'Debian Java Maintainers'
+  * Standards-Version updated to 3.9.6 (no changes)
+  * Moved the package to Git
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 01 Sep 2015 23:11:54 +0200
 
 java-common (0.52) unstable; urgency=medium
 
