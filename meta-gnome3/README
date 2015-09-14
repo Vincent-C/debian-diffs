@@ -8,5 +8,6 @@ Changes from upstream Debian meta-packages:
     - gnash
     - libreoffice*
     - gnome-software
+    - gnome-packagekit
     - tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
