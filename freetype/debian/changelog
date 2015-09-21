@@ -1,4 +1,4 @@
-freetype (2.6-1+vc1) unstable; urgency=medium
+freetype (2.6-2+vc1) unstable; urgency=medium
 
   * Local package.
   * Merge from Ubuntu:
@@ -6,7 +6,18 @@ freetype (2.6-1+vc1) unstable; urgency=medium
       revert commit "Fix metrics on size request for scalable fonts.",
       which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 13 Sep 2015 23:28:13 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 20 Sep 2015 17:46:08 -0700
+
+freetype (2.6-2) unstable; urgency=medium
+
+  * Adjust symbols references for private symbols to sort to a higher (fake)
+    version number instead of a lower, so that when linking against
+    libfreetype without using its symbols, we don't get a wrong dependency on
+    libfreetype6 (>= 1.PRIVATE.1).  Closes: #799445.  
+  * Pass --without-harfbuzz in debian/rules, to avoid opportunistically
+    picking this up as a dependency if libharfbuzz-dev is installed.
+
+ -- Steve Langasek <vorlon@debian.org>  Sat, 19 Sep 2015 19:17:07 +0000
 
 freetype (2.6-1) unstable; urgency=medium
 

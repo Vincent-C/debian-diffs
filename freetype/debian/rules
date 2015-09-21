@@ -75,7 +75,7 @@ patch-stamp:
 	touch patch-stamp
 
 override_dh_auto_configure: patch
-	dh_auto_configure -D $(freetype_u) -- --without-bzip2
+	dh_auto_configure -D $(freetype_u) -- --without-bzip2 --without-harfbuzz
 
 override_dh_auto_build:
 	dh_auto_build -D $(freetype_u)
