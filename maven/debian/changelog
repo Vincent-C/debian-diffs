@@ -1,0 +1,6 @@
+maven (99:3.3.9-1+vc1) unstable; urgency=low
+
+  * Local package.
+  * Initial release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Dec 2015 12:36:26 -0800

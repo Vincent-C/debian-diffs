@@ -1,0 +1,3 @@
+opt/maven/bin/mvn               usr/bin/mvn
+opt/maven/bin/mvnDebug          usr/bin/mvnDebug
+opt/maven/bin/mvnyjp            usr/bin/mvnyjp

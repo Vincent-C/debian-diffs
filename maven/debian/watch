@@ -1,0 +1,3 @@
+version=3
+opts=uversionmangle=s/\/$// \
+http://www.apache.org/dist/maven/maven-(\d)/(\d.+)/binaries/apache-maven-(.*)-bin.tar.gz

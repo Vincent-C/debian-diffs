@@ -1,0 +1,9 @@
+maven for Debian
+----------------
+
+This package contains the binary Maven distribution released by upstream.
+It is intended for local use only.
+
+http://www.apache.org/dist/maven/maven-3/$VERSION/binaries/
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Dec 2015 12:36:26 -0800
