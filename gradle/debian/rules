@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ 
+
+override_dh_strip:
+
+override_dh_strip_nondeterminism:
+
+get-orig-source:
+	uscan --download-current-version --force-download --rename --repack

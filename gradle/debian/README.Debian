@@ -1,0 +1,9 @@
+gradle for Debian
+-----------------
+
+This package contains the binary Gradle distribution released by upstream.
+It is intended for local use only.
+
+http://services.gradle.org/distributions/
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Dec 2015 12:06:20 -0800
