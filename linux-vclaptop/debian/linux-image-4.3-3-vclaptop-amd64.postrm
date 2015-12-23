@@ -19,7 +19,7 @@ if ( ! $@ )
 
 $|=1;
 # Predefined values:
-my $version           = "4.1-3-vclaptop-amd64";
+my $version           = "4.3-3-vclaptop-amd64";
 my $link_in_boot      = "";
 my $kimage            = "vmlinuz";
 my $postrm_hook       = '';       #Normally we do not

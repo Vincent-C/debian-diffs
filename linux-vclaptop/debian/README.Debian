@@ -1,4 +1,3 @@
-(README.Debian):
 Please note that everything below originates from the README file provided with
 the Liquorix kernel; not everything applies to this custom-built kernel.
 
@@ -11,6 +10,7 @@ Major changes to my customized kernel compared with the stock Debian ones:
  - enable MTRR sanitizer by default (CONFIG_MTRR_SANITIZER_ENABLE_DEFAULT=1)
  - kernel timer set to 300 Hz (CONFIG_HZ=300)
 ...and a number of other things.
+
 
 
 linux-liquorix

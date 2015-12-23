@@ -1,4 +1,4 @@
-Tarball: http://www.kernel.org/pub/linux/kernel/v4.0/linux-4.1.3.tar.xz
+Tarball: http://www.kernel.org/pub/linux/kernel/v4.0/linux-4.3.3.tar.xz
 
 My own patchset can be found under debian/patches/vclaptop/; patches which are
 applied are also listed in debian/patches/series.
@@ -10,7 +10,7 @@ packaging).
 
 1) Download source tarball from kernel.org.
 2) Download Liquorix debian diff (e.g. http://liquorix.net/debian/pool/main/
-   l/linux-liquorix/linux-liquorix_$(VERSION).debian.tar.bz2). I use a
+   l/linux-liquorix/linux-liquorix_$(VERSION).debian.tar.xz). I use a
    3rd-party debian diff rather than the official debian diff in Debian's
    repositories to minimize the number of Debian-specific patches applied, and
    to not worry about all the other architectures supported by Debian (I only

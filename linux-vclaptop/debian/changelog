@@ -1,3 +1,10 @@
+linux-vclaptop (4.3.3-1) unstable; urgency=medium
+
+  * Local package (linux 4.3.3); custom kernel build.
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Dec 2015 02:04:40 -0800
+
 linux-vclaptop (4.1.3-1) unstable; urgency=medium
 
   * Local package (linux 4.1.3); custom kernel build.
