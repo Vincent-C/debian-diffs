@@ -1,0 +1,4 @@
+usr/include
+usr/lib/*/libdvdcss.so
+usr/lib/*/libdvdcss.a
+usr/lib/*/pkgconfig/libdvdcss.pc

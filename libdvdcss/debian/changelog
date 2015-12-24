@@ -1,0 +1,233 @@
+libdvdcss (1.4.0-1+vc1) unstable; urgency=medium
+
+  * Local package.
+
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 23 Dec 2015 22:13:22 -0800
+
+libdvdcss (1.4.0-dmo1) unstable; urgency=medium
+
+  * New upstream releae.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Sat, 19 Dec 2015 08:48:59 +0100
+
+libdvdcss (1.3.0-dmo1) unstable; urgency=medium
+
+  * New upstream releae.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Tue, 05 Aug 2014 08:46:29 +0200
+
+libdvdcss (1.2.13-dmo1) unstable; urgency=low
+
+  * New upstream releae.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Thu, 28 Feb 2013 09:23:53 +0100
+
+libdvdcss (1.2.12-dmo2) unstable; urgency=low
+
+  * New upload. Now backport version number is greater than the one in testing.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Tue, 20 Nov 2012 08:56:34 +0100
+
+libdvdcss (1.2.12-dmo1) unstable; urgency=low
+
+  * Upload with -dmo1
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 27 Jul 2012 11:34:17 +0200
+
+libdvdcss (1.2.12-0.1) unstable; urgency=low
+
+  * Added Multi-Arch: field in debian/control
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 03 Apr 2012 10:24:16 +0200
+
+libdvdcss (1.2.12-0.0) unstable; urgency=low
+
+  * New upstream releae.
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 13 Mar 2012 08:52:02 +0100
+
+libdvdcss (1.2.11-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 16 Nov 2011 09:29:30 +0100
+
+libdvdcss (1.2.10-0.5) unstable; urgency=low
+
+  * Build for multiarch.
+
+ -- Christian Marillat <marillat@debian.org>  Mon, 27 Jun 2011 15:51:35 +0200
+
+libdvdcss (1.2.10-0.4) unstable; urgency=low
+
+  * Updated to latest debhelper.
+
+ -- Christian Marillat <marillat@debian.org>  Sat, 19 Mar 2011 09:29:04 +0100
+
+libdvdcss (1.2.10-0.3) unstable; urgency=low
+
+  * Don't package /usr/lib/libdvdcss.la
+
+ -- Christian Marillat <marillat@debian.org>  Fri, 28 Aug 2009 14:17:49 +0200
+
+libdvdcss (1.2.10-0.2) unstable; urgency=low
+
+  * Removed the transitional libdvdcss2-dev package.
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 09 Sep 2008 20:21:02 +0200
+
+libdvdcss (1.2.10-0.1) unstable; urgency=low
+
+  * Move the .pc file in the -dev package (Thanks to Lionel Le Folgoc).
+  * Rename libdvdcss2-dev in libdvdcss-dev.
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 09 Sep 2008 20:04:57 +0200
+
+libdvdcss (1.2.10-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Sun, 31 Aug 2008 09:24:17 +0200
+
+libdvdcss (1.2.9-0.1) unstable; urgency=low
+
+  * Added Homepage field.
+  * Updated Standards-Version to 3.7.3 (No chnages)
+  * debian/copyright updated FSF address.
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 09 Apr 2008 14:24:14 +0200
+
+libdvdcss (1.2.9-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 12 Jul 2005 09:27:28 +0200
+
+libdvdcss (1.2.8-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Mon,  5 Jan 2004 22:29:26 +0100
+
+libdvdcss (1.2.5-0.2) unstable; urgency=low
+
+  * Remove libdvdread2 dependency
+
+ -- Christian Marillat <marillat@debian.org>  Sat,  9 Aug 2003 20:54:59 +0200
+
+libdvdcss (1.2.5-0.1) unstable; urgency=low
+
+  * Forget ti install the REAME, who contain some usefull informations.
+
+ -- Christian Marillat <marillat@debian.org>  Mon,  3 Mar 2003 23:40:56 +0100
+
+libdvdcss (1.2.5-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Tue,  4 Feb 2003 11:23:39 +0100
+
+libdvdcss (1.2.4-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Sun,  1 Dec 2002 14:02:27 +0100
+
+libdvdcss (1.2.3-0.0) unstable; urgency=low
+
+  * New upstream release.
+  * Use noopt DEB_BUILD_OPTIONS instead of debug
+  * Update to standards version 3.5.7
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 16 Oct 2002 09:04:29 +0200
+
+libdvdcss (1.2.2-0.2) unstable; urgency=low
+
+  * Install the control files in the right place s/bugs/bug/
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 16 Oct 2002 08:22:44 +0200
+
+libdvdcss (1.2.2-0.1) unstable; urgency=low
+
+  * debian/control Provides: libdvdcss
+
+ -- Christian Marillat <marillat@debian.org>  Sun, 18 Aug 2002 12:42:56 +0200
+
+libdvdcss (1.2.2-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Sun, 11 Aug 2002 17:08:52 +0200
+
+libdvdcss (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Fri, 24 May 2002 09:25:19 +0200
+
+libdvdcss (1.0.1-0.1) unstable; urgency=low
+
+  * Add support for DEB_HOST_GNU_TYPE DEB_BUILD_GNU_TYPE and
+    DEB_BUILD_OPTIONS
+
+ -- Christian Marillat <marillat@debian.org>  Sun,  5 May 2002 15:03:20 +0200
+
+libdvdcss (1.0.1-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Sat, 26 Jan 2002 20:52:22 +0100
+
+libdvdcss (1.0.0-0.1) unstable; urgency=low
+
+  * Rename the package with the rigth name and add Conlicts.
+
+ -- Christian Marillat <marillat@debian.org>  Mon, 21 Jan 2002 19:40:00 +0100
+
+libdvdcss (1.0.0-0.0) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@debian.org>  Sat, 19 Jan 2002 14:03:07 +0100
+
+libdvdcss (0.0.3-5) unstable; urgency=low
+
+  * libdvdcss0 Replaces: libdvdcss-dev (<= 0.0.3-3)
+
+ -- Christian Marillat <marillat@debian.org>  Thu, 22 Nov 2001 01:04:22 +0100
+
+libdvdcss (0.0.3-4) unstable; urgency=low
+
+  * Move libdvdcss.so in libdvdcss0 . This work now with libdvdread2 0.9.2
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 14 Nov 2001 16:06:36 +0100
+
+libdvdcss (0.0.3-3) unstable; urgency=low
+
+  * Really remove pentium optimization. Only pentiumpro optimization has
+    been removed in the previous release.
+
+ -- Christian Marillat <marillat@debian.org>  Wed, 14 Nov 2001 15:21:40 +0100
+
+libdvdcss (0.0.3-2) unstable; urgency=low
+
+  * Remove pentium optimization.
+
+ -- Christian Marillat <marillat@debian.org>  Tue, 23 Oct 2001 16:31:26 +0200
+
+libdvdcss (0.0.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Move .so library in the non dev package.
+
+ -- Christian Marillat <marillat@debian.org>  Sat, 15 Sep 2001 15:24:11 +0200
+
+libdvdcss (0.0.2-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Christian Marillat <marillat@debian.org>  Mon, 13 Aug 2001 17:31:31 +0200
+
+Local variables:
+mode: debian-changelog
+End:

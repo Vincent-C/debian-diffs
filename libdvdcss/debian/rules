@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs -Wl,--as-needed
+
+%:
+	dh $@ --parallel
+
+override_dh_makeshlibs:
+	dh_makeshlibs -V 'libdvdcss2 (>= 1.4.0)'
