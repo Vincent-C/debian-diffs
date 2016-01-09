@@ -1,10 +1,44 @@
-java-common (0.53+vc1) unstable; urgency=medium
+java-common (0.54+vc1) unstable; urgency=medium
 
   * Local package.
   * Default to oracle-java8-jdk.
     - Changes made to debian/java_defaults.mk, debian/rules.
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 13 Sep 2015 23:13:12 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 08 Jan 2016 18:52:07 -0800
+
+java-common (0.54) experimental; urgency=medium
+
+  * Team upload.
+
+  [ Emmanuel Bourg ]
+  * Use OpenJDK 8 on mips, mipsel and mips64el.
+  * Added a new default-java-plugin package depending on the right plugin
+    package for the current architecture, typically icedtea-<n>-plugin.
+    default-java-plugin provides icedtea-plugin (Closes: #678381).
+  * default-jre now recommends default-java-plugin
+  * The Java Policy and the FAQ have been moved to the new java-policy package.
+  * default-jdk-doc is now architecture dependent (Closes: #801257)
+  * gcj-native-helper no longer depends on default-jdk
+  * gcj-native-helper depends on gcj-jdk instead of openjdk (regression in 0.53)
+  * default-jdk/jre now have unversioned dependencies on openjdk
+  * Dropped support for non multiarch aware openjdk packages
+  * update-java-alternatives now supports bash completion (Closes: #777550)
+  * The output of update-java-alternatives --list is now aligned vertically
+  * Removed the unused classpath-from-jars-1 example
+  * Removed the old dummy control files
+  * Removed the README about the old default-jdk-builddep transition
+  * Removed the unused Lintian overrides for java-common
+  * Removed the not implemented --test option from update-java-alternatives
+    (Closes: #800024)
+  * Converted debian/copyright to the Copyright Format 1.0
+  * Simplified debian/rules using the dh sequencer
+  * Removed the default values for Java 6 (no longer used)
+
+  [ Matthias Klose ]
+  * Bump alpha, kfreebsd-amd64 and kfreebsd-i386 to 1.8.
+  * java_defaults.mk: Add jvm_archdir, jvm_archpath, jvm_includes macros.
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 27 Oct 2015 15:54:19 +0100
 
 java-common (0.53) experimental; urgency=medium
 
@@ -24,6 +58,14 @@ java-common (0.53) experimental; urgency=medium
   * Moved the package to Git
 
  -- Emmanuel Bourg <ebourg@apache.org>  Tue, 01 Sep 2015 23:11:54 +0200
+
+java-common (0.52.1) unstable; urgency=medium
+
+  * Team upload.
+  * Bump kfreebsd-amd64 kfreebsd-i386 to 1.7 again.
+  * java_defaults.mk: Add jvm_archdir and jvm_archpath macros.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 11 Oct 2015 09:40:26 +0200
 
 java-common (0.52) unstable; urgency=medium
 

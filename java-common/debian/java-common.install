@@ -1,0 +1,3 @@
+scripts/update-java-alternatives            usr/sbin/
+scripts/completion/update-java-alternatives usr/share/bash-completion/completions/
+debian/java_defaults.mk                     usr/share/java/

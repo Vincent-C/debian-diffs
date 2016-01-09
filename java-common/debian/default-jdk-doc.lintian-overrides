@@ -1,0 +1,4 @@
+# default-jdk-doc targets the documentation of the default JDK which is architecture dependent (#801257)
+default-jdk-doc: documentation-package-not-architecture-independent
+
+default-jdk-doc: debian-changelog-file-missing-or-wrong-name
