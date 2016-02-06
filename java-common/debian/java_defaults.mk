@@ -5,15 +5,14 @@
 java9_architectures =
 java8_architectures = $(java9_architectures) \
 		alpha amd64 arm64 armel armhf i386 \
-		mips mipsel mips64el \
+		m68k mips mipsel mips64el \
 		powerpc powerpcspe ppc64 ppc64el \
-		s390x x32 \
+		s390x sh4 sparc64 x32 \
 		kfreebsd-amd64 kfreebsd-i386
-java7_architectures = $(java8_architectures) \
-		sh4
+java7_architectures = $(java8_architectures)
 java6_architectures = $(java7_architectures)
 java5_architectures = $(java6_architectures) \
-		hppa ia64 m68k s390 sparc sparc64 \
+		hppa ia64 s390 sparc \
 		hurd-i386
 java_architectures = $(java5_architectures)
 

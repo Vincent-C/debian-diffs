@@ -15,7 +15,7 @@ p_jdk		= oracle-java8-jdk
 p_doc		= oracle-java8-jdk
 p_plugin	= oracle-java8-jdk
 dversion	= 2:1.$(java_default_version)-$(release)
-jvmdir		= oracle-java8-jdk
+jvmdir		= jdk-8-oracle-x64
 
 jre_provides	= java-runtime, java2-runtime, $(shell seq --format java%.f-runtime --separator ', ' 5 $(java_default_version))
 jhl_provides	= java-runtime-headless, java2-runtime-headless, $(shell seq --format java%.f-runtime-headless --separator ', ' 5 $(java_default_version))

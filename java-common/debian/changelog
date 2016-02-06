@@ -1,10 +1,27 @@
-java-common (0.54+vc1) unstable; urgency=medium
+java-common (0.55+vc1) unstable; urgency=medium
 
   * Local package.
   * Default to oracle-java8-jdk.
     - Changes made to debian/java_defaults.mk, debian/rules.
 
- -- Vincent Cheng <vcheng@debian.org>  Fri, 08 Jan 2016 18:52:07 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 06 Feb 2016 02:03:41 -0800
+
+java-common (0.55) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Matthias Klose ]
+  * Bump m68k, sh4 and sparc64 to 1.8.
+
+  [ Emmanuel Bourg ]
+  * Upload to unstable
+  * Fixed the name of the plugin dependency
+    (icedtea-<n>-plugin instead of icedtea-<n>-web)
+  * Standards-Version updated to 3.9.7 (no changes)
+  * Properly handle the symlink to dir conversion in gcj-native-helper
+    (Closes: #813223)
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 05 Feb 2016 00:42:57 +0100
 
 java-common (0.54) experimental; urgency=medium
 

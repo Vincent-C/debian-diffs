@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Matthias Klose <doko@debian.org>, Torsten Werner <twerner@debian.org>,
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Vcs-Git: git://anonscm.debian.org/pkg-java/java-common.git
 Vcs-Browser: http://anonscm.debian.org/cgit/pkg-java/java-common.git
 Homepage: https://wiki.debian.org/Java/
@@ -76,6 +76,7 @@ Description: Default Java Plugin for running applets and Java Web Start applicat
 
 Package: gcj-native-helper
 Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
 Depends: gcj-jdk, ${misc:Depends}
 Provides: default-jdk-builddep
 Conflicts: default-jdk-builddep
