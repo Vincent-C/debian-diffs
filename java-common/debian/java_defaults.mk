@@ -16,6 +16,12 @@ java5_architectures = $(java6_architectures) \
 		hurd-i386
 java_architectures = $(java5_architectures)
 
+java_plugin_architectures = \
+		amd64 arm64 armel armhf i386 \
+		powerpc ppc64 ppc64el s390x \
+		kfreebsd-amd64 kfreebsd-i386 \
+		x32
+
 _java_host_arch := $(if $(DEB_HOST_ARCH),$(DEB_HOST_ARCH),$(shell dpkg-architecture -qDEB_HOST_ARCH))
 ifneq (,$(filter $(_java_host_arch),$(java9_architectures)))
   java_default_version = 9

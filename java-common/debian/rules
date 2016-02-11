@@ -17,6 +17,11 @@ p_plugin	= oracle-java8-jdk
 dversion	= 2:1.$(java_default_version)-$(release)
 jvmdir		= jdk-8-oracle-x64
 
+# Build default-java-plugin for the architectures supporting icedtea-web only
+ifeq (,$(filter $(_java_host_arch),$(java_plugin_architectures)))
+  p_plugin      =
+endif
+
 jre_provides	= java-runtime, java2-runtime, $(shell seq --format java%.f-runtime --separator ', ' 5 $(java_default_version))
 jhl_provides	= java-runtime-headless, java2-runtime-headless, $(shell seq --format java%.f-runtime-headless --separator ', ' 5 $(java_default_version))
 jdk_provides	= java-sdk, java2-sdk, $(shell seq --format java%.f-sdk --separator ', ' 5 $(java_default_version))
