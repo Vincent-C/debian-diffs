@@ -3,13 +3,18 @@ Section: mail
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Homepage: http://www.mozillamessaging.com/en-US/thunderbird/
 
 Package: thunderbird-stable
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, desktop-file-utils
-Provides: mail-reader, icedove
+Provides: mail-reader, icedove, thunderbird-esr
+#Provides: thunderbird # conflicts with hunspell-en-us
+Replaces: thunderbird-esr
+#Replaces: thunderbird # conflicts with hunspell-en-us
+Conflicts: thunderbird-esr
+#Conflicts: thunderbird # conflicts with hunspell-en-us
 Description: mail/news client with RSS and integrated spam filter support
  Thunderbird is a free e-mail client. It supports different mail accounts
  (POP, IMAP, Gmail), has an integrated learning Spam filter, and offers easy
