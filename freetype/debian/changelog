@@ -1,4 +1,4 @@
-freetype (2.6.1-0.1+vc1) unstable; urgency=medium
+freetype (2.6.3-3+vc1) unstable; urgency=medium
 
   * Local package.
   * Merge from Ubuntu:
@@ -6,7 +6,35 @@ freetype (2.6.1-0.1+vc1) unstable; urgency=medium
       revert commit "Fix metrics on size request for scalable fonts.",
       which breaks gtk underlining markups (Closes: #636776, #636844)
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 23 Nov 2015 02:45:47 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 10 Apr 2016 21:27:46 -0700
+
+freetype (2.6.3-3) unstable; urgency=medium
+
+  * Install the now-available-upstream manpages for freetype-demos.
+    Closes: #131137.
+  * Register all of the HTML documentation with doc-base.  Closes: #451660.
+  * Suppress lintian warning about symbols file declaring dependency on
+    other package, which is entirely by design.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 01 Mar 2016 06:43:44 +0000
+
+freetype (2.6.3-2) unstable; urgency=medium
+
+  * Adjust symbols file to actually produce invalid dependencies when
+    internal symbols are used, as intended.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 01 Mar 2016 03:29:18 +0000
+
+freetype (2.6.3-1) unstable; urgency=medium
+
+  * New upstream release.  Closes: #812518, LP: #1521299
+    - stem darkening now disabled by default.  Closes: #801370.
+  * Avoid marking private symbols as supported from 2.6.1 on.  Apparently
+    dpkg-gensymbols doesn't do what I expected for this kind of declaration
+    anyway, but we should at least avoid marking them wrong in the source.
+  * Update to Standards-Version 3.9.7.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 01 Mar 2016 00:04:14 +0000
 
 freetype (2.6.1-0.1) unstable; urgency=medium
 

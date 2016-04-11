@@ -1,7 +1,7 @@
-Index: ft2demos-2.6.1/src/ftcommon.c
+Index: ft2demos-2.6.3/src/ftcommon.c
 ===================================================================
---- ft2demos-2.6.1.orig/src/ftcommon.c	2015-09-25 07:59:28.000000000 +0200
-+++ ft2demos-2.6.1/src/ftcommon.c	2015-11-10 21:19:38.766681758 +0100
+--- ft2demos-2.6.3.orig/src/ftcommon.c
++++ ft2demos-2.6.3/src/ftcommon.c
 @@ -439,6 +439,7 @@
  
            if ( file == NULL )  /* shouldn't happen */
@@ -10,27 +10,11 @@ Index: ft2demos-2.6.1/src/ftcommon.c
              free( font );
              return FT_Err_Invalid_Argument;
            }
-@@ -451,7 +452,14 @@
-             return FT_Err_Invalid_Stream_Operation;
- 
-           font->file_address = malloc( (size_t)file_size );
--          fread( font->file_address, 1, (size_t)file_size, file );
-+          if (fread( font->file_address, 1, (size_t)file_size, file ) < file_size)
-+          {
-+            fclose( file );
-+            free( font->file_address );
-+            free( (void *)font->filepathname );
-+            free( font );
-+            return FT_Err_Invalid_Argument;
-+          }
- 
-           font->file_size = (size_t)file_size;
- 
-Index: ft2demos-2.6.1/src/ftdiff.c
+Index: ft2demos-2.6.3/src/ftdiff.c
 ===================================================================
---- ft2demos-2.6.1.orig/src/ftdiff.c	2015-09-25 07:59:28.000000000 +0200
-+++ ft2demos-2.6.1/src/ftdiff.c	2015-11-10 21:21:01.421328475 +0100
-@@ -1501,7 +1501,13 @@
+--- ft2demos-2.6.3.orig/src/ftdiff.c
++++ ft2demos-2.6.3/src/ftdiff.c
+@@ -1502,7 +1502,13 @@
  
          if ( text != NULL )
          {
