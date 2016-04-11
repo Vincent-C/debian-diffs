@@ -1,12 +1,10 @@
 browser/                       opt/firefox/
-components/                    opt/firefox/
 defaults/                      opt/firefox/
 dictionaries/                  opt/firefox/
 gmp-clearkey/                  opt/firefox/
 icons/                         opt/firefox/
 webapprt/                      opt/firefox/
 application.ini                opt/firefox/
-chrome.manifest                opt/firefox/
 crashreporter                  opt/firefox/
 crashreporter.ini              opt/firefox/
 dependentlibs.list             opt/firefox/

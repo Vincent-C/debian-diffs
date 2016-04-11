@@ -1,15 +1,17 @@
-Source: firefox
+Source: firefox-stable
 Section: web
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Homepage: http://www.mozilla.com/
 
-Package: firefox
+Package: firefox-stable
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: iceweasel, gnome-www-browser, www-browser, x-www-browser
+Provides: iceweasel, gnome-www-browser, www-browser, x-www-browser, firefox, firefox-esr
+Replaces: firefox, firefox-esr
+Conflicts: firefox, firefox-esr
 Description: Safe and easy web browser from Mozilla
  Firefox delivers safe, easy web browsing. A familiar user interface, enhanced
  security features including protection from online identity theft, and
