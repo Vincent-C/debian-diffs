@@ -3,6 +3,7 @@
 03_locale_c.utf8.patch
 04_mgopen_fonts.patch
 05_doc_files.patch
+06_cross.patch
 ubuntu/00_old_diff_gz.patch
 ubuntu/01_fonts_nanum.patch
 ubuntu/04_ubuntu_monospace_lcd_filter_conf.patch

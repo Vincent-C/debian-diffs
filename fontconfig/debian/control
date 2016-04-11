@@ -8,7 +8,6 @@ Build-Depends: cdbs (>= 0.4.93),
                debhelper (>= 9),
                libfreetype6-dev (>= 2.1.7),
                libexpat1-dev,
-               binutils (>= 2.12.90.0.9),
                pkg-config,
                gperf,
                po-debconf

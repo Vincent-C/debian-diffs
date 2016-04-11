@@ -1,0 +1,25 @@
+Description: fix cross compilation
+Author: Helmut Grohne <helmut@subdivi.de>
+Last-Update: 2015-02-28
+Bug-Debian: https://bugs.debian.org/779461
+
+Even though fontconfig's build system tries to build edit-sgml with the build
+arch compiler, it gets the runes wrong and actually builds it with the host
+arch compiler. This patch makes it use the right compiler.
+
+Index: fontconfig-2.11.0/doc/Makefile.am
+===================================================================
+--- fontconfig-2.11.0.orig/doc/Makefile.am
++++ fontconfig-2.11.0/doc/Makefile.am
+@@ -121,7 +121,10 @@
+ edit_sgml_SOURCES =	\
+ 	edit-sgml.c	\
+ 	$(NULL)
+-edit_sgml_CC = $(CC_FOR_BUILD)
++$(edit_sgml_OBJECTS) : CC=$(CC_FOR_BUILD)
++$(edit_sgml_OBJECTS) : CFLAGS=$(CFLAGS_FOR_BUILD)
++$(edit_sgml_OBJECTS) : CPPFLAGS=$(CPPFLAGS_FOR_BUILD)
++edit_sgml_LINK = $(CC_FOR_BUILD) -o $@
+ #
+ check_SCRIPTS =			\
+ 	check-missing-doc	\

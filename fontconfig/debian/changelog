@@ -1,4 +1,4 @@
-fontconfig (2.11.0-6.3+vc1) unstable; urgency=medium
+fontconfig (2.11.0-6.4+vc1) unstable; urgency=medium
 
   * Local package.
   * Import patches from Ubuntu (debian/patches/ubuntu/).
@@ -7,7 +7,16 @@ fontconfig (2.11.0-6.3+vc1) unstable; urgency=medium
       deprecated location and it leads to polling on the directory,
       which means wakeups and extra power usage (lp: #1266873)
 
- -- Vincent Cheng <vcheng@debian.org>  Fri, 28 Nov 2014 22:46:00 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 10 Apr 2016 21:52:51 -0700
+
+fontconfig (2.11.0-6.4) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop versioned Build-Depends: binutils which is satisfied even in
+    oldstable (Closes: #779460).
+  * Compile build-tool edit-sgml with CC_FOR_BUILD. (Closes: #779461)
+
+ -- Helmut Grohne <helmut@subdivi.de>  Sat, 12 Mar 2016 19:00:45 +0100
 
 fontconfig (2.11.0-6.3) unstable; urgency=medium
 
