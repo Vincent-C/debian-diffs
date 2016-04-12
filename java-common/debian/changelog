@@ -1,10 +1,19 @@
-java-common (0.56+vc1) unstable; urgency=medium
+java-common (0.57+vc1) unstable; urgency=medium
 
   * Local package.
   * Default to oracle-java8-jdk.
-    - Changes made to debian/java_defaults.mk, debian/rules.
+    - Changes made to debian/rules.
 
- -- Vincent Cheng <vcheng@debian.org>  Thu, 11 Feb 2016 00:56:23 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 11 Apr 2016 18:31:47 -0700
+
+java-common (0.57) unstable; urgency=medium
+
+  * Build a default-jdk-headless package.
+  * java_defaults.mk: Fix jvm_archdir macro (Jonas Smedegaard). Closes: #814783.
+  * Just remove the gcj-native-helper doc symlink on upgrade. Closes: #813223.
+  * Remove Torsten Werner from uploaders.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 26 Feb 2016 18:34:49 +0100
 
 java-common (0.56) unstable; urgency=medium
 

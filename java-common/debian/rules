@@ -12,6 +12,7 @@ include debian/java_defaults.mk
 p_jre		= oracle-java8-jdk
 p_jhl		= oracle-java8-jdk
 p_jdk		= oracle-java8-jdk
+p_jdkhl		= oracle-java8-jdk
 p_doc		= oracle-java8-jdk
 p_plugin	= oracle-java8-jdk
 dversion	= 2:1.$(java_default_version)-$(release)
@@ -25,6 +26,7 @@ endif
 jre_provides	= java-runtime, java2-runtime, $(shell seq --format java%.f-runtime --separator ', ' 5 $(java_default_version))
 jhl_provides	= java-runtime-headless, java2-runtime-headless, $(shell seq --format java%.f-runtime-headless --separator ', ' 5 $(java_default_version))
 jdk_provides	= java-sdk, java2-sdk, $(shell seq --format java%.f-sdk --separator ', ' 5 $(java_default_version))
+jdkhl_provides	= java-sdk-headless, java2-sdk-headless, $(shell seq --format java%.f-sdk-headless --separator ', ' 5 $(java_default_version))
 
 
 %:
@@ -45,9 +47,10 @@ override_dh_installdocs:
 
 	# Install the changelog and copyright once in default-jre-headless and use links for the other packages
 	dh_installdocs -pdefault-jre-headless
-	dh_link -pdefault-jre         /usr/share/doc/default-jre-headless /usr/share/doc/default-jre
-	dh_link -pdefault-jdk         /usr/share/doc/default-jre          /usr/share/doc/default-jdk
-	dh_link -pdefault-java-plugin /usr/share/doc/default-jre          /usr/share/doc/default-java-plugin
+	dh_link -pdefault-jre          /usr/share/doc/default-jre-headless /usr/share/doc/default-jre
+	dh_link -pdefault-jdk-headless /usr/share/doc/default-jre-headless /usr/share/doc/default-jdk-headless
+	dh_link -pdefault-jdk          /usr/share/doc/default-jre          /usr/share/doc/default-jdk
+	dh_link -pdefault-java-plugin  /usr/share/doc/default-jre          /usr/share/doc/default-java-plugin
 
 	dh_installdocs -pdefault-jdk-doc
 	dh_installdocs -pgcj-native-helper
@@ -60,10 +63,12 @@ ifneq (,$(p_jre))
 		'-Vjre=$(p_jre)' \
 		'-Vjhl=$(p_jhl)' \
 		'-Vjdk=$(p_jdk)' \
+		'-Vjdkhl=$(p_jdkhl)' \
 		'-Vdoc=$(p_doc)' \
 		'-Vjre:arch=$(DEB_HOST_ARCH)' \
 		'-Vjre:provides=$(jre_provides)' \
 		'-Vjhl:provides=$(jhl_provides)' \
+		'-Vjdkhl:provides=$(jdkhl_provides)' \
 		'-Vjdk:provides=$(jdk_provides)'
 endif
 ifneq (,$(p_plugin))

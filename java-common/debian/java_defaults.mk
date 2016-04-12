@@ -47,7 +47,7 @@ jvm_archdir_map = \
 	sparc=sparc sparc64=sparc64 sh4=sh s390x=s390x ia64=ia64 x32=x32
 
 jvm_archdir := \
-	$(strip $(patsubst $(_java_host_cpu)=%, %, $(filter $(_java_host_cpu)=%, $(jvm_arch_map))))
+	$(strip $(patsubst $(_java_host_cpu)=%, %, $(filter $(_java_host_cpu)=%, $(jvm_archdir_map))))
 
 ifneq (,$(filter $(java_default_version), 9))
   jvm_archpath := lib/$(jvm_archdir)

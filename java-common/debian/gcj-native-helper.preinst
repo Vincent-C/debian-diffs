@@ -1,0 +1,13 @@
+#! /bin/sh
+
+set -e
+
+if [ "$1" = upgrade ] && [ -n "$2" ] && dpkg --compare-versions "$2" lt 2:1.8-57~; then
+    if [ -h /usr/share/doc/gcj-native-helper ]; then
+	rm -f /usr/share/doc/gcj-native-helper
+    fi
+fi
+
+#DEBHELPER#
+
+exit 0

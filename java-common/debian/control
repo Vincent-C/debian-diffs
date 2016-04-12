@@ -2,7 +2,7 @@ Source: java-common
 Section: java
 Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
-Uploaders: Matthias Klose <doko@debian.org>, Torsten Werner <twerner@debian.org>,
+Uploaders: Matthias Klose <doko@debian.org>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.7
 Vcs-Git: git://anonscm.debian.org/pkg-java/java-common.git
@@ -46,10 +46,20 @@ Description: Standard Java or Java compatible Runtime (headless)
 
 Package: default-jdk
 Architecture: any
-Depends: default-jre (= ${binary:Version}), ${jdk},
+Depends: default-jre (= ${binary:Version}), default-jdk-headless (= ${binary:Version}), ${jdk},
  ${misc:Depends}
 Provides: ${jdk:provides}
 Description: Standard Java or Java compatible Development Kit
+ This dependency package points to the Java runtime, or Java compatible
+ development kit recommended for this architecture, which is
+ ${jdk} for ${jre:arch}.
+
+Package: default-jdk-headless
+Architecture: any
+Depends: default-jre-headless (= ${binary:Version}), ${jdkhl},
+ ${misc:Depends}
+Provides: ${jdkhl:provides}
+Description: Standard Java or Java compatible Development Kit (headless)
  This dependency package points to the Java runtime, or Java compatible
  development kit recommended for this architecture, which is
  ${jdk} for ${jre:arch}.
