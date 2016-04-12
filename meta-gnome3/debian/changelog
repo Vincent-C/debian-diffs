@@ -1,18 +1,43 @@
-meta-gnome3 (1:3.14+3+vc2) unstable; urgency=medium
+meta-gnome3 (1:3.14+4+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
-    - evolution*
+    - evolution*, thunderbird*
     - tomboy, bijiben
-    - iceweasel, xul-ext*
+    - iceweasel*, xul-ext*, firefox*
     - gnash
     - libreoffice*
     - gnome-software
     - gnome-packagekit
-    - tracker*, and dependencies:
+    - *tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 14 Dec 2014 23:10:04 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 11 Apr 2016 18:54:00 -0700
+
+meta-gnome3 (1:3.14+4) unstable; urgency=medium
+
+  [ Josselin Mouette ]
+  * Re-add shotwell as an alternative dependency for gnome-photos, in 
+    order to ease transitions. Closes: #772792.
+
+  [ Dmitry Shachnev ]
+  * Remove metacity from gnome-core.
+  * Remove gtk2-engines from gnome-core. (Closes: #790641)
+  * Remove hamster-applet from gnome for now, until we get a newer
+    upstream version that doesn't use python-gtk2. (Closes: #783242)
+  * Replace dconf-tools (transitional package) with dconf-cli in
+    gnome-core. (Closes: #774150)
+
+  [ Laurent Bigonville ]
+  * Add libgsf-bin to the list of Recommends, this is needed to create
+    thumbnails for libreoffice files.
+  * Switch iceweasel dependency to firefox-esr | firefox (Closes: #817896)
+
+  [ Michael Biebl ]
+  * Remove policykit-1-gnome dependency from gnome-core. This is no longer
+    necessary as gnome-shell has a builtin PolicyKit agent.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 11 Mar 2016 16:25:54 +0100
 
 meta-gnome3 (1:3.14+3) unstable; urgency=medium
 

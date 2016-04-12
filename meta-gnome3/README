@@ -2,12 +2,12 @@ Tarball: orig tarball is actually empty; src:meta-gnome3 just provides a collect
 
 Changes from upstream Debian meta-packages:
   * Remove dependency on:
-    - evolution*
+    - evolution*, thunderbird*
     - tomboy, bijiben
-    - iceweasel, xul-ext*
+    - iceweasel*, xul-ext*, firefox*
     - gnash
     - libreoffice*
     - gnome-software
     - gnome-packagekit
-    - tracker*, and dependencies:
+    - *tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
