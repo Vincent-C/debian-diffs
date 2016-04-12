@@ -1,0 +1,157 @@
+15.7+git20151123
+ * fixes
+  o atom feed parsing
+  o misc. other
+ * translation updates
+ * misc. improvements
+  o bayes
+  o af_redditimgur
+  o support for .gifv
+ * plugins changes
+  + trgm plugin for postgresql
+  + af_lang_detect (instead of native support)
+  + af_readability
+  - af_habr
+ * add plugin-based filter actions
+ * config option changes
+  + CHECK_FOR_UPDATES
+  - DETECT_ARTICLE_LANGUAGE
+ * bump API level to 13
+ * tabbed feed editor
+ * misc. fixes
+
+1.15.3
+ * misc. fixes
+
+1.15
+ * Allow embedded videos from Youtube and Vimeo
+ * Disable libxml support for external XML entities to prevent possible
+   malicious use (XML External Entities Exploit), more information available
+   at http://mikeknoop.com/lxml-xxe-exploit/
+
+1.14
+ * New translations:
+  o ar_SA
+ * Fix incorrectly named Archived feed
+ * Minor bugfixes
+
+1.13
+ * New translations:
+  o pt_PT
+  o el_GR
+  o da_DA
+  o es_LA
+ * Fixed reset password functionality
+ * New support for search plugins
+ * Moved core support for sphinx into a plugin
+  o SPHINX_ENABLED has been removed from config
+ * Misc. bugfixes
+
+1.12
+ * Parser / misc bugfixes
+ * Default theme update
+ * Add night theme
+ * New translations
+  o Traditional Chinese (zh_TW)
+ * Various comics plugins merged into af_comics
+ * opml import: remove 250 character restriction on feed urls
+ * Add basic support for Atom Threading Extensions (RFC 4685)
+
+1.11
+ * Minor parser bugfixes
+ * Minor performance improvements
+ * Other bugfixes
+ * API
+  o fix labels not applying because API call expected labels in wrong format
+  o Bump API Level to 8
+ * New Configuration Option
+  o DETECT_ARTICLE_LANGUAGE - Detect article language when updating feeds
+ * New Plugins
+  o af_fsckportal - Remove feedsportal spamlinks from article content
+  o af_threewordphrase - Fetch content of Three Word Phrase comics
+  o no_url_hashes - Disable URL hash usage (e.g. #f=10, etc)
+
+1.10
+ * Improve compatibility with feeds containing invalid UTF-8 entities
+ * Fix category filters set to Uncategorized applying to all feeds
+ * Other bugfixes
+ * New Plugins
+  o af_natgeo - Fetch content of National Geographic feeds
+  o af_sciam - Fetch content of Scientific American feeds
+  o cache_starred_images - Automatically cache images in Starred articles
+  o no_iframes - Remove embedded iframes
+  o no_title_counters - Remove counters from window title (prevents tab flashing on new articles)
+  o shorten_expanded - Shorten overly long articles in CDM/expanded
+
+1.9
+
+ * Parser: support xml:base in atom feeds
+ * Parser: add support for libxml with problematic handling of character encodings
+ * Fixed several bugs when migrating filters using OPML
+ * Minor performance improvements
+ * Added Korean translation
+ * Improved Russian translation
+ * Other translations updated
+ * Integrated Silk icons by Mark James
+ * Added plugin which adds a feed for all articles shared by url
+ * Allow unsharing and changing URLs for individual articles
+ * Floating title more consistent with the rest of the UI, enable floating title for expandable combined mode
+ * Licensed under GPL v3
+ * Bugfixes
+
+1.8
+
+ * Fix compatibility with Atom 0.3 feeds
+ * Other feed parsing improvements
+ * User themes need to reference tt-rss CSS files if needed, themes will need to be updated
+ * Removed floIcon because of license issues.
+   You can place local copy of floIcon.php in lib/ it will be automatically used.
+ * Bugfixes
+
+1.7.9
+
+ * Bring back sorting by article title
+ * Fix not being able to unsubscribe from specific feeds in some situations
+ * Removed several auth plugins
+ * Digest and Mobile (old) plugins removed
+ * Error logging (Preferences -> System)
+ * Language is now configured in Preferences
+ * Simplepie replaced with native lightweight feed parser
+ * Bugfixes
+
+1.7.8
+
+ * Fix operation without CURL
+
+1.7.7
+
+ * Fix mark as read not working on Fresh feed
+ * Fix updater failing to download tt-rss tarball without CURL
+ * Fix broken OTP
+ * Fix broken mail plugin
+ * Make Mark as read button easier to use
+ * Other bugfixes
+
+1.7.6
+
+ * API improvements
+ * Easier installer
+ * Inverse filters and rules
+ * Filters can be reordered using drag and drop
+ * Filters are loaded in the order displayed on the preference page
+ * Add user-defined filter captions
+ * Classic mobile added back as a plugin (unsupported, don't ask for new stuff)
+ * Barebones smartphone UI for Digest plugin
+ * Several social plugins unbundled from trunk, see this forum thread for more information
+ * Add plugin to import starred/shared.json files from Google Reader takeout.
+ * Allow easily selecting CSS themes dropped into themes/
+ * Improve feed update speed (smarter batching, better local caching, support If-Modified-Since on CURL)
+ * Low traffic mode automatically disables image embedding
+ * The UI is now significantly less yellow
+ * Add hotkey f c to toggle auto expand in combined mode
+ * Add ability to catchup articles older than 1 day/week/2 weeks
+ * Translation updates
+ * Combined mode is now the default one
+ * API: deprecated support for cookie-based sessions has been removed, please use sid parameter as outlined in API documentation.
+ * Some UI cleanup
+ * Bugfixes

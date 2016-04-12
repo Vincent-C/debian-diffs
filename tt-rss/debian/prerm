@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+if [ -f /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+fi
+
+if [ -f /usr/share/dbconfig-common/dpkg/prerm ]; then
+	. /usr/share/dbconfig-common/dpkg/prerm
+	dbc_go tt-rss $@
+fi
+
+# clear cache (needed for upgrade)
+find /var/cache/tt-rss -type f -delete
+
+#DEBHELPER#
+
+exit 0

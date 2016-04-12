@@ -1,0 +1,4 @@
+# Software is named "Tiny Tiny RSS"
+description-contains-duplicated-word Tiny Tiny
+# /usr/sbin/invoke-rc.d is checked for existence
+command-with-path-in-maintainer-script

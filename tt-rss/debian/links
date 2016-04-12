@@ -1,0 +1,9 @@
+# tt-rss config file
+/etc/tt-rss/config.php /usr/share/tt-rss/www/config.php
+
+# feed-icons
+/var/lib/tt-rss/feed-icons /usr/share/tt-rss/www/feed-icons
+
+# webserver config
+/etc/tt-rss/lighttpd.conf /etc/lighttpd/conf-available/50-tt-rss.conf
+/etc/tt-rss/apache.conf /etc/apache2/conf-available/50-tt-rss.conf

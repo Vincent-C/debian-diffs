@@ -1,0 +1,16 @@
+tt-rss for Debian
+-----------------
+
+    audio support
+    *************
+
+    The musicplayer.swf has been removed from tt-rss in Debian,
+    because it is not built from source. I decided to remove the
+    file, since this file is only needed to play audio files in
+    browsers, which do not have native support for the HTML5 audio
+    tag. If you need this feature you can drop musicplayer.swf from
+    [0] in /usr/share/tt-rss/www/lib/button/.
+
+    [0] http://code.google.com/p/musicplayer/
+
+ -- Sebastian Reichel <sre@debian.org>, Fri 02 Mar 2012 20:02:10 +0100

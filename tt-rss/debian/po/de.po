@@ -1,0 +1,76 @@
+# Translation of tt-rss debconf templates to German
+# Copyright (C) 2010-2013 Sebastian Reichel <sre@debian.org>
+# This file is distributed under the same license as the tt-rss package.
+#
+# Translators:
+# Sebastian Reichel <sre@debian.org>, 2010-2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: tt-rss@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-02 20:04+0300\n"
+"PO-Revision-Date: 2013-07-12 17:29+0200\n"
+"Last-Translator: Sebastian Reichel <sre@debian.org>\n"
+"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "apache2"
+msgstr "Apache 2"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "lighttpd"
+msgstr "Lighttpd"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid "Web server to reconfigure automatically:"
+msgstr "Webserver, der automatisch konfiguriert werden soll:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"Tiny Tiny RSS."
+msgstr ""
+"Bitte suchen Sie den Webserver aus, der automatisch für Tiny Tiny RSS konfiguriert "
+"werden soll."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Full URL of the tt-rss installation:"
+msgstr "Vollständige URL der TT-RSS-Installation:"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"Please enter the URL that should be used to access tt-rss with a web browser."
+msgstr ""
+"Bitte geben Sie die URL ein, die zum Zugriff auf TT-RSS per Web-Browser "
+"verwendet werden soll."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"This should include the location of the tt-rss directory - for instance "
+"http://example.org/tt-rss/. If this is not set correctly, several features, "
+"including PUSH, bookmarklets, and browser integration, will not work "
+"properly."
+msgstr ""
+"Dies sollte das Verzeichnis von TT-RSS beinhalten, zum Beispiel "
+"http://example.org/tt-rss/. Falls diese Einstellung nicht korrekt "
+"konfiguriert wird, so funktionieren verschiedene Funktionen nicht korrekt, "
+"wie z.B. PUSH, Bookmarklets oder die Browser-Integration."

@@ -1,0 +1,21 @@
+Description: use correct path in dbupdater.php
+ In Debian the tt-rss database files are stored in
+ /usr/share/tt-rss.
+Forwarded: not-needed
+Author: Sebastian Reichel <sre@debian.org>
+Last-Update: 2013-06-14
+
+
+Index: tt-rss-debian/classes/dbupdater.php
+===================================================================
+--- tt-rss-debian.orig/classes/dbupdater.php
++++ tt-rss-debian/classes/dbupdater.php
+@@ -21,7 +21,7 @@ class DbUpdater {
+ 	}
+ 
+ 	function getSchemaLines($version) {
+-		$filename = "schema/versions/".$this->db_type."/$version.sql";
++		$filename = "../schema/versions/".$this->db_type."/$version.sql";
+ 
+ 		if (file_exists($filename)) {
+ 			return explode(";", preg_replace("/[\r\n]/", "", file_get_contents($filename)));

@@ -1,0 +1,11 @@
+The source tarball is created from the git repository
+using git archive. A few files are removed though:
+
+# Remove lib/button/ from upstream source (because of the *.swf files)
+# (The feature is not available in Debian's tt-rss installation)
+rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/button
+
+# remove dojo and dijit javascript libs from upstream source (js source files missing)
+# (Debian uses its own dojo/dijit packages instead of the bundled copy)
+rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/dijit
+rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/dojo

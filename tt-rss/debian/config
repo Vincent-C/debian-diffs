@@ -1,0 +1,34 @@
+#!/bin/sh
+set -e
+
+# source debconf
+. /usr/share/debconf/confmodule
+
+ttrss_config_get() {
+	KEY="$1"
+	DEFAULT="$2"
+	GREPRESULT=$(grep $KEY /etc/tt-rss/config.php 2>&1)
+	if [ $? -ne 0 ] ; then
+		echo "$DEFAULT"
+	else
+		echo "$GREPRESULT" | tail -n 1 | perl -n -e'/define\('"'$KEY'"', '"'"'(.*)'"'"'\);/ && print "$1\n"'
+	fi
+}
+
+# load config file
+SELF_URL_PATH=$(ttrss_config_get "SELF_URL_PATH" "unconfigured")
+if [ "$SELF_URL_PATH" != "unconfigured" ] ; then
+	db_set tt-rss/self_url_path "$SELF_URL_PATH"
+fi
+
+# dbconfig-common
+if [ -f /usr/share/dbconfig-common/dpkg/config ]; then
+	dbc_dbtypes="mysql, pgsql"
+	. /usr/share/dbconfig-common/dpkg/config
+	dbc_go tt-rss $@
+fi
+
+# questions
+db_input high tt-rss/reconfigure-webserver || true
+db_input high tt-rss/self_url_path || true
+db_go

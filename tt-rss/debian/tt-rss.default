@@ -1,0 +1,8 @@
+## Defaults for Tiny Tiny RSS update daemon init.d script
+
+# Set DISABLED to 1 to prevent the daemon from starting.
+DISABLED=1
+
+# Set FORKING to 1 to use the forking daemon (update_daemon2.php) instead of
+# the standard one.
+FORKING=0

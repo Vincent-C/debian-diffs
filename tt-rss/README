@@ -1,0 +1,8 @@
+Source: https://tt-rss.org/gitlab/fox/tt-rss
+
+Largely based on source package in Debian sid, except the use of bundled
+libraries is maintained. This makes it much easier to maintain TT-RSS.
+
+Note: for backporting to trusty, drop the following dependencies in d/control:
+ php-mbstring
+ php-xml

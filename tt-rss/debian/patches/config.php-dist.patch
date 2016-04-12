@@ -1,0 +1,46 @@
+Description: change default config
+ patch default config to load database information from
+ external file, use /var/cache/tt-rss as cache dir and
+ /var/lib/tt-rss as locking directory.
+Forwarded: not-needed
+Author: Sebastian Reichel <sre@debian.org>
+Last-Update: 2013-02-17
+
+Index: tt-rss-debian/config.php-dist
+===================================================================
+--- tt-rss-debian.orig/config.php-dist
++++ tt-rss-debian/config.php-dist
+@@ -3,12 +3,13 @@
+ 	// *** Database configuration (important!) ***
+ 	// *******************************************
+ 
+-	define('DB_TYPE', "pgsql"); // or mysql
+-	define('DB_HOST', "localhost");
+-	define('DB_USER', "fox");
+-	define('DB_NAME', "fox");
+-	define('DB_PASS', "XXXXXX");
+-	define('DB_PORT', ''); // usually 5432 for PostgreSQL, 3306 for MySQL
++	include_once('/etc/tt-rss/database.php');
++	define('DB_TYPE', $dbtype);
++	define('DB_HOST', $dbserver);
++	define('DB_PORT', $dbport);
++	define('DB_USER', $dbuser);
++	define('DB_NAME', $dbname);
++	define('DB_PASS', $dbpass);
+ 
+ 	define('MYSQL_CHARSET', 'UTF8');
+ 	// Connection charset for MySQL. If you have a legacy database and/or experience
+@@ -56,11 +57,11 @@
+ 	// then most probably you are using the CGI binary. If you are unsure what to 
+ 	// put in here, ask your hosting provider.
+ 
+-	define('LOCK_DIRECTORY', 'lock');
++	define('LOCK_DIRECTORY', '/var/lib/tt-rss');
+ 	// Directory for lockfiles, must be writable to the user you run
+ 	// daemon process or cronjobs under.
+ 
+-	define('CACHE_DIR', 'cache');
++	define('CACHE_DIR', '/var/cache/tt-rss');
+ 	// Local cache directory for RSS feed content.
+ 
+ 	define('ICONS_DIR', "feed-icons");

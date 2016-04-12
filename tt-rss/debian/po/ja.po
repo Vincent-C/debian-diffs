@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# victory <victory.deb@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: tt-rss@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-02 20:04+0300\n"
+"PO-Revision-Date: 2013-06-03 02:04+0900\n"
+"Last-Translator: victory <victory.deb@gmail.com>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "apache2"
+msgstr "apache2"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "lighttpd"
+msgstr "lighttpd"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid "Web server to reconfigure automatically:"
+msgstr "自動的に再設定するウェブサーバ:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"Tiny Tiny RSS."
+msgstr ""
+"Tiny Tiny RSS の実行用に自動的に再設定するウェブサーバを選択してください。"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Full URL of the tt-rss installation:"
+msgstr "インストールする tt-rss の完全な URL:"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"Please enter the URL that should be used to access tt-rss with a web browser."
+msgstr ""
+"ウェブブラウザで tt-rss にアクセスするのに使う URL を入力してください。"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"This should include the location of the tt-rss directory - for instance "
+"http://example.org/tt-rss/. If this is not set correctly, several features, "
+"including PUSH, bookmarklets, and browser integration, will not work "
+"properly."
+msgstr ""
+"これには tt-rss ディレクトリの位置 - 例えば http://example.org/tt-rss/ を含め"
+"るようにしてください。これが適切でない場合、PUSH やブックマークレット、ブラウ"
+"ザ統合等、複数の機能が適切に使えません。"

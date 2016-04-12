@@ -1,0 +1,13 @@
+/var/log/tt-rss.log {
+	rotate 7
+	daily
+	compress
+	prerotate
+		invoke-rc.d tt-rss stop > /dev/null
+	endscript
+	postrotate
+		invoke-rc.d tt-rss start > /dev/null
+	endscript
+	missingok
+	notifempty
+}

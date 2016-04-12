@@ -1,0 +1,352 @@
+tt-rss (16.3+git20160401+dfsg-4+vc3) unstable; urgency=medium
+
+  * New upstream git snapshot (static version 16.3; 2016-04-01).
+  * Based off of package in Debian sid, with following changes:
+    - Preserve old PHP5 dependencies as alternative dependencies.
+    - Use orig tarball contents (lib/) instead of symlinks (changes to
+      debian/{install,links,rules}); remove now unneeded build-deps and deps.
+    - Remove fix-dijit-requires.patch, remove-tt-rss-layer.patch,
+      support-new-dojo-dijit.patch, use-new-phpmailer-autoload-interface.patch,
+      php7-support.patch, use-spl-autoload-register-for-autoloading.patch.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 12 Apr 2016 01:14:43 -0700
+
+tt-rss (15.7+git20151123+dfsg-4) unstable; urgency=medium
+
+  * Remove database configuration during purge (Closes: #817991)
+  * Don't try to handle dbconfig-common errors (Closes: #818316)
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 21 Mar 2016 00:42:31 +0100
+
+tt-rss (15.7+git20151123+dfsg-3) unstable; urgency=medium
+
+  * Fix autoloading when used with newer phpmailer releases
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 11 Mar 2016 15:48:10 +0100
+
+tt-rss (15.7+git20151123+dfsg-2) unstable; urgency=medium
+
+  * Update Debian Standards Version to 3.9.7
+  * cherry-pick upstream patch for php7 support (Closes: #816405)
+  * Update PHP dependencies for php7 (Closes: #816479)
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 03 Mar 2016 18:48:34 +0100
+
+tt-rss (15.7+git20151123+dfsg-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #777703)
+   - New upstream source urls, no watch file possible anymore
+   - Fix broken OPML import (Closes: #788412)
+  * Add preseeding support for self_url_path debconf selection (Closes: #801153)
+  * Fix display of special icons (WIP: #759777)
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 26 Nov 2015 20:59:43 +0100
+
+tt-rss (1.15+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+   - Contains fix for security issue (XML External Entities Exploit)
+  * Update Debian Standards Version to 3.9.6
+  * Add Dutch translation from Frans Spiesschaert (Closes: #766410)
+  * Add Turkish translation from Mert Dirik (Closes: #757503)
+  * Add patch for new phpmailer autoloader interface (Closes: #763109)
+  * Add patch, which fixes feed icons and menu rendering with
+    dojo/dijit 1.10 (Closes: #759777)
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 08 Dec 2014 18:52:45 +0100
+
+tt-rss (1.13+dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #755573)
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 20 Jul 2014 11:33:12 +0200
+
+tt-rss (1.12+dfsg-2) unstable; urgency=low
+
+  * Add patch fixing the rendering of the top bar
+  * Clear cache during upgrade  (Closes: #747884)
+
+ -- Sebastian Reichel <sre@debian.org>  Tue, 24 Jun 2014 17:01:33 +0200
+
+tt-rss (1.12+dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #747155)
+  * Allow php5-mysqlnd as alternative to the php5-mysql dependency
+    (Closes: #733020)
+  * Remove dojo and dijit in the dfsg upstream source tarball,
+    since they lack non packed version and are not needed in
+    Debian (we the version provided by the system).
+
+ -- Sebastian Reichel <sre@debian.org>  Tue, 06 May 2014 13:01:31 +0200
+
+tt-rss (1.11+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Debian Standards Version to 3.9.5
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 20 Dec 2013 23:44:20 +0100
+
+tt-rss (1.10+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Add systemd service file
+  * Brazilian Portuguese (J. S. Júnior). (Closes: #718462)
+  * Add php5-json dependency (Closes: #721675)
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 22 Sep 2013 16:21:16 +0200
+
+tt-rss (1.9+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Update copyright file
+  * Drop patches (Applied upstream)
+   - make-default-config-rfc2606-compliant.patch
+   - fix-for-empty-atom-feeds.patch
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 21 Jul 2013 10:14:57 +0200
+
+tt-rss (1.8+dfsg-4) unstable; urgency=low
+
+  * Remove leftover recursive chown from postinst (Closes: #706700)
+  * Update German translation using more suggestions of Helge Kreutzmann
+  * Fix apache2_invoke call (Closes: #714413)
+  * Update upstream changelog for 1.8
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 12 Jul 2013 16:43:29 +0200
+
+tt-rss (1.8+dfsg-3) unstable; urgency=low
+
+  * Add "Tiny Tiny RSS" to package short description (Closes: #714089)
+  * Update German translation using some suggestions of Helge Kreutzmann
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 27 Jun 2013 17:36:19 +0200
+
+tt-rss (1.8+dfsg-2) unstable; urgency=low
+
+  * Recommend php5-mcrypt, which is used for encrypting passwords
+    of password protected feeds (Closes: #713067)
+  * Cherry Pick upstream patch fixing broken Atom feeds (Closes: #713064)
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 22 Jun 2013 20:10:37 +0200
+
+tt-rss (1.8+dfsg-1) unstable; urgency=low
+
+  [ Debian English Team ]
+  * Debconf templates and debian/control reviewed by the debian-l10n-
+    english team as part of the Smith review project (Closes: #706774)
+
+  [ Debconf Translation Updates ]
+  * Czech (Michal Simunek). (Closes: #710878)
+  * Russian (Yuri Kozlov). (Closes: #711089)
+  * Danish (Joe Dalton). (Closes: #711171)
+  * Portuguese (Hugo Peixoto). (Closes: #711639)
+  * Spanish; (Camaleón). (Closes: #712419)
+  * Italian (Beatrice Torracca). (Closes: #712477)
+  * Polish (Michał Kułach). (Closes: #712488)
+  * Japanese (victory). (Closes: #712532)
+  * French (Christian Perrier). (Closes: #712557)
+  * Swedish (Martin Bagge). (Closes: #712650)
+
+  [ Sebastian Reichel ]
+  * New upstream release
+  * Drop libphp-simplepie dependency, upstream now uses its own parser
+  * fix apache2-maintscript-helper sourcing in postinst/postrm (Closes: #710840)
+  * Fix logrotate script (Closes: #707212, #712121)
+  * Use dpkg-statoverride in postinst (Closes: #706700)
+  * Handle missing /etc/tt-rss/config.php in config script (Closes: #712401)
+  * New patch, which replaces all occurences of yourserver with example.org
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 21 Jun 2013 20:26:28 +0200
+
+tt-rss (1.7.8+dfsg-2) unstable; urgency=low
+
+  * Fix broken phpqrcode symlink for package upgrades
+    (Closes: #705213)
+  * Restart daemon in logrotate configuration
+    (Closes: #705559)
+  * Enable fastcgi-php if lighttpd is selected as webserver
+    (Closes: #705287)
+  * Add SELF_URL_PATH question to debconf
+    (Closes: #705286)
+  * Do not fail to install package if lighttpd config installation fails
+    (Closes: #705341)
+  * Try harder to purge lighttpd config
+    (Closes: #705343)
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 02 May 2013 20:29:39 +0200
+
+tt-rss (1.7.8+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+  * add upstream changelog
+  * use phpqrcode instead of embedded copy
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 04 Apr 2013 17:36:20 +0200
+
+tt-rss (1.7.5+dfsg-2) unstable; urgency=low
+
+  * fix init script for non forking update daemon (Closes: #703847)
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 25 Mar 2013 01:32:11 +0100
+
+tt-rss (1.7.5+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+   - JShrink is now used instead of jsmin
+   - Mobile UI has been dropped
+   - New plugins: auth_ldap, embed_original, mailto
+   - Bugfixes
+  * add Portuguese debconf template from Hugo Peixoto (Closes: #703777)
+  * fix support for Apache 2.2 (Closes: #703272)
+  * make it possible to install php5-cgi without php5 metapackage (Closes: #703643)
+  * add php-apc suggestion (suggested by upstream author)
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 23 Mar 2013 17:49:43 +0100
+
+tt-rss (1.7.4+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+   - Temporarily revert new OO db wrapper
+  * write output from daemon into logfile (Closes: #699517)
+  * add logrotate configuration for new logfile
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 17 Mar 2013 10:30:53 +0100
+
+tt-rss (1.7.3+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+   - Reintroduce share-to-twitter plugin
+   - Add googlereaderkeys plugin
+   - Bugfixes
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 15 Mar 2013 15:13:42 +0100
+
+tt-rss (1.7.2+dfsg-2) unstable; urgency=low
+
+  * Add dependency to libphp-simplepie, which got lost when
+    the magpierss support has been removed. (Closes: #702977)
+
+ -- Sebastian Reichel <sre@debian.org>  Wed, 13 Mar 2013 18:12:10 +0100
+
+tt-rss (1.7.2+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+   - fixes some postgresql related regressions of the last release
+
+ -- Sebastian Reichel <sre@debian.org>  Wed, 13 Mar 2013 00:57:42 +0100
+
+tt-rss (1.7.1+dfsg-1) unstable; urgency=low
+
+  [ Fabien Bochu ]
+  * fix non escaped slash in db-updater.php patch (Closes: #697591)
+
+  [ Sebastian Reichel ]
+  * new upstream release
+
+ -- Sebastian Reichel <sre@debian.org>  Wed, 06 Mar 2013 17:07:49 +0100
+
+tt-rss (1.7.0+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+   - drops support for magpierss
+  * set dbc_pgsql_createdb_encoding in postinst (Closes: #699453)
+  * add patch fixing db-updater.php (Closes: #697591)
+  * update Debian Standards Version to 3.9.4
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 17 Feb 2013 11:51:06 +0100
+
+tt-rss (1.6.2+dfsg-2) unstable; urgency=low
+
+  [ Hans Spaans ]
+  * Fix stop rule of init script (Closes: #697059)
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 06 Jan 2013 20:55:57 +0100
+
+tt-rss (1.6.2+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 30 Dec 2012 02:14:51 +0100
+
+tt-rss (1.6.1+dfsg-3) unstable; urgency=low
+
+  * Built-Using is prototypejs instead of libjs-prototype
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 24 Nov 2012 20:41:31 +0100
+
+tt-rss (1.6.1+dfsg-2) unstable; urgency=low
+
+  * use embedded, patched libprototype (Closes: #691025)
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 24 Nov 2012 19:13:29 +0100
+
+tt-rss (1.6.1+dfsg-1) unstable; urgency=low
+
+  * require libprototype >= 1.7.0
+  * update tt-rss-layer removal patch to remove one more include
+  * add Russian debconf template from Yuri Kozlov (Closes: #692337)
+  * add Japanese debconf template (Closes: #692473)
+  * add Spanish debconf template (Closes: #693527)
+
+ -- Sebastian Reichel <sre@debian.org>  Wed, 07 Nov 2012 09:31:11 +0100
+
+tt-rss (1.6.0+dfsg-2) unstable; urgency=low
+
+  * new patch for prototype 1.7 support (Closes: #691025)
+  * make it possible to install only one of magpierss and simplepie,
+    but recommend to install both.
+  * use simplepie by default (Closes: #691121)
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 25 Oct 2012 00:47:11 +0200
+
+tt-rss (1.6.0+dfsg-1) unstable; urgency=low
+
+  * new upstream release
+  * rename de_DE.po to de.po (Closes: #690019) 
+  * make webserver choices translatable (Closes: #690020)
+  * add French debconf template from Christian Perrier (Closes: #690022)
+
+ -- Sebastian Reichel <sre@debian.org>  Tue, 23 Oct 2012 23:56:04 +0200
+
+tt-rss (1.5.11+dfsg2-1) unstable; urgency=low
+
+  * replace upstream's jsmin.php with jshrink.php (Closes: #689776)
+  * add get-orig-source rule to debian/rules
+  * update remove-tt-rss-layer.patch
+   - also load dijit.tree.dndSource (needed by prefs.Feeds)
+  * add section about PHP display_errors to README.Debian
+
+ -- Sebastian Reichel <sre@debian.org>  Sun, 07 Oct 2012 10:34:06 +0200
+
+tt-rss (1.5.11+dfsg-1) experimental; urgency=low
+
+  * new upstream release
+  * use debian copyright format 1.0
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 21 May 2012 17:47:13 +0200
+
+tt-rss (1.5.10+dfsg-3) experimental; urgency=low
+
+  [ Kees Cook ]
+  * update init script for better AppArmor support
+
+  [ Sebastian Reichel ]
+  * use the apache2-maintscript-helper script instead of linking
+    the configuration manually (Closes: #669771)
+  * update dojo 1.7.x support patch to fix some broken
+    things in the preferences area
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 28 Apr 2012 02:13:18 +0200
+
+tt-rss (1.5.10+dfsg-2) experimental; urgency=low
+
+  * add dojo 1.7.x support by removing optimized tt-rss layer
+    (Closes: #666874) 
+
+ -- Sebastian Reichel <sre@debian.org>  Wed, 04 Apr 2012 05:23:52 +0200
+
+tt-rss (1.5.10+dfsg-1) experimental; urgency=low
+
+  * Initial release (Closes: #440602)
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 10 Mar 2012 10:46:35 +0100

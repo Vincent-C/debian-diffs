@@ -1,0 +1,45 @@
+Source: tt-rss
+Section: web
+Priority: optional
+Maintainer: Sebastian Reichel <sre@debian.org>
+Uploaders: Marcelo Jorge Vieira (metal) <metal@debian.org>
+Build-Depends: debhelper (>= 8),
+               dh-systemd (>= 1.5),
+               libjs-prototype (= 1.7.1-3)
+Standards-Version: 3.9.7
+Homepage: http://tt-rss.org
+Vcs-Git: git://anonscm.debian.org/collab-maint/tt-rss.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/tt-rss.git;a=summary
+
+Package: tt-rss
+Built-Using: prototypejs (= 1.7.1-3)
+Architecture: all
+Depends: ${misc:Depends},
+         dbconfig-common,
+         libapache2-mod-php (>= 5.4.0) | php-cgi (>= 5.4.0) | php (>= 5.4.0) | libapache2-mod-php5 (>= 5.3.0) | php5-cgi (>= 5.3.0) | php5 (>= 5.3.0),
+         php-cli | php5-cli,
+         php-json | php5-json,
+         php-mbstring,
+         php-mysql | php-mysqlnd | php-pgsql | php5-mysql | php5-mysqlnd | php5-pgsql,
+         php-xml
+Recommends: apache2 | lighttpd | httpd,
+            php-gd | php5-gd,
+            php-mcrypt | php5-mcrypt
+Suggests: mysql-server | postgresql,
+          mysql-client | postgresql-client,
+          sphinxsearch,
+          php-apc
+Description: Tiny Tiny RSS - web-based news feed (RSS/Atom) aggregator
+ Tiny Tiny RSS is designed to allow you to read news from any location, while
+ feeling as close to a real desktop application as possible.
+ .
+ Feature list:
+  * server-side application - user only needs a web browser;
+  * support for RSS, RDF, Atom feeds;
+  * streamlined interface using AJAX;
+  * authentication for reading protected feeds;
+  * OPML import/export;
+  * feed aggregation;
+  * keyboard shortcuts;
+  * content filtering;
+  * JSON-based RPC API.

@@ -1,0 +1,70 @@
+#!/usr/bin/make -f
+DEB_DEBIAN_DIR=$(dir $(firstword $(MAKEFILE_LIST)))
+DEB_UPSTREAM_VERSION=$(shell dpkg-parsechangelog -l$(DEB_DEBIAN_DIR)/changelog | sed -rne 's,^Version: ([^+]+).*,\1,p')
+
+%:
+	dh $@ --with systemd
+
+override_dh_installchangelogs:
+	dh_installchangelogs debian/upstream-changes
+
+override_dh_install:
+	# run normal dh_install
+	dh_install
+	# install configuration file
+	mkdir -p debian/tt-rss/etc/tt-rss
+	cp config.php-dist debian/tt-rss/etc/tt-rss/config.php
+	# install dbconfig-common files
+	mkdir -p debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/install/
+	mkdir -p debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql
+	mkdir -p debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql
+	cp schema/ttrss_schema_mysql.sql debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/install/mysql
+	cp schema/ttrss_schema_pgsql.sql debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/install/pgsql
+	cp schema/versions/mysql/66.sql debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.4.2
+	cp schema/versions/pgsql/66.sql debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.4.2
+	cat schema/versions/mysql/6[789].sql schema/versions/mysql/7[012345678].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.0
+	cat schema/versions/pgsql/6[789].sql schema/versions/pgsql/7[012345678].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.0
+	cat schema/versions/mysql/79.sql schema/versions/mysql/8[01].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.2
+	cat schema/versions/pgsql/79.sql schema/versions/pgsql/8[01].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.2
+	cat schema/versions/mysql/8[2345].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.3
+	cat schema/versions/pgsql/8[2345].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.3
+	cat schema/versions/mysql/86.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.6
+	cat schema/versions/pgsql/86.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.6
+	cat schema/versions/mysql/87.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.9
+	cat schema/versions/pgsql/87.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.9
+	cat schema/versions/mysql/8[89].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.10
+	cat schema/versions/pgsql/8[89].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.10
+	cat schema/versions/mysql/9[01].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.5.11
+	cat schema/versions/pgsql/9[01].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.5.11
+	cat schema/versions/mysql/9[234567].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.6.0
+	cat schema/versions/pgsql/9[234567].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.6.0
+	cat schema/versions/mysql/98.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.6.1
+	cat schema/versions/pgsql/98.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.6.1
+	cat schema/versions/mysql/99.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.6.2
+	cat schema/versions/pgsql/99.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.6.2
+	cat schema/versions/mysql/10[012].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.0
+	cat schema/versions/pgsql/10[012].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.0
+	cat schema/versions/mysql/103.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.1
+	cat schema/versions/pgsql/103.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.1
+	cat schema/versions/mysql/104.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.3
+	cat schema/versions/pgsql/104.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.3
+	cat schema/versions/mysql/10[56].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.5
+	cat schema/versions/pgsql/10[56].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.5
+	cat schema/versions/mysql/10[789].sql schema/versions/mysql/11[012345].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.6
+	cat schema/versions/pgsql/10[789].sql schema/versions/pgsql/11[012345].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.6
+	cat schema/versions/mysql/11[6789].sql schema/versions/mysql/120.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.7.9
+	cat schema/versions/pgsql/11[6789].sql schema/versions/pgsql/120.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.7.9
+	cat schema/versions/mysql/121.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.8
+	cat schema/versions/pgsql/121.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.8
+	cat schema/versions/mysql/12[23].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.10
+	cat schema/versions/pgsql/12[23].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.10
+	cat schema/versions/mysql/124.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.12
+	cat schema/versions/pgsql/124.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.12
+	cat schema/versions/mysql/12[56].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/1.13
+	cat schema/versions/pgsql/12[56].sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/1.13
+	cat schema/versions/mysql/12[789].sql schema/versions/mysql/130.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/mysql/15.7+git20151123
+	cat schema/versions/pgsql/12[789].sql schema/versions/pgsql/130.sql > debian/tt-rss/usr/share/dbconfig-common/data/tt-rss/upgrade/pgsql/15.7+git20151123
+	# fix file permissions
+	find debian/tt-rss/usr/share/tt-rss -type f -exec chmod 644 '{}' ';'
+	chmod 755 debian/tt-rss/usr/share/tt-rss/www/update*.php
+	chmod 644 debian/tt-rss/etc/tt-rss/*

@@ -1,0 +1,114 @@
+#!/bin/sh
+set -e
+
+avahi_install() {
+	if [ -d /etc/avahi/services/ -a ! -e /etc/avahi/services/tt-rss.service -a ! -L /etc/avahi/services/tt-rss.service ] ; then
+		ln -s ../../tt-rss/avahi.service /etc/avahi/services/tt-rss.service
+	fi
+}
+
+lighttpd_install() {
+	if which lighty-enable-mod >/dev/null 2>&1 ; then
+		lighty-enable-mod tt-rss fastcgi fastcgi-php || true
+		avahi_install
+	fi
+}
+
+apache2_install() {
+	if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+		apache2_invoke enconf 50-tt-rss
+		avahi_install
+	elif  dpkg-query -f '${Version}'  -W 'apache2.2-common' > /dev/null 2>&1 ; then
+		if [ -d /etc/apache2/conf.d/ ] && [ ! -L /etc/apache2/conf.d/50-tt-rss.conf ] ; then
+			ln -s ../conf-available/50-tt-rss.conf /etc/apache2/conf.d/50-tt-rss.conf
+		fi
+	fi
+}
+
+ttrss_config_set() {
+	KEY="$1"
+	VAL=`echo "$2" | sed 's~/~\\\/~g'`
+	perl -p -i -e "s/define\('$KEY', '(.*)'\);/define('$KEY', '$VAL');/g" /etc/tt-rss/config.php
+}
+
+if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+	. /usr/share/apache2/apache2-maintscript-helper
+fi
+
+if [ "$1" = "configure" ]; then
+	setperm() {
+		FILE="$1"
+		dpkg-statoverride --list "$FILE" >/dev/null || \
+			dpkg-statoverride --update --add www-data www-data 755 "$FILE"
+	}
+
+	# tt-rss will write files into these directories
+	setperm /var/lib/tt-rss/feed-icons
+	setperm /var/lib/tt-rss
+	setperm /var/cache/tt-rss/js
+	setperm /var/cache/tt-rss/images
+	setperm /var/cache/tt-rss/export
+	setperm /var/cache/tt-rss/upload
+	setperm /var/cache/tt-rss
+
+	# deprecated directory of previous tt-rss versions
+	if [ -d /var/cache/tt-rss/magpie ]; then
+		rm -rf /var/cache/tt-rss/magpie
+	fi
+
+	# phpqrcode was previously embedded into tt-rss.
+	# dpkg does not replace directories with symlinks.
+	phpqrcodedir="/usr/share/tt-rss/www/lib/phpqrcode"
+	phpqrcodelink="../../../phpqrcode"
+	if [ -d $phpqrcodedir ] && [ ! -L $phpqrcodedir ]; then
+		if rmdir $phpqrcodedir 2>/dev/null; then
+			ln -sf $phpqrcodelink $phpqrcodedir
+		fi
+	fi
+
+	# source debconf stuff
+	if [ -f /usr/share/debconf/confmodule ]; then
+		. /usr/share/debconf/confmodule
+	fi
+
+	# dbconfig-common
+	if [ -f /usr/share/dbconfig-common/dpkg/postinst ]; then
+		. /usr/share/dbconfig-common/dpkg/postinst
+		dbc_generate_include="php:/etc/tt-rss/database.php"
+		dbc_generate_include_owner="root:www-data"
+		dbc_generate_include_perms="0640"
+		dbc_pgsql_createdb_encoding="UTF8"
+
+		dbc_go tt-rss $@
+	fi
+
+	# webserver configuration
+	db_get tt-rss/reconfigure-webserver
+	webservers="$RET"
+
+	for webserver in $webservers; do
+		webserver=${webserver%,}
+		if [ "$webserver" = "lighttpd" ]; then
+			lighttpd_install
+		elif [ "$webserver" = "apache2" ]; then
+			apache2_install
+		fi
+
+		# Reload webserver in any case, configuration might have changed
+		# Redirection of 3 is needed because Debconf uses it and it might 
+		# be inherited by webserver. See bug #446324.
+		if [ -x /usr/sbin/invoke-rc.d ]; then
+			invoke-rc.d $webserver reload 3>/dev/null || true
+		else
+			/etc/init.d/$webserver reload 3>/dev/null || true
+		fi
+	done
+
+	# set tt-rss according to config
+	db_get tt-rss/self_url_path
+	ttrss_config_set "SELF_URL_PATH" "$RET"
+fi
+
+#DEBHELPER#
+
+exit 0

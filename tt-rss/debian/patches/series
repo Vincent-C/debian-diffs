@@ -1,0 +1,2 @@
+config.php-dist.patch
+fix-db-updater-script.patch

@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+# clear cache (needed for upgrade)
+# this will be done in prerm in the future, but
+# for a transitional period is also done in preinst,
+# since the old prerm file is used, which may not
+# yet clear the cache during upgrade.
+if [ "$1" = "upgrade" ] ; then
+	find /var/cache/tt-rss -type f -delete
+fi;
+
+#DEBHELPER#
+
+exit 0

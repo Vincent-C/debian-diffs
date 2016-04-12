@@ -1,0 +1,73 @@
+#!/bin/sh
+set -e
+
+lighttpd_remove() {
+	if which lighty-disable-mod >/dev/null 2>&1 ; then
+		lighty-disable-mod tt-rss || true
+	fi
+	if [ -L /etc/lighttpd/conf-enabled/50-tt-rss.conf ] ; then
+		rm /etc/lighttpd/conf-enabled/50-tt-rss.conf
+	fi
+}
+
+apache_remove() {
+	if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+		apache2_invoke disconf 50-tt-rss
+	elif  dpkg-query -f '${Version}'  -W 'apache2.2-common' > /dev/null 2>&1 ; then
+		if [ -L /etc/apache2/conf.d/50-tt-rss.conf ] ; then
+			rm /etc/apache2/conf.d/50-tt-rss.conf
+		fi
+	fi
+}
+
+if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+	. /usr/share/apache2/apache2-maintscript-helper
+fi
+
+if [ -f /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+fi
+
+if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
+	. /usr/share/dbconfig-common/dpkg/postrm
+	dbc_go tt-rss $@
+fi
+
+if [ "$1" = "purge" ]; then
+	rm -rf /etc/tt-rss
+	# Remove database configuration include file from ucf state
+	# hashfile.  Without this trying to reinstall the package
+	# after a purge will not create the database configuration
+	# include file.
+	ucf --purge /etc/tt-rss/database.php
+fi
+
+if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
+	if [ -f /usr/share/debconf/confmodule ]; then
+		db_get tt-rss/reconfigure-webserver || true
+		webservers="$RET"
+
+		for webserver in $webservers; do
+			rm -f /etc/avahi/services/tt-rss.service
+
+			webserver=${webserver%,}
+			if [ "$webserver" = "lighttpd" ]; then
+				lighttpd_remove
+			elif [ "$webserver" = "apache2" ]; then
+				apache_remove
+			fi
+
+			# Redirection of 3 is needed because Debconf uses it and it might 
+			# be inherited by webserver. See bug #446324.
+			if [ -x /usr/sbin/invoke-rc.d ]; then
+				invoke-rc.d $webserver reload 3>/dev/null || true
+			else
+				/etc/init.d/$webserver reload 3>/dev/null || true
+			fi
+		done
+	fi
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,77 @@
+# Translation of tt-rss debconf templates to Polish.
+# Copyright (C) 2013
+# This file is distributed under the same license as the tt-rss package.
+#
+# Michał Kułach <michal.kulach@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: tt-rss\n"
+"Report-Msgid-Bugs-To: tt-rss@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-02 20:04+0300\n"
+"PO-Revision-Date: 2013-06-05 16:41+0200\n"
+"Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
+"Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "apache2"
+msgstr "apache2"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "lighttpd"
+msgstr "lighttpd"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid "Web server to reconfigure automatically:"
+msgstr "Serwer WWW do automatycznej konfiguracji:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"Tiny Tiny RSS."
+msgstr ""
+"Proszę wybrać serwer WWW, który zostanie automatycznie skonfigurowany w celu "
+"uruchomienia Tiny Tiny RSS."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Full URL of the tt-rss installation:"
+msgstr "Pełny URL instalacji tt-rss:"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"Please enter the URL that should be used to access tt-rss with a web browser."
+msgstr ""
+"Proszę wprowadzić URL, pod którym tt-rss będzie dostępny za pomocą "
+"przeglądarki internetowej."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"This should include the location of the tt-rss directory - for instance "
+"http://example.org/tt-rss/. If this is not set correctly, several features, "
+"including PUSH, bookmarklets, and browser integration, will not work "
+"properly."
+msgstr ""
+"Należy tu uwzględnić położenie katalogu tt-rss np. http://example.org/tt-"
+"rss/. Jeśli wprowadzi się nieprawidłowy adres, to wiele funkcji takich jak "
+"PUSH, skryptozakładki i integracja z przeglądarką internetową nie będzie "
+"działać poprawnie."

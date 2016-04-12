@@ -1,0 +1,74 @@
+# Translation of tt-rss debconf template to Swedish
+# Copyright (C) 2013 Martin Bagge <brother@bsnet.se>
+# This file is distributed under the same license as the tt-rss package.
+#
+# Martin Bagge <brother@bsnet.se>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: tt-rss\n"
+"Report-Msgid-Bugs-To: tt-rss@packages.debian.org\n"
+"POT-Creation-Date: 2013-06-02 20:04+0300\n"
+"PO-Revision-Date: 2013-06-18 11:32+0100\n"
+"Last-Translator: Martin Bagge / brother <brother@bsnet.se>\n"
+"Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "apache2"
+msgstr "apache2"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "lighttpd"
+msgstr "lighttpd"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid "Web server to reconfigure automatically:"
+msgstr "Webbserver som ska ställas in automatiskt."
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"Tiny Tiny RSS."
+msgstr ""
+"Ange vilken webbserver som ska ställas in automatiskt för att köra Tiny Tiny "
+"RSS."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Full URL of the tt-rss installation:"
+msgstr "Komplett URL för tt-rss-installationen:"
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"Please enter the URL that should be used to access tt-rss with a web browser."
+msgstr ""
+"Ange den URL som ska användas för att få tillgång till tt-rss med en "
+"webbläsare."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"This should include the location of the tt-rss directory - for instance "
+"http://example.org/tt-rss/. If this is not set correctly, several features, "
+"including PUSH, bookmarklets, and browser integration, will not work "
+"properly."
+msgstr ""
+"Inkludera platsen för tt-rss-katalogen, exempelvis http://example.org/tt-"
+"rss/. Om detta inte anges korrekt kommer ett fleratal funktioner inte att "
+"fungera korrekt; PUSH, bokmärken och webbläsareintegration."

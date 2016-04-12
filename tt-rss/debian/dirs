@@ -1,0 +1,7 @@
+var/lib/tt-rss
+var/cache/tt-rss
+var/cache/tt-rss/export
+var/cache/tt-rss/images
+var/cache/tt-rss/js
+var/cache/tt-rss/upload
+var/lib/tt-rss/feed-icons

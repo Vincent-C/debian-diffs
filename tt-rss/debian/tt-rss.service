@@ -1,0 +1,17 @@
+[Unit]
+Description=Update the Tiny Tiny RSS subscribed syndication feeds
+After=network.target postgresql.service mysql.service
+Wants=postgresql.service mysql.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/usr/share/tt-rss/www
+Type=simple
+StandardOutput=null
+StandardError=syslog
+PIDFile=/var/lib/tt-rss/update_daemon.lock
+ExecStart=/usr/share/tt-rss/www/update.php --daemon
+
+[Install]
+WantedBy=multi-user.target
