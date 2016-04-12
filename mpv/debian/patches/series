@@ -1,0 +1,4 @@
+01_desktop-path.patch
+02_fix-config-path.patch
+03_waf.patch
+04_waf-pie.patch
