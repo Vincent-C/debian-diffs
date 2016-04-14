@@ -1,15 +1,12 @@
 chrome/                    opt/thunderbird/
-components/                opt/thunderbird/
 defaults/                  opt/thunderbird/
 dictionaries/              opt/thunderbird/
 distribution/              opt/thunderbird/
 extensions/                opt/thunderbird/
 icons/                     opt/thunderbird/
 isp/                       opt/thunderbird/
-searchplugins/             opt/thunderbird/
 application.ini            opt/thunderbird/
 blocklist.xml              opt/thunderbird/
-chrome.manifest            opt/thunderbird/
 crashreporter              opt/thunderbird/
 crashreporter.ini          opt/thunderbird/
 dependentlibs.list         opt/thunderbird/
@@ -17,7 +14,7 @@ libfreebl3.chk             opt/thunderbird/
 libfreebl3.so              opt/thunderbird/
 libldap60.so               opt/thunderbird/
 libldif60.so               opt/thunderbird/
-libmozalloc.so             opt/thunderbird/
+liblgpllibs.so             opt/thunderbird/
 libmozsqlite3.so           opt/thunderbird/
 libnspr4.so                opt/thunderbird/
 libnss3.so                 opt/thunderbird/
