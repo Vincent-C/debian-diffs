@@ -322,14 +322,14 @@ class Gencontrol(Base):
 
         image = self.templates["control.image.type-%s" % config_entry_image['type']]
 
-        config_entry_xen = self.config.merge('xen', arch, featureset, flavour)
-        if config_entry_xen:
-            p = self.process_packages(self.templates['control.xen-linux-system'], vars)
-            l = PackageRelationGroup()
-            for xen_flavour in config_entry_xen['flavours']:
-                l.append("xen-system-%s" % xen_flavour)
-            p[0]['Depends'].append(l)
-            packages_dummy.extend(p)
+      #  config_entry_xen = self.config.merge('xen', arch, featureset, flavour)
+      #  if config_entry_xen:
+      #      p = self.process_packages(self.templates['control.xen-linux-system'], vars)
+      #      l = PackageRelationGroup()
+      #      for xen_flavour in config_entry_xen['flavours']:
+      #          l.append("xen-system-%s" % xen_flavour)
+      #      p[0]['Depends'].append(l)
+      #      packages_dummy.extend(p)
 
         vars.setdefault('desc', None)
 
@@ -355,9 +355,9 @@ class Gencontrol(Base):
             else:
                 raise RuntimeError(u'Unable to disable debug infos in release build (DEBIAN_KERNEL_DISABLE_DEBUG set)')
 
-        if build_debug:
-            makeflags['DEBUG'] = True
-            packages_own.extend(self.process_packages(self.templates['control.image-dbg'], vars))
+        #if build_debug:
+        #    makeflags['DEBUG'] = True
+        #    packages_own.extend(self.process_packages(self.templates['control.image-dbg'], vars))
 
         self.merge_packages(packages, packages_own + packages_dummy, arch)
 
@@ -435,10 +435,10 @@ class Gencontrol(Base):
                 substitute_file('po/' + os.path.basename(path),
                                 'debian/po/' + os.path.basename(path),
                                 append=True)
-        if build_debug:
-            substitute_file('image-dbg.lintian-override',
-                            'debian/linux-image-%s%s-dbg.lintian-overrides' %
-                            (vars['abiname'], vars['localversion']))
+        # if build_debug:
+        #     substitute_file('image-dbg.lintian-override',
+        #                     'debian/linux-image-%s%s-dbg.lintian-overrides' %
+        #                     (vars['abiname'], vars['localversion']))
 
     def merge_packages(self, packages, new, arch):
         for new_package in new:
