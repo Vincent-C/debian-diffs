@@ -39,7 +39,9 @@ if [ "$1" = "purge" ]; then
 	# hashfile.  Without this trying to reinstall the package
 	# after a purge will not create the database configuration
 	# include file.
-	ucf --purge /etc/tt-rss/database.php
+	if which ucf >/dev/null; then
+		ucf --purge /etc/tt-rss/database.php
+	fi
 fi
 
 if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
