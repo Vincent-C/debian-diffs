@@ -1,3 +1,9 @@
+gnome-themes-zuki (0~20160508-1) unstable; urgency=medium
+
+  * New upstream release with gnome-shell/gtk 3.20 support.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 08 May 2016 17:47:18 -0700
+
 gnome-themes-zukitwo (0~20141022-1) unstable; urgency=medium
 
   * New upstream release with gnome-shell 3.14 support.
