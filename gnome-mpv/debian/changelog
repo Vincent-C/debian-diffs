@@ -1,0 +1,26 @@
+gnome-mpv (0.8-1~vc1) unstable; urgency=medium
+
+  * New upstream release.
+    - d/control: Bump libgtk-3-dev build-dep to >= 3.20.
+    - d/rules: mkdir -p m4 before running autoreconf.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 08 May 2016 17:04:12 -0700
+
+gnome-mpv (0.7-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Temporarily disable unimportant failing tests.
+
+ -- Ximin Luo <infinity0@debian.org>  Sun, 07 Feb 2016 20:43:07 +0100
+
+gnome-mpv (0.6-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Ximin Luo <infinity0@debian.org>  Fri, 13 Nov 2015 01:12:36 +0100
+
+gnome-mpv (0.5-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #799536)
+
+ -- Ximin Luo <infinity0@debian.org>  Mon, 21 Sep 2015 17:33:00 +0200

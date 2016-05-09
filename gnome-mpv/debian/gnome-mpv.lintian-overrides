@@ -1,0 +1,6 @@
+# From `hardening-check --verbose usr/bin/gnome-mpv`:
+# The only unprotected function is strncpy, whose only use is in src/mpv.c.
+# This is known-correct at compile time and therefore the compiler uses the
+# unprotected function even with fortify-source as per case (1) in:
+# https://gcc.gnu.org/ml/gcc-patches/2004-09/msg02055.html
+gnome-mpv binary: hardening-no-fortify-functions usr/bin/gnome-mpv
