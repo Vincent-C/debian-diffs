@@ -1,6 +1,6 @@
-tt-rss (16.3+git20160429-1+vc1) unstable; urgency=medium
+tt-rss (16.3+git20160518-1+vc1) unstable; urgency=medium
 
-  * New upstream git snapshot (static version 16.3; 2016-04-29).
+  * New upstream git snapshot (static version 16.3; 2016-05-18).
   * Based off of package in Debian sid, with following changes:
     - Preserve old PHP5 dependencies as alternative dependencies.
     - Use orig tarball contents (lib/) instead of symlinks (changes to
@@ -9,7 +9,7 @@ tt-rss (16.3+git20160429-1+vc1) unstable; urgency=medium
       support-new-dojo-dijit.patch, use-new-phpmailer-autoload-interface.patch,
       php7-support.patch, use-spl-autoload-register-for-autoloading.patch.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 03 May 2016 22:34:51 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 20 May 2016 16:32:56 -0700
 
 tt-rss (15.7+git20151123+dfsg-5) unstable; urgency=medium
 
