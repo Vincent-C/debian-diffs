@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.14+4+vc1) unstable; urgency=medium
+meta-gnome3 (1:3.14+5+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -12,7 +12,22 @@ meta-gnome3 (1:3.14+4+vc1) unstable; urgency=medium
     - *tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 11 Apr 2016 18:54:00 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 05 Jun 2016 19:30:20 -0700
+
+meta-gnome3 (1:3.14+5) unstable; urgency=medium
+
+  [ Laurent Bigonville ]
+  * debian/control.in:
+    - Replace gucharmap by gnome-characters, this is new since GNOME 3.18
+    - Add gnome-taquin to gnome-games, this is new since GNOME 3.18
+    - Add system-config-printer-common and system-config-printer-udev to the
+      gnome-core package, this is needed automatic printer configuration
+
+  [ Jeremy Bicha ]
+  * debian/control.in:
+    - Add gnome-builder to gnome-devel, this is new since GNOME 3.18
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 05 Jun 2016 14:07:43 +0200
 
 meta-gnome3 (1:3.14+4) unstable; urgency=medium
 
