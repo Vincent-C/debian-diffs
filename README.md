@@ -11,7 +11,5 @@ font rendering:
  - cairo
  - libxft
 
-libxft is now identical in Debian and Ubuntu, and cairo is practically the same
-as well, with the sole exception of an additional patch being carried in Ubuntu
-(server-side-gradients.patch, nothng to do with font rendering). Therefore, the
-ony packages that need to be patched currently are freetype and fontconfig.
+libxft and cairo are both currently identical in Debian and Ubuntu. The only 
+packages that need to be patched currently are freetype and fontconfig.
