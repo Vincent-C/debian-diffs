@@ -1,12 +1,13 @@
-mpv (0.17.0-1~vc1) unstable; urgency=medium
+mpv (0.18.0-1~vc1) unstable; urgency=medium
 
   * Local package.
   * New upstream release.
     - Drop 05_fix-typo.patch, applied upstream.
     - Refresh remaining patches.
-    - debian/{mpv.install,libmpv-dev.examples}: remove files no longer present.
+    - debian/libmpv-dev.examples: update file listing.
+    - d/rules: build with --enable-encoding.
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 11 Apr 2016 22:44:21 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 25 Jun 2016 00:20:16 -0700
 
 mpv (0.14.0-1) unstable; urgency=medium
 

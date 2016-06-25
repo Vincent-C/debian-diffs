@@ -13,6 +13,7 @@ override_dh_auto_configure:
 			--zshdir=/usr/share/zsh/vendor-completions	\
 			--enable-cdda --enable-sdl2 --enable-sndio	\
 			--enable-zsh-comp --enable-libmpv-shared	\
+			--enable-encoding				\
 			--disable-build-date
 
 
