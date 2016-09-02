@@ -1,3 +1,9 @@
+firefox-stable (48.0.2-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Fri, 02 Sep 2016 00:27:53 -0700
+
 firefox-stable (47.0.1-1+vc1) unstable; urgency=medium
 
   * New upstream release.

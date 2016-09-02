@@ -4,15 +4,15 @@ dictionaries/                  opt/firefox/
 gmp-clearkey/                  opt/firefox/
 gtk2/                          opt/firefox/
 icons/                         opt/firefox/
-webapprt/                      opt/firefox/
 application.ini                opt/firefox/
 crashreporter                  opt/firefox/
 crashreporter.ini              opt/firefox/
 dependentlibs.list             opt/firefox/
 firefox                        opt/firefox/
 firefox-bin                    opt/firefox/
-libfreebl3.chk                 opt/firefox/
-libfreebl3.so                  opt/firefox/
+icudt56l.dat                   opt/firefox/
+libfreeblpriv3.chk             opt/firefox/
+libfreeblpriv3.so              opt/firefox/
 liblgpllibs.so                 opt/firefox/
 libmozavcodec.so               opt/firefox/
 libmozavutil.so                opt/firefox/
@@ -41,5 +41,4 @@ Throbber-small.gif             opt/firefox/
 updater                        opt/firefox/
 updater.ini                    opt/firefox/
 update-settings.ini            opt/firefox/
-webapprt-stub                  opt/firefox/
 debian/firefox.desktop         usr/share/applications/
