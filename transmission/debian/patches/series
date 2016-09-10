@@ -1,3 +1,0 @@
-systemd_service_fixes.patch
-transition_to_libsystemd.patch
-update-glib-gettext.m4.patch
