@@ -1,3 +1,9 @@
+gradle (99:3.0-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 11 Sep 2016 13:50:44 -0700
+
 gradle (99:2.14-1+vc1) unstable; urgency=medium
 
   * New upstream release.
