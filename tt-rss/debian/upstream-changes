@@ -1,3 +1,18 @@
+16.8+git20160826
+ * fixes
+  o mysql 5.7
+  o php 7
+  o misc. other
+ * dropped support
+  o af_sort_bayes plugin
+  o googlereaderimport plugin
+  o ALLOW_DUPLICATE_POSTS option
+  o legacy mysql driver
+ * translation updates
+ * new support for tweet embedding using oembed
+ * switch to asynchronously UI loading
+ * improved session validation for api access
+
 15.7+git20151123
  * fixes
   o atom feed parsing

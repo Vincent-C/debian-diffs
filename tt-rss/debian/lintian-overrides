@@ -1,4 +1,10 @@
 # Software is named "Tiny Tiny RSS"
 description-contains-duplicated-word Tiny Tiny
+spelling-error-in-description-synopsis Tiny Tiny (duplicate word) Tiny
+spelling-error-in-description Tiny Tiny (duplicate word) Tiny
 # /usr/sbin/invoke-rc.d is checked for existence
 command-with-path-in-maintainer-script
+# This is #712252
+embedded-javascript-library usr/share/tt-rss/www/lib/prototype.js please use libjs-prototype
+# This is #818962
+php-script-but-no-phpX-cli-dep

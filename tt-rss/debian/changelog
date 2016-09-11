@@ -1,15 +1,41 @@
-tt-rss (16.3+git20160518-1+vc1) unstable; urgency=medium
+tt-rss (16.8+git20160905-1+vc1) unstable; urgency=medium
 
-  * New upstream git snapshot (static version 16.3; 2016-05-18).
+  * New upstream git snapshot (static version 16.8; 2016-09-05).
   * Based off of package in Debian sid, with following changes:
-    - Preserve old PHP5 dependencies as alternative dependencies.
     - Use orig tarball contents (lib/) instead of symlinks (changes to
       debian/{install,links,rules}); remove now unneeded build-deps and deps.
-    - Remove fix-dijit-requires.patch, remove-tt-rss-layer.patch,
-      support-new-dojo-dijit.patch, use-new-phpmailer-autoload-interface.patch,
-      php7-support.patch, use-spl-autoload-register-for-autoloading.patch.
+    - Drop all patches except for config.php-dist.patch and 
+      fix-db-updater-script.patch.
 
- -- Vincent Cheng <vcheng@debian.org>  Fri, 20 May 2016 16:32:56 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 11 Sep 2016 15:41:06 -0700
+
+tt-rss (16.8+git20160826+dfsg-3) unstable; urgency=medium
+
+  * Readd dependency on php-gettext, as the transition package still
+    contains a few files, which are not in php-php-gettext (Closes: #837083)
+
+ -- Sebastian Reichel <sre@debian.org>  Thu, 08 Sep 2016 18:13:46 +0200
+
+tt-rss (16.8+git20160826+dfsg-2) unstable; urgency=medium
+
+  * Add dependency to dbconfig-mysql | dbconfig-pgsql, which are
+    required since dbconfig-common 2.0
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 29 Aug 2016 01:38:31 +0200
+
+tt-rss (16.8+git20160826+dfsg-1) unstable; urgency=low
+
+  * New git snapshot
+  * Recommend php-curl (Closes: #822374)
+  * Fix php-gettext dependency (Closes: #824029)
+  * Update Debian Standards Version to 3.9.8
+  * Use canonical, secure VCS urls
+  * Update patches
+  * Add some new dojo compatibility patches
+  * Switch to compat level 9
+  * Drop autoexpand for feed categories (Closes: #773236)
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 29 Aug 2016 00:45:27 +0200
 
 tt-rss (15.7+git20151123+dfsg-5) unstable; urgency=medium
 

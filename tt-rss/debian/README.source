@@ -9,3 +9,9 @@ rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/button
 # (Debian uses its own dojo/dijit packages instead of the bundled copy)
 rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/dijit
 rm -rf tt-rss-$(DEB_UPSTREAM_VERSION)/lib/dojo
+
+# You can use the following command to generate a DFSG
+# compatible source tarball from upstream's git repository
+git archive --prefix "tt-rss/" master | \
+	tar --delete tt-rss/lib/button tt-rss/lib/dijit tt-rss/lib/dojo | \
+	xz --best > ../tt-rss-master.orig.tar.xz
