@@ -3,7 +3,7 @@ Section: editors
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://www.jetbrains.com/idea/
 
 Package: intellij-idea-ultimate

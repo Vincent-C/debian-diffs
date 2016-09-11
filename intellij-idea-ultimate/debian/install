@@ -1,5 +1,6 @@
 bin/                      opt/intellij/
 help/                     opt/intellij/
+jre/                      opt/intellij/
 lib/                      opt/intellij/
 license/                  opt/intellij/
 plugins/                  opt/intellij/

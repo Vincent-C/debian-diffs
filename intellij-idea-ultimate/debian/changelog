@@ -1,3 +1,9 @@
+intellij-idea-ultimate (2016.2.4-1) unstable; urgency=medium
+
+  * New upstream release. (Build IU-162.2032.8)
+
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 11 Sep 2016 13:13:05 -0700
+
 intellij-idea-ultimate (15.0.2-1) unstable; urgency=medium
 
   * New upstream release. (Build IU-143.1184.17)
