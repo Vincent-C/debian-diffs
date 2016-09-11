@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.14+5+vc1) unstable; urgency=medium
+meta-gnome3 (1:3.20+1+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -12,7 +12,25 @@ meta-gnome3 (1:3.14+5+vc1) unstable; urgency=medium
     - *tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
 
- -- Vincent Cheng <vcheng@debian.org>  Sun, 05 Jun 2016 19:30:20 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sun, 11 Sep 2016 12:50:53 -0700
+
+meta-gnome3 (1:3.20+1) unstable; urgency=medium
+
+  [ Laurent Bigonville ]
+  * debian/control.in: Bump Standards-Version to 3.9.8 (no further changes)
+  * debian/control.in: Drop caribou-antler dependency, this doesn't seem
+    needed with gnome-shell as it also provides the org.gnome.Caribou.Keyboard
+    D-Bus service
+
+  [ Jeremy Bicha ]
+  * Allow chromium as an alternative to firefox-esr or firefox
+
+  [ Emilio Pozuelo Monfort ]
+  * Drop gnome-dbg, as we want to remove -dbg packages in favor of -dbgsym.
+  * Bump version to 3.20. Update dependencies for GNOME 3.20.
+  * Depend on gnome-weather.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Mon, 01 Aug 2016 22:41:38 +0200
 
 meta-gnome3 (1:3.14+5) unstable; urgency=medium
 
