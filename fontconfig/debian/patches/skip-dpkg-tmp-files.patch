@@ -1,0 +1,31 @@
+Description: Configure fontconfig to ignore *.dpkg-tmp *.dpkg-new files
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=96896
+Bug-Debian: https://bugs.debian.org/828037
+Bug-Debian: https://bugs.debian.org/835142
+Author: Raphaël Hertzog <hertzog@debian.org>
+Last-Update: 2016-08-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/fonts.conf.in
++++ b/fonts.conf.in
+@@ -66,6 +66,20 @@
+ 	</match>
+ 
+ <!--
++  Ignore dpkg temporary files created in fonts directories
++-->
++	<selectfont>
++		<rejectfont>
++			<glob>*.dpkg-tmp</glob>
++		</rejectfont>
++	</selectfont>
++	<selectfont>
++		<rejectfont>
++			<glob>*.dpkg-new</glob>
++		</rejectfont>
++	</selectfont>
++
++<!--
+   Load local system customization file
+ -->
+ 	<include ignore_missing="yes">@CONFIGDIR@</include>

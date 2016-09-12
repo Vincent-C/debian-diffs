@@ -4,6 +4,8 @@
 04_mgopen_fonts.patch
 05_doc_files.patch
 06_cross.patch
+07_CVE-2016-5384-Properly-validate-offsets-in-cache-files.patch
+skip-dpkg-tmp-files.patch
 ubuntu/00_old_diff_gz.patch
 ubuntu/01_fonts_nanum.patch
 ubuntu/04_ubuntu_monospace_lcd_filter_conf.patch
