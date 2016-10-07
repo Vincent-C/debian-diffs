@@ -18,7 +18,7 @@ Package: gnome-core
 Architecture: linux-any
 Depends: libatk-adaptor (>= 2.20),
          at-spi2-core (>= 2.20),
-         adwaita-icon-theme (>= 3.20),
+         adwaita-icon-theme,
          baobab (>= 3.20),
          fonts-cantarell (>= 0.0.24),
          caribou (>= 0.4.15),
@@ -132,7 +132,6 @@ Depends: gnome-core (= ${binary:Version}),
 # Plugins for core and apps
          cups-pk-helper (>= 0.2),
          gedit-plugins (>= 3.20),
-         gnome-shell-extension-weather,
          gstreamer1.0-libav (>= 0.10.13),
          gstreamer1.0-plugins-ugly (>= 0.10.19),
          rhythmbox-plugins,
@@ -213,8 +212,7 @@ Package: gnome-devel
 Architecture: any
 Section: devel
 Depends: accerciser (>= 3.14),
-         anjuta (>= 2:3.20),
-         anjuta-extras (>= 3.10),
+         gnome-builder,
          devhelp (>= 3.20),
          gitg,
          glade (>= 3.20),
@@ -223,6 +221,7 @@ Depends: accerciser (>= 3.14),
          nemiver (>= 0.9),
          ${misc:Depends}
 Recommends: gnome-platform-devel
+Suggests: anjuta, anjuta-extras
 Description: GNOME Desktop Environment -- development tools
  These are the development tools of the GNOME Desktop environment, an
  intuitive and attractive desktop.
