@@ -11,7 +11,7 @@ Architecture: all
 Depends:
  gtk2-engines-murrine (>= 0.98.1.1),
  gtk2-engines-pixbuf,
- libgtk-3-0 (>= 3.20),
+ libgtk-3-0 (>= 3.22),
  ${misc:Depends},
  ${shlibs:Depends}
 Recommends:
