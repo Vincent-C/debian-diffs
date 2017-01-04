@@ -2,7 +2,6 @@ bin/                    opt/gradle/
 init.d/                 opt/gradle/
 lib/                    opt/gradle/
 media/                  opt/gradle/
-changelog.txt           opt/gradle/
 getting-started.html    opt/gradle/
 LICENSE                 opt/gradle/
 NOTICE                  opt/gradle/
