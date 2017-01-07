@@ -3,10 +3,10 @@ Section: java
 Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Matthias Klose <doko@debian.org>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.7
-Vcs-Git: git://anonscm.debian.org/pkg-java/java-common.git
-Vcs-Browser: http://anonscm.debian.org/cgit/pkg-java/java-common.git
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.9.8
+Vcs-Git: https://anonscm.debian.org/git/pkg-java/java-common.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-java/java-common.git
 Homepage: https://wiki.debian.org/Java/
 
 Package: java-common
@@ -27,8 +27,8 @@ Recommends: default-java-plugin
 Provides: ${jre:provides}
 Description: Standard Java or Java compatible Runtime
  This dependency package points to the Java runtime, or Java compatible
- runtime recommended for the ${jre:arch} architecture,
- which is ${jre} for ${jre:arch}.
+ runtime recommended for this architecture, which is
+ ${jre} for ${jre:arch}.
 
 Package: default-jre-headless
 Architecture: any
@@ -37,7 +37,7 @@ Suggests: default-jre
 Provides: ${jhl:provides}
 Replaces: openjdk-6-jre-headless (<< 6b23~pre8-2~)
 Description: Standard Java or Java compatible Runtime (headless)
- This package points to the Java runtime, or Java compatible
+ This dependency package points to the Java runtime, or Java compatible
  runtime recommended for this architecture, which is
  ${jhl} for ${jre:arch}.
  .
@@ -62,7 +62,10 @@ Provides: ${jdkhl:provides}
 Description: Standard Java or Java compatible Development Kit (headless)
  This dependency package points to the Java runtime, or Java compatible
  development kit recommended for this architecture, which is
- ${jdk} for ${jre:arch}.
+ ${jdkhl} for ${jre:arch}.
+ .
+ The package is used as dependency for packages not needing a
+ graphical display during runtime.
 
 Package: default-jdk-doc
 Architecture: any
@@ -70,8 +73,8 @@ Section: doc
 Depends: ${doc}, ${misc:Depends}
 Suggests: default-jdk
 Description: Standard Java or Java compatible Development Kit (documentation)
- This package points to the documentation for the Java development kit,
- or Java compatible development kit recommended for Debian, which is
+ This dependency package points to the documentation for the Java development
+ kit, or Java compatible development kit recommended for Debian, which is
  ${doc} for ${jre:arch}.
 
 Package: default-java-plugin

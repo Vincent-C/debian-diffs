@@ -1,10 +1,23 @@
-java-common (0.57+vc1) unstable; urgency=medium
+java-common (0.58+vc1) unstable; urgency=medium
 
   * Local package.
   * Default to oracle-java8-jdk.
     - Changes made to debian/rules.
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 11 Apr 2016 18:31:47 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 07 Jan 2017 02:40:58 -0800
+
+java-common (0.58) unstable; urgency=medium
+
+  * Team upload.
+  * Fixed update-java-alternatives to work with the new jdk-headless packages.
+    Thanks to Dominic Hargreaves for the patch (Closes: #825987)
+  * Updated the package descriptions
+  * Removed the unused Lintian overrides
+  * Use secure Vcs-* URLs
+  * Standards-Version updated to 3.9.8
+  * Switch to debhelper level 10
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 06 Jan 2017 13:55:31 +0100
 
 java-common (0.57) unstable; urgency=medium
 
