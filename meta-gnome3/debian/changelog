@@ -1,4 +1,4 @@
-meta-gnome3 (1:3.20+2+vc1) unstable; urgency=medium
+meta-gnome3 (1:3.20+3+vc1) unstable; urgency=medium
 
   * Local package.
   * Remove dependency on:
@@ -12,7 +12,17 @@ meta-gnome3 (1:3.20+2+vc1) unstable; urgency=medium
     - *tracker*, and dependencies:
       - gnome-boxes, gnome-documents, gnome-music, gnome-photos
 
- -- Vincent Cheng <vcheng@debian.org>  Thu, 06 Oct 2016 20:45:03 -0700
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 09 Jan 2017 23:38:18 -0800
+
+meta-gnome3 (1:3.20+3) unstable; urgency=medium
+
+  * debian/control.in:
+    - Drop gnome-nettool dependency, seems abandoned upstream and is making us
+      pulling net-tools package.
+    - Drop gnome-system-log and replace it with gnome-logs, g-s-l is not part
+      of any module set anymore.
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 10 Jan 2017 00:54:26 +0100
 
 meta-gnome3 (1:3.20+2) unstable; urgency=medium
 
