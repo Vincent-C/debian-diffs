@@ -1,6 +1,6 @@
 bin/                      opt/intellij/
 help/                     opt/intellij/
-jre/                      opt/intellij/
+jre64/                    opt/intellij/
 lib/                      opt/intellij/
 license/                  opt/intellij/
 plugins/                  opt/intellij/
@@ -8,4 +8,3 @@ redist/                   opt/intellij/
 build.txt                 opt/intellij/
 Install-Linux-tar.txt     opt/intellij/
 debian/intellij.desktop   usr/share/applications/
-debian/intellij.sh        opt/intellij/
