@@ -3,8 +3,8 @@ Section: misc
 Priority: optional
 Maintainer: Vincent Cheng <vcheng@debian.org>
 Bugs: mailto:vcheng@debian.org
-Build-Depends: debhelper (>= 7.0.50~), texinfo, python3
-Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 9), texinfo, python3
+Standards-Version: 4.3.0
 Homepage: https://github.com/erkin/ponysay
 Vcs-Browser: https://github.com/Vincent-C/debian-diffs/tree/master/ponysay
 

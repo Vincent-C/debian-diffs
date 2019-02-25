@@ -26,10 +26,3 @@ override_dh_fixperms:
 	# Fix lintian error by removing auto-generated file late in build
 	# E: ponysay: package-contains-info-dir-file usr/share/info/dir.gz
 	rm -f $(CURDIR)/debian/ponysay/usr/share/info/dir.gz
-
-get-orig-source:
-	git clone https://github.com/erkin/ponysay.git
-	rm -rf ponysay/.git
-	mv ponysay ponysay-3.0.1+20140624
-	tar cJf ponysay_3.0.1+20140624.orig.tar.xz ponysay-3.0.1+20140624/
-	rm -rf ponysay-3.0.1+20140624
