@@ -1,3 +1,10 @@
+gnome-themes-zuki (0~20190312-1) unstable; urgency=medium
+
+  * New upstream snapshot with gnome-shell/gtk 3.30 support.
+    (commit: 8d1f4b064fde35ff28371987d7916d1a45c1f828)
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 12 Mar 2019 22:05:34 -0700
+
 gnome-themes-zuki (0~20161016-1) unstable; urgency=medium
 
   * New upstream release with gnome-shell/gtk 3.22 support.
