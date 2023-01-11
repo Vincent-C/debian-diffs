@@ -1,3 +1,6 @@
-Tarball: https://github.com/erkin/ponysay/archive/3.0.3.tar.gz
+Source: https://github.com/erkin/ponysay
+
+Use git HEAD instead of latest tagged release (3.0.3) since it contains fixes
+for Python 3.8 support.
 
 Twilight Sparkle is best pony :)
