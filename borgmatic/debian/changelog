@@ -1,3 +1,9 @@
+borgmatic (1.7.4-0.1~ppa1~jammy1) jammy; urgency=medium
+
+  * No-change backport from Debian sid.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 22:01:54 -0800
+
 borgmatic (1.7.4-0.1) unstable; urgency=medium
 
   * Non-maintainer upload.
