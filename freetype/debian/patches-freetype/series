@@ -1,6 +1,0 @@
-no-uninitialized-bbox.patch
-freetype-2.1.7-backwards.compat.patch -p0
-enable-subpixel-rendering.patch
-enable-gxvalid-otvalid.patch
-verbose-libtool.patch
-revert_scalable_fonts_metric.patch
