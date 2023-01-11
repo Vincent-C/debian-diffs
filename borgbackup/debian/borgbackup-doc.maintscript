@@ -1,0 +1,1 @@
+dir_to_symlink /usr/share/doc/borgbackup-doc/html /usr/share/doc/borgbackup/html 1.1.4-2~

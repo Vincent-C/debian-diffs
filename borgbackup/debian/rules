@@ -1,0 +1,78 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+# The command 'sphinx-build' refers to the python2 version;
+# currently there is no easier way to refer to the python3 version.
+SPHINXBUILD=/usr/share/sphinx/scripts/python3/sphinx-build
+
+# Full hardening for the cython build.
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+# pybuild: use pytest instead of auto-detection
+#
+# The autodetection failed on jessie, resulting in a failed
+# build, since unittest does not support pytest's command
+# line switches
+export PYBUILD_TEST_PYTEST=1
+
+# Command line arguments to pytest
+#
+# We cannot rely on the buildds allowing fuse to be
+# used, so we disable the fuse-mount tests.
+export PYBUILD_TEST_ARGS=\
+	-k 'not fuse_mount and not test_fuse and not test_readonly_mount and not test_migrate_lock_alive' \
+	--pyargs borg.testsuite
+
+# To display coverage information, add the following
+# switches to PYBUILD_TEST_ARGS (Upstream does this)
+#
+# Note that this currently breaks unittests on jessie,
+# because borg will trip over the unexpected coverage
+# files.  Since this failure does not occur in stretch,
+# this is likely due to an outdated version in jessie.
+#
+# --cov=borg --cov-config=../.coveragerc
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_clean:
+	dh_clean
+	# make sure system libraries are used
+	find . -name blake2.h -delete
+	find . -name lz4.h -delete
+	find . -name zstd.h -delete
+	find . -name xxhash.h -delete
+	find . -name xxhash.c -delete
+
+override_dh_installdocs:
+	python3 setup.py build_ext --inplace
+	$(MAKE) -C docs html SPHINXBUILD=$(SPHINXBUILD)
+	dh_installdocs
+
+override_dh_installman:
+	python3 setup.py build_ext --inplace
+	$(MAKE) -C docs man SPHINXBUILD=$(SPHINXBUILD)
+	dh_installman
+
+#override_dh_auto_install:
+#	dh_auto_install
+#	#removing bundled msgpack directory
+#	rm -rf debian/tmp/usr/lib/python3*/dist-packages/borg/algorithms/msgpack
+
+# Run dh_auto_test in a fakeroot environment, this will
+# disable some feature tests from upstream that are not
+# guaranteed to work on a buildd anyway, like acls.
+#
+# Also, make sure the compiled cython files are present
+# in-place, to allow the tests to find them.
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	python3 setup.py build_ext --inplace
+	LC_ALL=C.UTF-8 fakeroot dh_auto_test
+endif
+
+# Do not compress .ico file (affects html documentation)
+override_dh_compress:
+	dh_compress -X.ico -Xfonts

@@ -1,0 +1,76 @@
+borgbackup (1.1.1-1) unstable; urgency=medium
+
+  - When upgrading from borg 1.0.x to 1.1.x, please note:
+   - read all the compatibility notes for 1.1.0*, starting from 1.1.0b1.
+   - borg might ask some security-related questions once after upgrading.
+     You can answer them either manually or via environment variable.
+     One known case is if you use unencrypted repositories, then it will ask
+     about a unknown unencrypted repository one time.
+   - your first backup with 1.1.x might be significantly slower (it might
+     completely read, chunk, hash a lot files) - this is due to the
+     --files-cache mode change (and happens every time you change mode).
+     You can avoid the one-time slowdown by using the pre-1.1.0rc4-compatible
+     mode (but that is less safe for detecting changed files than the default).
+     See the --files-cache docs for details.
+   - The deprecated --no-files-cache is not a global/common option any more,
+     but only available for borg create (it is not needed for anything else).
+     Use --files-cache=disabled instead of --no-files-cache.
+   - The nodump flag ("do not backup this file") is not honoured any more by
+     default because this functionality (esp. if it happened by error or
+     unexpected) was rather confusing and unexplainable at first to users.
+     If you want that "do not backup NODUMP-flagged files" behaviour, use:
+     borg create --exclude-nodump ...
+
+   - A borg server >= 1.1.0rc4 does not support borg clients 1.1.0b3-b5. #3033
+   - The files cache is now controlled differently and has a new default mode:
+     - the files cache now uses ctime by default for improved file change
+       detection safety. You can still use mtime for more speed and less safety.
+   - --ignore-inode is deprecated (use --files-cache=... without "inode")
+   - --no-files-cache is deprecated (use --files-cache=disabled)
+
+   - list: corrected mix-up of "isomtime" and "mtime" formats. Previously,
+     "isomtime" was the default but produced a verbose human format,
+     while "mtime" produced a ISO-8601-like format.
+     The behaviours have been swapped (so "mtime" is human, "isomtime" is
+     ISO-like), and the default is now "mtime".
+     "isomtime" is now a real ISO-8601 format ("T" between date and time, not a
+     space).
+  - delete: removed short option for --cache-only
+  - Running "borg init" via a "borg serve --append-only" server will *not*
+    create an append-only repository anymore. Use "borg init --append-only" to
+    initialize an append-only repository.
+  - Repositories in the "repokey" and "repokey-blake2" modes with an empty
+    passphrase
+    are now treated as unencrypted repositories for security checks (e.g.
+    BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK).
+    Previously there would be no prompts nor messages if an unknown repository
+    in one of these modes with an empty passphrase was encountered. This would
+    allow an attacker to swap a repository, if one assumed that the lack of
+    password prompts was due to a set BORG_PASSPHRASE.
+    Since the "trick" does not work if BORG_PASSPHRASE is set, this does
+    generally not affect scripts.
+  - Repositories in the "authenticated" mode are now treated as the unencrypted
+    repositories they are.
+  - The client-side temporary repository cache now holds unencrypted data for
+    better speed.
+  - borg init: removed the short form of --append-only (-a).
+  - borg upgrade: removed the short form of --inplace (-i).
+  - BORG_HOSTNAME_IS_UNIQUE is now on by default.
+  - removed --compression-from feature
+  - recreate: add --recompress flag, unify --always-recompress and
+    --recompress
+  - init: the --encryption argument is mandatory now (there are several choices)
+  - moved "borg migrate-to-repokey" to "borg key migrate-to-repokey".
+  - "borg change-passphrase" is deprecated, use "borg key change-passphrase"
+    instead.
+  - the --exclude-if-present option now supports tagging a folder with any
+    filesystem object type (file, folder, etc), instead of expecting only files
+    as tags, #1999
+  - the --keep-tag-files option has been deprecated in favor of the new
+    --keep-exclude-tags, to account for the change mentioned above.
+  - use lz4 compression by default, #2179
+  - borg init: removed the default of "--encryption/-e", #1979
+    This was done so users do a informed decision about -e mode.
+  - See the upstream changelog for a list of the new features and bug fixes
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 26 Oct 2017 09:01:19 +0200

@@ -1,0 +1,753 @@
+borgbackup (1.2.3-1~ppa1~jammy1) jammy; urgency=medium
+
+  * No change backport from Debian sid to PPA.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 21:47:15 -0800
+
+borgbackup (1.2.3-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 29 Dec 2022 10:17:45 +0100
+
+borgbackup (1.2.2-2) unstable; urgency=medium
+
+  * Add python3-pytest-benchmark to build
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 27 Sep 2022 16:31:41 +0200
+
+borgbackup (1.2.2-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop patch to generate fixed _version.py file
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 12 Sep 2022 09:50:41 +0200
+
+borgbackup (1.2.1-2) unstable; urgency=medium
+
+  * Add patch to make sure we always correctly regenerate
+    _version.py file (Closes: #1015052)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 18 Jul 2022 19:03:13 +0200
+
+borgbackup (1.2.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 07 Jun 2022 20:17:00 +0200
+
+borgbackup (1.2.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop patches now upstream:
+    - 33519263ac3532d909863f4864fef23aa6f6b381,
+    - 5937
+    - system-msgpack (this one was commented but its now not needed anymore)
+  * Refresh patches
+  * Bump compat level to 13
+  * Bump std-version to 4.6.0, no changes required
+  * Add new dateutil dependency needed for tests
+  * Add msgpack and pkgconfig python modules, needed for build
+  * Drop version constraints, now already satisfied since o-o-stable
+  * Add new python3-pyfuse3 dependency, meant to deprecate llfuse
+  * Update copyright years
+  * Add new runtime suggestion of pyfuse3
+  * Skip another test needing fuse
+  * Update copyright file for new release
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 22 Feb 2022 22:45:33 +0100
+
+borgbackup (1.1.17-2) unstable; urgency=medium
+
+  * debian/patches/5937.patch
+    - cherry-pick upstream change to use system/bundled xxhash
+      based on detection method.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 26 Jan 2022 14:17:07 +0100
+
+borgbackup (1.1.17-1) unstable; urgency=medium
+
+  * New upstream release
+  * Move to python3-packaging
+  * debian/patches/33519263ac3532d909863f4864fef23aa6f6b381.patch:
+    - cherry-pick upstream change to get rid of distutils.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 20 Jul 2021 12:27:31 +0200
+
+borgbackup (1.1.16-3) unstable; urgency=medium
+
+  * Demote fuse and python3-llfuse to Recommends, to avoid them
+    being installed on systems where borg mount is not needed
+    (Closes: #989271).
+    Thanks Helmut Grohne for the patch and the report!
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 31 May 2021 11:08:15 +0200
+
+borgbackup (1.1.16-2) unstable; urgency=medium
+
+  * Add fonts-liberation runtime dependency on -doc package to
+    fix broken symlink.
+    - Thanks Andreas Beckmann <anbe@debian.org> for the bug
+      report and the fix! (Closes: #988679)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 18 May 2021 12:32:53 +0200
+
+borgbackup (1.1.16-1) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * New upstream release
+
+  [ Andrej Shadura ]
+  * Commit patch from Helmut
+
+  [ Helmut Grohne ]
+  * Annotate test dependencies <!nocheck> (Closes: #982818).
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 29 Mar 2021 17:51:49 +0200
+
+borgbackup (1.1.15-3) unstable; urgency=medium
+
+  * Tighteen xxhash dependency to make sure a recent enough
+    version is found and used for build
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 21 Jan 2021 09:31:35 +0100
+
+borgbackup (1.1.15-2) unstable; urgency=medium
+
+  * Add patch to make sure system libxxhash is used
+  * Delete bundled libraries during clean to avoid them being used by mistake
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 11 Jan 2021 11:32:21 +0100
+
+borgbackup (1.1.15-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 25 Dec 2020 23:09:39 +0100
+
+borgbackup (1.1.14-3) unstable; urgency=medium
+
+  [ James Valleroy ]
+  * d/upstream/metadata: Add Donation field
+
+  [ Gianfranco Costamagna ]
+  * Add patch to add a regression test for the corruption index bug
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 03 Dec 2020 10:15:02 +0100
+
+borgbackup (1.1.14-2) unstable; urgency=medium
+
+  * Add upstream patch to use system xxhash library
+  * Add new libxxhash-dev dependency
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 09 Oct 2020 19:40:09 +0200
+
+borgbackup (1.1.14-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/copyright: update copyright years
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 07 Oct 2020 17:44:38 +0200
+
+borgbackup (1.1.13-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/copyright: use spaces rather than tabs to start continuation
+    lines.
+  * Wrap long lines in changelog entries: 0.28.2-2.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 25 Jul 2020 08:11:24 +0200
+
+borgbackup (1.1.11-5) unstable; urgency=medium
+
+  * Use bundled msgpack for now (Closes: #953989)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 16 Mar 2020 13:06:46 +0100
+
+borgbackup (1.1.11-4) unstable; urgency=medium
+
+  * Bump also in helper.py (Closes: #953989)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 16 Mar 2020 12:08:26 +0100
+
+borgbackup (1.1.11-3) unstable; urgency=medium
+
+  * Bump msgpack dependency
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 16 Mar 2020 00:35:32 +0100
+
+borgbackup (1.1.11-2) unstable; urgency=medium
+
+  [ Andrej Shadura ]
+  * Don’t compress fonts to ensure they’re loadable
+  * Replace bits of Bootstrap with symlinks into libjs-bootstrap
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 14 Mar 2020 08:51:19 +0100
+
+borgbackup (1.1.11-1) unstable; urgency=medium
+
+  [ Andrej Shadura ]
+  * Maintain in the Collective.
+
+  [ Gianfranco Costamagna ]
+  * New upstream release.
+  * Bump std-version to 4.5.0, no changes required.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 11 Mar 2020 18:31:50 +0100
+
+borgbackup (1.1.10-2) unstable; urgency=medium
+
+  * Fixup wrong installation directory for zsh completions (LP: #1827232)
+    - thanks Moritz J for the bug report and fix!
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 23 Jul 2019 10:08:27 +0200
+
+borgbackup (1.1.10-1) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 02 Jul 2019 09:37:26 +0200
+
+borgbackup (1.1.10-1~exp2) experimental; urgency=medium
+
+  * Reinstantiate the system msgpack dependency,
+  * Force removal of bundled msgpack version
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 03 Jun 2019 15:23:44 +0200
+
+borgbackup (1.1.10-1~exp1) experimental; urgency=medium
+
+  * New upstream release (Closes: #929704)
+  * Bump compat level to 12
+  * Update copyright file
+  * Add patch to use system msgpack version
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 30 May 2019 17:18:11 +0200
+
+borgbackup (1.1.9-2) unstable; urgency=medium
+
+  * Fix two lintian warnings:
+    - remove old x-python-version
+    - debian/NEWS: stop using asterisk
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 11 Feb 2019 12:38:19 +0100
+
+borgbackup (1.1.9-1) unstable; urgency=high
+
+  * New upstream release.
+    - severity: high due to upstream security fixes (no CVE for now)
+  * Make VCS field canonical
+  * Honour notest profile
+  * Bump std-version to 4.3.0, no changes required.
+  * Bump copyright years
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 11 Feb 2019 10:15:09 +0100
+
+borgbackup (1.1.8-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
+
+  [ Gianfranco Costamagna ]
+  * New upstream release
+  * Bump std-version to 4.2.1, no changes required.
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 09:41:52 +0200
+
+borgbackup (1.1.7-1) unstable; urgency=medium
+
+  * New upstream release
+  * Bump std-version to 4.2.0.1, no changes required.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 17 Aug 2018 17:28:34 +0200
+
+borgbackup (1.1.6-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop msgpack patch: upstream.
+  * Update VCS fields for salsa switch
+  * Bump std-version to 4.1.4.1, no changes required.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 14 Jun 2018 09:57:44 +0200
+
+borgbackup (1.1.5-1) unstable; urgency=medium
+
+  * New upstream release
+  * patch refresh
+  * Allow any msgpack versions
+  * Bump copyright years
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 03 Apr 2018 18:09:29 +0200
+
+borgbackup (1.1.4-3) unstable; urgency=medium
+
+  * Add python3-distutils to build-dependencies,
+    needed now since this is not an indirect dependency anymore
+    (Closes: #893774) thanks Mikko Rasa for the bug report!
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 22 Mar 2018 18:22:57 +0100
+
+borgbackup (1.1.4-2) unstable; urgency=medium
+
+  [ Mattia Rizzolo ]
+  * Team upload.
+  * Switch to compat level 11
+  * Use Rules-Requires-Root: no
+  * Mark doc package as multiarch foreign
+  * Move documentation to usr/share/doc/borgbackup.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 30 Jan 2018 22:14:58 +0100
+
+borgbackup (1.1.4-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Add new depenendecy on libzstd
+  * Bump std-version to 4.1.3, no changes required
+  * Update copyright file
+  * Drop 3445 patch, upstream
+  * Patch refresh
+  * Move bash completion script to usr/share, to make lintian happy
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 03 Jan 2018 11:23:02 +0100
+
+borgbackup (1.1.3-3) unstable; urgency=critical
+
+  * debian/patches/3445.patch:
+    - fix data loss with check --repair (Closes: #884720)
+  * Bump std-version to 4.1.2, no changes required.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 18 Dec 2017 19:50:46 +0100
+
+borgbackup (1.1.3-2) unstable; urgency=medium
+
+  * Exclude two new fuse tests
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 30 Nov 2017 08:28:46 +0100
+
+borgbackup (1.1.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop patches merged/cherry-picked from upstream
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 29 Nov 2017 23:43:42 +0100
+
+borgbackup (1.1.2-5) unstable; urgency=medium
+
+  * debian/patches/3355.patch:
+    - upstream patch to avoid installation pollution
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 24 Nov 2017 19:40:14 +0100
+
+borgbackup (1.1.2-4) unstable; urgency=medium
+
+  * Avoid installation pollution of useless files (Closes: #882201)
+    thanks Piotr Jurkiewicz for the report!
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 21 Nov 2017 16:36:05 +0100
+
+borgbackup (1.1.2-3) unstable; urgency=medium
+
+  * debian/patches/af29c42d73d81868317ad25a2eba9fc902803055.patch:
+    - followup fix for arm64 regression
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 14 Nov 2017 12:33:58 +0100
+
+borgbackup (1.1.2-2) unstable; urgency=medium
+
+  * debian/patches/81aad75b78c14f9a2cb82e2e116be4faa3ddb483.patch:
+    - upstream fix for armhf misalignments (with newer python).
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 14 Nov 2017 10:09:42 +0100
+
+borgbackup (1.1.2-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Add completion scripts (Closes: #869381)
+  * Update copyright for new scripts.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 06 Nov 2017 15:51:48 +0100
+
+borgbackup (1.1.1-1) unstable; urgency=low
+
+  [ Gianfranco Costamagna ]
+  * Patch refresh
+  * New upstream release
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 26 Oct 2017 09:01:19 +0200
+
+borgbackup (1.1.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update copyright
+  * Add libb2-dev dependency
+  * Bump std-version to 4.1.1, no changes required
+  * switch copyright url in secure mode
+  * Install all manpages
+  * Refresh patches
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 09 Oct 2017 16:44:03 +0200
+
+borgbackup (1.0.11-4) unstable; urgency=medium
+
+  * Switch priority to optional, extra is deprecated in new policy document.
+  * Update std-version to 4.1.0
+  * Drop msgpack strict dependency, already satisfied in jessie-bpo+
+  * Enable full hardening
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 22 Aug 2017 16:57:53 +0200
+
+borgbackup (1.0.11-3) unstable; urgency=medium
+
+  * Forcing utf-8 only in test target
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 10 Aug 2017 09:00:51 +0200
+
+borgbackup (1.0.11-2) unstable; urgency=medium
+
+  * Try to force UTF-8 to fix build failures.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 09 Aug 2017 19:52:58 +0200
+
+borgbackup (1.0.11-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump compat level to 10
+  * Bump std-version to 4.0.0
+  * Refresh patches
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 09 Aug 2017 17:57:14 +0200
+
+borgbackup (1.0.10-3) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 12 Jun 2017 11:25:05 +0200
+
+borgbackup (1.0.10-2) experimental; urgency=medium
+
+  * Add fuse dependency (Closes: #855812)
+    - thanks Magnus Nord for the bug report!
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 21 Feb 2017 23:54:34 +0100
+
+borgbackup (1.0.10-1) experimental; urgency=medium
+
+  * New upstream release
+  * Drop the typo patch, upstreamed.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 18 Feb 2017 19:22:11 +0100
+
+borgbackup (1.0.9-1) unstable; urgency=high
+
+  * New upstream release (Closes: #848939).
+    - security issues fixed
+  * Drop the two upstream cherry-picks
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 21 Dec 2016 08:00:25 +0100
+
+borgbackup (1.0.8-4) unstable; urgency=medium
+
+  * d/p/1843.patch
+    - fix testsuite errors with older environments
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 29 Nov 2016 19:30:30 +0100
+
+borgbackup (1.0.8-3) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * debian/patches/9e760a69a29f7ebc055c4adf6f81b0a4de6aba52.patch:
+    - cherry-pick upstream patch for testsuite failure
+  * Fix msgpack version for backports.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 29 Nov 2016 18:16:16 +0100
+
+borgbackup (1.0.8-2) unstable; urgency=medium
+
+  [ Matteo Cypriani ]
+  * Rework description to avoid attic references, because
+    it has been removed from Debian (Closes: #844764)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 19 Nov 2016 11:54:41 +0100
+
+borgbackup (1.0.8-1) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * Move the llfuse dependency to a real one
+    (cfr upstream issue 1726)
+
+  [ Danny Edel ]
+  * New upstream release
+    * refresh patches
+    * d/rules: compile cython in-place for dh_auto_test
+
+ -- Danny Edel <debian@danny-edel.de>  Sat, 29 Oct 2016 18:32:15 +0200
+
+borgbackup (1.0.7-1) unstable; urgency=high
+
+  * New upstream release, fixing security issues.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 19 Aug 2016 21:52:22 +0200
+
+borgbackup (1.0.7~rc2-2) unstable; urgency=low
+
+  * Remove useless test, imported by error on pypi tarball.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 15 Aug 2016 12:42:44 +0200
+
+borgbackup (1.0.7~rc2-1) unstable; urgency=low
+
+  * New upstream release candidate.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sun, 14 Aug 2016 22:54:37 +0200
+
+borgbackup (1.0.7~rc1-1) unstable; urgency=low
+
+  * New upstream release candidate (Closes: #831658)
+  * Add a simple Debian/tests entry without fuse
+
+ -- Danny Edel <debian@danny-edel.de>  Sun, 07 Aug 2016 09:33:42 +0200
+
+borgbackup (1.0.6-2) unstable; urgency=medium
+
+  * Disable test_fuse check
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 13 Jul 2016 13:08:10 +0200
+
+borgbackup (1.0.6-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * New upstream release, drop cherry-pick patches.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 13 Jul 2016 11:58:09 +0200
+
+borgbackup (1.0.5-3) experimental; urgency=medium
+
+  * debian/patches/98530fffd3f81977a03c838167921d0d58f697c4.patch:
+  * debian/patches/199285b2ba74a9ab789cefb8ec3e2fde1f269a40.patch:
+    - try to fix failures on hppa and hurd-i386
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 12 Jul 2016 12:48:21 +0200
+
+borgbackup (1.0.5-2) unstable; urgency=medium
+
+  * debian/patches/0fb6cb8417e3f84afc03fbfaef3cb7ca6212e61b.patch:
+    - first cherry-pick to fix armhf build failure on yakkety
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 12 Jul 2016 00:06:40 +0200
+
+borgbackup (1.0.5-1) unstable; urgency=medium
+
+  [ Danny Edel ]
+  * Refresh patches
+  * New patch: OpenSSL-1.1 compatibility (Closes: #828251)
+    * Backported from upstream Merge Request #1193
+
+  [ Gianfranco Costamagna ]
+  * New upstream release
+    - drop openssl patch, upstream
+
+ -- Danny Edel <debian@danny-edel.de>  Mon, 27 Jun 2016 00:37:31 +0200
+
+borgbackup (1.0.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * Mention the append-only mode in package description
+  * New paragraph in README.source about upstream
+    tarball integration, by Daniel Reichelt
+
+ -- Danny Edel <debian@danny-edel.de>  Mon, 23 May 2016 10:35:08 +0200
+
+borgbackup (1.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+    - drop 0005-reproducible-doc-for-ProgressIndicator.patch,
+      upstream.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 16 Apr 2016 14:37:12 +0200
+
+borgbackup (1.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - drop dd6a79553683135c3eaf3bf299ca6ccd1dcc4b3f.patch,
+      0004-Merge-pull-request-736*.patch: upstream.
+  * Bump std-version to 3.9.8.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 09 Apr 2016 17:48:09 +0200
+
+borgbackup (1.0.0-4) unstable; urgency=medium
+
+  * Drop warning about being in development
+  * Update maintainer email address
+
+ -- Danny Edel <debian@danny-edel.de>  Tue, 05 Apr 2016 19:22:23 +0200
+
+borgbackup (1.0.0-3) unstable; urgency=medium
+
+  * Make package build reproducibly (Closes: #816788)
+    * Backport Pullrequest #736 for archive.py
+    * Add new patch for helpers.py, forwarded upstream as PR #746
+
+ -- Danny Edel <mail@danny-edel.de>  Mon, 14 Mar 2016 10:12:57 +0100
+
+borgbackup (1.0.0-2) unstable; urgency=high
+
+  [ Gianfranco Costamagna ]
+  * Drop python-llfuse version constraint.
+
+  [ Danny Edel ]
+  * Restrict llfuse version to 1.x (llfuse now adopted semantic versioning, so
+    the upcoming 2.0 will break API again)
+    - debian/patches/dd6a79553683135c3eaf3bf299ca6ccd1dcc4b3f.patch
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 09 Mar 2016 11:17:10 +0100
+
+borgbackup (1.0.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 07 Mar 2016 09:30:37 +0100
+
+borgbackup (1.0.0~rc2-3) unstable; urgency=medium
+
+  * d/changelog: fix Vcs-Git URL
+
+ -- Danny Edel <mail@danny-edel.de>  Fri, 04 Mar 2016 12:13:29 +0100
+
+borgbackup (1.0.0~rc2-2) unstable; urgency=medium
+
+  * d/tests: explicitly depend on fuse and full virt
+
+ -- Danny Edel <mail@danny-edel.de>  Wed, 02 Mar 2016 12:19:15 +0100
+
+borgbackup (1.0.0~rc2-1) unstable; urgency=medium
+
+  * New upstream release candidate
+  * Give python3-llfuse dependency as "< 1.0", as in setup.py
+  * Add an autopackagetest to check the fuse integration
+
+ -- Danny Edel <mail@danny-edel.de>  Wed, 02 Mar 2016 09:08:27 +0100
+
+borgbackup (1.0.0~rc1-3) unstable; urgency=medium
+
+  * docs: Place link to screencast at the top
+  * Activate testsuite (Closes: #815564)
+  * Add fakeroot to build-dependencies, used in testsuite run.
+
+ -- Danny Edel <mail@danny-edel.de>  Mon, 22 Feb 2016 16:23:25 +0100
+
+borgbackup (1.0.0~rc1-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 12 Feb 2016 15:45:05 +0100
+
+borgbackup (1.0.0~rc1-1) experimental; urgency=medium
+
+  * New upstream release candidate.
+  * Bump std-version to 3.9.7, no changes required.
+  * Bump watch version to 4, no changes required.
+
+ -- Danny Edel <mail@danny-edel.de>  Thu, 11 Feb 2016 21:48:59 +0100
+
+borgbackup (0.30.0-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Drop spelling errors patch: upstream
+    - rebase patches.
+  [ Danny Edel ]
+  * fix build by following upstream manpage name change.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sun, 24 Jan 2016 09:14:42 +0100
+
+borgbackup (0.29.0-4) unstable; urgency=medium
+
+  * Add python3-sphinx-rtd-theme b-d, needed for backports.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 15 Jan 2016 13:58:44 +0100
+
+borgbackup (0.29.0-3) unstable; urgency=medium
+
+  * Split README into README.Debian and README.source, for the end-user
+    and other developers, respectively.
+  * Update README.Debian to mention compatibility issues (Closes: #809136)
+  * Patch: Fix lintian-detected spelling errors in manpage
+  * Debcheck-detected quality issues:
+    * Adjust priority to "extra" because of lz4 dependency
+    * Do not recommend nonexistent package python3-llfuse on hurd
+
+ -- Danny Edel <mail@danny-edel.de>  Fri, 15 Jan 2016 09:03:12 +0100
+
+borgbackup (0.29.0-2) unstable; urgency=medium
+
+  * Update package description (cfr: #809136)
+    - mentioning API incompatibility between versions.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 28 Dec 2015 11:00:59 +0100
+
+borgbackup (0.29.0-1) unstable; urgency=medium
+
+  * New upstream version, patch refresh.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 18 Dec 2015 11:25:26 +0100
+
+borgbackup (0.28.2-2) unstable; urgency=medium
+
+  [ Marc Haber ]
+  * Update setuptools-scm build dependency with version constraint
+    (Closes: #807249)
+
+  [ Danny Edel ]
+  * Clean generated files, to allow building twice in a row (Closes: #806803)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 08 Dec 2015 12:10:50 +0100
+
+borgbackup (0.28.2-1) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * New upstream version.
+
+  [ Danny Edel ]
+  * Make manpage from upstream.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 17 Nov 2015 09:56:51 +0100
+
+borgbackup (0.28.1-2) unstable; urgency=low
+
+  [ Danny Edel ]
+  * Move python3-sphinx into Build-Depends (Closes: #804943)
+
+  [ Gianfranco Costamagna ]
+  * Simplify rules file by removing BUILDFLAGS (already included in
+    this compat level, thanks <mattia>
+  * Update manpage
+  * Add pkg_resources to runtime dependencies
+    - https://github.com/borgbackup/borg/issues/406.
+
+ -- Danny Edel <mail@danny-edel.de>  Fri, 13 Nov 2015 07:48:05 +0100
+
+borgbackup (0.28.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Remove patch rm-github-ribbons
+  * README.rst: Replace img src with text-based link
+
+ -- Danny Edel <mail@danny-edel.de>  Sun, 08 Nov 2015 08:45:46 +0100
+
+borgbackup (0.27.0-1) unstable; urgency=low
+
+  [ Marc Haber ]
+  * initial version (Closes: #792096)
+  * packaging taken from attic by Caitlin Matos
+  * this package is not intended to be uploaded to Debian until a
+    maintainer team of at least two active persons has formed
+
+  [ Danny Edel ]
+  * Upstream version bump
+
+  [ Gianfranco Costamagna ]
+  * Upload to unstable
+  * Add a -doc package
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Sat, 24 Oct 2015 10:33:46 +0200

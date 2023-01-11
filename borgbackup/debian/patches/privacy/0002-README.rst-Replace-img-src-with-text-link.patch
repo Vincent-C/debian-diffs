@@ -1,0 +1,29 @@
+From: Danny Edel <mail@danny-edel.de>
+Date: Sun, 8 Nov 2015 09:53:17 +0100
+Subject: README.rst: Replace img src with text link
+
+Lintian Tag: privacy-breach-generic
+
+Replaced the image linking to the asciinema.org screencast with a
+text-based link.
+
+----
+---
+ README.rst | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/README.rst b/README.rst
+index 3cc32ca..8133c20 100644
+--- a/README.rst
++++ b/README.rst
+@@ -1,4 +1,9 @@
+-|screencast_basic|
++Quick start: watch a `screencast of BorgBackup Installation and Basic Usage
++<https://asciinema.org/a/28691?autoplay=1&speed=2>`_
++at asciinema.org.
++
++Since you are using the Debian package,
++you can of course ignore the installation part.
+ 
+ More screencasts: `installation`_, `advanced usage`_
+ 

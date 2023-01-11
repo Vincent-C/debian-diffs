@@ -1,0 +1,6 @@
+Tests: simplesession
+Depends: fuse, @, python3-llfuse
+Restrictions: isolation-machine
+
+Tests: simplesession-nofuse
+Depends: @

@@ -1,0 +1,23 @@
+borgbackup 1.x - notes for the Debian end user
+==============================================
+
+
+Compatibility to previous versions
+----------------------------------
+
+Borgbackup has reached the 1.0 milestone, and care is taken to ensure
+compatibility within the 1.x series.  You may need to convert your existing
+pre-1.0 backups to take advantage of the 1.0 improvements, please read
+/usr/share/doc/borgbackup/changelog.gz for details.
+
+
+Network operation
+-----------------
+
+If you want to use borgbackup across a network, you currently must make
+sure that all machines are using a compatible borgbackup version.  Known
+incompatibilities are listed in the upstream changelog, a notable example
+is 0.28 vs. 0.29.
+
+It is recommended that you use the official Debian backport repositories
+from backports.debian.org to upgrade the older versions where needed.

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#Fail on error
+set -e
+
+DATA=$AUTOPKGTEST_TMP/data
+REPO=$AUTOPKGTEST_TMP/borgrepo
+MOUNT=$AUTOPKGTEST_TMP/mnt
+
+cd $AUTOPKGTEST_TMP
+
+echo "Checking borg is callable"
+borg --version
+
+echo "Creating source data dir and mountpoint"
+mkdir $DATA
+mkdir $MOUNT
+
+echo "Calling borg init"
+borg init --encryption none $REPO
+
+# create source data
+
+echo "Creating $REPO::runone"
+echo Hello, world > $DATA/file1
+borg create $REPO::runone data/
+
+echo "Creating $REPO::runtwo"
+echo Hello again > $DATA/file2
+borg create $REPO::runtwo data/
+
+echo "Listing archives"
+borg list $REPO
+
+echo "Listing runone and runtwo contents"
+borg list $REPO::runone
+borg list $REPO::runtwo
+
+echo "Testing borg extract --stdout"
+borg extract --stdout $REPO::runtwo data/file1 | grep -q "world"
+borg extract --stdout $REPO::runtwo data/file2 | grep -q "again"
+
+echo "Mounting $REPO::runtwo via fuse"
+borg mount $REPO::runtwo $MOUNT
+
+echo "Checking file contents in the fuse mount"
+cmp $DATA/file1 $MOUNT/data/file1
+cmp $DATA/file2 $MOUNT/data/file2
+
+echo "Unmounting $REPO::runtwo"
+fusermount -u $MOUNT
+
+echo "Mounting $REPO::runone via fuse"
+borg mount $REPO::runone $MOUNT
+
+echo "Checking file contents"
+cmp $DATA/file1 $MOUNT/data/file1
+test ! -e $MOUNT/data/file2
+
+echo "Unmounting"
+fusermount -u $MOUNT
+
+echo "All good!"

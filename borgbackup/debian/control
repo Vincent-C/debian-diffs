@@ -1,0 +1,92 @@
+Source: borgbackup
+Section: admin
+Priority: optional
+Maintainer: Debian Borg Collective <team+borg@tracker.debian.org>
+Uploaders: Danny Edel <debian@danny-edel.de>,
+           Gianfranco Costamagna <locutusofborg@debian.org>
+Build-Depends: cython3,
+               debhelper-compat (= 13),
+               dh-python,
+               fakeroot,
+               libacl1-dev,
+               libb2-dev,
+               libjs-bootstrap,
+               liblz4-dev,
+               libxxhash-dev,
+               libssl-dev,
+               libzstd-dev,
+               python3-dev,
+               python3-packaging,
+               python3-guzzle-sphinx-theme,
+               python3-llfuse (<< 2.0) [!hurd-any],
+               python3-dateutil <!nocheck>,
+               python3-msgpack,
+               python3-pkgconfig,
+               python3-pyfuse3 [!hurd-any],
+               python3-pytest <!nocheck>,
+               python3-pytest-benchmark <!nocheck>,
+               python3-pytest-cov <!nocheck>,
+               python3-setuptools,
+               python3-setuptools-scm,
+               python3-sphinx,
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://borgbackup.github.io/borgbackup/
+Vcs-Git: https://salsa.debian.org/debian/borgbackup.git
+Vcs-Browser: https://salsa.debian.org/debian/borgbackup
+
+Package: borgbackup
+Architecture: any
+Depends: python3-pkg-resources,
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Recommends: python3-llfuse (<< 2.0) [!hurd-any],
+            python3-pyfuse3 [!hurd-any],
+            fuse
+Suggests: borgbackup-doc
+Description: deduplicating and compressing backup program
+ Borg is a deduplicating and compressing backup program. Optionally, it
+ also supports authenticated encryption. It was forked from the attic
+ backup program.
+ .
+ The main goal of Borg is to provide an efficient and secure way to
+ backup data. The data deduplication technique used makes Borg suitable
+ for daily backups since only the changes are stored. The authenticated
+ encryption makes it suitable for backups to not fully trusted targets.
+ .
+ It can push backups to remote repositories accessed via ssh. A client
+ pushing a backup invokes "borg serve" on the repository host. It is
+ possible to restrict the ssh key to "borg serve" using the
+ authorized_keys command= clause.
+ .
+ Please note that the server and the client should be on the same
+ version of borgbackup. Using different versions of borgbackup on
+ client and server might result in 'incompatible API version' error
+ messages and a non-working backup.
+ .
+ While there is no direct operations mode for pull-type backups, you
+ can configure the backup target in append-only mode, preventing the
+ backup source from deleting or altering previous backups.
+
+Package: borgbackup-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}, libjs-bootstrap, fonts-liberation
+Description: deduplicating and compressing backup program (documentation)
+ Borg is a deduplicating and compressing backup program. Optionally, it
+ also supports authenticated encryption. It was forked from the attic
+ backup program.
+ .
+ The main goal of Borg is to provide an efficient and secure way to
+ backup data. The data deduplication technique used makes Borg suitable
+ for daily backups since only the changes are stored. The authenticated
+ encryption makes it suitable for backups to not fully trusted targets.
+ .
+ It can push backups to remote repositories accessed via ssh. A client
+ pushing a backup invokes "borg serve" on the repository host. It is
+ possible to restrict the ssh key to "borg serve" using the
+ authorized_keys command= clause.
+ .
+ This is the documentation package

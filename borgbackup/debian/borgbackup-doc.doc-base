@@ -1,0 +1,9 @@
+Document: borgbackup
+Title: Debian borgbackup documentation
+Author: Jonas Borgstrom, Thomas Waldmann
+Abstract: User documentation for borgbackup
+Section: System/Administration
+
+Format: HTML
+Index: /usr/share/doc/borgbackup/html/index.html
+Files: /usr/share/doc/borgbackup/html/*.html
