@@ -2,6 +2,7 @@ debian-diffs
 ============
 
 Contains Debian packaging files for packages maintained in my local repository
+or PPAs, many of which are obsolete at this point in time. 
 
 Ubuntu fonts:
 There are 4 packages that are relevant for Debian users who want Ubuntu-like
@@ -11,5 +12,5 @@ font rendering:
  - cairo
  - libxft
 
-libxft and cairo are both currently identical in Debian and Ubuntu. The only 
-packages that need to be patched currently are freetype and fontconfig.
+libxft, cairo, and freetype are both currently identical in Debian and Ubuntu.
+The only package that needs to be patched currently is fontconfig.
