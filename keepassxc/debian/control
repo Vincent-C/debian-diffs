@@ -1,0 +1,49 @@
+Source: keepassxc
+Section: utils
+Priority: optional
+Maintainer: Julian Andres Klode <jak@debian.org>
+Build-Depends: asciidoctor,
+               cmake,
+               dbus-daemon <!nocheck> | dbus <!nocheck>,
+               debhelper-compat (= 13),
+               libargon2-dev | libargon2-0-dev,
+               libbotan-2-dev,
+               libcurl4-gnutls-dev,
+               libminizip-dev,
+               libpcsclite-dev,
+               libqrencode-dev,
+               libqt5svg5-dev,
+               libqt5x11extras5-dev,
+               libreadline-dev,
+               libusb-1.0-0-dev,
+               libxtst-dev,
+               libzxcvbn-dev,
+               qtbase5-dev,
+               qtbase5-private-dev,
+               qttools5-dev,
+               qttools5-dev-tools,
+               xauth <!nocheck>,
+               xclip <!nocheck>,
+               xvfb <!nocheck>,
+               zlib1g-dev
+Standards-Version: 4.6.2
+Homepage: https://www.keepassxc.org/
+Vcs-Git: https://salsa.debian.org/debian/keepassxc.git
+Vcs-Browser: https://salsa.debian.org/debian/keepassxc
+
+Package: keepassxc
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: fonts-font-awesome
+Suggests: webext-keepassxc-browser, xclip
+Description: Cross Platform Password Manager
+ KeePassXC is a free/open-source password manager or safe which helps you
+ to manage your passwords in a secure way. You can put all your
+ passwords in one database, which is locked with one master key or a
+ key-disk. So you only have to remember one single master password or
+ insert the key-disk to unlock the whole database. The databases are
+ encrypted using the algorithms AES or Twofish.
+ .
+ In contrast to KeePassX (package keepassx), KeePassXC is actively developed
+ and has more features, e.g., connectivity to a Web Browser plugin (package
+ webext-keepassxc-browser).

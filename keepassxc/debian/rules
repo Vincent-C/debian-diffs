@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/architecture.mk
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+export LC_ALL := C.UTF-8
+export LANG := C.UTF-8
+export LANGUAGE := C.UTF-8
+
+WITH_TESTS :=$(if $(findstring nocheck,$(DEB_BUILD_OPTIONS)),OFF,ON)
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	if [ -e src/zxcvbn/ ]; then rm -r src/zxcvbn/ ; fi
+	dh_auto_configure --  -DWITH_TESTS=$(WITH_TESTS) \
+	                      -DWITH_GUI_TESTS=$(WITH_TESTS) \
+	                      -DWITH_XC_UPDATECHECK=OFF \
+	                      -DWITH_XC_ALL=ON
+
+override_dh_auto_install:
+	dh_auto_install
+	sed -i s#https://cdnjs.cloudflare.com/ajax/libs/font-awesome/.*/font-awesome.min.css#../../fonts-font-awesome/css/font-awesome.min.css#g $$(find debian/keepassxc/ -name '*.html')
+
+override_dh_auto_test:
+	dh_auto_test -- ARGS+="-E 'test(cli|gui)'"
+	# testcli and testgui use X, and have horrible X clipboard tests that
+	# randomly fail, so ignore failures
+	xvfb-run -a --server-args="-screen 0 800x600x24" dh_auto_test --no-parallel -- ARGS+="-R 'test(cli|gui)'" || true
+
+override_dh_makeshlibs:
+	# keepassx only ships plugins
+	dh_makeshlibs -X/usr/lib/$(DEB_HOST_MULTIARCH)/keepassxc

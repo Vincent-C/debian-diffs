@@ -1,0 +1,5 @@
+upstream/0001-Fix-appdata.xml-formatting.patch
+upstream/0002-Set-password-input-field-font-correctly.-8732.patch
+debian/tests-adjust-entropy-for-system-wide-zxcvbn.patch
+debian/use-local-fonts.patch
+debian/do-not-require-build-time-qt-version.patch

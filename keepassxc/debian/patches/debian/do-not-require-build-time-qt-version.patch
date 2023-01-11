@@ -1,0 +1,24 @@
+From: Julian Andres Klode <jak@debian.org>
+Date: Wed, 28 Dec 2022 15:30:41 +0100
+Subject: Do not require version of Qt we built against at runtime
+
+Sigh.
+
+Bug-Debian: https://bugs.debian.org/1027140
+---
+ src/main.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 047e447..d9c5fdc 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -50,8 +50,6 @@ Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)
+ 
+ int main(int argc, char** argv)
+ {
+-    QT_REQUIRE_VERSION(argc, argv, QT_VERSION_STR)
+-
+ #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);

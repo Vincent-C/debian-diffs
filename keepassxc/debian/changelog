@@ -1,0 +1,429 @@
+keepassxc (2.7.4+dfsg.1-2~ppa1~jammy1) jammy; urgency=medium
+
+  * No-change backport from Debian sid to PPA.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 21:37:57 -0800
+
+keepassxc (2.7.4+dfsg.1-2) unstable; urgency=medium
+
+  * Do not require version of Qt we built against at runtime (Closes: #1027140)
+
+ -- Julian Andres Klode <jak@debian.org>  Wed, 28 Dec 2022 15:32:38 +0100
+
+keepassxc (2.7.4+dfsg.1-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Refer to common license file for CC0-1.0.
+  * Bump debhelper from old 12 to 13.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository, Repository-Browse.
+  * Remove unused license definitions for LGPL-3+, public-domain.
+  * Update standards version to 4.6.0, no changes needed.
+
+  [ Julian Andres Klode ]
+  * New upstream version 2.7.4+dfsg.1 (Closes: #1009329)
+  * d/copyright: update
+  * debian/control: Update crypto build-depends to botan
+  * libquazip -> libminizip
+  * Build-Depend on libpcsclite-dev
+  * Build-Depend on libreadline-dev
+  * Remove libyubikey deps, depend on libusb-1.0.0 instead
+  * Adjust entropy patch for 2.7.4 and rename
+  * Add dbus-daemon, xclip build-depends <!nocheck>
+  * Run cli and gui tests sequentially
+  * d/control: Bump Standards-Version to 4.6.2
+  * Run wrap-and-sort
+  * d/patches: Cherry-pick upstream 2.7.x fixes
+  * Use local fonts
+  * d/rules: Set LANG and LANGUAGE as well
+  * Adjust lintian overrides
+
+  [ Konstantin Demin ]
+  * handle "nocheck" in DEB_BUILD_OPTIONS
+
+ -- Julian Andres Klode <jak@debian.org>  Tue, 27 Dec 2022 14:58:10 +0100
+
+keepassxc (2.6.6+dfsg.1-1) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Julian Andres Klode <jak@debian.org>  Tue, 14 Sep 2021 08:33:50 +0200
+
+keepassxc (2.6.6+dfsg.1-1~exp1) experimental; urgency=medium
+
+  * Build-Depend on libquazip-dev (!7) (Closes: 966076)
+  * wrap-and-sort
+  * New upstream version 2.6.6+dfsg.1 (Closes: #981372)
+
+ -- Julian Andres Klode <jak@debian.org>  Tue, 10 Aug 2021 21:56:30 +0200
+
+keepassxc (2.6.2+dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 2.6.2+dfsg.1
+
+ -- Julian Andres Klode <jak@debian.org>  Mon, 26 Oct 2020 11:53:31 +0100
+
+keepassxc (2.6.1+dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 2.6.1+dfsg.1
+
+ -- Julian Andres Klode <jak@debian.org>  Thu, 20 Aug 2020 08:59:11 +0200
+
+keepassxc (2.6.0+dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 2.6.0+dfsg.1 (Closes: #962499)
+  * Add asciidoctor build-depends
+  * Use fonts-font-awesome for documentation instead of online version
+  * debian/source/lintian-overrides: Override spurious source-is-missing
+  * d/p/0002-Revert-Properly-stylize-the-...-name...: Drop, unneeded
+
+ -- Julian Andres Klode <jak@debian.org>  Sun, 12 Jul 2020 20:04:15 +0200
+
+keepassxc (2.6.0~beta1-1) unstable; urgency=medium
+
+  * New upstream version 2.6.0~beta1
+  * debian/copyright: Merge with COPYING
+  * debian/copyright: OpVault reader test is good now, got a new db
+  * debian/control: Build-Depend on qtbase5-private-dev
+  * debian/patches:
+    - Rebase
+    - Drop testopvaultreader disablement, not needed anymore
+    - revert a commit that caused keepassxc to look into .config/KeePassXC
+      instead of .config/keepassxc
+
+ -- Julian Andres Klode <jak@debian.org>  Mon, 08 Jun 2020 21:18:34 +0200
+
+keepassxc (2.5.4+dfsg.1-1) unstable; urgency=medium
+
+  [ Julian Andres Klode ]
+  * New upstream version 2.5.4+dfsg.1 (Closes: #946450)
+  * debian/copyright: Exclude tests/data/freddy-2013-12-04.opvault*
+  * Add Suggests: xclip (Closes: #935316)
+  * 2.5.4 prep: debian/copyright: Exclude *.pdf
+  * Exclude share/icons/application/32x32/actions/statistics.png from tarball
+  * debian/copyright: Update copyright
+  * debian/copyright: Merge with COPYING
+  * Disable testopvaultreader due to test database licensing
+
+  [ Bruno Kleinert ]
+  * Describe package differences to keepassx (Closes: #903594)
+
+  [ John Scott ]
+  * Suggest the web browser extension package (Closes: #956389)
+
+  [ Jonathan Rubenstein ]
+  * Remove debian manpage Upstream made their own
+  * Backport reproducibility fix from 4411
+
+ -- Julian Andres Klode <jak@debian.org>  Sun, 24 May 2020 15:06:51 +0200
+
+keepassxc (2.4.3+dfsg.1-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/copyright: Use https protocol in Format field
+  * d/changelog: Remove trailing whitespaces
+
+  [ Julian Andres Klode ]
+  * Remove unused libmicrohttpd-dev build dependency
+  * New upstream version 2.4.3+dfsg.1 (Closes: #926509)
+  * Bump Standards-Version to 4.4.0
+  * Rebase patches
+  * Remove debian/compat (10), use debhelper-compat (= 12) build-dep
+  * debian/control: Update libargon2-dev build dependency
+  * Build-Depend on libqt5svg5-dev
+  * Build-Depend on libqrencode-dev
+  * tests: Adjust entropy for system-wide zxcvbn
+  * debian/rules: Ignore test failures from testcli as well
+  * Disable entropy tests in testcli
+  * debian/rules: Pass -DWITH_XC_UPDATECHECK=OFF to cmake.
+    Thanks to Konstantin Demin for the hint
+  * debian/rules: Remove unneeded --parallel argument to dh
+  * Update debian/copyright
+
+ -- Julian Andres Klode <jak@debian.org>  Fri, 06 Sep 2019 22:56:33 +0200
+
+keepassxc (2.3.4+dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 2.3.4+dfsg.1 (Closes: #898979)
+    - fix missing include for Qt 5.11 (Closes: #906659)
+  * Remove code references to source directory.
+    Thanks to Chris Lamb for initial patch (Closes: #890486)
+
+ -- Julian Andres Klode <jak@debian.org>  Thu, 30 Aug 2018 21:36:31 +0200
+
+keepassxc (2.3.1+dfsg.1-1) unstable; urgency=medium
+
+  * New upstream version 2.3.1
+  * Build with all features
+  * Run wrap-and-sort
+  * Build-Depend on libsodium-dev, libargon2-0-dev, libcurl4-gnutls-dev
+  * d/p/0002-*zxcvbn*.patch: Drop, Merged upstream
+  * d/control: Point Vcs-Git and Vcs-Browser to salsa
+  * d/control: Bump Standards-Version to 4.1.3
+
+ -- Julian Andres Klode <jak@debian.org>  Sat, 10 Mar 2018 17:59:54 +0100
+
+keepassxc (2.2.4+dfsg.1-1) unstable; urgency=medium
+
+  * debian/watch: Drop uupdate
+  * New upstream version 2.2.4+dfsg.1
+    - Fixes AppStream metadata
+
+ -- Julian Andres Klode <jak@debian.org>  Fri, 15 Dec 2017 13:19:23 +0100
+
+keepassxc (2.2.3+dfsg.1-1) unstable; urgency=medium
+
+  * Repack upstream tarball to remove src/zxcvbn.
+    The file src/zxcvbn/dict-src.h has no source code, and the embedded
+    copy is unused anway.
+  * Update watch and signing-key to point to KeePassXC
+  * New upstream version 2.2.3+dfsg.1
+    - Fixes 16x16 message-close icon
+
+ -- Julian Andres Klode <jak@debian.org>  Tue, 12 Dec 2017 13:07:49 +0100
+
+keepassxc (2.2.2-1) unstable; urgency=medium
+
+  * New upstream version 2.2.2
+  * Add missing dependency on qttools5-dev (Closes: #882306)
+  * Drop desktop_file_comment.patch and rebase others
+  * Bump Standards-Version to 4.1.1
+
+ -- Julian Andres Klode <jak@debian.org>  Tue, 21 Nov 2017 11:12:12 +0100
+
+keepassxc (2.2.0-1) unstable; urgency=medium
+
+  * Initial KeePassXC upstream version 2.2.0 (Closes: #855173)
+  * Packaging changes since keepassx 2.0.3-1:
+    - debian: Switch to keepassxc and Qt5
+    - Enable HTTP and YubiKey features
+    - desktop_file_comment.patch: Refresh using gbp pq
+    - Bump Standards-Version and use debhelper 10
+    - debian/control: Update maintainer
+    - Use system zxcvbn.
+      Thanks to Gianfranco Costamagna for providing the patch
+    - Depend on libqt5x11extras5-dev
+    - Turn on hardening
+    - debian/copyright: Update
+    - export LC_ALL=C.UTF-8 in debian/rules
+
+ -- Julian Andres Klode <jak@debian.org>  Sat, 23 Sep 2017 21:24:46 +0200
+
+keepassx (2.0.3-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #845163)
+  * Add missing Comment section to the desktop file. (Closes: #846274)
+    - desktop_file_comment.patch
+
+ -- Felix Geyer <fgeyer@debian.org>  Tue, 10 Jan 2017 22:33:14 +0100
+
+keepassx (2.0.2-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #813608)
+  * d/control: Point Vcs-* to the new git repo.
+  * Update watch file.
+
+ -- Felix Geyer <fgeyer@debian.org>  Thu, 04 Feb 2016 21:47:37 +0100
+
+keepassx (2.0-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #707634)
+    - Completely rewritten compared to 0.x series
+      (closes: #707634, #685533, #714357, #763083, #791858)
+    - pronouncable password generator has been dropped (closes: #645499)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 09 Jan 2016 19:24:30 -0500
+
+keepassx (2.0~beta2-1) experimental; urgency=medium
+
+  * New upstream beta release.
+
+ -- Felix Geyer <fgeyer@debian.org>  Fri, 11 Sep 2015 23:55:20 +0200
+
+keepassx (2.0~beta1-1) experimental; urgency=medium
+
+  * New upstream beta release.
+  * Update copyright file.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+
+ -- Felix Geyer <fgeyer@debian.org>  Sun, 19 Jul 2015 20:49:14 +0200
+
+keepassx (2.0~alpha6-1) experimental; urgency=medium
+
+  * New upstream alpha release.
+    - Supports the .kdbx (KeePass 2) file format.
+  * Drop fix_ftbfs_gcc47.diff, not needed anymore.
+  * Switch debian/rules to use cmake and run unit tests.
+  * Redo debian/copyright.
+  * Update watch file.
+
+ -- Felix Geyer <fgeyer@debian.org>  Fri, 15 Aug 2014 00:00:01 +0200
+
+keepassx (0.4.3+dfsg-0.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Use repackaged upstream tarball by Felix Geyer, which replaces icons of
+    unknown origin (clientic.png text_block.png text_bold.png text_center.png
+    text_italic.png text_left.png text_right.png text_under.png) and adds full
+    text of associated licenses (LICENSE.LGPL-2.1 LICENSE.LGPL-3).
+  * Use patch by Felix Geyer to update debian/copyright with the origin and
+    license of png files, and update README.source accordingly.
+  * Additionally, update debian/copyright to document the origin and copyright
+    of go-*.png and help_about.png icons (project Oxygen, and license CC-BY-SA
+    3.0 or LGPL respectively).
+  * The above three items close #698832
+  * Update debian/watch for version mangling.
+  * Setting high urgency due to RC bug.
+
+ -- Serafeim Zanikolas <sez@debian.org>  Wed, 20 Mar 2013 14:04:39 +0100
+
+keepassx (0.4.3-2) unstable; urgency=low
+
+  * Fix FTBFS with gcc 4.7. (Closes: #667224)
+    - Add fix_ftbfs_gcc47.diff
+  * Bump Standards-Version to 3.9.3, no changes needed.
+  * Enable parallel building.
+  * Switch to debhelper compat level v9.
+    - Exports build flags.
+  * Use the qmake_qt4 dh buildsystem.
+  * Install application icon in various resolutions.
+    - Add debian/keepassx.svg
+    - Build-depend on imagemagick and librsvg2-bin.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Thu, 05 Apr 2012 13:10:22 +0200
+
+keepassx (0.4.3-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #572614)
+    - Fixes FTBFS with binutils-gold. (Closes: #554982)
+  * Switch to new source format 3.0 (quilt).
+  * Bump Standards-Version to 3.8.4, no changes needed.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Sun, 07 Mar 2010 00:42:51 +0100
+
+keepassx (0.4.1-1) unstable; urgency=low
+
+  * New upstream release. (LP: #431798)
+  * Bump debhelper to dh 7.
+    - increase debian/compat to 7.
+    - simplify debian/rules.
+  * Bump Standards-Version to 3.8.3, no changes needed.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Thu, 17 Sep 2009 15:21:00 +0200
+
+keepassx (0.4.0-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #522488)
+  * adapt debian/watch file to new upstream naming style.
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 04 Apr 2009 11:39:24 +0200
+
+keepassx (0.3.4-2) unstable; urgency=low
+
+  [ Felix Geyer ]
+  * introduce quilt
+  * Bug fix: "Keepassx crashes on save when password entry changes".
+    LP: #311359
+    - add debian/patches/svn281_fix_buffer_too_small.patch
+    - build-depend on quilt
+
+  [ Reinhard Tartler ]
+  * target unstable
+  * convert all format patches to quilt
+  * add a README.source file documenting quilt usage
+  * bump Standards-Version to 3.8.0
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 03 Apr 2009 16:21:55 +0200
+
+keepassx (0.3.4-1) experimental; urgency=low
+
+  * new upstream release. LP: #296014
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 09 Nov 2008 21:59:02 +0100
+
+keepassx (0.3.3-1) experimental; urgency=low
+
+  * new upstream release. Closes: #492423
+  * add Vcs-Bzr header.
+  * build and install translations. Closes: #475073
+  * add galician translation. Thanks to damufo <damufo@gmail.com>
+    Closes: #499097
+  * install files using dh_install instead of 'cp'
+  * no longer install our own .desktop file, the one provided by upstream
+    is just fine, and rename manpage keepass.1 -> keepassx.1. Closes: #474455
+  * remove useless piece of documentation. Closes: #475126
+  * tighten dependency on libqt4, drop libpng3-dev dependency. Closes: #474387
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 02 Oct 2008 10:34:53 +0200
+
+keepassx (0.3.3-0ubuntu1) intrepid; urgency=low
+
+  * New upstream release (LP: #250299).
+
+ -- Nick Ellery <nick.ellery@ubuntu.com>  Fri, 26 Sep 2008 16:48:37 -0700
+
+keepassx (0.3.1-1) unstable; urgency=low
+
+  * Bug fix: "keepassx: Please use better watch file expression", thanks
+    to Roberto C. Sanchez (Closes: #474335).
+  * Bug fix: "New upstream version 0.3.0a", thanks to Felix Geyer (Closes:
+    #469391).
+  * minor cleanups in debian/rules for new upstream release.
+  * don't ignore make clean in clean target of debian rules. Thanks to
+    lintian.
+  * Bug fix: "Typo in keepass.desktop", thanks to Miguel Angel Ruiz
+    Manzano (Closes: #462103).
+  * Bug fix: "keepassx: not handling nostrip build option (policy 10.1)",
+    thanks to Julien Danjou (Closes: #437253).
+  * Bug fix: "keepassx: Fails to check if Passwort Repet. is correct for
+    new database", thanks to Benjamin Mesing (Closes: #467651). New
+    upstream release has totally reworked the new database dialog.
+  * update reference to GPL-2 in debian/copyright.
+  * Bump standard version to 3.7.2
+  * use Homepage header in debian/control
+  * The new upstream release has renamed the binary from keepass to
+    keepassx to match the project name. The desktopfile has been therfore
+    adapted.
+  * and of course, ack NMU, thanks Moritz (Closes: #455644)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 05 Apr 2008 12:09:14 +0200
+
+keepassx (0.2.2-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix compatibility with GCC 4.3 (Closes: #455644)
+
+ -- Moritz Muehlenhoff <jmm@debian.org>  Tue, 18 Mar 2008 00:42:18 +0100
+
+keepassx (0.2.2-3) unstable; urgency=low
+
+  * add watch file
+  * Remove link to handbook from the help menu, There is no handbook in
+    the source. thanks to Don (Closes: #434979).
+  * Bug fix: "keepassx: "copy to clipboard" functions do not work in other
+    environments than kde", thanks to Gabor Burjan (Closes: #414171).
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 28 Jul 2007 15:49:26 +0200
+
+keepassx (0.2.2-2) unstable; urgency=low
+
+  * Upload to unstable
+  * Fix typo in package description. Thanks to Stefan Fritsch!
+  * Translate desktop file
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 10 Feb 2007 17:15:55 +0100
+
+keepassx (0.2.2-1) experimental; urgency=low
+
+  * cleanups to debian/rules
+  * upload to debian/experimental for now (Closes: #405896)
+  * small changes to description
+  * remove libstdc++6-4.0-dev from build-depends
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon,  8 Jan 2007 17:59:13 +0100
+
+keepassx (0.2.2-0ubuntu1) edgy; urgency=low
+
+  * Initial release
+
+ -- David Valot <ptitdav69@gmail.com>  Wed,  6 Sep 2006 21:07:02 +0200
