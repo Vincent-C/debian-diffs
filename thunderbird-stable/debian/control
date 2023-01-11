@@ -9,12 +9,9 @@ Homepage: http://www.mozillamessaging.com/en-US/thunderbird/
 Package: thunderbird-stable
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, desktop-file-utils
-Provides: mail-reader, icedove, thunderbird-esr
-#Provides: thunderbird # conflicts with hunspell-en-us
-Replaces: thunderbird-esr
-#Replaces: thunderbird # conflicts with hunspell-en-us
-Conflicts: thunderbird-esr
-#Conflicts: thunderbird # conflicts with hunspell-en-us
+Provides: mail-reader, icedove, thunderbird-esr, thunderbird
+Replaces: thunderbird-esr, thunderbird
+Conflicts: thunderbird-esr, thunderbird
 Description: mail/news client with RSS and integrated spam filter support
  Thunderbird is a free e-mail client. It supports different mail accounts
  (POP, IMAP, Gmail), has an integrated learning Spam filter, and offers easy
