@@ -1,5 +1,0 @@
-Tarball: http://xchat.org/files/source/2.8/xchat-2.8.8.tar.xz
-
-Add patch to fix an annoying bug in XChat:
-  * Stop systray icon from disappearing every time gnome-{shell,panel}
-    disappears/crashes/kills itself. (Closes: #675439)
