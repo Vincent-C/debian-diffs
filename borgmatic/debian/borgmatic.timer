@@ -1,1 +1,10 @@
-../sample/systemd/borgmatic.timer
+[Unit]
+Description=Run borgmatic backup
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=3h
+
+[Install]
+WantedBy=timers.target
