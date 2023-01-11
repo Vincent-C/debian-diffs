@@ -1,0 +1,14 @@
+-- Rename tables
+
+RENAME TABLE `pma_userconfig` TO `pma__userconfig`;
+RENAME TABLE `pma_tracking` TO `pma__tracking`;
+RENAME TABLE `pma_designer_coords` TO `pma__designer_coords`;
+RENAME TABLE `pma_table_info` TO `pma__table_info`;
+RENAME TABLE `pma_table_coords` TO `pma__table_coords`;
+RENAME TABLE `pma_relation` TO `pma__relation`;
+RENAME TABLE `pma_table_uiprefs` TO `pma__table_uiprefs`;
+RENAME TABLE `pma_recent` TO `pma__recent`;
+RENAME TABLE `pma_pdf_pages` TO `pma__pdf_pages`;
+RENAME TABLE `pma_history` TO `pma__history`;
+RENAME TABLE `pma_column_info` TO `pma__column_info`;
+RENAME TABLE `pma_bookmark` TO `pma__bookmark`;

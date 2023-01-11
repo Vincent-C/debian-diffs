@@ -1,0 +1,23 @@
+#!/usr/bin/php
+<?php
+
+/**
+ * Load database credentials 
+ */
+require '/etc/phpmyadmin/config-db.php';
+
+/** 
+ * Connect to the database
+ */
+$link = mysqli_connect($dbserver, $dbuser, $dbpass, $dbname, $dbport);
+
+/**
+ * Update table ignoring result as this migration might have been already 
+ * done by the phpMyAdmin itself.
+ */
+mysqli_query(
+    $link,
+    "ALTER TABLE `pma__column_info` " .
+    "  ADD `input_transformation` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT ''," .
+    "  ADD `input_transformation_options` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '';"
+);

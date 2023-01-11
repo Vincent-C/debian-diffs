@@ -1,0 +1,4 @@
+version=3
+opts="repacksuffix=+dfsg1,dversionmangle=s/\+dfsg\d*$//,pgpsigurlmangle=s/$/.asc/" \
+    https://www.phpmyadmin.net/downloads/ \
+    https://files.phpmyadmin.net/phpMyAdmin/.*/phpMyAdmin-([0-9.]+)-all-languages.tar.xz

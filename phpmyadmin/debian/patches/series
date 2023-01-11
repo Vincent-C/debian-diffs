@@ -1,0 +1,10 @@
+#do-not-try-to-run-gd-based-tests-if-gd-extension-is-.patch
+#fix-path-to-tcpdf-include.patch
+#avoid-using-hardcoded-tcpdf-path.patch
+#revert-to-auto-for-further-tests.patch
+#flag-tests-needing-network-access.patch
+#add-validation-prior-to-using-object.patch
+#remove-not-needed-includes.patch
+debian.patch
+doc.patch
+setup-message.patch

@@ -1,0 +1,206 @@
+From ec9139edefc9fd916c31cd06213558d64eaadbce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 6 Dec 2016 10:44:06 +0100
+Subject: [PATCH 1/1] Do not try to run gd based tests if gd extension is not
+ there
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ test/classes/gis/GISGeometrycollectionTest.php     |  3 ++
+ test/classes/gis/GISLinestringTest.php             |  3 ++
+ test/classes/gis/GISMultilinestringTest.php        |  3 ++
+ test/classes/gis/GISMultipointTest.php             |  3 ++
+ test/classes/gis/GISMultipolygonTest.php           |  3 ++
+ test/classes/gis/GISPointTest.php                  |  3 ++
+ test/classes/gis/GISPolygonTest.php                |  3 ++
+ .../transformations/TransformationPluginsTest.php  | 52 ++++++++++++----------
+ 8 files changed, 49 insertions(+), 24 deletions(-)
+
+diff --git a/test/classes/gis/GISGeometrycollectionTest.php b/test/classes/gis/GISGeometrycollectionTest.php
+index cf403d4a22..b940685209 100644
+--- a/test/classes/gis/GISGeometrycollectionTest.php
++++ b/test/classes/gis/GISGeometrycollectionTest.php
+@@ -208,6 +208,9 @@ class GISGeometryCollectionTest extends PHPUnit_Framework_TestCase
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'GEOMETRYCOLLECTION(POLYGON((35 10,10 20,15 40,45 45,35 10),'
+diff --git a/test/classes/gis/GISLinestringTest.php b/test/classes/gis/GISLinestringTest.php
+index 8d927f8db3..c65a62890f 100644
+--- a/test/classes/gis/GISLinestringTest.php
++++ b/test/classes/gis/GISLinestringTest.php
+@@ -192,6 +192,9 @@ class GISLinestringTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'LINESTRING(12 35,48 75,69 23,25 45,14 53,35 78)',
+diff --git a/test/classes/gis/GISMultilinestringTest.php b/test/classes/gis/GISMultilinestringTest.php
+index b3d7ff52ad..b69c724dbc 100644
+--- a/test/classes/gis/GISMultilinestringTest.php
++++ b/test/classes/gis/GISMultilinestringTest.php
+@@ -253,6 +253,9 @@ class GISMultilinestringTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'MULTILINESTRING((36 14,47 23,62 75),(36 10,17 23,178 53))',
+diff --git a/test/classes/gis/GISMultipointTest.php b/test/classes/gis/GISMultipointTest.php
+index af8086a1a2..bac4b8eeba 100644
+--- a/test/classes/gis/GISMultipointTest.php
++++ b/test/classes/gis/GISMultipointTest.php
+@@ -196,6 +196,9 @@ class GISMultipointTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'MULTIPOINT(12 35,48 75,69 23,25 45,14 53,35 78)',
+diff --git a/test/classes/gis/GISMultipolygonTest.php b/test/classes/gis/GISMultipolygonTest.php
+index c1ea48bd31..c6a24374e8 100644
+--- a/test/classes/gis/GISMultipolygonTest.php
++++ b/test/classes/gis/GISMultipolygonTest.php
+@@ -296,6 +296,9 @@ class GISMultipolygonTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'MULTIPOLYGON(((136 40,147 83,16 75,136 40)),'
+diff --git a/test/classes/gis/GISPointTest.php b/test/classes/gis/GISPointTest.php
+index 27f036203f..bc9dfd39c8 100644
+--- a/test/classes/gis/GISPointTest.php
++++ b/test/classes/gis/GISPointTest.php
+@@ -197,6 +197,9 @@ class GISPointTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'POINT(12 35)',
+diff --git a/test/classes/gis/GISPolygonTest.php b/test/classes/gis/GISPolygonTest.php
+index d2be8fb962..a9fad0a5a6 100644
+--- a/test/classes/gis/GISPolygonTest.php
++++ b/test/classes/gis/GISPolygonTest.php
+@@ -384,6 +384,9 @@ class GISPolygonTest extends GISGeomTest
+      */
+     public function providerForPrepareRowAsPng()
+     {
++        if (! function_exists('imagecreatetruecolor')) {
++            $this->markTestSkipped('GD extension missing!');
++        }
+         return array(
+             array(
+                 'POLYGON((123 0,23 30,17 63,123 0))',
+diff --git a/test/classes/plugin/transformations/TransformationPluginsTest.php b/test/classes/plugin/transformations/TransformationPluginsTest.php
+index bceacfd97a..2ef7678d7d 100644
+--- a/test/classes/plugin/transformations/TransformationPluginsTest.php
++++ b/test/classes/plugin/transformations/TransformationPluginsTest.php
+@@ -690,7 +690,7 @@ class TransformationPluginsTest extends PMATestCase
+      */
+     public function transformationDataProvider()
+     {
+-        return array(
++        $result = array(
+             array(
+                 new Image_JPEG_Upload(),
+                 array(
+@@ -772,17 +772,6 @@ class TransformationPluginsTest extends PMATestCase
+                 '31 31 31 31 31 30 30 31 '
+             ),
+             array(
+-                new Image_JPEG_Inline(),
+-                array(
+-                    'PMA_JPEG_Inline',
+-                    array("./image/", "200", "wrapper_link"=>"PMA_wrapper_link")
+-                ),
+-                '<a href="transformation_wrapper.phpPMA_wrapper_link" '
+-                . 'rel="noopener noreferrer" target="_blank"><img src="transformation_wrapper.php'
+-                . 'PMA_wrapper_link&amp;resize=jpeg&amp;newWidth=0&amp;'
+-                . 'newHeight=200" alt="[PMA_JPEG_Inline]" border="0" /></a>'
+-            ),
+-            array(
+                 new Image_JPEG_Link(),
+                 array(
+                     'PMA_IMAGE_LINK',
+@@ -793,18 +782,6 @@ class TransformationPluginsTest extends PMATestCase
+                 . ' alt="[PMA_IMAGE_LINK]">[BLOB]</a>'
+             ),
+             array(
+-                new Image_PNG_Inline(),
+-                array(
+-                    'PMA_PNG_Inline',
+-                    array("./image/", "200", "wrapper_link"=>"PMA_wrapper_link")
+-                ),
+-                '<a href="transformation_wrapper.phpPMA_wrapper_link"'
+-                . ' rel="noopener noreferrer" target="_blank"><img src="transformation_wrapper.php'
+-                . 'PMA_wrapper_link&amp;'
+-                . 'resize=jpeg&amp;newWidth=0&amp;newHeight=200" '
+-                . 'alt="[PMA_PNG_Inline]" border="0" /></a>'
+-            ),
+-            array(
+                 new Text_Plain_Dateformat(),
+                 array(
+                     12345,
+@@ -970,6 +947,33 @@ class TransformationPluginsTest extends PMATestCase
+                 'suffixMA_suffix'
+             ),
+         );
++
++        if (function_exists('imagecreatetruecolor')) {
++            $result[] = array(
++                new Image_JPEG_Inline(),
++                array(
++                    'PMA_JPEG_Inline',
++                    array("./image/", "200", "wrapper_link"=>"PMA_wrapper_link")
++                ),
++                '<a href="transformation_wrapper.phpPMA_wrapper_link" '
++                . 'rel="noopener noreferrer" target="_blank"><img src="transformation_wrapper.php'
++                . 'PMA_wrapper_link&amp;resize=jpeg&amp;newWidth=0&amp;'
++                . 'newHeight=200" alt="[PMA_JPEG_Inline]" border="0" /></a>'
++            );
++            $result[] = array(
++                new Image_PNG_Inline(),
++                array(
++                    'PMA_PNG_Inline',
++                    array("./image/", "200", "wrapper_link"=>"PMA_wrapper_link")
++                ),
++                '<a href="transformation_wrapper.phpPMA_wrapper_link"'
++                . ' rel="noopener noreferrer" target="_blank"><img src="transformation_wrapper.php'
++                . 'PMA_wrapper_link&amp;'
++                . 'resize=jpeg&amp;newWidth=0&amp;newHeight=200" '
++                . 'alt="[PMA_PNG_Inline]" border="0" /></a>'
++            );
++        }
++        return $result;
+     }
+ 
+     /**
+-- 
+2.11.0
+

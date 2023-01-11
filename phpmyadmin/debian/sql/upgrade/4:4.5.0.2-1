@@ -1,0 +1,79 @@
+-- --------------------------------------------------------
+
+--
+-- Update table structure for table `pma__column_info`
+--
+UPDATE `pma__column_info`
+  SET `mimetype` = REPLACE(`mimetype`, 'octet-stream', 'octetstream');
+UPDATE `pma__column_info`
+  SET `transformation` = REPLACE(REPLACE(`transformation`, '__', '_'), 'inc.php', 'class.php');
+UPDATE `pma__column_info`
+  SET `transformation` = ''
+  WHERE `transformation` = '_';
+UPDATE `pma__column_info`
+  SET `transformation` = CONCAT('output/', `transformation`)
+  WHERE `transformation` IN (
+    'application_octetstream_download.class.php',
+    'application_octetstream_hex.class.php',
+    'image_jpeg_inline.class.php',
+    'image_jpeg_link.class.php',
+    'image_png_inline.class.php',
+    'text_plain_bool2text.class.php',
+    'text_plain_dateformat.class.php',
+    'text_plain_external.class.php',
+    'text_plain_formatted.class.php',
+    'text_plain_imagelink.class.php',
+    'text_plain_sql.class.php'
+  );
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__central_columns`
+--
+
+CREATE TABLE IF NOT EXISTS `pma__central_columns` (
+  `db_name` varchar(64) NOT NULL,
+  `col_name` varchar(64) NOT NULL,
+  `col_type` varchar(64) NOT NULL,
+  `col_length` text,
+  `col_collation` varchar(64) NOT NULL,
+  `col_isNull` boolean NOT NULL,
+  `col_extra` varchar(255) default '',
+  `col_default` text,
+  PRIMARY KEY (`db_name`,`col_name`)
+)
+  COMMENT='Central list of columns'
+  DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__designer_settings`
+--
+
+CREATE TABLE IF NOT EXISTS `pma__designer_settings` (
+  `username` varchar(64) NOT NULL,
+  `settings_data` text NOT NULL,
+  PRIMARY KEY (`username`)
+)
+  COMMENT='Settings related to Designer'
+  DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__export_templates`
+--
+
+CREATE TABLE IF NOT EXISTS `pma__export_templates` (
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL,
+  `export_type` varchar(10) NOT NULL,
+  `template_name` varchar(64) NOT NULL,
+  `template_data` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`)
+)
+  COMMENT='Saved export templates'
+  DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;

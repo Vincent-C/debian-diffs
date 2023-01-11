@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s/.*-//')
+
+%:
+	dh $@ --fail-missing --with sphinxdoc
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+
+override_dh_auto_build:
+	make -C doc/ html
+	rm -rf test/selenium

@@ -1,0 +1,116 @@
+From 18a96f017889bd866c94c734864cd634f9d9016e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 6 Dec 2016 10:08:52 +0100
+Subject: [PATCH 1/1] Fix path to tcpdf include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Otherwise we do not honor vendor configuration.
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ test/classes/gis/GISGeometrycollectionTest.php | 2 +-
+ test/classes/gis/GISLinestringTest.php         | 2 +-
+ test/classes/gis/GISMultilinestringTest.php    | 2 +-
+ test/classes/gis/GISMultipointTest.php         | 2 +-
+ test/classes/gis/GISMultipolygonTest.php       | 3 +--
+ test/classes/gis/GISPointTest.php              | 2 +-
+ test/classes/gis/GISPolygonTest.php            | 2 +-
+ 7 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/test/classes/gis/GISGeometrycollectionTest.php b/test/classes/gis/GISGeometrycollectionTest.php
+index 9a49cd203a..cf403d4a22 100644
+--- a/test/classes/gis/GISGeometrycollectionTest.php
++++ b/test/classes/gis/GISGeometrycollectionTest.php
+@@ -8,7 +8,7 @@
+  */
+ use PMA\libraries\gis\GISGeometrycollection;
+ 
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISGeometrycollection class
+diff --git a/test/classes/gis/GISLinestringTest.php b/test/classes/gis/GISLinestringTest.php
+index a5322adc50..8d927f8db3 100644
+--- a/test/classes/gis/GISLinestringTest.php
++++ b/test/classes/gis/GISLinestringTest.php
+@@ -9,7 +9,7 @@
+ use PMA\libraries\gis\GISLinestring;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISLinestring class
+diff --git a/test/classes/gis/GISMultilinestringTest.php b/test/classes/gis/GISMultilinestringTest.php
+index bd9171ea52..b3d7ff52ad 100644
+--- a/test/classes/gis/GISMultilinestringTest.php
++++ b/test/classes/gis/GISMultilinestringTest.php
+@@ -9,7 +9,7 @@
+ use PMA\libraries\gis\GISMultilinestring;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISMultilinestring class
+diff --git a/test/classes/gis/GISMultipointTest.php b/test/classes/gis/GISMultipointTest.php
+index 69afe4c230..af8086a1a2 100644
+--- a/test/classes/gis/GISMultipointTest.php
++++ b/test/classes/gis/GISMultipointTest.php
+@@ -9,7 +9,7 @@
+ use PMA\libraries\gis\GISMultipoint;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISMultipoint class
+diff --git a/test/classes/gis/GISMultipolygonTest.php b/test/classes/gis/GISMultipolygonTest.php
+index 4ad7861d48..c1ea48bd31 100644
+--- a/test/classes/gis/GISMultipolygonTest.php
++++ b/test/classes/gis/GISMultipolygonTest.php
+@@ -9,8 +9,7 @@
+ use PMA\libraries\gis\GISMultipolygon;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
+-
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISMultipolygon class
+diff --git a/test/classes/gis/GISPointTest.php b/test/classes/gis/GISPointTest.php
+index 907016ee01..27f036203f 100644
+--- a/test/classes/gis/GISPointTest.php
++++ b/test/classes/gis/GISPointTest.php
+@@ -9,7 +9,7 @@
+ use PMA\libraries\gis\GISPoint;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISPoint class.
+diff --git a/test/classes/gis/GISPolygonTest.php b/test/classes/gis/GISPolygonTest.php
+index 0105d23cff..d2be8fb962 100644
+--- a/test/classes/gis/GISPolygonTest.php
++++ b/test/classes/gis/GISPolygonTest.php
+@@ -9,7 +9,7 @@
+ use PMA\libraries\gis\GISPolygon;
+ 
+ require_once 'GISGeomTest.php';
+-require_once 'libraries/tcpdf/tcpdf.php';
++require_once TCPDF_INC;
+ 
+ /**
+  * Tests for PMA\libraries\gis\GISPolygon class
+-- 
+2.11.0
+

@@ -1,0 +1,72 @@
+Source: phpmyadmin
+Maintainer: Thijs Kinkhorst <thijs@debian.org>
+Uploaders: Michal Čihař <nijel@debian.org>
+Section: web
+Priority: extra
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9),
+    python-sphinx,
+    phpunit,
+    php-mysql,
+    php-json,
+    php-mbstring,
+    php-xml,
+    php-bz2,
+    php-zip,
+    php-tcpdf,
+    php-php-gettext | php-gettext (<= 1:7.0),
+    php-phpseclib (>= 2.0),
+    po-debconf
+Homepage: https://www.phpmyadmin.net/
+Vcs-Browser: https://anonscm.debian.org/git/collab-maint/phpmyadmin.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/phpmyadmin.git
+
+Package: phpmyadmin
+Architecture: all
+Depends: php,
+    php-cli,
+    php-mysql,
+    php-json,
+    php-mbstring,
+    php-xml,
+    perl,
+    ${misc:Depends},
+    ${sphinxdoc:Depends},
+    dbconfig-mysql | dbconfig-no-thanks | dbconfig-common (<< 2.0.0),
+    php-php-gettext | php-gettext (<= 1:7.0),
+    php-phpseclib (>= 2.0),
+    ucf (>= 0.28)
+Recommends: apache2 | lighttpd | httpd,
+    php-curl,
+    php-gd,
+    php-bz2,
+    php-zip,
+    php-tcpdf
+Suggests: default-mysql-server | virtual-mysql-server,
+    www-browser
+Description: MySQL web administration tool
+ This package allows administering of MySQL or MariaDB with a web interface.
+ .
+ It allows administrators to:
+  - browse through databases and tables;
+  - create, copy, rename, alter and drop databases;
+  - create, copy, rename, alter and drop tables;
+  - perform table maintenance;
+  - add, edit and drop fields;
+  - execute any SQL-statement, even multiple queries;
+  - create, alter and drop indexes;
+  - load text files into tables;
+  - create and read dumps of tables or databases;
+  - export data to SQL, CSV, XML, Word, Excel, PDF and LaTeX formats;
+  - administer multiple servers;
+  - manage MySQL users and privileges;
+  - check server settings and runtime information with configuration hints;
+  - check referential integrity in MyISAM tables;
+  - create complex queries using Query-by-example (QBE), automatically
+    connecting required tables;
+  - create PDF graphics of database layout;
+  - search globally in a database or a subset of it;
+  - transform stored data into any format using a set of predefined
+    functions, such as displaying BLOB-data as image or download-link;
+  - manage InnoDB tables and foreign keys;
+ and is fully internationalized and localized in dozens of languages.

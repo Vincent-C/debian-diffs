@@ -1,0 +1,100 @@
+# (c) 2003-2007 Piotr Roszatycki <dexter@debian.org>, GPL
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: phpmyadmin 4:2.11.2-3\n"
+"Report-Msgid-Bugs-To: phpmyadmin@packages.debian.org\n"
+"POT-Creation-Date: 2009-11-16 14:57+0100\n"
+"PO-Revision-Date: 2016-08-17 15:44+0000\n"
+"Last-Translator: Stanisław Krukowski <dfk0077@riseup.net>\n"
+"Language-Team: Polish "
+"<https://hosted.weblate.org/projects/phpmyadmin/debian/pl/>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.8-dev\n"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2001
+msgid "Web server to reconfigure automatically:"
+msgstr "Serwer WWW do automatycznej rekonfiguracji:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2001
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"phpMyAdmin."
+msgstr ""
+"Proszę wybrać serwer WWW, który powinien być automatycznie skonfigurowany do "
+"współpracy z phpMyAdmin."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Username for web-based setup system:"
+msgstr "Nazwa użytkownika dla systemu instalacyjnego z poziomu przeglądarki:"
+
+#. Type: string
+#. Description
+#. Type: password
+#. Description
+#: ../templates:3001 ../templates:4001
+msgid ""
+"The setup system for phpMyAdmin may be used, after installation, from http://"
+"localhost/phpmyadmin/setup/index.php."
+msgstr ""
+"Po instalacji programu phpMyAdmin można użyć system instalacyjnego "
+"(konfiguracyjnego), wpisując w pasku adresu przeglądarki: "
+"http://localhost/phpmyadmin/setup/index.php."
+
+#. Type: string
+#. Description
+#. Type: password
+#. Description
+#: ../templates:3001 ../templates:4001
+msgid ""
+"Access to this system requires identification with a username and a password."
+msgstr ""
+"Dostęp do tego systemu wymaga identyfikacji za pomocą nazwy użytkownika i "
+"hasła."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"If you leave this field empty, the default username ('admin') will be used."
+msgstr ""
+"Jeśli pozostawisz to pole puste, zostanie użyta domyślna nazwa użytkownika "
+"('admin')."
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid "Password for web-based setup system:"
+msgstr ""
+"Hasło dla systemu instalacyjnego (konfiguracyjnego) z poziomu przeglądarki:"
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid ""
+"Usernames and passwords may be managed with the `htpasswd' command and are "
+"stored in /etc/phpmyadmin/htpasswd.setup."
+msgstr ""
+"Za pomocą polecenia `htpasswd' można zarządzać nazwami użytkowników i "
+"hasłami, przechowywanymi w pliku /etc/phpmyadmin/htpasswd.setup."
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid ""
+"If you leave this field empty, access to the web-based setup will be "
+"disabled."
+msgstr ""
+"Jeśli to pole pozostawisz puste, dostęp do systemu instalacyjnego "
+"(konfiguracyjnego) z poziomu przeglądarki zostanie wyłączony."

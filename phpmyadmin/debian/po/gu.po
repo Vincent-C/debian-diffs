@@ -1,0 +1,97 @@
+# Gujarati translations for PACKAGE package.
+# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: phpmyadmin@packages.debian.org\n"
+"POT-Creation-Date: 2009-11-16 14:57+0100\n"
+"PO-Revision-Date: 2016-01-08 12:31+0000\n"
+"Last-Translator: Nijraj Gelani <gelaninijraj@gmail.com>\n"
+"Language-Team: Gujarati "
+"<https://hosted.weblate.org/projects/phpmyadmin/debian/gu/>\n"
+"Language: gu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.5-dev\n"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2001
+msgid "Web server to reconfigure automatically:"
+msgstr "આપોઆપ પુનઃરૂપરેખાંકિત કરવા માટેનું સર્વર:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2001
+msgid ""
+"Please choose the web server that should be automatically configured to run "
+"phpMyAdmin."
+msgstr ""
+"કૃપા કરીને એ વેબ સર્વર પસંદ કરો જેને phpMyAdmin સાથે કામ કરવા આપોઆપ "
+"રૂપરેખાંકિત કરવું છે."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid "Username for web-based setup system:"
+msgstr "વેબ આધારિત તંત્ર સ્થાપના માટેનું ખાતા-નામ:"
+
+#. Type: string
+#. Description
+#. Type: password
+#. Description
+#: ../templates:3001 ../templates:4001
+msgid ""
+"The setup system for phpMyAdmin may be used, after installation, from http://"
+"localhost/phpmyadmin/setup/index.php."
+msgstr ""
+"phpMyAdmin માટેનાં સ્થાપનાં તંત્રને તમે સ્થાપન પછી અહીંથી વાપરી શકશો : "
+"http://localhost/phpmyadmin/setup/index.php."
+
+#. Type: string
+#. Description
+#. Type: password
+#. Description
+#: ../templates:3001 ../templates:4001
+msgid ""
+"Access to this system requires identification with a username and a password."
+msgstr "આ તંત્રમાં પ્રવેશ માટે ખાતા-નામ અને સંકેત શબ્દની જરૂર રહેશે."
+
+#. Type: string
+#. Description
+#: ../templates:3001
+msgid ""
+"If you leave this field empty, the default username ('admin') will be used."
+msgstr ""
+"જો તમે આ ક્ષેત્ર ખાલી રાખશો, તો મુળભૂત ખાતા-નામ('admin') વાપરવામાં આવશે."
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid "Password for web-based setup system:"
+msgstr "વેબ આધારીત સ્થાપનાં તંત્ર માટેનો સંકેત શબ્દ:"
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid ""
+"Usernames and passwords may be managed with the `htpasswd' command and are "
+"stored in /etc/phpmyadmin/htpasswd.setup."
+msgstr ""
+"ખાતા-નામ અને સંકેત શબ્દ આ દસ્તાવેજમાં(`/etc/phpmyadmin/htpasswd.setup`) "
+"સંગ્રહવામાં આવ્યા છે, જેનો વહીવટ `htpasswd` આદેશ દ્વારા થઇ શકશે."
+
+#. Type: password
+#. Description
+#: ../templates:4001
+msgid ""
+"If you leave this field empty, access to the web-based setup will be "
+"disabled."
+msgstr ""
+"જો તમે આ ક્ષેત્ર ખાલી રાખશો તો વેબ આધારીત સ્થાપનાં તંત્રમાં પ્રવેશ પ્રતિબંધી"
+"ત રહેશે."

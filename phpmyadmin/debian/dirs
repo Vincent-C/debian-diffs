@@ -1,0 +1,8 @@
+etc/phpmyadmin
+etc/phpmyadmin/conf.d
+usr/share/phpmyadmin
+usr/share/dbconfig-common/data/phpmyadmin/install/
+usr/share/dbconfig-common/data/phpmyadmin/upgrade/
+usr/share/dbconfig-common/scripts/phpmyadmin/upgrade/
+var/lib/phpmyadmin
+var/lib/phpmyadmin/tmp

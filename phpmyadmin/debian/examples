@@ -1,0 +1,3 @@
+config.sample.inc.php
+examples/*
+debian/contrib/config.manyhosts.inc.php

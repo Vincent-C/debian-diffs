@@ -1,0 +1,48 @@
+From cd9891065fff2a1c26b298b9961ff30051c826c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 6 Dec 2016 10:16:18 +0100
+Subject: [PATCH 1/1] Flag tests needing network access
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ test/classes/ConfigTest.php             | 1 +
+ test/classes/VersionInformationTest.php | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/classes/ConfigTest.php b/test/classes/ConfigTest.php
+index 729efb570a..b15d1291e8 100644
+--- a/test/classes/ConfigTest.php
++++ b/test/classes/ConfigTest.php
+@@ -943,6 +943,7 @@ class ConfigTest extends PMATestCase
+      * Test for Check HTTP
+      *
+      * @group medium
++     * @group network
+      *
+      * @return void
+      */
+diff --git a/test/classes/VersionInformationTest.php b/test/classes/VersionInformationTest.php
+index 02a97468c0..542db328c8 100644
+--- a/test/classes/VersionInformationTest.php
++++ b/test/classes/VersionInformationTest.php
+@@ -60,6 +60,7 @@ class VersionInformationTest extends PMATestCase
+      * @return void
+      *
+      * @group large
++     * @group network
+      */
+     public function testGetLatestVersion()
+     {
+@@ -258,4 +259,4 @@ class VersionInformationTest extends PMATestCase
+         $this->assertFalse($mockVersionInfo->evaluateVersionCondition('PHP', '>7.0'));
+         $this->assertTrue($mockVersionInfo->evaluateVersionCondition('PHP', '!=5.2'));
+     }
+-}
+\ No newline at end of file
++}
+-- 
+2.11.0
+

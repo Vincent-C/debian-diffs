@@ -1,0 +1,103 @@
+From e627cf197c3ac7dcf6dc4c6beecac76a9cbfd169 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 6 Dec 2016 09:54:54 +0100
+Subject: [PATCH 1/1] Remove not needed includes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We already include this on bootstrap.
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ test/libraries/php-gettext/PMA_FileReader_test.php   | 6 ------
+ test/libraries/php-gettext/PMA_StreamReader_test.php | 6 ------
+ test/libraries/php-gettext/PMA_StringReader_test.php | 6 ------
+ test/libraries/php-gettext/PMA_gettext_test.php      | 7 -------
+ test/libraries/php-gettext/Parsing_test.php          | 1 -
+ 5 files changed, 26 deletions(-)
+
+diff --git a/test/libraries/php-gettext/PMA_FileReader_test.php b/test/libraries/php-gettext/PMA_FileReader_test.php
+index c083d3ab9d..7a08d361c4 100644
+--- a/test/libraries/php-gettext/PMA_FileReader_test.php
++++ b/test/libraries/php-gettext/PMA_FileReader_test.php
+@@ -5,12 +5,6 @@
+  * @package PhpMyAdmin-test
+  */
+ 
+-/*
+- * Include to test.
+- */
+-
+-require_once 'libraries/php-gettext/streams.php';
+-
+ class PMA_FileReader_Test extends PHPUnit_Framework_TestCase
+ {
+     /**
+diff --git a/test/libraries/php-gettext/PMA_StreamReader_test.php b/test/libraries/php-gettext/PMA_StreamReader_test.php
+index db47ea4789..f51657898f 100644
+--- a/test/libraries/php-gettext/PMA_StreamReader_test.php
++++ b/test/libraries/php-gettext/PMA_StreamReader_test.php
+@@ -5,12 +5,6 @@
+  * @package PhpMyAdmin-test
+  */
+ 
+-/*
+- * Include to test.
+- */
+-
+-require_once 'libraries/php-gettext/streams.php';
+-
+ class PMA_StreamReader_Test extends PHPUnit_Framework_TestCase
+ {
+     /**
+diff --git a/test/libraries/php-gettext/PMA_StringReader_test.php b/test/libraries/php-gettext/PMA_StringReader_test.php
+index f3c173c957..7ef25afb02 100644
+--- a/test/libraries/php-gettext/PMA_StringReader_test.php
++++ b/test/libraries/php-gettext/PMA_StringReader_test.php
+@@ -5,12 +5,6 @@
+  * @package PhpMyAdmin-test
+  */
+ 
+-/*
+- * Include to test.
+- */
+-
+-require_once 'libraries/php-gettext/streams.php';
+-
+ class PMA_StringReader_Test extends PHPUnit_Framework_TestCase
+ {
+     /**
+diff --git a/test/libraries/php-gettext/PMA_gettext_test.php b/test/libraries/php-gettext/PMA_gettext_test.php
+index 71029658e4..30fac5dccb 100644
+--- a/test/libraries/php-gettext/PMA_gettext_test.php
++++ b/test/libraries/php-gettext/PMA_gettext_test.php
+@@ -5,13 +5,6 @@
+  * @package PhpMyAdmin-test
+  */
+ 
+-/*
+- * Include to test.
+- */
+-
+-require_once 'libraries/php-gettext/gettext.php';
+-require_once 'libraries/php-gettext/streams.php';
+-
+ class PMA_Gettext_Test extends PHPUnit_Framework_TestCase
+ {
+     /**
+diff --git a/test/libraries/php-gettext/Parsing_test.php b/test/libraries/php-gettext/Parsing_test.php
+index 1e67174fdd..4e4364ad72 100644
+--- a/test/libraries/php-gettext/Parsing_test.php
++++ b/test/libraries/php-gettext/Parsing_test.php
+@@ -5,7 +5,6 @@
+  *
+  * @package PhpMyAdmin-test
+  */
+-require_once 'libraries/php-gettext/gettext.php';
+ 
+ class ParsingTest extends PHPUnit_Framework_TestCase
+ {
+-- 
+2.11.0
+

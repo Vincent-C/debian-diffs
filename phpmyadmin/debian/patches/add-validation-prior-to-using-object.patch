@@ -1,0 +1,37 @@
+From 79d33084f3e7036b81487347138b2ae70179d459 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 6 Dec 2016 10:04:44 +0100
+Subject: [PATCH 1/1] Add validation prior to using object
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Otherwise the test failure is really not obvious.
+
+Signed-off-by: Michal Čihař <michal@cihar.com>
+---
+ test/classes/LanguageTest.php | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/test/classes/LanguageTest.php b/test/classes/LanguageTest.php
+index b367dc148e..da8033afdc 100644
+--- a/test/classes/LanguageTest.php
++++ b/test/classes/LanguageTest.php
+@@ -102,10 +102,12 @@ class LanguageTest extends PMATestCase
+     public function testMySQLLocale()
+     {
+         $czech = $this->manager->getLanguage('cs');
++        $this->assertNotEquals($czech, false);
+         $this->assertEquals('cs_CZ', $czech->getMySQLLocale());
+ 
+-        $korani = $this->manager->getLanguage('ckb');
+-        $this->assertEquals('', $korani->getMySQLLocale());
++        $azerbaijani = $this->manager->getLanguage('az');
++        $this->assertNotEquals($azerbaijani, false);
++        $this->assertEquals('', $azerbaijani->getMySQLLocale());
+     }
+ 
+     /**
+-- 
+2.11.0
+
