@@ -1,0 +1,4 @@
+debian/borgmatic.1
+debian/generate-borgmatic-config.1
+debian/upgrade-borgmatic-config.1
+debian/validate-borgmatic-config.1

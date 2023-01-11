@@ -1,0 +1,23 @@
+Description: Adapt vendor systemd service and timer for Debian
+Forwarded: not-needed
+Origin: vendor, https://salsa.debian.org/debian/borgmatic/-/merge_requests/3.patch
+Bug-Debian: http://bugs.debian.org/989322
+Author: Sebastien Badia <sbadia@debian.org>
+
+--- a/sample/systemd/borgmatic.service
++++ b/sample/systemd/borgmatic.service
+@@ -5,6 +5,8 @@
+ # Prevent borgmatic from running unless the machine is plugged into power. Remove this line if you
+ # want to allow borgmatic to run anytime.
+ ConditionACPower=true
++ConditionFileNotEmpty=/etc/borgmatic/config.yaml
++Documentation=https://torsion.org/borgmatic/
+ 
+ [Service]
+ Type=oneshot
+@@ -61,4 +63,4 @@
+ # Delay start to prevent backups running during boot. Note that systemd-inhibit requires dbus and
+ # dbus-user-session to be installed.
+ ExecStartPre=sleep 1m
+-ExecStart=systemd-inhibit --who="borgmatic" --what="sleep:shutdown" --why="Prevent interrupting scheduled backup" /root/.local/bin/borgmatic --verbosity -1 --syslog-verbosity 1
++ExecStart=systemd-inhibit --who="borgmatic" --what="sleep:shutdown" --why="Prevent interrupting scheduled backup" /usr/bin/borgmatic --verbosity -1 --syslog-verbosity 1

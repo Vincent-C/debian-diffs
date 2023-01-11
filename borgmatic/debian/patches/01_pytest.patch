@@ -1,0 +1,18 @@
+Description: Remove deprecated coverage pytest options
+Author: Sebastien Badia <seb@sebian.fr>
+Forwarded: not-needed
+Last-Update: 2019-08-28
+
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -3,8 +3,8 @@ description_file=README.md
+ 
+ [tool:pytest]
+ testpaths = tests
+-addopts = --cov-report term-missing:skip-covered --cov=borgmatic --ignore=tests/end-to-end
+-filterwarnings = 
++addopts = --ignore=tests/end-to-end
++filterwarnings =
+     ignore:Coverage disabled.*:pytest.PytestWarning
+ 
+ [flake8]
