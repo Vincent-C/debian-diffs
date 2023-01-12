@@ -1,16 +1,16 @@
-maven (99:3.8.7-1+vc1~ppa1~jammy1) jammy; urgency=medium
+maven (3.8.7-1+vc1~ppa1~jammy1) jammy; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 22:12:59 -0800
 
-maven (99:3.6.0-1+vc1) unstable; urgency=medium
+maven (3.6.0-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Sun, 24 Feb 2019 17:11:58 -0800
 
-maven (99:3.3.9-1+vc1) unstable; urgency=low
+maven (3.3.9-1+vc1) unstable; urgency=low
 
   * Local package.
   * Initial release.

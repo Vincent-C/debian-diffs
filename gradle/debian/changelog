@@ -1,64 +1,64 @@
-gradle (99:7.6-1+vc1~ppa1~jammy1) jammy; urgency=medium
+gradle (7.6-1+vc1~ppa1~jammy1) jammy; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 22:08:58 -0800
 
-gradle (99:5.2.1-1+vc1) unstable; urgency=medium
+gradle (5.2.1-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Sun, 24 Feb 2019 17:08:54 -0800
 
-gradle (99:3.3-1+vc1) unstable; urgency=medium
+gradle (3.3-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Wed, 04 Jan 2017 00:51:19 -0800
 
-gradle (99:3.2.1-1+vc1) unstable; urgency=medium
+gradle (3.2.1-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Sat, 03 Dec 2016 15:21:03 -0800
 
-gradle (99:3.2-1+vc1) unstable; urgency=medium
+gradle (3.2-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Tue, 15 Nov 2016 20:44:21 -0800
 
-gradle (99:3.1-1+vc1) unstable; urgency=medium
+gradle (3.1-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Mon, 19 Sep 2016 22:32:25 -0700
 
-gradle (99:3.0-1+vc1) unstable; urgency=medium
+gradle (3.0-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Sun, 11 Sep 2016 13:50:44 -0700
 
-gradle (99:2.14-1+vc1) unstable; urgency=medium
+gradle (2.14-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Tue, 14 Jun 2016 23:46:39 -0700
 
-gradle (99:2.13-1+vc1) unstable; urgency=medium
+gradle (2.13-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Mon, 25 Apr 2016 21:26:35 -0700
 
-gradle (99:2.11-1+vc1) unstable; urgency=medium
+gradle (2.11-1+vc1) unstable; urgency=medium
 
   * New upstream release.
 
  -- Vincent Cheng <vcheng@debian.org>  Tue, 09 Feb 2016 23:37:40 -0800
 
-gradle (99:2.10-1+vc1) unstable; urgency=low
+gradle (2.10-1+vc1) unstable; urgency=low
 
   * Local package.
   * Initial release.
