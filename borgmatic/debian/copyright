@@ -8,6 +8,7 @@ License: GPL-3.0+
 
 Files: debian/*
 Copyright: 2018 Johan Fleury <jfleury@arcaik.net>
+           2020-2023 Debian Borg Collective <team+borg@tracker.debian.org>
 License: GPL-3.0+
 
 License: GPL-3.0+

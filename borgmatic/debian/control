@@ -18,7 +18,7 @@ Build-Depends: debhelper-compat (= 13),
                python3-requests,
                python3-ruamel.yaml,
                python3-setuptools
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://torsion.org/borgmatic
 X-Python3-Version: >= 3.8

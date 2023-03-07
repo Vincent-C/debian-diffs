@@ -1,8 +1,21 @@
-borgmatic (1.7.4-0.1~ppa1~jammy1) jammy; urgency=medium
+borgmatic (1.7.7-1~ppa1~jammy1) jammy; urgency=medium
 
   * No-change backport from Debian sid.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 22:01:54 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 06 Mar 2023 23:31:34 -0800
+
+borgmatic (1.7.7-1) unstable; urgency=medium
+
+  * New upstream version 1.7.7
+
+ -- Sebastien Badia <sbadia@debian.org>  Wed, 22 Feb 2023 17:54:49 +0100
+
+borgmatic (1.7.6-1) unstable; urgency=medium
+
+  * New upstream version 1.7.6
+  * Bump Standards-Version to 4.6.2 (no changes needed)
+
+ -- Sebastien Badia <sbadia@debian.org>  Wed, 08 Feb 2023 15:19:57 +0100
 
 borgmatic (1.7.4-0.1) unstable; urgency=medium
 
