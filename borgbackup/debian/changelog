@@ -1,8 +1,17 @@
-borgbackup (1.2.3-1~ppa1~jammy1) jammy; urgency=medium
+borgbackup (1.2.4-1~ppa1~jammy1) jammy; urgency=medium
 
   * No change backport from Debian sid to PPA.
 
- -- Vincent Cheng <vcheng@debian.org>  Tue, 10 Jan 2023 21:47:15 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 27 Mar 2023 01:38:51 -0700
+
+borgbackup (1.2.4-1) unstable; urgency=medium
+
+  * Update upstream signing key from 1k to 4k
+  * New upstream release
+  * Update copyright years
+  * Bump std-version to 4.6.2, no changes required
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 22 Mar 2023 15:45:19 +0100
 
 borgbackup (1.2.3-1) unstable; urgency=medium
 

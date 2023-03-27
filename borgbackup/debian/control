@@ -29,7 +29,7 @@ Build-Depends: cython3,
                python3-setuptools,
                python3-setuptools-scm,
                python3-sphinx,
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://borgbackup.github.io/borgbackup/
 Vcs-Git: https://salsa.debian.org/debian/borgbackup.git

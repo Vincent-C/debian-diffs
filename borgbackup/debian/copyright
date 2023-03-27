@@ -3,7 +3,7 @@ Upstream-Name: borgbackup
 Source: https://pypi.python.org/pypi/borgbackup
 
 Files: *
-Copyright: 2015-2022 The Borg Collective
+Copyright: 2015-2023 The Borg Collective
  Thomas Waldmann <tw@waldmann-edv.de>
  Antoine Beaupré
  Jonas Borgström <jonas@borgstrom.se>
@@ -51,7 +51,7 @@ Files: debian/*
 Copyright: 	2015		Marc Haber <mh+debian-packages@zugschlus.de>
  		2014 		Caitlin Matos	<caitlin.matos@zoho.com>
  		2013-2014	Clint Adams 	<clint@debian.org>
- 		2015-2022	Gianfranco Costamagna	<locutusofborg@debian.org>
+ 		2015-2023	Gianfranco Costamagna	<locutusofborg@debian.org>
  		2015-2016	Danny Edel	<debian@danny-edel.de>
 License: Expat
 
