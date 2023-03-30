@@ -1,8 +1,8 @@
-borgmatic (1.7.7-1~ppa1~jammy1) jammy; urgency=medium
+borgmatic (1.7.9-1~ppa1~jammy1) jammy; urgency=medium
 
-  * No-change backport from Debian sid.
+  * New upstream version 1.7.9, no change backport.
 
- -- Vincent Cheng <vcheng@debian.org>  Mon, 06 Mar 2023 23:31:34 -0800
+ -- Vincent Cheng <vcheng@debian.org>  Wed, 29 Mar 2023 22:31:20 -0700
 
 borgmatic (1.7.7-1) unstable; urgency=medium
 
