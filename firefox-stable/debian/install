@@ -11,6 +11,7 @@ firefox                        opt/firefox/
 firefox.sig                    opt/firefox/
 firefox-bin                    opt/firefox/
 firefox-bin.sig                opt/firefox/
+glxtest                        opt/firefox/
 lib*                           opt/firefox/
 minidump-analyzer              opt/firefox/
 omni.ja                        opt/firefox/
@@ -24,4 +25,5 @@ Throbber-small.gif             opt/firefox/
 updater                        opt/firefox/
 updater.ini                    opt/firefox/
 update-settings.ini            opt/firefox/
+vaapitest                      opt/firefox/
 debian/firefox.desktop         usr/share/applications/
