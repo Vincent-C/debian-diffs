@@ -7,6 +7,7 @@ application.ini            opt/thunderbird/
 crashreporter              opt/thunderbird/
 crashreporter.ini          opt/thunderbird/
 dependentlibs.list         opt/thunderbird/
+glxtest                    opt/thunderbird/
 lib*                       opt/thunderbird/
 minidump-analyzer          opt/thunderbird/
 omni.ja                    opt/thunderbird/
@@ -23,4 +24,5 @@ thunderbird-bin            opt/thunderbird/
 updater                    opt/thunderbird/
 updater.ini                opt/thunderbird/
 update-settings.ini        opt/thunderbird/
+vaapitest                  opt/thunderbird/
 debian/thunderbird.desktop usr/share/applications/
