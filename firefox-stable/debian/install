@@ -17,8 +17,6 @@ minidump-analyzer              opt/firefox/
 omni.ja                        opt/firefox/
 pingsender                     opt/firefox/
 platform.ini                   opt/firefox/
-plugin-container               opt/firefox/
-plugin-container.sig           opt/firefox/
 precomplete                    opt/firefox/
 removed-files                  opt/firefox/
 Throbber-small.gif             opt/firefox/
