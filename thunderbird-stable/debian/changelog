@@ -1,3 +1,9 @@
+thunderbird-stable (115.5.1-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Mon, 27 Nov 2023 14:59:31 -0800
+
 thunderbird-stable (115.5.0-1+vc1) unstable; urgency=medium
 
   * New upstream release.
