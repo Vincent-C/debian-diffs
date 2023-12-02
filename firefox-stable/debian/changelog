@@ -1,3 +1,9 @@
+firefox-stable (120.0.1-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Sat, 02 Dec 2023 00:29:45 -0800
+
 firefox-stable (120.0-1+vc1) unstable; urgency=medium
 
   * New upstream release.
