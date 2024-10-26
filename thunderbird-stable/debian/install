@@ -5,7 +5,6 @@ icons/                     opt/thunderbird/
 isp/                       opt/thunderbird/
 application.ini            opt/thunderbird/
 crashreporter              opt/thunderbird/
-crashreporter.ini          opt/thunderbird/
 dependentlibs.list         opt/thunderbird/
 glxtest                    opt/thunderbird/
 lib*                       opt/thunderbird/
@@ -13,12 +12,10 @@ minidump-analyzer          opt/thunderbird/
 omni.ja                    opt/thunderbird/
 pingsender                 opt/thunderbird/
 platform.ini               opt/thunderbird/
-plugin-container           opt/thunderbird/
 precomplete                opt/thunderbird/
 removed-files              opt/thunderbird/
 rnp-cli                    opt/thunderbird/
 rnpkeys                    opt/thunderbird/
-Throbber-small.gif         opt/thunderbird/
 thunderbird                opt/thunderbird/
 thunderbird-bin            opt/thunderbird/
 updater                    opt/thunderbird/
