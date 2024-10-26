@@ -1,3 +1,5 @@
 Tarball: https://archive.mozilla.org/pub/firefox/releases/
 
 This package just installs the binary components of Mozilla Firefox (en-US), built and distributed by upstream.
+
+Deprecated, use Mozilla's APT repository instead: https://support.mozilla.org/en-US/kb/install-firefox-linux
