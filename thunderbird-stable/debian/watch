@@ -1,2 +1,2 @@
 version=3
-https://archive.mozilla.org/pub/thunderbird/releases/([\d\.]+)esr/linux-x86_64/en-US/thunderbird-(.*).tar.bz2
+https://archive.mozilla.org/pub/thunderbird/releases/([\d\.]+)esr/linux-x86_64/en-US/thunderbird-(.*).(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))

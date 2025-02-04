@@ -1,2 +1,2 @@
 version=3
-https://archive.mozilla.org/pub/firefox/releases/([\d\.]+)/linux-x86_64/en-US/firefox-(.*).tar.bz2
+https://archive.mozilla.org/pub/firefox/releases/([\d\.]+)/linux-x86_64/en-US/firefox-(.*).(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
