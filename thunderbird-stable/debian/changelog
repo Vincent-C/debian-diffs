@@ -1,3 +1,9 @@
+thunderbird-stable (128.7.1esr-1+vc1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Cheng <vcheng@debian.org>  Tue, 18 Feb 2025 12:40:12 -0800
+
 thunderbird-stable (128.7.0esr-1+vc1) unstable; urgency=medium
 
   * New upstream release.
