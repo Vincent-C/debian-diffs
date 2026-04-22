@@ -5,3 +5,5 @@ This package just installs the binary components of Mozilla Thunderbird
 
 Renamed as thunderbird-stable instead of thunderbird to avoid conflicting with
 another package in Debian.
+
+Note: deprecated and no longer updated
